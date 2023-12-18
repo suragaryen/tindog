@@ -7,27 +7,32 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class BoardController {
 
-	@RequestMapping("/") //@Controller와 @ResponseBode를 합친 것과 같은 역할을 하며 JSON, XML 또는 일반텍스트와 같은 다양한 유형의 응답을 생
+
+	//http://localhost:2000/
+	@RequestMapping("/")
 	public ModelAndView home() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("pages/home");
 		return mav;
-		
 	}
 	
-	@RequestMapping("/login")
-	public ModelAndView login() {
+	//http://localhost:2000/mypage/idealResult
+	@RequestMapping("/mypage/idealResult")
+	public ModelAndView idealResult() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("pages/login");
+		mav.setViewName("pages/idealResult");
 		return mav;
 		
 	}
-	
-	@RequestMapping("/register")
-	public ModelAndView register() {
+
+	//http://localhost:2000/worldcup
+	@RequestMapping("/worldcup")
+	public ModelAndView ideal() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("pages/register");
+		mav.setViewName("pages/worldcup");
 		return mav;
 		
 	}
-}//class
+
+	
+}
