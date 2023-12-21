@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="kr.co.tindog.Utility" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
+<script type="text/javascript">
+		function sendIt() {
+			var f=document.myForm;
+			str=f.email-login-body;
+			str.trim();
+			if(!str){
+				alert("이메일 입력하셈;")				
+				return;
+			}
+			f=str;
+			
+			f.action="이동할페이지.jsp";
+			f.submit();
+		}
+	</script>
 <div id="login">
  
  	 <div id="login-title">
@@ -21,7 +36,6 @@
     	<input type="button" id="btn-login-body" value="계속" onclick="sendIt()">
   	</div>
 	</form>
-	
 	<label><input type="checkbox" value="SAVE" name="c_id">ID저장</label>
 			    <br>
 			    <a href="/register">회원가입</a>
@@ -47,8 +61,8 @@
 
   <!-- 네이버 로그인 버튼 노출 영역 -->
     <div id="login-naver">
-    <a href="/oauth2/authorization/naver">
-		<img src="/img/naver.jpeg" width="40px" height="40px"  alt="네이버 로그인 버튼" />
+    <a id="naver-login-btn" href="/oauth2/authorization/naver">
+		<img src="/img/naver.png" width="40px" height="40px"  alt="네이버 로그인 버튼" />
 	</a>
     </div>
     <div id="login-naver-txt">
