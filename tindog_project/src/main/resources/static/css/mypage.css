@@ -7,6 +7,7 @@
     line-height: 2.1;
     background: rgb(39, 50, 56);
     color: white;
+    position: relative;
 }
 
 p{
@@ -21,4 +22,11 @@ p{
 
 span{
     margin: 15px;
+}
+
+.aa{
+	display: flex;
+	position: absolute;
+	top: 75px;
+	left: 300px;
 }
