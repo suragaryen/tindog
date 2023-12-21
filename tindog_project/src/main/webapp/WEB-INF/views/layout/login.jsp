@@ -9,10 +9,11 @@
 <script type="text/javascript">
 		function sendIt() {
 			var f=document.myForm;
-			str=f.email-login-body;
+			str=f.email.value;
 			str.trim();
 			if(!str){
-				alert("이메일 입력하셈;")				
+				alert("이메일 입력하셈;")
+				f.email.focus();
 				return;
 			}
 			f=str;
@@ -31,7 +32,7 @@
 	<form id="myForm" name="myForm">
   	<div id="login-body">
     	<h3>틴독에 오신 것을 환영합니다.</h3>
-    	<input type="text" id="email-login-body" placeholder="이메일">
+    	<input type="text" class="email-login-body" id="email" placeholder="이메일">
     	<br>
     	<input type="button" id="btn-login-body" value="계속" onclick="sendIt()">
   	</div>

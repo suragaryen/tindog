@@ -11,7 +11,7 @@
         font-weight: bold;
     }
     
-#login-body #email-login-body{
+#login-body .email-login-body{
         text-align: left;
         width: 400px;
         height: 25px;
