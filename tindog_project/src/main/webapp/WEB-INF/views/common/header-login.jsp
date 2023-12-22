@@ -13,22 +13,21 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">중고마켓</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="feature.html" class="dropdown-item">판매하기</a>
-                        <a href="team.html" class="dropdown-item">구매하기</a>
+                        <a href="/write" class="dropdown-item">판매하기</a>
+                        <a href="/list" class="dropdown-item">구매하기</a>
                         <a href="appointment.html" class="dropdown-item">찜목록</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">친구찾기</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="feature.html" class="dropdown-item">이상형월드컵</a>
+                        <a href="/worldcup" class="dropdown-item">이상형월드컵</a>
                         <a href="team.html" class="dropdown-item">댕BTI 검사</a>
                     </div>
                 </div>                
             </div>
             <div style="padding-right: 50px;">
-            <a href="/login">Login | </a>
-            <a href="/register"> Sign Up</a>
+            <a href="/userInfo">My page</a>
             </div>
         </div>        
 </nav>

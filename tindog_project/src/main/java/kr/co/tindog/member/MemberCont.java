@@ -25,14 +25,14 @@ public class MemberCont {
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("pages/login");
+		mav.setViewName("layout/member/login");
 		return mav;
 	}
 	
 	@RequestMapping("/register")
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/register");
+		mav.setViewName("layout/member/register");
 		return mav;
 		
 	}
@@ -42,7 +42,7 @@ public class MemberCont {
 		//String nickname = "moon567";
 		
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/userInfo");
+		mav.setViewName("layout/mypage/userInfo");
 		//mav.addObject("userInfo",memberDao.userInfo(nickname));
 		
 		//System.out.println(memberDao.userInfo(nickname));
@@ -54,14 +54,14 @@ public class MemberCont {
 	public ModelAndView dogInfo() {
 		String email = "ahjf@naver.com";
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/dogInfo");
+		mav.setViewName("layout/mypage/dogInfo");
 		mav.addObject("list", memberDao.dogList(email));
 	System.out.println(memberDao.dogList(email));
 		return mav;
 	}
 	
 	
-	@PostMapping("/insert")
+	@PostMapping("/userInsert")
 	public String insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
             @RequestParam MultipartFile mainphotofile,

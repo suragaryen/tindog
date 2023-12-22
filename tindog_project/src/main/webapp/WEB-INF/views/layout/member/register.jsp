@@ -6,7 +6,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <div class="reg-info">회원정보입력</div>
-<form name="register-form" id="register-form" method="post" action="insert" enctype="multipart/form-data">
+<form name="register-form" id="register-form" method="post" action="userInsert" enctype="multipart/form-data">
 
 <table class="table">
 <tr>
