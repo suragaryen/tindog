@@ -28,8 +28,9 @@
             </div>
             <div style="padding-right: 50px;">
             <a href="/login">Login | </a>
-            <a href="/login">Sing Up</a>
-            
+
+            <a href="/register"> Sign Up</a>
+
             </div>
         </div>        
 </nav>

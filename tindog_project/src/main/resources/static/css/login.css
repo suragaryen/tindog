@@ -11,7 +11,7 @@
         font-weight: bold;
     }
     
-#login-body #email-login-body{
+#login-body .email-login-body{
         text-align: left;
         width: 400px;
         height: 25px;
@@ -78,7 +78,7 @@
       width: 50%;
     }
 
-    #naver_id_login{
+    #naver-login-btn{
       display:block;     
       margin-left: 70px; 
       width: 50%;
