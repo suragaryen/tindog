@@ -1,0 +1,42 @@
+-- product_sql.txt
+
+--상품테이블 생성
+create table product (
+    product_code number         primary key      --상품번호
+   ,product_name varchar2(255)  not null         --상품명
+   ,description  varchar2(2000)                  --상품내용
+   ,price        number         default 0        --상품가격
+   ,filename     varchar2(255)                   --파일명
+   ,filesize     number         default 0        --파일크기
+   ,regdate      date           default sysdate  --작성일
+);
+
+
+--시퀀스 생성
+create sequence product_seq;
+
+
+--중고상품테이블 생성
+CREATE TABLE USED_PRODUCT (
+UPRODUCT_NO INT           NOT NULL AUTO_INCREMENT     --판매글번호
+, SUBJECT     VARCHAR(200)  NOT NULL                  --제목
+, NICKNAME    VARCHAR(20)   NOT NULL                  --판매자
+, UPRODUCT_CD CHAR(2)       NOT NULL                  --상품분류코드
+, PRICE       INT           DEFAULT  0 NOT NULL       --가격
+, INFO        VARCHAR(2000)                           --상품설명
+, STATUS      CHAR(1)       DEFAULT  '1' NOT NULL     --판매상태
+, REGDATE     DATE          DEFAULT  CURRENT_DATE NOT NULL --글생성날짜
+, AREA        VARCHAR(500)  NOT NULL                       --희망지역
+, LOCATION    VARCHAR(500)  NOT NULL                       --위도/경도
+, MAINPHOTO   TEXT(10000)   NOT NULL                       --대표사진
+, PHOTO       TEXT(10000)   NOT NULL                       --사진
+, PRIMARY KEY(UPRODUCT_NO)
+, FOREIGN KEY(NICKNAME)     REFERENCES MEMBER(NICKNAME)
+);
+
+INSERT INTO USED_PRODUCT (SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO)
+VALUES('개껌팝니다', 'soo1234', '05', 5000, '한번 밖에 안씹었어요..직거래 원합니다. 채팅주세요', '서울시 강남구', '37.498095, 127.027610', '개껌.jpg', '<p>...</p>');
+INSERT INTO USED_PRODUCT (SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA,MAINPHOTO, PHOTO)
+VALUES('입던옷팝니다', 'moon567', '01', 15000, '새상품 입니다 네고 사절입니다', '전국', '개옷.png', '<span>...</span>');
+INSERT INTO USED_PRODUCT (SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, STATUS, AREA, LOCATION, MAINPHOTO, PHOTO)
+VALUES('미끄럼방지매트팝니다', 'one889', '07', 20000, '강아지 미끄럼 방지 매트입니다', '3', '부산특별시', '35.1379222, 129.05562775', '매트.jpeg', '<p>...</p>');
