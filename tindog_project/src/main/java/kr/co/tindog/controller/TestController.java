@@ -20,6 +20,7 @@ public class TestController {
 		return mav;
 	}
 		
+
 	/*
 		JWT = JSON WEB TOKEN
 		
@@ -42,4 +43,5 @@ public class TestController {
 		세션 문제점을 해결하기 위해 JWT를 사용!
 		
 	*/
+
 }

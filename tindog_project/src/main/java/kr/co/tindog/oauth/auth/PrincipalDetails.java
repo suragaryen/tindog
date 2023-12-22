@@ -2,6 +2,7 @@ package kr.co.tindog.oauth.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 		this.user=user;
 		this.attributes=attributes;
 	}
+
 
 	//해당 User의 권한을 리턴하는 곳
 	@Override
@@ -71,6 +73,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 		return true;
 	}
 
+
 	@Override
 	public <A> A getAttribute(String name) {
 		return OAuth2User.super.getAttribute(name);
@@ -88,3 +91,9 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	
 	
 }
+
+	
+	
+}
+*/
+

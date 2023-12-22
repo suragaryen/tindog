@@ -1,6 +1,8 @@
 package kr.co.tindog.oauth.model;
 
+
 import java.sql.Timestamp;
+
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +43,5 @@ public class User {
 		this.providerID = providerID;
 		this.createDate = createDate;
 	}
-	
-	
-	
+
 }

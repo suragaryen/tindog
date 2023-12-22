@@ -101,12 +101,14 @@
 		</dependency>
 		
 		<!-- Tomcat 10기반의 JSTL 관련 라이브러리 -->
+
 		<dependency>
 		    <groupId>jakarta.servlet.jsp.jstl</groupId>
 		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
 		<dependency>
+
 		    <groupId>org.glassfish.web</groupId>
 		    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		    <version>2.0.0</version>
@@ -116,6 +118,7 @@
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>4.0.1</version>
 		    <scope>provided</scope>
+
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
 		<dependency>

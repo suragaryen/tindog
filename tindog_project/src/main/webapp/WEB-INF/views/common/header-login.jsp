@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="HeaderFragment">
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
-            <img src="img/tindog_logo.png" style="width: 180px;">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+
+            <img src="/img/tindog_logo.png" style="width: 180px;">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -25,14 +24,11 @@
                         <a href="feature.html" class="dropdown-item">이상형월드컵</a>
                         <a href="team.html" class="dropdown-item">댕BTI 검사</a>
                     </div>
-                </div>
-                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                </div>                
             </div>
             <div style="padding-right: 50px;">
-            <a href="#">Login | </a>
-            <a href="#"> Sign Up</a>
+            <a href="/login">Login | </a>
+            <a href="/register"> Sign Up</a>
             </div>
         </div>        
-    </nav>   
-</th:block>   
-</html>
+</nav>

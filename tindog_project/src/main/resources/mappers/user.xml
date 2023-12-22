@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="user">
+ 
+
+ 	
+ 	<insert id="insertDog" parameterType="kr.co.tindog.member.DogDTO">
+ 		INSERT INTO dogs(dogorder, dname, email, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose)
+ 		values(#{dogorder}, #{dname}, #{email}, #{sex}, #{dogcd}, #{age}, #{neutral}, #{size}, #{mainphoto}, #{weight}, #{dog_detail}, #{gamereg}, #{purpose})
+ 	</insert>
+
+	 <insert id="insertUser" parameterType="kr.co.tindog.member.UserDTO">
+ 		INSERT INTO member(email, name, nickname, password, birth, sex, phone, post, addr, detailaddr, signdate, memgrade, datearea, location, userphoto)
+ 		values(#{email}, #{name}, #{nickname}, #{password}, #{birth}, #{sex}, #{phone}, #{post}, #{addr}, #{detailaddr}, DATE(NOW()), 'A', '전국', '0000', #{userphoto})
+ 	</insert>
+ 	
+ 	<select id="dogList" parameterType="String" resultType="kr.co.tindog.member.DogDTO">
+ 			SELECT dogorder, dname, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose
+ 			FROM DOGS
+ 			WHERE email=#{email}
+ 			ORDER BY dogorder
+ 	</select>
+
+ 
+ </mapper>
+ 
+ 
+ 

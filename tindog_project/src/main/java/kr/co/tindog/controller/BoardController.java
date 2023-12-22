@@ -7,17 +7,37 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class BoardController {
 
+
 	public BoardController() {
 		System.out.println("BoardController 생성됨");
 	}
-	
-	
+
+	//http://localhost:2000/
+
 	@RequestMapping("/")
 	public ModelAndView home() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("pages/home");
 		return mav;
+	}
+	
+	//http://localhost:2000/mypage/idealResult
+	@RequestMapping("/mypage/idealResult")
+	public ModelAndView idealResult() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("pages/idealResult");
+		return mav;
 		
 	}
+
+	//http://localhost:2000/worldcup
+	@RequestMapping("/worldcup")
+	public ModelAndView ideal() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("pages/worldcup");
+		return mav;
+		
+	}
+
 	
 }
