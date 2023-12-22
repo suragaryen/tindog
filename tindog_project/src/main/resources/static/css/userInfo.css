@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.cont{
+	margin-left: 100px;
+    margin-top: 20px;
+}
+
+
+/* layout */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+	
+td, th, thead, tbody{
+  border: 1px solid #ddd; /* 테이블 셀(td)과 헤더(th)에 테두리를 추가하고 두께와 색상을 설정 */
+
+}
+
+
+
+
+.userInfo{
+ width: 800px;
+ margin-top: 90px;
+}
+
+#userDefaultImg {
+	border: 1px solid lightgrey;
+	border-radius: 50px;
+	margin-left: 350px;
+	margin-bottom: 20px;
+	max-width: 100px; /* 원하는 너비로 설정 */
+  max-height: 100px; /* 원하는 높이로 설정 */
+}
+
+
+.userInfoText {color: black;
+    font-weight: 500;
+    font-size: xx-large;
+    font-family: 'Sunflower', sans-serif;
+    }

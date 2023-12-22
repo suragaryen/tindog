@@ -3,17 +3,6 @@
 /* layout */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-
-
-/*body {
-    font: 10px 'Nanum Gothic',dotum, sans-serif;
-    line-height: 1.8;
-    color:black;
-  }
-  
-  p {font-size: 16px;
-  	 color:#000;}
-*/
 table {
 		 
   border-collapse: collapse; /* 테이블 테두리를 겹치지 않게 설정 */
@@ -30,74 +19,7 @@ td, th, thead, tbody{
 
 }
 
-h3{
-color: black;
-text-align: center;
 
-font-style: italic;
-font-size: larger;
-font-family: inherit;  
-}
-
-  
-  .margin {margin-bottom: 45px;}
-  
-  .bg-1 { 
-    background-color: #ffffff; /* Green */
-    color: #ffffff;
-  }
-  
-  .bg-2 { 
-    background-color: #ffffff; /* Dark Blue */
-    color: #ffffff;
-  }
-  
-  .bg-3 { 
-    background-color: #ffffff; /* White */
-    color: rgb(0, 170, 170);
-  }
-  
-  .bg-4 { 
-    background-color: #2f2f2f; /* Black Gray */
-    color: #ffffff;
-  }
-  
-  .container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-  
-  .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
-    background-color: #ffffff; /* White */
-  }
-  
-  .navbar-nav  li a:hover {
-    color: #a9ddf7 !important;
-  }
-  
-  
-  #clock{
-    color: black;
-    text-align: center;
-
-    font-style: italic;
-    font-size: larger;
-    font-family: inherit;
-	}
-	
-			 
-	
-	#bbsfrm{
-    width: 50%; /* 폼의 가로 너비를 50%로 설정합니다. */
-	margin: 0 auto; /* 가로 가운데 정렬을 수행합니다. */
-		}
 		
 .table {
 		 
@@ -111,13 +33,12 @@ font-family: inherit;
 	}
   
  /*회원가입시 유저사진 사이즈 */
+ 
  #mDefault_image, #uDefault_image {
   max-width: 100px; /* 원하는 너비로 설정 */
   max-height: 100px; /* 원하는 높이로 설정 */
   /* 다른 스타일링을 위한 추가적인 CSS 속성들 */
 }
-
-
 
 .reg-info{
 	
@@ -127,9 +48,5 @@ font-family: inherit;
     text-align: center;
     margin-top: 15px;
     font-family: 'Gamja Flower', sans-serif;
-	
 }
-
-
-
 
