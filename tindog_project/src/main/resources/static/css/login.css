@@ -1,0 +1,97 @@
+#login{
+        position: relative;
+        width: 400px;
+        height: 300px;
+        margin: auto;
+    }
+    
+#login-title{
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    
+#login-body .email-login-body{
+        text-align: left;
+        width: 400px;
+        height: 25px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+                
+    }
+
+    #login-body #btn-login-body{
+        text-align: center;
+        color: white;
+        width: 400px;
+        height: 35px;
+        background-color: lightskyblue;
+        border-radius: 10px;
+    }
+
+    #login-else{
+      display: flex;
+      align-items: center;
+    }
+
+    #bar{
+      flex: auto;
+      border: none;
+      height: 1px;
+      background-color: gray;
+    }
+
+    #txt{
+      padding: 5px 5px;
+      font-size: 10px;
+    }
+
+    #login-kakao{
+      grid-area: kakao;
+    }
+
+    #login-naver{
+      grid-area: naver;
+    }
+
+    #login-kakao-txt{
+      margin-left: 40px;
+    }
+
+    #login-naver-txt{
+      margin-left: 40px;
+    }
+
+    #login-loginbtn{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 20px 20px;
+      gap: 10px;
+      grid-template-areas:
+      "kakao naver"
+    }
+
+    #kakao-login-btn{
+      display:block;
+      margin-left: 70px;      
+      width: 50%;
+    }
+
+    #naver-login-btn{
+      display:block;     
+      margin-left: 70px; 
+      width: 50%;
+    }
+    
+.logintitle{
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+}
+
+.sociallogin{
+	font-size: 12px;
+	color: black;
+	line-height: 2.1;
+}
