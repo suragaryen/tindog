@@ -8,7 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class BoardController {
 
 
+	public BoardController() {
+		System.out.println("BoardController 생성됨");
+	}
+
 	//http://localhost:2000/
+
 	@RequestMapping("/")
 	public ModelAndView home() {
 		ModelAndView mav=new ModelAndView();

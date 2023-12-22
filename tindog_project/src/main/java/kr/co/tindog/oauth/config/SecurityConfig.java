@@ -2,11 +2,16 @@ package kr.co.tindog.oauth.config;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
 import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer.UserInfoEndpointConfig;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -20,6 +25,11 @@ public class SecurityConfig{
 		return new BCryptPasswordEncoder();
 	}
 	
+
+	@Autowired
+	private PrincipalOauth2UserService principalOauth2UserService;
+	
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		
@@ -38,10 +48,10 @@ public class SecurityConfig{
 			)
 			.oauth2Login((oauth)-> oauth
 					.loginPage("/login")
-					//.userInfoEndpoint(UserInfoEndpointConfig -> UserInfoEndpointConfig
-					//		.userService(null)
-					//		.oidcUserService(null)
-					//)					
+					.userInfoEndpoint(UserInfoEndpointConfig -> UserInfoEndpointConfig
+							.userService(principalOauth2UserService)					
+					)					
+
 			)
 			.logout((logout->logout
 				.logoutSuccessUrl("/")	
