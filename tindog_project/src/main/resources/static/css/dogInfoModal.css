@@ -1,0 +1,109 @@
+/* 모달 기본 스타일 */
+
+
+#dogInfoModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#modal-content{
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 600px;
+    padding: 40px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+#dog_detail{
+	display: flex;
+    position: absolute;
+}
+
+#dogDetailImg{
+	display: flex;
+    position: relative;
+    right: 266px;
+    top: 77px;
+	
+}
+
+#dog1DetailImg{
+	border: 1px solid lightgrey;
+	margin-left: 306px;
+	margin-bottom: 20px;
+	max-width: 200px; /* 원하는 너비로 설정 */
+  max-height: 200px; /* 원하는 높이로 설정 */
+     display: flex;
+    position: absolute;
+}
+#dog1detail{
+
+    color: black;
+}
+
+.name-age{
+
+    font-size: 22px;
+    display: flex;
+    position: relative;
+    top: 298px;
+    right: 106px;
+}
+
+#carousel-img {
+    width: 200px !important;
+    object-fit: cover;
+}
+
+.carousel-slide{
+	display: flex;
+    top: 22px;
+    left: 60px;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li, ul{
+	list-style: none;
+}
+
+#dog1detail-content{
+	
+	display: flex;
+    position: relative;
+    top: 300px;
+    right: 180px;
+    width: 300px;
+	
+}
+
+#worldcup-switch{
+	display: flex;
+    position: relative;
+    top: 300px;
+    font-size: 15px;
+}

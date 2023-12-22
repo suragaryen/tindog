@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import kr.co.tindog.oauth.model.User;
-
+/*
 public class PrincipalDetails implements UserDetails{
 
 	private User user;
@@ -61,3 +61,4 @@ public class PrincipalDetails implements UserDetails{
 	
 	
 }
+*/
