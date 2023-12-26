@@ -58,6 +58,7 @@
 			<div id="dog_detail">
 				
 				<!--캐로셀 이미지 시작-->
+				<div id="carouselBox">
 					<div id="carouselExampleIndicators" class="carousel slide carousel-slide">
 						<div class="carousel-indicators">
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -69,13 +70,13 @@
 						</div>
 							  <div class="carousel-inner">
 							    <div class="carousel-item active">
-							      <img src="storage/${item.mainphoto}" id="carousel-img" class="d-block w-100" alt="">
+							      <img src="storage/${item.pic1}" id="carousel-img" class="d-block w-100" alt="">
 							    </div>
 							    <div class="carousel-item">
-							      <img src="storage/${item.mainphoto} id="carousel-img" class="d-block w-100 " alt="">
+							      <img src="storage/${item.pic2}" id="carousel-img" class="d-block w-100 " alt="">
 							    </div>
 							    <div class="carousel-item">
-							      <img src="storage/${item.mainphoto}" id="carousel-img" class="d-block w-100 " alt="">
+							      <img src="storage/${item.pic3}" id="carousel-img" class="d-block w-100 " alt="">
 							    </div>
 							  </div>
 							  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -87,7 +88,9 @@
 							    <span class="visually-hidden">Next</span>
 							  </button>
 						</div>
+				</div>
 				<!-- 캐로셀 이미지 끝 -->
+				
 				<!--<div id="dogDetailImg">
 					<img src="img/dog2.jpeg" alt="기본 이미지" id="dog1DetailImg"/>-->
 					<div id="dog1detail">
@@ -99,7 +102,10 @@
 						<div id="dog1detail-content">
 							<ul>
 								<!-- <li>포메라이언</li> -->
-								 <li>
+
+								<li>성별 : ${item.sex eq 'f' ? '여아' : '남아'}</li>
+								<li>중성화 : ${item.neutral}</li>
+															 <li>
 							            사이즈 / 무게 :
 							            <c:choose>
 							                <c:when test="${item.size eq 1}">
@@ -117,8 +123,6 @@
 							            </c:choose>
 							            / ${item.weight} kg
 							        </li>
-								<li>성별 : ${item.sex eq 'f' ? '여아' : '남아'}</li>
-								<li>중성화 : ${item.neutral}</li>
 								<li>강아지 소개 : ${item.dog_detail}</li>
 							</ul>
 						</div>

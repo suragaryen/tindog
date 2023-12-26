@@ -66,4 +66,6 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 		
+		<!-- font awesome -->
+		<script src="https://kit.fontawesome.com/f057fd7a7d.js" crossorigin="anonymous"></script>
 	</head>

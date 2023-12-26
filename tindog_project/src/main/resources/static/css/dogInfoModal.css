@@ -58,13 +58,24 @@
     font-size: 22px;
     display: flex;
     position: relative;
-    top: 298px;
-    right: 106px;
+    top: 270px;
+    right: 80px;
+}
+
+#dog1detail-content{
+	
+	display: flex;
+    position: relative;
+     top: 273px;
+    right: 166px;
+    width: 300px;
 }
 
 #carousel-img {
     width: 200px !important;
+    height: 250px !important;
     object-fit: cover;
+    
 }
 
 .carousel-slide{
@@ -87,23 +98,15 @@
   cursor: pointer;
 }
 
-li, ul{
-	list-style: none;
-}
-
-#dog1detail-content{
-	
-	display: flex;
-    position: relative;
-    top: 300px;
-    right: 180px;
-    width: 300px;
-	
-}
 
 #worldcup-switch{
 	display: flex;
     position: relative;
-    top: 300px;
-    font-size: 15px;
+    top: 283px;
+    right: 26px;
+    font-size: 13px;
+}
+
+li, ul{
+	list-style: none;
 }

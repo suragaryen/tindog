@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="50000000"></property>
-		<property name="maxInMemorySize" value="50000000"></property>
-</bean>
 <!DOCTYPE html>
 <html>
 <body>
@@ -170,13 +166,14 @@
   </td>
 </tr>
 <tr>
-  <th>기타사진등록</th>
+  <th><div>기타사진등록</div>
+  <span style="font-size: 13px; color:darkgray; margin-left:0px;">(3개까지 가능)</span></th>
   <td style="text-align: left">
-	<input type="file" id="dPic1" name="dPic1" accept="image/*" multiple="multiple">
+	<input type="file" id="dPics" name="dPics" accept="image/*" multiple="multiple">
   </td>
 </tr>
 <tr>
-    <th>강아지 소개</th>
+    <th style="height:120px;">강아지 소개</th>
     <td style="text-align: left">
     	<textarea id="dog_detail" name="dog_detail" rows="4" cols="30"></textarea>
     </td>
@@ -295,6 +292,18 @@
           // iframe을 넣은 element를 보이게 한다.
           element_wrap.style.display = 'block';
       }
+      
+      //강아지 기타사진 3개까지만 받기 
+      const input = document.getElementById('dPics');
+
+      input.addEventListener('change', function() {
+          if (this.files.length > 3) {
+              alert('최대 3개의 파일만 선택할 수 있습니다.');
+              this.value = ''; // 선택한 파일 초기화
+          }
+      });
+      
+
   </script>
 
 

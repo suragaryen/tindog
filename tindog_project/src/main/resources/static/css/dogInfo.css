@@ -9,19 +9,19 @@
 /* layout */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-.dogInfoText {color: black;
-    font-weight: 500;
-    font-size: xx-large;
+.dogInfoText {
+	color: black;
+    font-size: 25px;
     }
 
 
 .dogInfo{
  width: 800px;
- margin-top: 90px;
+ margin-top: 103px;
  color: black;
  display: flex;
  position: relative;
- left: 70px;
+ left: -60px;
 }
 
 

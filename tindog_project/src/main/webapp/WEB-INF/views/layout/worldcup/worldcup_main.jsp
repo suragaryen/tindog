@@ -3,20 +3,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
-
-<form >
-				
-				<div class= data-wow-delay="0.1s" style="max-width: 400px; color:navy; margin-left: 450px; margin-top: 100px;">
-					<h2>TINDOG 강아지 이상형 월드컵</h2>
-				</div>
-				
-				<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 300px; margin-top: 30px;">
-                <h4>주간 인기 댕댕이🐶</h4>
-                </div>
-				
-	<style>
+<style>
 		  #scroll{
 			       position: relative; 
                    left: 450px; /*100*/
@@ -30,7 +17,19 @@
                    background-color: white;    
                    overflow: hidden;               
                 }
-	</style>
+</style>
+<body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
+		
+				<div class= data-wow-delay="0.1s" style="max-width: 400px; color:navy; margin-left: 450px; margin-top: 100px;">
+					<h2>TINDOG 강아지 이상형 월드컵</h2>
+				</div>
+				
+				<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 300px; margin-top: 30px;">
+                <h4>주간 인기 댕댕이🐶</h4>
+                </div>
+				
+
 
                 <div id="scroll">
 				<script> 
@@ -89,16 +88,14 @@
 			    </div>
 			    
 				
-				<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 400px; margin-top: 50px;">
-                <p><button type="button" class="btn btn-secondary" onclick="location.href='worldcup/select'">이상형 강아지 등록하기 >></button></p>
-                </div>
-                
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 400px;">
-                <p><button type="button" class="btn btn-secondary" onclick="location.href='worldcup/start'">이상형 월드컵 시작하기 >></button></p>
-                </div>
-
-           </form> 
-
+	<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 400px; margin-top: 50px;">
+	   <a href="worldcup/select"><img src="img/btn_이상형강아지등록.png"></a>
+	  </div>
+	    
+	    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 400px;">
+	    <a href="worldcup/start"><img src="img/btn_이상형월드컵시작.png"></a>
+	    <!-- <button type="button" class="btn btn-secondary">이상형 월드컵 시작하기 </button>-->
+	    </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

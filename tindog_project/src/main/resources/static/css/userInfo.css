@@ -34,8 +34,7 @@ td, th, thead, tbody{
 }
 
 
-.userInfoText {color: black;
-    font-weight: 500;
-    font-size: xx-large;
-    font-family: 'Sunflower', sans-serif;
+.userInfoText {	
+	color: black;
+    font-size: 25px;
     }

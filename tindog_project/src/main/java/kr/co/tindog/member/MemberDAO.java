@@ -20,11 +20,19 @@ public class MemberDAO {
 	
 	public int userInsert(UserDTO dto) {
 		return sqlSession.insert("user.insertUser", dto);
-	}
+	}//userInsert end
 	
 	public List<DogDTO> dogList(String email){
 		return sqlSession.selectList("user.dogList", email);
 	}//doglist end
 	
+	public int dogPicsInsert(PicDTO dto) {
+		return sqlSession.insert("user.insertDogPics", dto);
+	}//dogPicsInsert end
+	
+	public List<UserDTO> userList(String email){
+		return sqlSession.selectList("user.userList", email);
+	}//userList end
 
-}//dao end
+
+}//class end
