@@ -111,9 +111,8 @@
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
 		</dependency>
-	</dependencies>
-	
-	<!--여러장의 사진을 한번에 받기-->
+		
+			<!--여러장의 사진을 한번에 받기-->
 	<dependency>
 		<groupId>commons-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>
@@ -125,6 +124,10 @@
 		<artifactId>commons-io</artifactId>
 		<version>2.5</version>
 	</dependency>
+	
+	</dependencies>
+	
+
 
 	<build>
 		<plugins>

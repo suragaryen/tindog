@@ -200,7 +200,7 @@ public class MemberCont {
         	    memberDao.dogPicsInsert(picDto);
         	
 		
-		return null;
+		 return "redirect:/home";
 		
 	}//insert end
 	
