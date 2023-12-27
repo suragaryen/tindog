@@ -11,7 +11,7 @@
         font-weight: bold;
     }
     
-#login-body .email-login-body{
+#login-body #email-login-body{
         text-align: left;
         width: 400px;
         height: 25px;
@@ -20,34 +20,14 @@
         margin-bottom: 10px;
                 
     }
-    
-#login-body .password-login-body{
-        text-align: left;
-        width: 400px;
-        height: 25px;
-        padding: 10px 10px 10px 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        display: none;        
-    }
 
-    #login-body #checkBtn-login-body{
+    #login-body #btn-login-body{
         text-align: center;
         color: white;
         width: 400px;
         height: 35px;
         background-color: lightskyblue;
         border-radius: 10px;
-    }
-    
-        #login-body #loginBtn-login-body{
-        text-align: center;
-        color: white;
-        width: 400px;
-        height: 35px;
-        background-color: lightskyblue;
-        border-radius: 10px;
-        display: none;
     }
 
     #login-else{
@@ -98,7 +78,7 @@
       width: 50%;
     }
 
-    #naver_id_login{
+    #naver-login-btn{
       display:block;     
       margin-left: 70px; 
       width: 50%;

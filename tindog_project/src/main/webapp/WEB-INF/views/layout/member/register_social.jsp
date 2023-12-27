@@ -7,25 +7,14 @@
 
 <div class="reg-info">회원정보입력</div>
 <form name="register-form" id="register-form" method="post" action="userInsert" enctype="multipart/form-data">
-
+<input type="hidden" name="registrationId" id="registrationId">
 <table class="table">
+
 <tr>
     <th>*이메일</th>
     <td style="text-align: left">
     	<input type="text" name="email" id="email" size="30" maxlength="50">
     	<input type="button" value="Email중복확인" onclick="emailCheck()">
-    </td>
-</tr>
-<tr>
-    <th>*비밀번호</th>
-    <td style="text-align: left">
-    	<input type="password" name="password" id="password" size="10" maxlength="10" required>
-    </td>
-</tr>
-<tr>
-    <th>*비밀번호 확인</th>
-    <td style="text-align: left">
-    	<input type="password" name="repasswd" id="repasswd" size="10" maxlength="10" required>
     </td>
 </tr>
 <tr>

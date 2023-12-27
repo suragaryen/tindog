@@ -1,5 +1,5 @@
 		//유저사진 미리보기 
-		const representativeImageInput = document.getElementById('userphotofile');
+		const representativeImageInput = document.getElementById('userPic');
 		const representativeImageContainer = document.getElementById('userPic_container');
 		const representativeImage = document.getElementById('uDefault_image');
 		

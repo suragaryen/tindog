@@ -27,8 +27,7 @@
                 </div>                
             </div>
             <div style="padding-right: 50px;">
-            <a href="/userInfo">My page |</a>
-            <a href="/logOut">Logout</a>
+            <a href="/userInfo">My page</a>
             </div>
         </div>        
 </nav>
