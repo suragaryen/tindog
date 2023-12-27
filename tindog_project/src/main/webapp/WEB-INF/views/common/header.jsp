@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
 
@@ -30,8 +28,9 @@
             </div>
             <div style="padding-right: 50px;">
             <a href="/login">Login | </a>
-            <a href="/register">Sing Up</a>
-            
+
+            <a href="/register"> Sign Up</a>
+
             </div>
         </div>        
 </nav>

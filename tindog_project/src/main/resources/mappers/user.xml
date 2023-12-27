@@ -2,11 +2,9 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="user">
- 
 
- 	
+ <mapper namespace="user">
+  	
  	<insert id="insertDog" parameterType="kr.co.tindog.member.DogDTO">
  		INSERT INTO dogs(dogorder, dname, email, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose)
  		VALUES(#{dogorder}, #{dname}, #{email}, #{sex}, #{dogcd}, #{age}, #{neutral}, #{size}, #{mainphoto}, #{weight}, #{dog_detail}, #{gamereg}, #{purpose})
