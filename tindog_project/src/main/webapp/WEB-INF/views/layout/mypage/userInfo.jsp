@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <c:forEach var="item" items="${list}">	
 <div class="cont">
@@ -18,7 +18,7 @@
 				 <img src="img/${item.userphoto}" alt="기본 이미지" id="userDefaultImg"  style="width: 50%" />
 			</div>
 			
-			<table class="table" id="userInfo-table">
+			<table class="table">
 				<tr>
 				    <th>이름</th>
 				    <td style="text-align: left">

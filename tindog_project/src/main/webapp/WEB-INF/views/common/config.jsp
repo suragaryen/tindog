@@ -5,7 +5,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>TINDOG</title>
 	
-	   <!-- Google Web Fonts -->
+	    <!-- Google Web Fonts -->
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
 	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
@@ -29,7 +29,9 @@
 	    
 	    <!-- JavaScript Libraries -->
 	    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 	    <script src="/lib/wow/wow.min.js"></script>
 	    <script src="/lib/easing/easing.min.js"></script>
 	    <script src="/lib/waypoints/waypoints.min.js"></script>
@@ -41,27 +43,23 @@
 	
 	    <!-- Template Javascript -->
 	    <script src="/js/main.js"></script>
+
 	    <script src="/js/dogInfoModal.js"></script>
 	    <script src="/js/modal.js"></script>
 	    <script src="/js/register.js"></script>
-	     <script src="/js/login.js"></script>
-	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
 	    
 	    <!-- Template CSS -->
 	    <link href="/css/mypage.css" rel="stylesheet">
 	    <link href="/css/modal.css" rel="stylesheet">
 	    <link href="/css/register.css" rel="stylesheet">
-	    <link href="/css/login.css" rel="stylesheet">
-	    	 
+	    <link href="/css/login.css" rel="stylesheet">	 
+	    <link href="/css/worldcupselect.css" rel="stylesheet">
 	    
 	    <link href="/css/worldcup.css" rel="stylesheet">
 	     <link href="/css/userInfo.css" rel="stylesheet">
 	     <link href="/css/dogInfo.css" rel="stylesheet">
 	     <link href="/css/dogInfoModal.css" rel="stylesheet">
-	     <link href="/css/worldcup_start.css" rel="stylesheet">
-	     
-	     
 	    
 	    <!--Google font -->
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +69,5 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
-		
-		<!-- font awesome -->
-		<script src="https://kit.fontawesome.com/f057fd7a7d.js" crossorigin="anonymous"></script>
+
 	</head>
