@@ -3,11 +3,18 @@ package kr.co.tindog.member;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +26,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class MemberCont {
-
+	
 	@Autowired
-	MemberDAO memberDao;
+	MemberDAO memberDao;	
 	
-	
-
-	
+	@RequestMapping("/login")
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("layout/member/login");
+		return mav;
+	}
 	
 	@RequestMapping("/register")
 	public ModelAndView register() {
@@ -38,12 +47,17 @@ public class MemberCont {
 		return mav;
 	}
 	
+	@RequestMapping("/socialregister")
+	public ModelAndView social(@AuthenticationPrincipal OAuth2User oAuth2User) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/member/register_social");
+		System.out.println(oAuth2User.toString());
+		return mav;
+	}
 	
 	@RequestMapping("/userInfo")
-	public ModelAndView userInfo(HttpSession session) {
-		 String email = (String) session.getAttribute("s_email");
-		 String nickname = (String) session.getAttribute("s_nickname");
-
+	public ModelAndView userInfo() {
+		String email = "itwill@itwill.co.kr";
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
@@ -52,15 +66,13 @@ public class MemberCont {
 		return mav;	
 	}
 	
-	
 	@RequestMapping("/dogInfo")
-	public ModelAndView dogInfo(HttpSession session) {
-		String email = (String) session.getAttribute("s_email");
-		String nickname = (String) session.getAttribute("s_nickname");
+	public ModelAndView dogInfo() {
+		String email = "itwill@itwill.co.kr";
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/dogInfo");
 		mav.addObject("list", memberDao.dogList(email));
-	//System.out.println(memberDao.dogList(email));
+	System.out.println(memberDao.dogList(email));
 		return mav;
 	}
 	
@@ -201,7 +213,7 @@ public class MemberCont {
         	    memberDao.dogPicsInsert(picDto);
         	
 		
-		 return "redirect:/home";
+		return null;
 		
 	}//insert end
 	

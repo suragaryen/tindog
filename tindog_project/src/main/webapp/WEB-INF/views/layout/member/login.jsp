@@ -48,7 +48,7 @@
   <!-- 네이버 로그인 버튼 노출 영역 -->
     <div id="login-naver">
     <a href="/oauth2/authorization/naver">
-		<img src="/img/naver.jpeg" width="40px" height="40px"  alt="네이버 로그인 버튼" />
+		<img src="/img/naver.png" width="40px" height="40px"  alt="네이버 로그인 버튼" />
 	</a>
     </div>
     <div id="login-naver-txt">

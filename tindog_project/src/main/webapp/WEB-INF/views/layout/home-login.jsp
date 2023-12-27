@@ -3,12 +3,6 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<style>
-#rank-img > img{
-	height: 300px;
-	width : 300px;
-}
-</style>
 <body>
 <jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 

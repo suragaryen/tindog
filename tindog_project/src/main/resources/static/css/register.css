@@ -3,7 +3,25 @@
 /* layout */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-#register-form > table {
+table {
+		 
+  border-collapse: collapse; /* 테이블 테두리를 겹치지 않게 설정 */
+  border: 1px solid #000; /* 테이블 전체에 테두리를 추가하고 두께와 색상을 설정 */
+  color: black;
+  width: 70%;
+  margin: 0 auto;
+  
+
+	}
+	
+td, th, thead, tbody{
+  border: 1px solid #ddd; /* 테이블 셀(td)과 헤더(th)에 테두리를 추가하고 두께와 색상을 설정 */
+
+}
+
+
+		
+.table {
 		 
   border-collapse: collapse; /* 테이블 테두리를 겹치지 않게 설정 */
   border: 1px solid #000; /* 테이블 전체에 테두리를 추가하고 두께와 색상을 설정 */
@@ -11,16 +29,8 @@
   width: 70%;
   margin: 0 auto;
   font-style: italic;
- font-family: inherit;  
-  
-
+ font-family: inherit;  	
 	}
-	
-#register-form > td, th, thead, tbody{
-  border: 1px solid #ddd; /* 테이블 셀(td)과 헤더(th)에 테두리를 추가하고 두께와 색상을 설정 */
-
-}
-
   
  /*회원가입시 유저사진 사이즈 */
  

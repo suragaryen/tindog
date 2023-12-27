@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <div class="cont">
 		<div class="dogInfoText">
