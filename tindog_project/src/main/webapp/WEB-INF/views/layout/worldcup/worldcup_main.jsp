@@ -19,7 +19,7 @@
                 }
 </style>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 		
 				<div class= data-wow-delay="0.1s" style="max-width: 400px; color:navy; margin-left: 450px; margin-top: 100px;">
 					<h2>TINDOG 강아지 이상형 월드컵</h2>

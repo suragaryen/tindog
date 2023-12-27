@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <c:forEach var="item" items="${list}">	
 <div class="cont">

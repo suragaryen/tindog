@@ -4,7 +4,7 @@
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
  <!-- 1라운드 -->
 	<form>

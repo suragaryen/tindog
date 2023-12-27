@@ -13,12 +13,14 @@
    		 <hr>
   	</div>
   
-	<form id="myForm" name="myForm">
+	<form id="myForm" name="myForm" method="post" action="/loginResult">
   	<div id="login-body">
     	<h3>틴독에 오신 것을 환영합니다.</h3>
-    	<input type="text" id="email-login-body" placeholder="이메일">
+    	<input type="text" name="email" id="email" class="email-login-body"  placeholder="이메일">
+    	<input type="password" id="password" name="password"  class="password-login-body" placeholder="비밀번호">
     	<br>
-    	<input type="button" id="btn-login-body" value="계속" onclick="sendIt()">
+    	<input type="button" id="checkBtn-login-body" value="계속" onclick="sendIt()">
+    	<input type="submit" id="loginBtn-login-body" value="로그인" onclick="location.href='loginResult'">
   	</div>
 	</form>
 	

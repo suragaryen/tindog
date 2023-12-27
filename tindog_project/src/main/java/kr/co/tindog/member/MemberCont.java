@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class MemberCont {
@@ -27,12 +28,7 @@ public class MemberCont {
 	MemberDAO memberDao;
 	
 	
-	@RequestMapping("/login")
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/member/login");
-		return mav;
-	}
+
 	
 	
 	@RequestMapping("/register")
@@ -44,8 +40,10 @@ public class MemberCont {
 	
 	
 	@RequestMapping("/userInfo")
-	public ModelAndView userInfo() {
-		String email = "web@itwill.com";
+	public ModelAndView userInfo(HttpSession session) {
+		 String email = (String) session.getAttribute("s_email");
+		 String nickname = (String) session.getAttribute("s_nickname");
+
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
@@ -54,9 +52,10 @@ public class MemberCont {
 		return mav;	
 	}
 	
+	
 	@RequestMapping("/dogInfo")
 	public ModelAndView dogInfo() {
-		String email = "web@itwill.com";
+		String email = "jennet967@gmail.com";
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/dogInfo");
 		mav.addObject("list", memberDao.dogList(email));

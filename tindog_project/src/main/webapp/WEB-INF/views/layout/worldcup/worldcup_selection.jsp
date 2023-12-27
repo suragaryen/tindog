@@ -4,7 +4,7 @@
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 400px; margin-top: 100px;">
 				<!--<p class="d-inline-block border rounded-pill py-1 px-4" style="color: black;">이상형 강아지 선택하기</p>-->
