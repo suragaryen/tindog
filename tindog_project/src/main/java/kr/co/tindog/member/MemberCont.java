@@ -54,8 +54,9 @@ public class MemberCont {
 	
 	
 	@RequestMapping("/dogInfo")
-	public ModelAndView dogInfo() {
-		String email = "jennet967@gmail.com";
+	public ModelAndView dogInfo(HttpSession session) {
+		String email = (String) session.getAttribute("s_email");
+		String nickname = (String) session.getAttribute("s_nickname");
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/dogInfo");
 		mav.addObject("list", memberDao.dogList(email));

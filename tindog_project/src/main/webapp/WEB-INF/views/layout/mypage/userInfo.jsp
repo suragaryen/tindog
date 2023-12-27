@@ -18,7 +18,7 @@
 				 <img src="img/${item.userphoto}" alt="기본 이미지" id="userDefaultImg"  style="width: 50%" />
 			</div>
 			
-			<table class="table">
+			<table class="table" id="userInfo-table">
 				<tr>
 				    <th>이름</th>
 				    <td style="text-align: left">

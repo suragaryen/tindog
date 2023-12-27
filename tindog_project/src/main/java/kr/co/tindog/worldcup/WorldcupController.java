@@ -1,10 +1,15 @@
  package kr.co.tindog.worldcup;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class WorldcupController {
@@ -14,7 +19,7 @@ public class WorldcupController {
 	}
 	
 	@Autowired
-	//public WorldcupDAO worldcupDAO;
+	public WorldcupDAO worldcupDAO;
 	
 	//http://localhost:2000/worldcup
 	
@@ -38,10 +43,16 @@ public class WorldcupController {
 	//http://localhost:2000/worldcup/start
 
 		@RequestMapping("worldcup/start")
-		public ModelAndView worldcup_start() {
+		public ModelAndView worldcup_start(HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("layout/worldcup/worldcup_start");
-			//mav.addObject(mav, mav);
+			String email = (String) session.getAttribute("s_email");
+			List<Map<String, Object>> imageList = worldcupDAO.worldcupImgList(email);
+			
+			System.out.println(imageList);
+			//System.out.println(worldcupDAO.worldcupImgList(email));
+			
+			mav.addObject("imageList",imageList);
 			return mav;
 		}
 	
