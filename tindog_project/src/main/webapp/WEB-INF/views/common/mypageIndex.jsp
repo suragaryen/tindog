@@ -9,7 +9,7 @@
             <a href="/userInfo"><p>내 정보</p></a>
             <a href="/dogInfo"><p>강아지 정보</p></a>
             <span>계정관리</span><br>
-            <span>채팅관리</span><br>
+            <a href="/chatList"><span>채팅관리</span></a><br>
             <span>차단사용자관리</span><br>
         </div>
         <div class="mypage_deal">

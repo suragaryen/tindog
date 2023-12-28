@@ -10,7 +10,19 @@
 
 
 
-#worldcup-tbody > td, th, thead, tbody{
+#worldcup-tbody > td{
+	color: #fff;
+}
+
+#worldcup-tbody > th{
+	color: #fff;
+}
+
+#worldcup-tbody > thead{
+	color: #fff;
+}
+
+#worldcup-tbody > tbody{
 	color: #fff;
 }
 

@@ -53,6 +53,7 @@
 	    <link href="/css/modal.css" rel="stylesheet">
 	    <link href="/css/register.css" rel="stylesheet">
 	    <link href="/css/login.css" rel="stylesheet">
+	     <!-- <link href="/css/chat.css" rel="stylesheet"> -->
 	    	 
 	    
 	    <link href="/css/worldcup.css" rel="stylesheet">

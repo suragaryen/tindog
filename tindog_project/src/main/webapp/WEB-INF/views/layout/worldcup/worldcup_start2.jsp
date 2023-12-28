@@ -92,8 +92,6 @@
                 var clickedImageSrc = clickedImage.src;
                 clickedImageSrc = clickedImageSrc.substring(21);
                 
-                /*라운드가 변경되면 이미지 소스 변경*/
-                
                	var round8Img = document.getElementById("img-round16");
                		round8ImgSrc = round8Img.src;
                 

@@ -1,6 +1,7 @@
 package kr.co.tindog.login;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,14 +47,14 @@ public class LoginCont {
 	public ModelAndView loginProc(@ModelAttribute LoginDTO loginDTO, 
 			HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(loginDAO.login(loginDTO));
+		//System.out.println(loginDAO.login(loginDTO));
+		//System.out.println(loginDAO.login(loginDTO).getNickna
 		
-
-		
-		if(loginDTO.getEmail() != null) {
-			session.setAttribute("s_email", loginDTO.getEmail());
-			session.setAttribute("s_nickname", loginDTO.getNickname());
-			session.setAttribute("s_grade", loginDTO.getMemgrade());
+		if(loginDAO.login(loginDTO).getEmail() != null) {
+			
+			session.setAttribute("s_email", loginDAO.login(loginDTO).getEmail());
+			session.setAttribute("s_nickname", loginDAO.login(loginDTO).getNickname());
+			session.setAttribute("s_grade", loginDAO.login(loginDTO).getMemgrade());
 			System.out.println("로그인 성공");
 		}else {
 			System.out.println("로그인 실패");

@@ -25,7 +25,7 @@
 		      <img src="img/tindog_main.png" class="d-block w-100" alt="">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="img/main2.jpg" class="d-block w-100" alt="">
+		      <img src="img/main2.png" class="d-block w-100" alt="">
 		    </div>
 		    <div class="carousel-item">
 		      <img src="img/main3.jpeg" class="d-block w-100" alt="">

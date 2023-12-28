@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="chat">
+ 
+ 	<select id="search" resultType="String">
+ 		SELECT NICKNAME
+ 		  FROM MEMBER
+ 		 WHERE EMAIL = #{followemail}
+ 	</select>
+ 	
+ 	<select id="chatRoomCheck" parameterType="String" resultType="int">
+ 		SELECT IFNULL(MAX(DROOMNO), 0)
+ 		  FROM CHATROOM_DATING
+ 		 WHERE TOT_NICKNAME LIKE '%' || #{NICKNAME_TO} || '%'
+ 		   AND TOT_NICKNAME LIKE '%' || #{NICKNAME_FROM} || '%'
+ 	</select>
+ 	
+ 	<insert id="chatRoomInsert" parameterType="kr.co.tindog.chat.ChatRoomDTO">
+ 		INSERT INTO CHATROOM_DATING(NICKNAME_TO, NICKNAME_FROM)
+ 		VALUES(#{result}, #{nickname_from})
+ 	</insert>
+  	
+	<select id="roomList" resultType="java.util.Map">
+		SELECT DROOMNO, NICKNAME_TO, NICKNAME_FROM
+		  FROM CHATROOM_DATING
+		 WHERE TOT_NICKNAME LIKE #{nickname}
+
+	</select>
+ 
+ </mapper>

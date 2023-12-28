@@ -5,145 +5,226 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-<div class="reg-info">회원정보입력</div>
-<form name="register-form" id="register-form" method="post" action="userInsert" enctype="multipart/form-data">
+  <style>
+  	.container{
+  		margin-top:100px;
+  	}
+  
+    body {
+      min-height: 100vh;
 
-<table class="table">
-<tr>
-    <th>*이메일</th>
-    <td style="text-align: left">
-    	<input type="text" name="email" id="email" size="30" maxlength="50">
-    	<input type="button" value="Email중복확인" onclick="emailCheck()">
-    </td>
-</tr>
-<tr>
-    <th>*비밀번호</th>
-    <td style="text-align: left">
-    	<input type="password" name="password" id="password" size="10" maxlength="10" required>
-    </td>
-</tr>
-<tr>
-    <th>*비밀번호 확인</th>
-    <td style="text-align: left">
-    	<input type="password" name="repasswd" id="repasswd" size="10" maxlength="10" required>
-    </td>
-</tr>
-<tr>
-    <th>*이름</th>
-    <td style="text-align: left">
-    	<input type="text" name="name" id="name" size="20" maxlength="20" required>
-    </td>
-</tr>
-<tr>
-    <th>*생년월일</th>
-	<td style="text-align: left">
-		<label for="date">
-			<input type="date" name="birth" id="birth" max="2024-06-20" min="1900-01-01">
-		</label>
-	</td>
-</tr>
-<tr>
-    <th>*닉네임</th>
-    <td style="text-align: left">
-    	<input type="text" name="nickname" id="nickname" size="20" maxlength="20" required>
-    </td>
-</tr>
-<tr>
-    <th>전화번호</th>
-    <td style="text-align: left"><input type="text" name="phone" id="phone" size="15" maxlength="14"></td>
-</tr>
-<tr>
-    <th>우편번호</th>
-    <td style="text-align: left">
-      <input type="text" name="post" id="post" size="7"  readonly>
-      <input type="button" value="주소찾기" onclick= "DaumPostcode()">   
-      <!-- ----- DAUM 우편번호 API 시작 ----- -->
-  <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-  </div> 
-    </td>
-</tr>
-<tr>  
-    <th>주소</th>
-    <td style="text-align: left"><input type="text" name="addr" id="addr" size="45" readonly></td>
-</tr>
-<tr>  
-    <th>나머지주소</th>
-    <td style="text-align: left"><input type="text" name="detailaddr" id="detailaddr" size="45"></td>
-</tr>
-<tr>  
-  <th>유저사진</th>
-  <td style="text-align: left">
-	<div id="image_container userPic_container">
-		 <img src="img/defaultImg.jpg" alt="기본 이미지" id="uDefault_image"  style="width: 50%" />
-	</div>
-	<input type="file" id="userphotofile" name="userphotofile" accept="image/*">
-  </td>
-</tr>
-</table>
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
 
-<div class="reg-info">강아지 정보 입력</div>
+    .input-form {
+      max-width: 680px;
 
-<table class="table" id="dogReg_1">
-<input type="hidden" name="dogorder" value="1">
-<tr>
-    <th style="width: 21%;">강아지 이름</th>
-    <td style="text-align: left">
-    	<input type="text" name="dname" id="dname" size="10" maxlength="10">
-    </td>
-</tr>
-<tr>
-    <th>강아지 나이</th>
-    <td style="text-align: left">
-    	<input type="number" name="age" id="age" size="1" maxlength="2">살
-    </td>
-</tr>
-<tr>
-    <th>성별</th>
-    <td style="text-align: left">
-		<label>
-			<input type="radio" name="sex" value="m">
-			남아&nbsp;
-		</label>
-		<label>
-			<input type="radio" name="sex" value="f">
-			여아
-		</label>
-    </td>
-</tr>
-    <th>중성화 여부</th>
-    <td style="text-align: left">
-		<label>
-			<input type="radio" name="neutral" value="o">
-			예&nbsp;
-		</label>
-		<label>
-			<input type="radio" name="neutral" value="x">
-			아니오
-		</label>
-    </td>
-</tr>
-<tr>
-    <th>무게</th>
-    <td style="text-align: left">
-    	<input type="text" name="weight" id="weight" size="10" maxlength="10">kg
-    </td>
-</tr>
-<tr>
-	<th>사이즈</th>
-	<td style="text-align: left">
-		<select id="size" name="size">
-			<option value="1">소형견</option>
-			<option value="2">중형견</option>
-			<option value="3">대형견</option>
-		</select>
-	</td>
-</tr>
-<tr>
-	<th>강아지 견종 </th>
-	<td style="text-align: left">
-		<select id="dogcd" name="dogcd">
-			<option value="1">포메라이언</option>
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+  </style>
+
+
+
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">회원정보</h4>
+        <form class="validation-form" novalidate name="register-form" id="register-form" method="post" action="userInsert" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="name">이름</label>
+              <input type="text" class="form-control" name="name" id="name" required>
+              <div class="invalid-feedback">
+                이름을 입력해주세요.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="nickname">별명</label>
+              <input type="text" class="form-control" name="nickname" id="nickname" required>
+              <div class="invalid-feedback">
+                별명을 입력해주세요.
+              </div>
+            </div>
+             <div class="col-md-4 mb-3">
+              <label for="nickname">생년월일</label>
+              <input type="date" class="form-control" name="birth" id="birth">
+              <div class="invalid-feedback">
+                생년월일을 입력해주세요.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+          </div>
+          
+            <div class="row">
+            
+            <div class="col-md-6 mb-3">
+              <label for="name">비밀번호</label>
+              <input type="password" class="form-control" name="password" id="password" required>
+                <div class="col-auto">
+				    <span id="passwordHelpInline" class="form-text">
+				      Must be 8-20 characters long.
+				    </span>
+				 </div>
+              <div class="invalid-feedback">
+                비밀번호를 입력해주세요.
+              </div>
+            </div>
+            
+            
+            <div class="col-md-6 mb-3">
+              <label for="nickname">비밀번호 확인</label>
+              <input type="password" class="form-control" name="repasswd" id="repasswd" required>
+              <div class="invalid-feedback">
+                 비밀번호를 입력해주세요.
+              </div>
+            </div>
+            
+            
+          </div>
+
+	
+		 <div class="row">
+          <div class="col-md-4">
+		    <label for="validationCustom03" class="form-label">주소 </label>
+		    <input type="text" class="form-control" name="addr" id="addr" required>
+		    <div class="invalid-feedback">
+		      Please provide a valid city.
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="validationCustom04" class="form-label">나머지 주소</label>
+			<input type="text" class="form-control" name="detailaddr" id="detailaddr" required>
+		    <div class="invalid-feedback">
+		      Please select a valid state.
+		    </div>
+		  </div>
+           <div class="col-md-3">
+		         <!--  <input type="text" name="post" id="post" size="7"  readonly class="form-select"> -->
+		         <label for="validationCustom04" class="form-label">우편번호</label>
+		           <input type="text" class="form-control" name="post" id="post" onclick= "DaumPostcode()" placeholder="주소찾기 click">
+		          <!-- <button class="btn btn-outline-secondary" type="button" value="주소찾기" onclick= "DaumPostcode()">주소찾기 </button> -->
+			      <!-- <input type="button" value="주소찾기" onclick= "DaumPostcode()"> -->   
+			      <!-- ----- DAUM 우편번호 API 시작 ----- -->
+			  <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+			    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+			  </div> 
+		    <div class="invalid-feedback">
+		      Please provide a valid zip.
+		    </div>
+		  </div>
+		</div>
+	
+
+		<div class="mb-3">
+		  <label for="formFile" class="form-label">유저사진</label>
+		  	<div id="image_container userPic_container">
+				 <img src="img/defaultImg.jpg" alt="기본 이미지" id="uDefault_image" class="img-thumbnail"  style="width: 20%" />
+			</div>
+		  <input class="form-control" type="file" id="userphotofile" name="userphotofile" accept="image/*">
+		</div>
+
+          
+          <h4 class="mb-3">강아지정보</h4>
+          <input type="hidden" name="dogorder" value="1">
+          
+          	<!-- 강아지 이름, 나이 -->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="name">강아지 이름</label>
+              <input type="text" name="dname" id="dname" class="form-control" required>
+              <div class="invalid-feedback">
+                강아지 이름을 입력해주세요.
+              </div>
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="nickname">강아지 나이</label>
+              <input class="form-control" type="number" name="age" id="age" required>
+              <div class="invalid-feedback">
+                강아지 나이를 입력해주세요.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2 mb-3">
+           <label for="nickname">강아지 성별</label>
+		   <div class="form-check">
+		  <input class="form-check-input" type="radio"name="sex" value="m">
+		  <label class="form-check-label" for="flexRadioDefault1">
+		    남아
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="sex" value="f" checked>
+		  <label class="form-check-label" for="flexRadioDefault2">
+		    여아
+		  </label>
+		</div>
+		</div>
+          
+          
+          <div class="col-md-2 mb-3">
+           <label for="nickname">중성화 여부</label>
+		   <div class="form-check">
+		  <input class="form-check-input" type="radio" name="neutral" value="o">
+		  <label class="form-check-label" for="flexRadioDefault1">
+		    O
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="neutral" value="x" checked>
+		  <label class="form-check-label" for="flexRadioDefault2">
+		    X
+		  </label>
+		</div>
+		</div>
+          
+          
+
+        <div class="col-md-2 mb-3">
+        <label for="weight">강아지 무게</label>
+        <input class="form-control" type="number" name="weight" id="weight" placeholder="kg" required>
+        <div class="invalid-feedback">
+          강아지 나이를 입력해주세요.
+        </div>
+      </div>
+
+          
+          <div class="col-md-4 mb-3">
+	<div class="input-group mb-3">
+	  <label class="input-group-text" for="inputGroupSelect01">강아지 사이즈</label>
+	  <select class="form-select" id="size" name="size">
+	    <option value="1">소형견</option>
+	    <option value="2">중형견</option>
+	    <option value="3">대형견</option>
+	  </select>
+	</div>	
+          </div>
+          
+      <div class="col-md-4 mb-3">
+	<div class="input-group mb-3">
+	  <label class="input-group-text" for="inputGroupSelect01">강아지 종</label>
+	  <select class="form-select" id="dogcd" name="dogcd">
+	    	<option value="1">포메라이언</option>
 			<option value="2">사모예드</option>
 			<option value="3">골든리트리버</option>
 			<option value="4">토이푸들</option>
@@ -153,65 +234,63 @@
 			<option value="8">시바견</option>
 			<option value="9">진돗개</option>
 			<option value="10">폼피츠</option>
-		</select>
-	</td>
-</tr>
-<tr>
-  <th>대표사진등록</th>
-  <td style="text-align: left">
-	<div id="image_container mainPic_container">
-		 <img src="img/defaultImg.jpg" alt="기본 이미지" id="mDefault_image"  style="width: 50%" />
+	  </select>
+	</div>	
 	</div>
-	<input type="file" id="mainphotofile" name="mainphotofile" accept="image/*">
-  </td>
-</tr>
-<tr>
-  <th><div>기타사진등록</div>
-  <span style="font-size: 13px; color:darkgray; margin-left:0px;">(3개까지 가능)</span></th>
-  <td style="text-align: left">
-	<input type="file" id="dPics" name="dPics" accept="image/*" multiple="multiple">
-  </td>
-</tr>
-<tr>
-    <th style="height:120px;">강아지 소개</th>
-    <td style="text-align: left">
-    	<textarea id="dog_detail" name="dog_detail" rows="4" cols="30"></textarea>
-    </td>
-</tr>
-<tr>
-    <th>이상형 월드컵 등록</th>
-    <td style="text-align: left">
-		<label>
-			<input type="radio" name="gamereg" value="o">
-			예&nbsp;
-		</label>
-		<label>
-			<input type="radio" name="gamereg" value="x">
-			아니오
-		</label>
-    </td>
-</tr>
-<tr>
-	<th>이상형월드컵 목적</th>
-	<td style="text-align: left">
-		<select id="purpose" name="purpose">
-			<option value="1">산책</option>
-			<option value="2">데이트</option>
-			<option value="3">둘다</option>
-		</select>
-	</td>
-</tr>
-<tr>
-</table>	
 	
-	<div class="blank" style="margin-top: 20px;"></div>
- 
-
- <div style="text-align: center; color: black;">
-        <input type="submit" value="회원가입"  class="btn btn-primary"/>
-        <input type="reset"  value="취소"     class="btn btn-primary"/>
-  </div>
-
+		<div class="mb-3">
+		  <label for="formFile" class="form-label">강아지 대표사진</label>
+		<div id="image_container mainPic_container">
+		 <img src="img/defaultImg.jpg" alt="기본 이미지" id="mDefault_image"  style="width: 20%" />
+		</div>
+		  <input class="form-control" type="file" id="mainphotofile" name="mainphotofile" accept="image/*">
+		</div>
+		
+		<div class="mb-3">
+		  <label for="formFileMultiple" class="form-label">기타사진등록 (*3개까지 가능)</label>
+		  <input class="form-control" type="file" id="dPics" name="dPics" accept="image/*" multiple="multiple">
+		</div>
+		
+<div class="col-md-2 mb-3">
+           <label for="nickname">이상형월드컵 참여여부</label>
+		   <div class="form-check">
+		  <input class="form-check-input" type="radio" name="gamereg" value="o" checked>
+		  <label class="form-check-label" for="flexRadioDefault1">
+		    예
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="gamereg" value="x">
+		  <label class="form-check-label" for="flexRadioDefault2">
+		    아니요
+		  </label>
+		</div>
+		</div>
+		
+		
+		
+	<div class="col-md-4 mb-3">
+	<div class="input-group mb-3">
+	  <label class="input-group-text" for="inputGroupSelect01">이상형월드컵 목적</label>
+	  <select class="form-select" id="purpose" name="purpose">
+	    <option value="1">산책</option>
+	    <option value="2">데이트</option>
+	    <option value="3">둘다</option>
+	  </select>
+	</div>	
+          </div>
+		
+          
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="aggrement" required>
+            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+          </div>
+          <div class="mb-4"></div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+        </form>
+      </div>
+    </div>
 
 </form>
 

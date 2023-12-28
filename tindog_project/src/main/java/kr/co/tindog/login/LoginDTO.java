@@ -1,10 +1,6 @@
 package kr.co.tindog.login;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class LoginDTO {
 	private String email;
 	private String name;
@@ -19,10 +15,7 @@ public class LoginDTO {
 //	private String detailaddr;
 //	private String signdate;
 	private String memgrade;
-//	private String datearea;
-//	private String location;
-	
-	public String getEmail() {
+public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
@@ -52,14 +45,12 @@ public class LoginDTO {
 	public void setMemgrade(String memgrade) {
 		this.memgrade = memgrade;
 	}
-	
-	
+	//	private String datearea;
+//	private String location;	
 	@Override
 	public String toString() {
 		return "LoginDTO [email=" + email + ", name=" + name + ", nickname=" + nickname + ", password=" + password
 				+ ", memgrade=" + memgrade + "]";
 	}
-
-	
 	
 }

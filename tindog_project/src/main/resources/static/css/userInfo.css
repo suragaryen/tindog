@@ -10,14 +10,29 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 
+/*
 	
-#userInfo-table > td, th, thead, tbody{
-  border: 1px solid #ddd; /* 테이블 셀(td)과 헤더(th)에 테두리를 추가하고 두께와 색상을 설정 */
+#userInfo-table > td, th, thead, tbody {
+  border: 1px solid #ddd;
+	color: black;
+}
+*/
 
+#userInfo-table {
+	width: 500px;
+	
 }
 
+#userInfo-table > tbody {
+  /*border: 1px solid #ddd;*/
+	color: black;
+}
 
-
+#userInfo-table > th {
+  /*border: 1px solid #ddd;*/
+	color: black;
+	width: 20%;
+}
 
 .userInfo{
  width: 800px;
@@ -25,14 +40,13 @@
 }
 
 #userDefaultImg {
-	border: 1px solid lightgrey;
-	border-radius: 50px;
-	margin-left: 350px;
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 100px;
+	margin-left: 270px;
 	margin-bottom: 20px;
-	max-width: 100px; /* 원하는 너비로 설정 */
-  max-height: 100px; /* 원하는 높이로 설정 */
+	max-width: 200px; /* 원하는 너비로 설정 */
+  max-height: 200px; /* 원하는 높이로 설정 */
 }
-
 
 .userInfoText {	
 	color: black;

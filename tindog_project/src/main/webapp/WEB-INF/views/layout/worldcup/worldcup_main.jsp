@@ -12,8 +12,8 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 		
-		<div class= data-wow-delay="0.1s" style="max-width: 400px; color:navy; margin-left: 450px; margin-top: 100px;">
-			<h2>TINDOG 강아지 이상형 월드컵</h2>
+		<div class= "wow fadeInUp data-wow-delay='0.1s'" style="max-width: 400px; color:navy; margin-left: 700px; margin-top: 100px;">
+			<img src="/img/강아지이상형월드컵.png">
 		</div>
 				<!-- 주간 인기 댕댕이 시작 -->
     <div class="container-xxl py-5">

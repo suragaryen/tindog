@@ -14,7 +14,7 @@ public class LoginDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public List<LoginDTO> login(LoginDTO loginDto) {
-		return sqlSession.selectList("login.login", loginDto);
+	public LoginDTO login(LoginDTO loginDto) {
+		return sqlSession.selectOne("login.login", loginDto);
 	}
 }//class end

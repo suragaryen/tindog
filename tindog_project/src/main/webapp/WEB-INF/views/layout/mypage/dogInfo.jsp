@@ -3,7 +3,15 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+table, tbody, tr, td{
+	border: 2px solid #fff; 
+	color : black;
 
+}
+
+
+</style>
 <!DOCTYPE html>
 <html>
 <body>
@@ -100,13 +108,42 @@
 						</div>
 					<span class="name-age">${item.dname} (${item.age})</span>
 						<div id="dog1detail-content">
+						
+						<table style="width:120px">
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/></th>
+								<td>${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</td>
+							</tr>
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/></th>
+								<td> <c:choose>
+							                <c:when test="${item.size eq 1}">
+							                    소형견
+							                </c:when>
+							                <c:when test="${item.size eq 2}">
+							                    중형견
+							                </c:when>
+							                <c:when test="${item.size eq 3}">
+							                    대형견
+							                </c:when>
+							                <c:otherwise>
+							                    기타 크기
+							                </c:otherwise>
+							            </c:choose>
+							            / ${item.weight} kg</td>
+							</tr>
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/></th>
+								<td>${item.dog_detail}</td>
+							</tr>
+						</table>
+						<!--
 							<ul>
-								<!-- <li>포메라이언</li> -->
-
-								<li>성별 : ${item.sex eq 'f' ? '여아' : '남아'}</li>
-								<li>중성화 : ${item.neutral}</li>
-															 <li>
-							            사이즈 / 무게 :
+								
+								
+								<li><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/>${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</li>
+									<li>
+							          <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/>
 							            <c:choose>
 							                <c:when test="${item.size eq 1}">
 							                    소형견
@@ -123,11 +160,11 @@
 							            </c:choose>
 							            / ${item.weight} kg
 							        </li>
-								<li>강아지 소개 : ${item.dog_detail}</li>
+								<li><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/>${item.dog_detail}</li>
 							</ul>
+							 -->
 						</div>
 					</div>
-				<!--</div>-->
 			</div>
 		</div>
 	</div>
