@@ -10,7 +10,7 @@
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
 
 <br>
@@ -40,7 +40,7 @@
 				<c:choose>
 					<c:when test="${row.MAINPHOTO != '-'}">
 						
-							<img src="/storage/${row.MAINPHOTO}" class="img-responsive margin" style="width:100%; height:60%" >
+							<img src="/storage/${row.MAINPHOTO}" class="img-responsive margin" style="width:100%; height:60%">
 						</a>
 					</c:when>
 					<c:otherwise>

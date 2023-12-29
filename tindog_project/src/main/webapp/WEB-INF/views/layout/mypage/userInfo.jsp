@@ -23,32 +23,32 @@
 			<form class="row g-3">
 		  <div class="col-md-6">
 		    <label for="inputEmail4" class="form-label">Name</label>
-		    <input type="email" value="${item.name}(${item.sex eq 'f' ? '여' : '남'})" class="form-control" id="inputEmail4" readonly>
+		    <input type="email" value="${item.name}(${item.sex eq 'f' ? '여' : '남'})" class="form-control" id="inputEmail4">
 		  </div>
 		  <div class="col-md-6">
 		    <label for="inputPassword4" class="form-label">Birth Day</label>
-		    <input type="text" value="${item.birth}" class="form-control" id="inputPassword4" readonly>
+		    <input type="text" value="${item.birth}" class="form-control" id="inputPassword4">
 		  </div>
 		  <div class="col-md-6">
 		    <label for="inputEmail4" class="form-label">Email</label>
-		    <input type="email" value="${item.email}" class="form-control" id="inputEmail4" readonly>
+		    <input type="email" value="${item.email}" class="form-control" id="inputEmail4">
 		  </div>
 		  <div class="col-md-6">
 		    <label for="inputPassword4" class="form-label">Nickname</label>
-		    <input type="text" value="${item.nickname}" class="form-control" id="inputPassword4" readonly>
+		    <input type="text" value="${item.nickname}" class="form-control" id="inputPassword4">
 		  </div>
 		  <div class="col-md-6">
 		    <label for="inputCity" class="form-label">Adress1</label>
-		    <input type="text" value="${item.addr}" class="form-control" id="inputCity" readonly>
+		    <input type="text" value="${item.addr}" class="form-control" id="inputCity">
 		  </div>
 		  <div class="col-md-4">
 		    <label for="inputState" class="form-label">Adress2</label>
- 			<input type="text" value="${item.detailaddr}" class="form-control" id="inputZip" readonly>
+ 			<input type="text" value="${item.detailaddr}" class="form-control" id="inputZip">
 		    </select>
 		  </div>
 		  <div class="col-md-2">
 		    <label for="inputZip" class="form-label">ZipCode</label>
-		    <input type="text" value="${item.post}" class="form-control" id="inputZip" readonly>
+		    <input type="text" value="${item.post}" class="form-control" id="inputZip">
 		  </div>
 		</form>
 			

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
+
 
 <style>
 
@@ -57,7 +56,6 @@ body:before {
     content: "";
     clear: both;
 }
-
 
 .hidden {
     display: none;
@@ -127,7 +125,6 @@ button.accent {
 
 #username-page {
     text-align: center;
-        margin-bottom: 500px;
 }
 
 .username-page-container {
@@ -143,7 +140,7 @@ button.accent {
     padding: 35px 55px 35px;
     min-height: 250px;
     position: absolute;
-    top: 300px;
+    top: 50%;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -321,14 +318,13 @@ button.accent {
 
 
 </style>
-
 <div id="username-page">
     <div class="username-page-container">
-
-        <h1 class="title">버튼을 누르면 채팅이 시작됩니다.</h1>
+        <h1 class="title">이름을 입력하세요</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                 <input type="hidden" id="name" placeholder="이름" autocomplete="off" class="form-control"/> 
+                <input type="text" id="name" placeholder="이름"
+                       autocomplete="off" class="form-control" />
             </div>
             <div class="form-group">
                 <button type="submit" class="accent username-submit">채팅 시작</button>
@@ -336,7 +332,6 @@ button.accent {
         </form>
     </div>
 </div>
- 
 
 <div id="chat-page" class="hidden">
     <div class="chat-container">
@@ -345,21 +340,13 @@ button.accent {
         </div>
         <div class="connecting">채팅 연결중...</div>
         <ul id="messageArea">
-			<c:forEach var="item" items="${list}">
-				<li class="chat-message">
-					<i style="background-color: rgb(50, 199, 135);">${item.sender}</i>
-					<span>${item.SENDER}</span>
-					<p>${item.MESSAGE}</p>
-				</li>
-			</c:forEach>
+
         </ul>
         <form id="messageForm" name="messageForm" nameForm="messageForm" >
             <div class="form-group">
                 <div class="input-group clearfix">
-                	<input type="hidden" name="droomno" id="droomno" value="<%=(int)session.getAttribute("s_droomno")%>">
-                    <input type="text" id="message" name="message" placeholder="메시지를 입력하세요..."
+                    <input type="text" id="message" placeholder="메시지를 입력하세요..."
                            autocomplete="off" class="form-control" />
-					<input type="hidden" name="sender" id="sender" value="<%=(String)session.getAttribute("s_nickname")%>">                           
                     <button type="submit" name="chatInsertBtn" id="chatInsertBtn" class="primary">전송</button>
                 </div>
             </div>
@@ -373,43 +360,10 @@ button.accent {
         src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
 	var nickname_from = '<%=(String)session.getAttribute("s_nickname")%>';
-	
-	$("#chatInsertBtn").click(function() {
-		// alert();
-		let message = $("#message").val();
-		message = message.trim();
-		if(message.length==0){
-			alert("댓글 내용을 입력해주세요");
-			$("#message").focus();
-		}else {
-			// <form id="commentInsertForm"></form>의 컨트롤 요소를 전부 가져옴
-			let insertData = $("#messageForm").serialize();
-			// alert(insertData); // product_code=1&content=apple
-			chatLogInsert(insertData); // 댓글 등록 함수 호출
-		}
-	});
-	
-	function chatLogInsert(insertData) { // 댓글 등록 함수
-  		// alert("댓글 등록 함수 호출 : " + insertData);
-  		$.ajax({
-  			url     : '/chat/chatLogInsert' // 요청 명령어
-  		  , type    : 'post'
-  		  , data    : insertData        // 전달값
-  	      , error   : function(error){
-  	    	  alert("저장 실패!");
-  	      }
-  	      , success : function(result){
-  	    	  // alert(result);
-  	    	  if(result==1) { // 댓글 등록 성공
-  	    		  // chatLogsList(); // 댓글 등록 후 댓글 목록 함수 호출
-  	    		  // $("#content").val(''); // 기존 댓글 내용을 빈 문자열로 대입(초기화)
-  	    		  alert("저장 완료!");
-  	    	  }
-  	      }
-  		}); 
-	}
 </script>
 <script src="/js/chat.js"></script>
+
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

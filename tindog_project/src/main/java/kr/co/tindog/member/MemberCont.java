@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kr.co.tindog.oauth.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,22 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.security.oauth2.client.userinfo.*;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 
 @RestController
 public class MemberCont {
 
 	@Autowired
 	MemberDAO memberDao;
-	PrincipalOauth2UserService PO;
-	User user;
 	
 	
+
 	
 	
 	@RequestMapping("/register")
@@ -47,15 +43,12 @@ public class MemberCont {
 	public ModelAndView userInfo(HttpSession session) {
 		 String email = (String) session.getAttribute("s_email");
 		 String nickname = (String) session.getAttribute("s_nickname");
-		
 
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
 		mav.addObject("list", memberDao.userList(email));
 		System.out.println(memberDao.userList(email));
-		
-
 		return mav;	
 	}
 	
