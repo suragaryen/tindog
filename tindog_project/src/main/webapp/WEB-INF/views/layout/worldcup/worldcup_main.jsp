@@ -12,9 +12,9 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 		
-		<div class= "wow fadeInUp data-wow-delay='0.1s'" style="max-width: 400px; color:navy; margin-left: 700px; margin-top: 100px;">
-			<img src="/img/강아지이상형월드컵.png">
-		</div>
+<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; margin-top: 50px !important;" >
+           <img src="/img/강아지이상형월드컵.png">
+       </div>
 				<!-- 주간 인기 댕댕이 시작 -->
     <div class="container-xxl py-5">
         <div class="container">

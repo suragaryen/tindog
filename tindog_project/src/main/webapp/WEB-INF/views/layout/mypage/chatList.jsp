@@ -21,7 +21,7 @@
 			<form name="followfrm" id="followfrm" method="post" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
-				    <th colspan="4">이메일</th>
+				    <th colspan="4">닉네임</th>
 				</tr>
 				<tr>
 					<td style="text-align: left" colspan="2">
@@ -35,8 +35,12 @@
 						</c:choose>
 				    	
 				    </td>
-				    <td style="text-align: center;"><input type="button" value="팔로우취소"></td>
-				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
+				    <td style="text-align: center;">
+				    <input type="button" value="팔로우취소" class="btn btn-outline-info btn-sm">
+				    </td>
+				    <td style="text-align: center;">
+				    <input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'" class="btn btn-outline-info btn-sm">
+				    </td>
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
 			</table>

@@ -73,6 +73,8 @@
 
     #login-naver{
       grid-area: naver;
+     position: relative;
+    left: 60px;
     }
 
     #login-kakao-txt{
