@@ -11,12 +11,12 @@
  		 WHERE EMAIL = #{followemail}
  	</select>
  	
- 	<select id="chatRoomCheck" parameterType="String" resultType="int">
+<!--  	<select id="chatRoomCheck" parameterType="String" resultType="int">
  		SELECT IFNULL(MAX(DROOMNO), 0)
  		  FROM CHATROOM_DATING
  		 WHERE TOT_NICKNAME LIKE '%' || #{NICKNAME_TO} || '%'
  		   AND TOT_NICKNAME LIKE '%' || #{NICKNAME_FROM} || '%'
- 	</select>
+ 	</select> -->
  	
  	<insert id="chatRoomInsert" parameterType="kr.co.tindog.chat.ChatRoomDTO">
  		INSERT INTO CHATROOM_DATING(NICKNAME_TO, NICKNAME_FROM)
@@ -27,7 +27,16 @@
 		SELECT DROOMNO, NICKNAME_TO, NICKNAME_FROM
 		  FROM CHATROOM_DATING
 		 WHERE TOT_NICKNAME LIKE #{nickname}
-
 	</select>
- 
+	
+	<select id="chatLogs" resultType="java.util.Map">
+		SELECT MESSAGE, SENDER
+		  FROM CHATLOGS_DATING
+		 WHERE DROOMNO = #{droomno}
+	</select>
+ 	
+ 	<insert id="chatLogInsert" parameterType="kr.co.tindog.chat.ChatDTO">
+ 		INSERT INTO CHATLOGS_DATING(DROOMNO, MESSAGE, SENDER)
+ 						VALUES(#{droomno}, #{message}, #{sender})
+ 	</insert>
  </mapper>
