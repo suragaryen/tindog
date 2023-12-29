@@ -13,4 +13,19 @@
  		order by rand() limit 16
  		
  	</select>
+ 	
+ 	<insert id="optionInsert" parameterType="kr.co.tindog.worldcup.DogDTO">
+ 	
+ 		INSERT INTO dogoption(email, age, purpose, size, sex, neutral)
+ 		VALUES(#{email}, #{age}, #{purpose}, #{size}, #{sex}, #{neutral})
+ 	
+ 	</insert>
+ 	
+ 	<select id="worldcupOptionList" parameterType="kr.co.tindog.worldcup.DogDTO" resultType="java.util.Map">
+ 		SELECT mainphoto
+ 		FROM dogs
+ 		WHERE gamereg = 'o' AND email != #{email} AND age=#{age} AND purpose=#{purpose} AND size=#{size} AND sex=#{sex} AND neutral=#{neutral}
+ 		ORDER BY rand() limit 16
+ 	</select>
+ 	
  </mapper>

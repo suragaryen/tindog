@@ -20,6 +20,14 @@ public class WorldcupDAO {
 		
 	}//worldcupImgLIst end
 	
+	public int optionInsert(DogDTO dto) {
+		return sqlSession.insert("worldcup.optionInsert", dto);
+	}
 	
+	public List<Map<String, Object>> worldcupOptionList(DogDTO dto){
+		
+		return sqlSession.selectList("worldcup.worldcupOptionList", dto);
+		
+	}
 
 }
