@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.member.UserDTO;
 import kr.co.tindog.oauth.auth.PrincipalDetails;
 import kr.co.tindog.oauth.model.User;
@@ -43,9 +44,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		OAuth2User oAuth2User=super.loadUser(userRequest);
 		//소셜로그인 버튼 클릭 -> 소셜로그인창 -> 로그인 완료 -> code 리턴 (OAuth-Client 라이브러리) -> AccessToken 요청
 		//userRequest정보 -> loadUser함수  호출-> 소셜로그인 소셜로부터 회원프로필 받아옴
-		Map<String, Object> myMap = new HashMap();
-		Map<String, Object> propertiesMap = new HashMap<>();
-		Map<String, Object> kakaoAccountMap = new HashMap<>();
+
 		
 
 		// 주어진 데이터 채우기 (위와 동일하게 예시로 생성)
@@ -64,6 +63,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		// email 값 출력
 		UserDTO userDTO = new UserDTO(); // userDTO 객체 초기화
 		userDTO.setEmail(email2);
+		
 		
 		System.out.println("DTO EMAIL"+userDTO.getEmail());
 		

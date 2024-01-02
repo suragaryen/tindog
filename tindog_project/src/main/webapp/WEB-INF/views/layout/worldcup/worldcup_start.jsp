@@ -13,30 +13,27 @@
 		 <img id="img-round16" src="/img/img-round16.png">
 	     <!-- <input type="image" src="" id="vimg" width="500px" height="550px"></a><!-- src --> 
 	</div>
- 
-	<form>
-				<table id="worldcup-table" style="margin-left:auto; margin-right:auto; margin-top: 70px; margin-bottoom:130px;">
-					<tbody id="worldcup-tbody">
-					<tr>
-						<td>
-						<div id="worldcupImgContainer">
-							 <img id="Left-img" onclick="worldcupGame(this.id)">
-						     <!-- <input type="image" src="" id="vimg" width="500px" height="550px"></a><!-- src --> 
-						</div>
-						</td>
-						
-						<td><p style="color: black; font-weight: bold; font-size: 40px;">VS</p></td>
-						
-						<td>
-						<div id="worldcupImgContainer">
-							<img id="right-img" onclick="worldcupGame(this.id)">
-						     <!-- <input type="image" src="" id="simg" width="500px" height="550px"></a><!-- src -->
-						</div> 
-						</td>
-					</tr>
-					</tbody>
-				</table>
- </form> 
+	<table id="worldcup-table" style="margin-left:auto; margin-right:auto; margin-top: 70px; margin-bottoom:130px;">
+		<tbody id="worldcup-tbody">
+		<tr>
+			<td>
+			<div id="worldcupImgContainer">
+				 <img id="Left-img" onclick="worldcupGame(this.id)">
+			     <!-- <input type="image" src="" id="vimg" width="500px" height="550px"></a><!-- src --> 
+			</div>
+			</td>
+			
+			<td><p style="color: black; font-weight: bold; font-size: 40px;">VS</p></td>
+			
+			<td>
+			<div id="worldcupImgContainer">
+				<img id="right-img" onclick="worldcupGame(this.id)">
+			     <!-- <input type="image" src="" id="simg" width="500px" height="550px"></a><!-- src -->
+			</div> 
+			</td>
+		</tr>
+		</tbody>
+	</table>
            
           <script>
 
@@ -57,20 +54,9 @@
                pic['pic' + (i + 1)] = "/img/" + imageURL; // 동적으로 프로퍼티 추가
            }
               
-            //var vchoice = Math.floor(Math.random() * v.length);
             document.querySelector("#Left-img").src =pic.pic1;
             document.querySelector("#right-img").src = pic.pic2;
-           
-           //var round8 = [];
 
-            /*
-            function worldcupGame(event) {
-            	alert("clicked");
-               	console.log(pic);
-                
-  
-            }
-            */
        
             var round8 = []; // 16강 라운드 이미지를 담을 배열
             var round4 = [];
@@ -78,13 +64,10 @@
             var winner = [];
 
             var currentRound = 16; // 현재 라운드 (8강)
-            var currentRoundIndex = 0; // 현재 라운드의 이미지 인덱스
+            var currentRoundIndex = 1; // 현재 라운드의 이미지 인덱스
 
             
-            
-            
-  			/*월드컵 시작*/
-  			
+  			/*월드컵 시작*/	
             function worldcupGame(clickedImageId) {
             		
                 
@@ -94,103 +77,102 @@
                 
                	var round8Img = document.getElementById("img-round16");
                		round8ImgSrc = round8Img.src;
-                
-                console.log(round8);
-         
+
                 
                 /*16강전*/
                 
-                if(round8.length < 8 && currentRound === 16 ) {
+                if(round8.length < 8 && currentRound === 16) {
+                	
+                	round8.push(clickedImageSrc);
                     // 다음 이미지 설정
                     //alert("16강진행중" + currentRoundIndex);
+                    if(currentRoundIndex < 8){
+ 	
                     document.querySelector("#Left-img").src = pic['pic' + (currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
                     document.querySelector("#right-img").src = pic['pic' + (currentRoundIndex * 2 + 2)]; // 다음 이미지 설정
-                    round8.push(clickedImageSrc);
-                    console.log(currentRoundIndex);
                     currentRoundIndex++;
-                }else if (round8.length === 8 && currentRound === 16) {
-                    // 16강 라운드가 끝났으면
-                    alert('16강이 끝났습니다!');
-                    alert('8강 Start!!!');
+                    console.log(currentRoundIndex);
+                    console.log(round8);   
+                    }    
                     
-                    round8Img.src = "/img/img-round8.png"
+                }else if(round8.length === 8 && currentRoundIndex === 8) {
+                    document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
+                	
+                    console.log('16강이 끝났습니다!');
+                    console.log('8강 Start!!!');
+                    console.log(round4);
+                    console.log("현재라운드 : "+ currentRound)
                     
+                    round8Img.src = "/img/img-round8.png";                 	
                     currentRound = 8; // 라운드를 반으로 줄임
-                    currentRoundIndex = 0; // 다음 라운드를 위해 인덱스 초기화
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
+				
+                }else if(round4.length < 4 && currentRound === 8) { //8강 
+					 
+                    // 다음 이미지 설정
                     
-                    // 다음 라운드로 진행
-                    // 다음 라운드 이미지 설정
-                    //document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
-                    //document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
-                    //round8 = []; // round8 배열 비우기 (다음 라운드를 위해)
+                    alert("8강진행중" + currentRoundIndex);
+                    round4.push(clickedImageSrc);
                     
-                } 
-                
-					
-                /*8강전*/
-                if (round4.length === 4 && currentRound === 8) {
-                    // 16강 라운드가 끝났으면
+                    if(currentRoundIndex < 4){
+                    	
+                    	 document.querySelector("#Left-img").src = round8[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
+                         document.querySelector("#right-img").src = round8[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
+                         currentRoundIndex++;
+                         console.log(currentRoundIndex);
+                         console.log(round4); 
+                    }
+                    
+                }else if(round4.length === 4 && currentRoundIndex === 4){
+                	
                     alert('8강이 끝났습니다!');
-                    alert('16강 Start!!!');
+                    alert('4강 Start!!!');
+                   console.log(round4);
                     round8Img.src = "/img/img-round4.png"
                     
-                    
+
+                    document.querySelector("#Left-img").src = round4[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round4[1]; // round8 배열 두 번째 이미지
+                	
                     currentRound = 4; // 라운드를 반으로 줄임
-                    currentRoundIndex = 0; // 다음 라운드를 위해 인덱스 초기화
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
+                    console.log(round2)
                     
-                    // 다음 라운드로 진행
-                    // 다음 라운드 이미지 설정
-                    //document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
-                    //document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
-                    //round8 = []; // round8 배열 비우기 (다음 라운드를 위해)
-                    
-                } else if(round4.length < 4 && currentRound === 8 ) {
+                }else if(round2.length < 2 && currentRound === 4) { //4강 
+					 
                     // 다음 이미지 설정
-                    //alert("8강진행중" + currentRoundIndex);
                     
-                    document.querySelector("#Left-img").src = round8[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
-                    document.querySelector("#right-img").src = round8[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
-                    round4.push(clickedImageSrc);
-                    console.log(currentRoundIndex);
-                    console.log(round4)
-                    currentRoundIndex++;
+                    alert("4강진행중" + currentRoundIndex);
+                    round2.push(clickedImageSrc);
                     
-                }
-                
-                /*4강전*/
-                if (round2.length === 2 && currentRound === 4) {
-                    // 16강 라운드가 끝났으면
+                    if(currentRoundIndex < 2){
+                    	
+                    	 document.querySelector("#Left-img").src = round4[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
+                         document.querySelector("#right-img").src = round4[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
+                         currentRoundIndex++;
+                         console.log(currentRoundIndex);
+                         console.log(round4); 
+                    }
+                    
+                }else if(round2.length === 2 && currentRoundIndex === 2){
+                	
                     alert('4강이 끝났습니다!');
-                    alert('결승전 Start!!!');
+                    alert('결승 Start!!!');
+                   console.log(round4);
                     round8Img.src = "/img/img-round_final.png"
                     
-                    
-                    currentRound = 1; // 라운드를 반으로 줄임
-                    currentRoundIndex = 0; // 다음 라운드를 위해 인덱스 초기화
-                    
-                    // 다음 라운드로 진행
-                    // 다음 라운드 이미지 설정
-                    //document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
-                    //document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
-                    //round8 = []; // round8 배열 비우기 (다음 라운드를 위해)
-                    
-                } else if(round2.length < 2 && currentRound === 4 ) {
-                    // 다음 이미지 설정
-                    //alert("4강진행중"+ currentRoundIndex);
-                    
-                    document.querySelector("#Left-img").src = round4[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
-                    document.querySelector("#right-img").src = round4[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
-                    round2.push(clickedImageSrc);
-                    console.log(currentRoundIndex);
+
+                    document.querySelector("#Left-img").src = round2[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round2[1]; // round8 배열 두 번째 이미지
+                    currentRound = 2; // 라운드를 반으로 줄임
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
                     console.log(round2)
-                    currentRoundIndex++;
                     
-                }
-                
-                
-                /*결승전*/
-                if (winner.length === 1 && currentRound === 1) {
+                }else if (winner.length ===0 && currentRound === 2) {
                     // 16강 라운드가 끝났으면
+                    winner.push(clickedImageSrc);
+                    console.log(winner);
                     alert('우승자!!');
                     round8Img.src = "/img/Winner.png"
                     
@@ -203,18 +185,11 @@
                     //document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
                     //round8 = []; // round8 배열 비우기 (다음 라운드를 위해)
                     
-                } else if(round2.length === 2 && currentRound === 1 ) {
-                    // 다음 이미지 설정
-                    //alert("결승진행중" + currentRoundIndex);
-                    
-                    document.querySelector("#Left-img").src = round2[0]; // round8 배열 첫 번째 이미지
-                    document.querySelector("#right-img").src = round2[1]; // 다음 이미지 설정
-                    winner.push(clickedImageSrc);
-                    console.log("winner :" + winner)
                 }
+               
                 
             }//worldcupGame end
-
+            
             
             </script>
             

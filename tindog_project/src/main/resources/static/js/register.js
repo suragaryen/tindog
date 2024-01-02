@@ -57,6 +57,8 @@
 		 // 현재 날짜로 값을 설정하는 코드
 		document.getElementById('birth').value = getCurrentDate();
 
+
+	
 	
 	/*
 	let tableCounter = 1; // 테이블 고유 ID를 위한 카운터

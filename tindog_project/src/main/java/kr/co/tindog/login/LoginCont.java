@@ -23,13 +23,14 @@ public class LoginCont {
 	@Autowired
 	LoginDAO loginDAO;
 	
-	@RequestMapping("/login")
+	//http://localhost:2000/login 
+	//로그인 페이지 
+	@GetMapping("login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/login");
-		
+		mav.setViewName("layout/member/login");
 		return mav;
-	}//login end
+	}
 	
 	@RequestMapping("/logOut")
 	public ModelAndView logout(HttpSession session) {
@@ -46,23 +47,27 @@ public class LoginCont {
 	@ResponseBody
 	public ModelAndView loginProc(@ModelAttribute LoginDTO loginDTO, 
 			HttpSession session) {
+		
 		ModelAndView mav = new ModelAndView();
+		
 		//System.out.println(loginDAO.login(loginDTO));
 		//System.out.println(loginDAO.login(loginDTO).getNickna
 		
-		if(loginDAO.login(loginDTO).getEmail() != null) {
-			
-			session.setAttribute("s_email", loginDAO.login(loginDTO).getEmail());
-			session.setAttribute("s_nickname", loginDAO.login(loginDTO).getNickname());
-			session.setAttribute("s_grade", loginDAO.login(loginDTO).getMemgrade());
-			System.out.println("로그인 성공");
-		}else {
-			System.out.println("로그인 실패");
-			
-		}
+		 LoginDTO result = loginDAO.login(loginDTO);
 		
-		mav.setViewName("layout/home");
-		return mav;
+		    if(result != null && result.getEmail() != null) {
+		        // 로그인 성공 시
+		        session.setAttribute("s_email", result.getEmail());
+		        session.setAttribute("s_nickname", result.getNickname());
+		        session.setAttribute("s_grade", result.getMemgrade());
+		        System.out.println("로그인 성공");
+		        mav.setViewName("layout/home");
+		    } else {
+		        // 로그인 실패 시
+		        System.out.println("로그인 실패");
+		        mav.setViewName("layout/member/loginFail");
+		    }
+		    return mav;
 	}//loginProc end
 	
 	
