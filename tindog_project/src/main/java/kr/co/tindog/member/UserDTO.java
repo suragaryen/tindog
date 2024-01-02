@@ -18,8 +18,15 @@ public class UserDTO {
 	private String signdate;		
 	private String memgrade;
 	private String userphoto;
+	private Object id;
 	
 	
+	public Object getId() {
+		return id;
+	}
+	public void setId(Object id) {
+		this.id = id;
+	}
 	public String getUserphoto() {
 		return userphoto;
 	}

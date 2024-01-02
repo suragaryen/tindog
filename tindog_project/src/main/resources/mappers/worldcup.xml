@@ -14,13 +14,6 @@
  		
  	</select>
  	
- 	<insert id="optionInsert" parameterType="kr.co.tindog.worldcup.DogDTO">
- 	
- 		INSERT INTO dogoption(email, age, purpose, size, sex, neutral)
- 		VALUES(#{email}, #{age}, #{purpose}, #{size}, #{sex}, #{neutral})
- 	
- 	</insert>
- 	
  	<select id="worldcupOptionList" parameterType="kr.co.tindog.worldcup.DogDTO" resultType="java.util.Map">
  		SELECT mainphoto
  		FROM dogs

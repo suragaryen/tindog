@@ -11,9 +11,9 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 		
-		<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; margin-top: 50px !important;" >
-	        <img src="/img/강아지이상형월드컵.png">
-    	</div>
+<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; margin-top: 50px !important;" >
+           <img src="/img/강아지이상형월드컵.png">
+       </div>
 				<!-- 주간 인기 댕댕이 시작 -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -95,7 +95,7 @@
 		<button id="btn" class="btn-open-popup" style="display:inline-block; background-color: white;"><img src="img/btn_이상형강아지등록.png"></button>
 		<a href="worldcup/start" style="display:inline-block;"><img src="img/btn_이상형월드컵시작.png"></a>
 	</div>
-	
+
 	<div class="worldcupmodal" id="worldcupmodal">
    	<div class="modal_content">	
 	<form name="worldcupForm" method="post"  action="worldcup/optionstart">

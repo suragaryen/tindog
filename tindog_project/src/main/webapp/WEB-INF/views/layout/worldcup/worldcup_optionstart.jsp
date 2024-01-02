@@ -51,7 +51,7 @@
            
 
            var pic = {}; // 빈 객체 생성
-
+			
            for (var i = 0; i < imageList.length; i++) {
                var imageURL = imageList[i]['mainphoto'];
                pic['pic' + (i + 1)] = "/img/" + imageURL; // 동적으로 프로퍼티 추가
@@ -126,9 +126,7 @@
                 
                 
                 
-                
-                
-                
+               
                 
                 if (round4.length === 4 && currentRound === 8) {
                     // 16강 라운드가 끝났으면

@@ -42,14 +42,12 @@
 
            
            var imageList = [
-               <c:forEach var="image" items="${OptionList}" varStatus="status">
+               <c:forEach var="image" items="${imageList}" varStatus="status">
                    {
                        "mainphoto": "${image.mainphoto}"
                    }<c:if test="${!status.last}">,</c:if>
                </c:forEach>
            ];
-
-           console.log(OptionList);
            
 
            var pic = {}; // 빈 객체 생성
