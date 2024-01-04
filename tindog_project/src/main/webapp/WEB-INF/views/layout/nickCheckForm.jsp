@@ -18,7 +18,7 @@
                 2글자 이상 10글자 이하로 작성해주세요. <br>특수문자, 공백은 불가능합니다
               </div>
     </div>   
-    <input type="button" class="btn" value="중복확인">
+    <input type="button" class="btn-regi" value="중복확인">
     </form>
     </div>
     

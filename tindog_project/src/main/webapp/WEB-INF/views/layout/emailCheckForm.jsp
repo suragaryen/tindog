@@ -16,7 +16,7 @@
               이메일을 입력해주세요.
             </div>
           </div>
-    <input type="submit" class="btn" value="중복확인">
+    <input type="submit" class="btn-regi" value="중복확인">
     </form>
     </div>
     
