@@ -46,7 +46,30 @@
                </c:forEach>
            ];
            
+           
+           var emailList = [
+               <c:forEach var="image" items="${imageList}" varStatus="status">
+                   {
+                       "email": "${image.email}"
+                   }<c:if test="${!status.last}">,</c:if>
+               </c:forEach>
+           ];
+           
+           var emailImgList = [
+               <c:forEach var="image" items="${imageList}" varStatus="status">
+                   {
+                       "image": "${image.mainphoto}",
+                       "email": "${image.email}"
+                   }<c:if test="${!status.last}">,</c:if>
+               </c:forEach>
+           ];
+           
 
+          
+           console.log(emailList);
+           
+           
+           
            var pic = {}; // 빈 객체 생성
 
            for (var i = 0; i < imageList.length; i++) {
@@ -112,7 +135,7 @@
 					 
                     // 다음 이미지 설정
                     
-                    alert("8강진행중" + currentRoundIndex);
+                    //alert("8강진행중" + currentRoundIndex);
                     round4.push(clickedImageSrc);
                     
                     if(currentRoundIndex < 4){
@@ -143,7 +166,7 @@
 					 
                     // 다음 이미지 설정
                     
-                    alert("4강진행중" + currentRoundIndex);
+                    //alert("4강진행중" + currentRoundIndex);
                     round2.push(clickedImageSrc);
                     
                     if(currentRoundIndex < 2){
@@ -172,20 +195,48 @@
                 }else if (winner.length ===0 && currentRound === 2) {
                     // 16강 라운드가 끝났으면
                     winner.push(clickedImageSrc);
-                    console.log(winner);
-                    alert('우승자!!');
+                    //console.log(winner);
+                    //alert('우승자!!');
                     round8Img.src = "/img/Winner.png"
                     
-                   document.querySelector("#Left-img").src = winner[0];
-                   document.querySelector("#right-img").src = winner[0];
+                   //document.querySelector("#Left-img").src = winner[0];
+                   //document.querySelector("#right-img").src = winner[0];
                     
-                    // 다음 라운드로 진행
-                    // 다음 라운드 이미지 설정
-                    //document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
-                    //document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
-                    //round8 = []; // round8 배열 비우기 (다음 라운드를 위해)
+                   //console.log(winner[0].substring(5));
+                   
+                   var winnerImgName = winner[0].substring(5);
+                   
+                   
+                   function findEmailByImageName(emailImgList, emailList, winnerImgName) {
+                	    for (var i = 0; i < emailImgList.length; i++) {
+                	        if (emailImgList[i].mainphoto === winnerImgName) {
+                	            return emailList[i].email;
+                	        }
+                	    }
+                	    return "해당하는 우승자에 대한 이메일을 찾을 수 없습니다.";
+                	}//findEmailByImageName end
+                   
+                   var email = findEmailByImageName(imageList, emailList, winnerImgName);
+                	
+                	console.log(email);
+
+                   $.ajax({
+                	    type: "GET", // 또는 POST 등 HTTP 요청 방법 설정
+                	    url: "/worldcup/final", // 엔드포인트 URL
+                	    data: { email: email }, // 전송할 데이터
+                	    success: function(response) {
+                	        // 성공 시 처리하는 로직
+                	        console.log("전송 완료!");
+                	        window.location.href = "/worldcup/final?email=" + encodeURIComponent(email);
+                	        // response에 서버에서 받은 응답이 들어있음
+                	    },
+                	    error: function(err) {
+                	        // 에러 발생 시 처리하는 로직
+                	        console.error("전송 실패!", err);
+                	    }
+                	});
                     
-                }
+                }//final end
                
                 
             }//worldcupGame end
