@@ -13,9 +13,7 @@
           <div class="row">
             <div class="textForm">              
               <input type="text" class="form-control" name="name" id="name" placeholder="이름" autocomplete="off" required>
-              <div class="valid-feedback">
-              
-              </div>
+              <div class="valid-feedback"></div>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>

@@ -32,24 +32,49 @@
         display: none;        
     }
 
-    #login-body #checkBtn-login-body{
-        text-align: center;
-        color: white;
-        width: 400px;
-        height: 35px;
-        background-color: lightskyblue;
-        border-radius: 10px;
+    #login-body #checkBtn-login-body{	      	      		  
+		  transform: translateX(-50%);
+		  position: relative;		  
+		  left: 200px;
+		  width:400px;
+		  height:35px;
+		  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+		  background-position: left;
+		  background-size: 200%;
+		  color:white;
+		  font-weight: bold;
+		  border:none;
+		  border-radius: 10px;
+		  cursor:pointer;
+		  transition: 0.4s;
+		  display:inline;
     }
     
         #login-body #loginBtn-login-body{
-        text-align: center;
-        color: white;
-        width: 400px;
-        height: 35px;
-        background-color: lightskyblue;
-        border-radius: 10px;
-        display: none;
+        transform: translateX(-50%);
+		  position: relative;		  
+		  left: 200px;
+		  width:400px;
+		  height:35px;
+		  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+		  background-position: left;
+		  background-size: 200%;
+		  color:white;
+		  font-weight: bold;
+		  border:none;
+		  border-radius: 10px;
+		  cursor:pointer;
+		  transition: 0.4s;
+		  display:none;
     }
+    
+    #login-body #checkBtn-login-body:hover{
+		background-position: right;
+	}
+	
+	#login-body #loginBtn-login-body:hover{
+		background-position: right;
+	}
 
     #login-else{
       display: flex;

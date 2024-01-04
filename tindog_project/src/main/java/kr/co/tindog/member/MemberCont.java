@@ -9,7 +9,6 @@ import java.util.Map;
 import kr.co.tindog.oauth.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +29,8 @@ public class MemberCont {
 
 	@Autowired
 	MemberDAO memberDao;
-	UserDTO userDTO;
+	PrincipalOauth2UserService PO;
+	User user;
 	
 	
 	
@@ -49,7 +49,6 @@ public class MemberCont {
 		return mav;
 	}
 	
-
 	@RequestMapping("/userInfo")
 	public ModelAndView userInfo(HttpSession session) {
 		 String email = (String) session.getAttribute("s_email");
@@ -80,7 +79,7 @@ public class MemberCont {
 	
 	
 	@PostMapping("/userInsert")
-	public ModelAndView insert(@ModelAttribute DogDTO dogDto,
+	public String insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
 			@ModelAttribute PicDTO picDto,
             @RequestParam MultipartFile mainphotofile,
@@ -88,7 +87,6 @@ public class MemberCont {
             MultipartHttpServletRequest mtfRequest,//사진 한꺼번에 여러개 받기 
             HttpServletRequest req) {
 		
-		/*유저사진 INSERT START*/
     	String mainphotofilename = "-";
     	long mainphotofilesize = 0;
     	
@@ -116,7 +114,6 @@ public class MemberCont {
     		//System.out.println(dogDto.toString());
     		memberDao.dogInsert(dogDto);
     		
-    		/*강아지메인사진 INSERT START*/
         	String userphotofilename = "-";
         	long userphotofilesize = 0;
         	
@@ -145,9 +142,9 @@ public class MemberCont {
         		memberDao.userInsert(userDto);
         		
         		
-/////////////////////////////////////////////////////////////////////////////////////////////////
+        		/////////////////////////////////////////////////////////////////////////////////////
         		
-        		/*기타 강아지사진 INSERT START*/
+        		//기타 강아지 사진 사진 테이블에 저장 
         		
         	    // 각 파일 이름을 저장할 리스트
         	    List<String> picNames = new ArrayList<>();
@@ -214,14 +211,10 @@ public class MemberCont {
         	        // 파일 경로 출력 또는 다른 작업 수행
         	    }
 
-        	    
         	    memberDao.dogPicsInsert(picDto);
-        	    ModelAndView mav=new ModelAndView();
         	
-        	    
-        	    mav.setViewName("layout/home");
-        	    
-		 return mav;
+		
+		 return "redirect:/home";
 		
 	}//insert end
 	

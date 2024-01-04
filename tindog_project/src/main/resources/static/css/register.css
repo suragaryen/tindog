@@ -28,11 +28,22 @@ h2 {
   margin: 30px;
 }
 
+.title{
+	display: flex;
+	margin-left : 30px;	
+}
+
 .textForm {
   margin: 30px;
   padding: 10px 10px;
 }
 
+.selectForm{
+	display: flex;
+	margin: 30px;
+  	padding: 10px 10px;
+  	text-align: left;
+}
 
 .formcontrol {
   width: 100%;
@@ -44,7 +55,7 @@ h2 {
   background: none;
 }
 
-.button{
+.button {
 	margin-top: 20px;
 }
 
