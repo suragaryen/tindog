@@ -218,6 +218,16 @@ public class MemberCont {
 		
 	}//insert end
 	
+	@RequestMapping("/follow")
+	public ModelAndView follow(HttpSession session) {
+		String email = (String)session.getAttribute("s_email");
+		// System.out.println(email);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("layout/mypage/follow");
+		mav.addObject("list", memberDao.followList(email));
+		return mav;
+	}
+	
 	
 
 }//MemberController end
