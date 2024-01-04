@@ -17,7 +17,11 @@ public class ChatRoomDAO {
 		return sqlSession.selectOne("chat.search", followemail);
 	}
 	
-	public int insertChat(ChatRoomDTO dto) {
+	public int chatRoomCheck(ChatRoomDTO dto) {
+		return sqlSession.selectOne("chat.chatRoomCheck", dto);
+	}
+	
+	public int chatRoomInsert(ChatRoomDTO dto) {
 		return sqlSession.insert("chat.chatRoomInsert", dto);
 	}
 	
