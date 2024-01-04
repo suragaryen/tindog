@@ -2,6 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<style>
+#email:hover{
+	cursor: pointer;
+}
+
+#nickname:hover{
+	cursor: pointer;
+}
+
+#post:hover{
+	cursor: pointer;
+}
+</style>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
@@ -19,7 +32,7 @@
               </div>
             </div>
             <div class="textForm">              
-              <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" autocomplete="off" required>
+              <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" autocomplete="off" onclick="nickCheck()" readonly required>              
               <div class="valid-feedback">
               
               </div>
@@ -28,7 +41,7 @@
               </div>
             </div>            
           <div class="textForm">            
-            <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com" autocomplete="off" required>
+            <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com" autocomplete="off" onclick="remailCheck()" readonly required>
             <div class="valid-feedback">              
               </div>
             <div class="invalid-feedback">
@@ -110,7 +123,7 @@
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
  		<div class="button">
-          <button class="btn" type="submit">계속</button>
+          <button class="btn-regi" type="submit">계속</button>
         </div>
         </form>
     
@@ -200,7 +213,23 @@
           }
       });
       
-
+	function nickCheck() {
+		var popWidth=400;
+		var popHeight=200;
+		var popX=Math.round(window.screenX+(window.outerWidth/2)-(popWidth/2));
+		var popY=Math.round(window.screenY+(window.outerHeight/2)-(popHeight/2));
+		
+		window.open("register/nickCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
+	}
+	
+	function remailCheck() {
+		var popWidth=400;
+		var popHeight=200;
+		var popX=Math.round(window.screenX+(window.outerWidth/2)-(popWidth/2));
+		var popY=Math.round(window.screenY+(window.outerHeight/2)-(popHeight/2));
+		
+		window.open("register/emailCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
+	}
   </script>
 
 
