@@ -14,6 +14,13 @@
  		
  	</select>
  	
+
+ 	<select id="worldcupOptionList" parameterType="kr.co.tindog.worldcup.DogDTO" resultType="java.util.Map">
+ 		SELECT mainphoto
+ 		FROM dogs
+ 		WHERE gamereg = 'o' AND email != #{email} AND age=#{age} AND purpose=#{purpose} AND size=#{size} AND sex=#{sex} AND neutral=#{neutral}
+ 		ORDER BY rand() limit 16
+
  	<select id="worldcupWinner" parameterType="String" resultType="java.util.Map">
  	   select *
  	   from dogs 
@@ -30,6 +37,7 @@
 		from follow
 		where email = #{s_email} and followemail = #{f_email}
  	
+
  	</select>
  	
  </mapper>

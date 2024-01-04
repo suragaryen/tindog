@@ -21,6 +21,13 @@ public class WorldcupDAO {
 		
 	}//worldcupImgLIst end
 	
+
+	public List<Map<String, Object>> worldcupOptionList(DogDTO dto){
+		
+		return sqlSession.selectList("worldcup.worldcupOptionList", dto);
+		
+	}
+  
 	public List<Map<String, Object>> worldcupWinner(String email) {
 		
 		return sqlSession.selectList("worldcup.worldcupWinner", email);
@@ -31,6 +38,7 @@ public class WorldcupDAO {
 
 		return sqlSession.insert("worldcup.followInsert",emails);
 	}
+
 
 	public List<Object> dupCheck(Map<String, String> emails) {
 		return sqlSession.selectList("worldcup.dupCheck", emails);
