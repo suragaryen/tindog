@@ -89,7 +89,7 @@ public class MemberCont {
 	}
 	
 	
-	@PostMapping("/userInsert")
+	@PostMapping("/register/userInsert")
 	public String insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
 			@ModelAttribute PicDTO picDto,

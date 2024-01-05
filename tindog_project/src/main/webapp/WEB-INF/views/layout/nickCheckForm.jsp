@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="text-align: center">	
-    <form method="post">
+    <form method="post" action="" onclick="nickformcheck()">
     <div class="textForm">              
               <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" autocomplete="off" required>              
               <div class="valid-feedback">
@@ -23,6 +23,8 @@
     </div>
     
     <script>
+    function nickformcheck() {
+		
     document.querySelector("#nickname").addEventListener("input", function(){
 		let inputNick=this.value;
 		if(inputNick.trim().length==0){
@@ -42,7 +44,8 @@
 			this.classList.add("is-invalid");
 			checkObj.nickValid=false;
 		}
-	});
+	});    
+    }
     </script>
     
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>

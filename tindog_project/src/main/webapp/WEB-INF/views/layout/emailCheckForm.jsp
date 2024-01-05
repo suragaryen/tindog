@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="text-align: center">	
-    <form method="post" action="/register" onclick="emailformcheck()">
+    <form method="post" action="" onclick="emailformcheck()">
     <div class="textForm">            
             <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com" autocomplete="off" required>
             <div class="valid-feedback"></div>
