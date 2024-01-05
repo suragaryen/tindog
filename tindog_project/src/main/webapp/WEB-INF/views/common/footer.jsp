@@ -6,26 +6,19 @@
 	    <hr class="bar">    
 	</div>
 	<div class="footer_content">
-	<span class="footer_span">틴독 주식회사 대표이사 : 최수림 사업자등록번호 : 141-91-00998 사업자 정보확인 통신판매업 신고 : 2000-서울강남-0515</span>
-	<br><br>
-	<span class="footer_span">사업장주소 : 서울 강남구 테헤란로 124 삼원타워 4층 호스팅서비스사업자 : 한국최수림(주)</span> 
+	<span class="footer_span">Company Registration No : 418-25-92713 | Ecommerce License : 2024-서울강남-002359</span>
 	<br>
-	<span class="footer_span">대표번호 : 02-1155-4110 제품/서비스/멤버십: 1588-8511(통화요금 : 발신자부담)</span>
-	<br><br>
-	본 사이트에서 판매되는 상품 중에는 등록된 개별 판매자가 판매하는 상품이 포함되어 있습니다.
+	<span class="footer_span">Address : Gangnam-ro 44-1, Songpa-gu, 04782 Seoul</span> 
 	<br>
-	개별 판매자 판매 상품의 경우 틴독(주)는 통신판매중개업자로서 통신판매의 당사자가 아니므로, 
-	<br>
-	개별 판매자가 등록한 상품, 거래정보 및 거래 등에 대해 책임을 지지 않습니다.
-	<br><br>
-	본 사이트의 컨텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+	<span class="footer_span">Email : contact@surim.org | Tel : (82) 488 2905</span>
+	<br>	
 	</div>
 	<div class="footer-else">
 	    <hr class="bar">
 	</div>
 	<div class="footer_copyright">
 	<div class="copy-box">
-	<span class="footer_span">Copyright © 1995-2024 TINDOG. All Rights Reserved.</span>
+	<span class="footer_span">Copyright © 2024 TINDOG. All Rights Reserved.</span>
 	</div>
 	<div class="mark-box">
 		<a href="https://dcxi.ksa.or.kr/" target="_blank" title="Korean Stasndars Association 2023 디지털고객경험지수 : 새창으로 열기" class="btn-mark btn-dcxi" data-omni="local logo_dcxi" data-di-id="di-id-5f9a1bb4-1b722467">
