@@ -35,7 +35,7 @@ margin-top: 20px;
 }
 
 </style>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
  <!-- 1라운드 -->

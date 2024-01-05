@@ -10,7 +10,7 @@
     <link href="/css/dbti.css" rel="stylesheet"> 
    	<link href="/css/dbtiContent.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/sessionHeaderAlert.jsp"></jsp:include>
     <div class="dbti_container">
 

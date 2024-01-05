@@ -50,6 +50,7 @@
 
 	    
 	    <!-- Template CSS -->
+	    <link href="/css/footer.css" rel="stylesheet">
 	    <link href="/css/mypage.css" rel="stylesheet">
 	    <link href="/css/modal.css" rel="stylesheet">
 	    <link href="/css/register.css" rel="stylesheet">

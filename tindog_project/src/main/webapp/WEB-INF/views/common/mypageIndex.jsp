@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<body class="wrapper">
 <div class="mypage">
         <div class="mypage_header">
             	<img class= src="/img/profile.jpg"><br>            
@@ -38,3 +39,4 @@
 		<span class="close" id="closeModalBtn"> X </span>   
 	</div>
 	</div>
+</body>
