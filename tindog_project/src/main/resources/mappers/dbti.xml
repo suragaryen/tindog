@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dbti">
+
+	<insert id="dbtiInsert" parameterType="kr.co.tindog.dbti.DbtiDTO">
+		INSERT INTO dogs(email, oneanswer, twoanswer, threeanswer, fouranswer, fiveanswer, sixanswer, sevenanswer, eightanswer, nineanswer, tenanswer, elevenanswer, twelveanswer)
+		VALUES(#{email}, #{oneanswer}, #{twoanswer}, #{threeanswer}, #{fouranswer}, #{fiveanswer}, #{sixanswer}, #{sevenanswer}, #{eightanswer}, #{nineanswer}, #{tenanswer}, #{elevenanswer}, #{twelveanswer})
+	</insert>
+
+</mapper>

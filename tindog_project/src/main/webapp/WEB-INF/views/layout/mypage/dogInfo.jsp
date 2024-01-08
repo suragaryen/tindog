@@ -14,7 +14,7 @@ table, tbody, tr, td{
 </style>
 <!DOCTYPE html>
 <html>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <div class="cont">
@@ -136,33 +136,7 @@ table, tbody, tr, td{
 								<th><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/></th>
 								<td>${item.dog_detail}</td>
 							</tr>
-						</table>
-						<!--
-							<ul>
-								
-								
-								<li><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/>${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</li>
-									<li>
-							          <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/>
-							            <c:choose>
-							                <c:when test="${item.size eq 1}">
-							                    소형견
-							                </c:when>
-							                <c:when test="${item.size eq 2}">
-							                    중형견
-							                </c:when>
-							                <c:when test="${item.size eq 3}">
-							                    대형견
-							                </c:when>
-							                <c:otherwise>
-							                    기타 크기
-							                </c:otherwise>
-							            </c:choose>
-							            / ${item.weight} kg
-							        </li>
-								<li><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/>${item.dog_detail}</li>
-							</ul>
-							 -->
+						</table>						
 						</div>
 					</div>
 			</div>

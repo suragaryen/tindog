@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <c:forEach var="item" items="${list}">	

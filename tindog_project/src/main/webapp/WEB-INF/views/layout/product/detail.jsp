@@ -31,7 +31,7 @@
 		}//product_cart() end
 		
 	</script>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <div class="container text-center">

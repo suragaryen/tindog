@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<body class="wrapper">
 <div class="mypage">
         <div class="mypage_header">
             	<img class= src="/img/profile.jpg"><br>            
@@ -22,7 +23,7 @@
         </div>
         <div class="mypage_result">
             <p>나의 친구찾기</p>                        
-            <button id="btn" class="btn-open-popup">이상형 월드컵 결과</button><br>
+            <button id="btn" class="open-popup">이상형 월드컵 결과</button><br>
             <button id="btn" class="">멍BTI 결과</button><br>
         </div>
         <div class="mypage_etc">
@@ -31,3 +32,11 @@
             <span>회원탈퇴</span><br>
         </div>
     </div>
+    <div class="modal" id="modal">
+   	<div class="modal_body">
+		<h3>이상형 월드컵 결과</h3>
+		<div>1등</div>		
+		<span class="close" id="closeModalBtn"> X </span>   
+	</div>
+	</div>
+</body>

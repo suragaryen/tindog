@@ -31,10 +31,7 @@ public class MemberCont {
 	MemberDAO memberDao;
 	PrincipalOauth2UserService PO;
 	User user;
-	
-	
-	
-	
+
 	@RequestMapping("register")
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
@@ -46,6 +43,20 @@ public class MemberCont {
 	public ModelAndView dogregister() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/dogregister");
+		return mav;
+	}
+	
+	@RequestMapping("register/nickCheck")
+	public ModelAndView nickCheck() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/nickCheckForm");
+		return mav;
+	}
+	
+	@RequestMapping("register/emailCheck")
+	public ModelAndView emailCheck() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/emailCheckForm");
 		return mav;
 	}
 	
@@ -76,7 +87,7 @@ public class MemberCont {
 	}
 	
 	
-	@PostMapping("/userInsert")
+	@PostMapping("/register/userInsert")
 	public String insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
 			@ModelAttribute PicDTO picDto,

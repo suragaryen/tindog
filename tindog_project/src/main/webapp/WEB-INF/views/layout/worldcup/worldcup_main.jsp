@@ -8,7 +8,7 @@
 	width : 300px;
 }
 </style>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/sessionHeaderAlert.jsp"></jsp:include>
 		
 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; margin-top: 50px !important;" >

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <style>

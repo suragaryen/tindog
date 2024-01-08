@@ -6,6 +6,9 @@
 			,"pwCheckValid":false
 			,"detailaddr":false
 			,"userphotofile":false
+			,"dnameValid":false
+			,"dageValid":false
+			,"weightValid":false
 		}
 		
 		document.querySelector("#name").addEventListener("input", function(){
@@ -123,6 +126,69 @@
 			}
 		})
 
+		document.querySelector("#dname").addEventListener("input", function(){
+			let inputDname=this.value;
+			if(inputDname.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[A-Za-z가-힣0-9]{1,10}$/
+			
+			if(regEx.test(inputDname)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.dnameValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.dnameValid=false;
+			}
+		});
+		
+		document.querySelector("#age").addEventListener("input", function(){
+			let inputAge=this.value;
+			if(inputAge.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[0-9]$/
+			
+			if(regEx.test(inputAge)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.dageValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.dageValid=false;
+			}
+		});
+		
+		document.querySelector("#weight").addEventListener("input", function(){
+			let inputWeight=this.value;
+			if(inputWeight.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[0-9]/
+			
+			if(regEx.test(inputWeight)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.weightValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.weightValid=false;
+			}
+		});
+	
 		//유저사진 미리보기 
 		const representativeImageInput = document.getElementById('userphotofile');
 		const representativeImageContainer = document.getElementById('userPic_container');

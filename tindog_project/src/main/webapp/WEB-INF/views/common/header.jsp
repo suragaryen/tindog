@@ -24,7 +24,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">친구찾기</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/worldcup" class="dropdown-item">이상형월드컵</a>
-                        <a href="team.html" class="dropdown-item">댕BTI 검사</a>
+                        <a href="/dbti" class="dropdown-item">댕BTI 검사</a>
                     </div>
                 </div>                
             </div>
