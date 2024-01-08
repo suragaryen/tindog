@@ -22,9 +22,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.tindog.product.ProductDAO;
 
-
 @Controller
-
 public class ProductCont {
        
 	
@@ -99,7 +97,7 @@ public class ProductCont {
 
 		
 		
-		return "redirect:/list"; 
+		return "redirect:/product/list"; 
 	}//insert() end
 	
 	
@@ -152,7 +150,8 @@ public class ProductCont {
 		   
 		productDao.delete(UPRODUCT_NO);   
 			  
-		return "redirect:/list"; 
+		return "redirect:/product/list"; 
+
 			 
 	}//delete() end
 	
@@ -202,7 +201,9 @@ public class ProductCont {
 			map.put("MAINPHOTO", MAINPHOTO);
 			map.put("PHOTO", PHOTO); 
 			productDao.update(map); 
-			return "redirect:/list"; 
+
+			return "redirect:/product/list"; 
+
 		   
 		   
 	   }//update() end

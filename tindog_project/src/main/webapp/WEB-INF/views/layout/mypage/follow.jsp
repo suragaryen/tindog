@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<body class="wrapper">
+<body>
 	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
@@ -26,10 +26,9 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 					<td style="text-align: left" colspan="2">
-				    	${item.EMAIL}
+				    	${item.DNAME}
 				    </td>
-				    <input type="hidden" name="followNickname" id="followNickname" value="${item.NICKNAME}">
-				    <td style="text-align: center;"><input type="button" value="팔로우취소"></td>
+				    <td style="text-align: center;"><input type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
 				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="startChat()"></td>
 				</tr>
 				</c:forEach>
@@ -71,7 +70,25 @@
 			  } 
 			});
 		}
-		
+	</script>
+	<script>
+	function followCancel(email) {
+		alert(email);
+		$.ajax({
+			url     : '/follow/delete/' + email // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
+		  , type    : 'post'
+		  , data    : {'email':email}
+		  , success : function(result) {
+					  	  if(result==1) {
+					  		  alert("팔로우 취소되었습니다");
+					  		  document.followfrm.action="/follow";
+							  document.followfrm.submit();
+					  }else {
+						  alert("팔로우 취소를 실패했습니다");
+					  }
+			}
+		});
+	}
 	</script>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>

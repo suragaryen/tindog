@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.tindog.cut.CutDTO;
+import kr.co.tindog.product.chat.ProductChatRoomDAO;
 
 @RestController
 public class ChatRoomCont {
 	
 	@Autowired
 	ChatRoomDAO chatRoomDao;
+	
+	@Autowired
+	ProductChatRoomDAO productChatRoomDao;
 	
 //	@GetMapping("/chatRoomCheck/{followemail}")
 //	public ModelAndView chatRoomCheck(@PathVariable String followemail, HttpSession session) {
@@ -29,12 +34,20 @@ public class ChatRoomCont {
 	
 	@RequestMapping("/chatList")
 	public ModelAndView chatList(HttpSession session) {
-		String nickname = "%" + (String)session.getAttribute("s_nickname") + "%"; 
+		String nickname = "%" + (String)session.getAttribute("s_nickname") + "%";
+		String s_nickname = (String)session.getAttribute("s_nickname");
+		
+		//ChatRoomDTO dto = new ChatRoomDTO();
+		//dto.setTot_nickname(nickname);
+		//String dogName = chatRoomDao.findDogName(s_nickname);
+		
 		ModelAndView mav = new ModelAndView();
-		System.out.println(nickname);
+		
 		mav.setViewName("layout/mypage/chatList");
-		mav.addObject("list", chatRoomDao.chatList(nickname));
-		System.out.println(chatRoomDao.chatList(nickname));
+		mav.addObject("list", chatRoomDao.findDogName(s_nickname));
+		// mav.addObject("list", chatRoomDao.chatList(nickname));
+		mav.addObject("list2", productChatRoomDao.chatList(nickname));
+		// System.out.println(chatRoomDao.chatList(nickname));
 		return mav;
 	}
 	
@@ -47,7 +60,6 @@ public class ChatRoomCont {
 			chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
 			chatRoomDto.setNickname_to(followNickname);
 			chatRoomDto.setTot_nickname(followNickname + (String)session.getAttribute("s_nickname"));
-			System.out.println(chatRoomDto);
 			
 			int check = chatRoomDao.chatRoomCheck(chatRoomDto);
 			if(check==0) {
@@ -63,4 +75,29 @@ public class ChatRoomCont {
 		    return -1; // 예외가 발생한 경우 -1을 반환하거나 적절한 에러 코드를 반환하세요.
 		}
 	}
+
+	
+	@PostMapping("/chatList/delete/{droomno}")
+	@ResponseBody
+	public int chatRoomDelete(@PathVariable int droomno) {
+		int cnt = chatRoomDao.chatRoomDelete(droomno);
+		
+		return cnt;
+	}
+	
+	@PostMapping("/chatList/cut/{nickname}")
+	@ResponseBody
+	public int cut(@PathVariable String nickname, HttpSession session) {
+		String email = (String)session.getAttribute("s_email");
+		String cutEmail = chatRoomDao.findEmail(nickname);
+		
+		CutDTO cutDto = new CutDTO();
+		cutDto.setEmail(email);
+		cutDto.setCutEmail(cutEmail);
+		
+		int cnt = chatRoomDao.cut(cutDto);
+		
+		return cnt;
+	}
+
 }

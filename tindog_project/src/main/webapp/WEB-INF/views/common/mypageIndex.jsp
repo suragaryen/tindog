@@ -12,7 +12,7 @@
             <a href="/dogGumPay"><span>개껌페이</span></a><br>
             <a href="/follow"><span>팔로우관리</span></a><br>
             <a href="/chatList"><span>채팅관리</span></a><br>
-            <span>차단사용자관리</span><br>
+            <a href="/cut"><span>차단사용자관리</span></a><br>
         </div>
         <div class="mypage_deal">
             <p>나의 거래</p>
