@@ -48,7 +48,7 @@
 			// let insertData = $("#followfrm").serialize();
 			// alert(insertData);
 			// insertChatRoom(followNickname);
-			alert(followNickname);
+			
 			$.ajax({
 				url     : '/chatList/insert' // 요청 명령어
 			  , type    : 'post'
@@ -57,11 +57,19 @@
 				  // alert(result);
 				  console.log(result);
 				  if(result==1) {
-					  alert("채팅방이 개설되었습니다");
+					  Swal.fire({
+							title:"채팅방 개설 성공",
+							text:"상대방 : "+followNickname,
+							confirmButtonText:"확인"
+					});					  
 				  } else if(result==-1) {
-					  alert("채팅방이 개설되지 않았습니다");
+					 
 				  } else if(result==0) {
-					  alert("이미 개설된 채팅방이 있습니다");
+					   Swal.fire({
+							title:"채팅방 개설 실패",
+							text:"이미 개설된 채팅방이 있습니다",
+							confirmButtonText:"확인"
+					});					  
 				  }
 			  }
 			  , error : function(error) {

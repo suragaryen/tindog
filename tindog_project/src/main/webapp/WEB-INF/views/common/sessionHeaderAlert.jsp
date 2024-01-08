@@ -11,16 +11,15 @@
 %>    
     <script>
         // 세션 값이 없을 때 JavaScript로 alert 창 띄우기
-        swal({
+            Swal.fire({
         	title:"로그인 후 이용해주세요",
-        	icon:"warning",
-        	confirmButtonText:"확인",
-        	closeOnClickOutside:false,
-        	closeOnEsc:false,        	        	
+        	text:"",
+        	icon:"warning",        	
+        	confirmButtonText: "확인"  	        	
         })
         .then(function() {
         	window.location.href = "/login"; // 다른 페이지로 이동
-		});                
+		});                 
     </script>
         
 <% 
