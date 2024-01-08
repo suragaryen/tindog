@@ -151,6 +151,7 @@ public class ProductCont {
 		productDao.delete(UPRODUCT_NO);   
 			  
 		return "redirect:/product/list"; 
+
 			 
 	}//delete() end
 	
@@ -200,7 +201,9 @@ public class ProductCont {
 			map.put("MAINPHOTO", MAINPHOTO);
 			map.put("PHOTO", PHOTO); 
 			productDao.update(map); 
+
 			return "redirect:/product/list"; 
+
 		   
 		   
 	   }//update() end

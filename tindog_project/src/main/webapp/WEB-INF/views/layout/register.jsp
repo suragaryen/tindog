@@ -2,126 +2,80 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<body>
+<style>
+#email:hover{
+	cursor: pointer;
+}
+
+#nickname:hover{
+	cursor: pointer;
+}
+
+#post:hover{
+	cursor: pointer;
+}
+</style>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-  <style>
-  	.container{
-  		margin-top:100px;
-  	}
-  
-    body {
-      min-height: 100vh;
+<!-- was-validated  needs-validation -->
 
-      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
-      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
-    }
-
-    .input-form {
-      max-width: 680px;
-
-      margin-top: 80px;
-      padding: 32px;
-
-      background: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-    }
-  </style>
-
-
-
-  <div class="container">
-    <div class="input-form-backgroud row">
-      <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-3">회원정보</h4>
-        <form class="validation-form" novalidate name="register-form" id="register-form" method="post" action="userInsert" enctype="multipart/form-data">
+        <form class="needs-validation" name="register-form" id="register-form" method="post" action="/register/userInsert" enctype="multipart/form-data" novalidate>			
+			<h2 class="joinForm">TINDOG ID 생성</h2>
+			<h5>하나의 TINDOG ID로 모든 TINDOG 서비스를 이용할 수 있습니다.</h5>
           <div class="row">
-            <div class="col-md-4 mb-3">
-              <label for="name">이름</label>
-              <input type="text" class="form-control" name="name" id="name" required>
+            <div class="textForm">              
+              <input type="text" class="form-control" name="name" id="name" placeholder="이름" autocomplete="off" required>
+              <div class="valid-feedback"></div>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <label for="nickname">별명</label>
-              <input type="text" class="form-control" name="nickname" id="nickname" required>
-              <div class="invalid-feedback">
-                별명을 입력해주세요.
+            <div class="textForm">              
+              <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" autocomplete="off" onclick="nickCheck()" readonly required>              
+              <div class="valid-feedback">
+              
               </div>
-            </div>
-             <div class="col-md-4 mb-3">
-              <label for="nickname">생년월일</label>
-              <input type="date" class="form-control" name="birth" id="birth">
               <div class="invalid-feedback">
-                생년월일을 입력해주세요.
+                2글자 이상 10글자 이하로 작성해주세요. <br>특수문자, 공백은 불가능합니다
               </div>
+            </div>            
+            <div class="textForm">
+            	<div class="little">*생년월일*</div>              	
+				<input type="date" class="form-control" name="birth" id="birth" max="2024-06-20" min="1900-01-01">								
             </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="email">이메일</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
+          <div class="textForm">                    
+            <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com" autocomplete="off" onclick="remailCheck()" readonly required>
+            <div class="valid-feedback">              
+              </div>
             <div class="invalid-feedback">
               이메일을 입력해주세요.
             </div>
           </div>
-          
-            <div class="row">
             
-            <div class="col-md-6 mb-3">
-              <label for="name">비밀번호</label>
-              <input type="password" class="form-control" name="password" id="password" required>
-                <div class="col-auto">
-				    <span id="passwordHelpInline" class="form-text">
-				      Must be 8-20 characters long.
-				    </span>
-				 </div>
-              <div class="invalid-feedback">
-                비밀번호를 입력해주세요.
+          <div class="textForm">              
+              <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호" autocomplete="off" required>
+              <div class="valid-feedback">
+              
               </div>
-            </div>
-            
-            
-            <div class="col-md-6 mb-3">
-              <label for="nickname">비밀번호 확인</label>
-              <input type="password" class="form-control" name="repasswd" id="repasswd" required>
               <div class="invalid-feedback">
-                 비밀번호를 입력해주세요.
+                6글자 이상 20글자 이하로 작성해주세요. <br>특수문자는 (!,@,#,-,_)만 가능합니다
               </div>
-            </div>
+           </div>
             
             
-          </div>
+           <div class="textForm">
+              <input type="password" class="form-control" name="repasswd" id="repasswd" placeholder="비밀번호확인" autocomplete="off" required>
+              <div class="valid-feedback">
+              
+              </div>
+              <div class="invalid-feedback">
+                 비밀번호를 확인해주세요.
+              </div>
+           </div>            
 
-	
-		 <div class="row">
-          <div class="col-md-4">
-		    <label for="validationCustom03" class="form-label">주소 </label>
-		    <input type="text" class="form-control" name="addr" id="addr" required>
-		    <div class="invalid-feedback">
-		      Please provide a valid city.
-		    </div>
-		  </div>
-		  <div class="col-md-3">
-		    <label for="validationCustom04" class="form-label">나머지 주소</label>
-			<input type="text" class="form-control" name="detailaddr" id="detailaddr" required>
-		    <div class="invalid-feedback">
-		      Please select a valid state.
-		    </div>
-		  </div>
-           <div class="col-md-3">
-		         <!--  <input type="text" name="post" id="post" size="7"  readonly class="form-select"> -->
-		         <label for="validationCustom04" class="form-label">우편번호</label>
-		           <input type="text" class="form-control" name="post" id="post" onclick= "DaumPostcode()" placeholder="주소찾기 click">
+		 <div class="textForm">		         
+		           <input type="text" class="form-control" name="post" id="post" onclick= "DaumPostcode()" placeholder="우편번호" readonly="readonly">
 		          <!-- <button class="btn btn-outline-secondary" type="button" value="주소찾기" onclick= "DaumPostcode()">주소찾기 </button> -->
 			      <!-- <input type="button" value="주소찾기" onclick= "DaumPostcode()"> -->   
 			      <!-- ----- DAUM 우편번호 API 시작 ----- -->
@@ -129,87 +83,100 @@
 			    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 			  </div> 
 		    <div class="invalid-feedback">
-		      Please provide a valid zip.
+		      우편번호를 입력해주세요.
+		    </div>		
+		 
+          <div>		    
+		    <input type="text" class="form-control" name="addr" id="addr" placeholder="주소" required readonly="readonly">
+		    <div class="valid-feedback">
+              
+            </div>
+		    <div class="invalid-feedback">
+		      
 		    </div>
 		  </div>
+		  <div >		   
+			<input type="text" class="form-control" name="detailaddr" id="detailaddr" placeholder="나머지 주소" autocomplete="off" required>
+		    <div class="valid-feedback">
+              
+            </div>
+		    <div class="invalid-feedback">
+		    	나머지 주소를 입력해주세요.
+		    </div>
+		  </div>          
+		
 		</div>
 	
-
-		<div class="mb-3">
-		  <label for="formFile" class="form-label">유저사진</label>
+		<div class="textForm">
+		  <label for="formFile" class="form-label">프로필 사진</label>
 		  	<div id="image_container userPic_container">
 				 <img src="img/defaultImg.jpg" alt="기본 이미지" id="uDefault_image" class="img-thumbnail"  style="width: 20%" />
 			</div>
 		  <input class="form-control" type="file" id="userphotofile" name="userphotofile" accept="image/*">
-		</div>
-
-          
-          <h4 class="mb-3">강아지정보</h4>
+ 		</div>
+ 		
+ 	 </div>
+ 	 	
+	  <div id="register-else">
+	    <hr id="bar">    
+	    <hr id="bar">
+	  </div>
+ 		
+ 		<h2 class="joinForm">강아지정보</h2>
           <input type="hidden" name="dogorder" value="1">
           
           	<!-- 강아지 이름, 나이 -->
           <div class="row">
-            <div class="col-md-4 mb-3">
-              <label for="name">강아지 이름</label>
-              <input type="text" name="dname" id="dname" class="form-control" required>
+            <div class="textForm">              
+              <input type="text" name="dname" id="dname" class="form-control" placeholder="강아지 이름" autocomplete="off" required>
+              <div class="valid-feedback"></div>
               <div class="invalid-feedback">
                 강아지 이름을 입력해주세요.
               </div>
             </div>
-            <div class="col-md-2 mb-3">
-              <label for="nickname">강아지 나이</label>
-              <input class="form-control" type="number" name="age" id="age" required>
+            <div class="textForm">
+              <input class="form-control" type="number" name="age" id="age" placeholder="강아지 나이" autocomplete="off" required>
               <div class="invalid-feedback">
                 강아지 나이를 입력해주세요.
               </div>
             </div>
           </div>
-
-          <div class="col-md-2 mb-3">
-           <label for="nickname">강아지 성별</label>
-		   <div class="form-check">
-		  <input class="form-check-input" type="radio"name="sex" value="m">
-		  <label class="form-check-label" for="flexRadioDefault1">
-		    남아
-		  </label>
-		</div>
-		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="sex" value="f" checked>
-		  <label class="form-check-label" for="flexRadioDefault2">
-		    여아
-		  </label>
-		</div>
-		</div>
-          
-          
-          <div class="col-md-2 mb-3">
-           <label for="nickname">중성화 여부</label>
-		   <div class="form-check">
-		  <input class="form-check-input" type="radio" name="neutral" value="o">
-		  <label class="form-check-label" for="flexRadioDefault1">
-		    O
-		  </label>
-		</div>
-		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="neutral" value="x" checked>
-		  <label class="form-check-label" for="flexRadioDefault2">
-		    X
-		  </label>
-		</div>
-		</div>
-          
-          
-
-        <div class="col-md-2 mb-3">
-        <label for="weight">강아지 무게</label>
-        <input class="form-control" type="number" name="weight" id="weight" placeholder="kg" required>
+		
+	<div class="row">
+		<div class="textForm">        
+        <input class="form-control" type="number" name="weight" id="weight" placeholder="강아지 무게 : kg" autocomplete="off" required>
         <div class="invalid-feedback">
-          강아지 나이를 입력해주세요.
+          강아지 무게를 입력해주세요.
         </div>
-      </div>
-
-          
-          <div class="col-md-4 mb-3">
+      </div>   	
+      
+      <div class="selectForm">
+      	<div class="nobox">
+			<div class="title">강아지 성별</div>
+			<div class="form-check">
+				<input type="radio" name="sex" value="m">
+				<label> 남아	</label>
+			</div>
+			<div class="form-check">
+				<input type="radio" name="sex" value="f">
+				<label> 여아	</label>
+			</div>
+			<div class="blank">
+			/
+			</div>
+			<div class="title"></div>
+			<div class="title">중성화 여부</div>
+			<div class="form-check">
+				<input type="radio" name="neutral"	value="o">
+				<label> O </label>
+			</div>
+			<div class="form-check">
+				<input type="radio" name="neutral"	value="x">
+				 <label> X </label>
+			</div>
+		</div>
+	  </div>          
+    <div class="selectForm">
 	<div class="input-group mb-3">
 	  <label class="input-group-text" for="inputGroupSelect01">강아지 사이즈</label>
 	  <select class="form-select" id="size" name="size">
@@ -217,10 +184,9 @@
 	    <option value="2">중형견</option>
 	    <option value="3">대형견</option>
 	  </select>
-	</div>	
-          </div>
-          
-      <div class="col-md-4 mb-3">
+	</div>
+	</div>
+	<div class="selectForm">          
 	<div class="input-group mb-3">
 	  <label class="input-group-text" for="inputGroupSelect01">강아지 종</label>
 	  <select class="form-select" id="dogcd" name="dogcd">
@@ -237,31 +203,32 @@
 	  </select>
 	</div>	
 	</div>
+</div>
 	
-		<div class="mb-3">
+		<div class="textForm">
 		  <label for="formFile" class="form-label">강아지 대표사진</label>
 		<div id="image_container mainPic_container">
-		 <img src="img/defaultImg.jpg" alt="기본 이미지" id="mDefault_image"  style="width: 20%" />
+		 <img src="/img/defaultImg.jpg" alt="기본 이미지" id="mDefault_image"  style="width: 20%" />
 		</div>
 		  <input class="form-control" type="file" id="mainphotofile" name="mainphotofile" accept="image/*">
 		</div>
 		
-		<div class="mb-3">
+		<div class="textForm">
 		  <label for="formFileMultiple" class="form-label">기타사진등록 (*3개까지 가능)</label>
 		  <input class="form-control" type="file" id="dPics" name="dPics" accept="image/*" multiple="multiple">
 		</div>
 		
-<div class="col-md-2 mb-3">
+		<div class="selectForm">
            <label for="nickname">이상형월드컵 참여여부</label>
 		   <div class="form-check">
-		  <input class="form-check-input" type="radio" name="gamereg" value="o" checked>
-		  <label class="form-check-label" for="flexRadioDefault1">
+		  <input type="radio" name="gamereg" value="o" checked>
+		  <label>
 		    예
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="gamereg" value="x">
-		  <label class="form-check-label" for="flexRadioDefault2">
+		  <input type="radio" name="gamereg" value="x">
+		  <label>
 		    아니요
 		  </label>
 		</div>
@@ -269,33 +236,26 @@
 		
 		
 		
-	<div class="col-md-4 mb-3">
-	<div class="input-group mb-3">
-	  <label class="input-group-text" for="inputGroupSelect01">이상형월드컵 목적</label>
-	  <select class="form-select" id="purpose" name="purpose">
-	    <option value="1">산책</option>
-	    <option value="2">데이트</option>
-	    <option value="3">둘다</option>
-	  </select>
-	</div>	
-          </div>
-		
-          
-          <hr class="mb-4">
+		<div class="selectForm">
+			<div class="input-group mb-3">
+			  <label class="input-group-text" for="inputGroupSelect01">이상형월드컵 목적</label>
+			  <select class="form-select" id="purpose" name="purpose">
+			    <option value="1">산책</option>
+			    <option value="2">데이트</option>
+			    <option value="3">둘다</option>
+			  </select>
+			</div>	
+        </div>
+        
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
-          <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+ 		<div class="button">
+          <button class="btn-regi" type="submit">계속</button>
+        </div>
         </form>
-      </div>
-    </div>
-
-</form>
-
-
-
+    
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script>
       // 우편번호 찾기 찾기 화면을 넣을 element
@@ -382,11 +342,89 @@
           }
       });
       
-
+	function nickCheck() {
+		var popWidth=400;
+		var popHeight=200;
+		var popX=Math.round(window.screenX+(window.outerWidth/2)-(popWidth/2));
+		var popY=Math.round(window.screenY+(window.outerHeight/2)-(popHeight/2));
+		
+		window.open("register/nickCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
+	}
+	
+	function remailCheck() {
+		var popWidth=400;
+		var popHeight=200;
+		var popX=Math.round(window.screenX+(window.outerWidth/2)-(popWidth/2));
+		var popY=Math.round(window.screenY+(window.outerHeight/2)-(popHeight/2));
+		
+		window.open("register/emailCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
+	}
+	
+	document.querySelector("#dname").addEventListener("input", function(){
+		let inputDname=this.value;
+		if(inputDname.trim().length==0){
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			return;
+		}
+		
+		const regEx=/^[A-Za-z가-힣0-9]{1,10}$/
+		
+		if(regEx.test(inputDname)){
+			this.classList.remove("is-invalid");
+			this.classList.add("is-valid");
+			checkObj.dnameValid=true;
+		}else{
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			checkObj.dnameValid=false;
+		}
+	});
+	
+	document.querySelector("#age").addEventListener("input", function(){
+		let inputAge=this.value;
+		if(inputAge.trim().length==0){
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			return;
+		}
+		
+		const regEx=/^[0-9]/
+		
+		if(regEx.test(inputAge)){
+			this.classList.remove("is-invalid");
+			this.classList.add("is-valid");
+			checkObj.dageValid=true;
+		}else{
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			checkObj.dageValid=false;
+		}
+	});
+	
+	document.querySelector("#weight").addEventListener("input", function(){
+		let inputWeight=this.value;
+		if(inputWeight.trim().length==0){
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			return;
+		}
+		
+		const regEx=/^[0-9]/
+		
+		if(regEx.test(inputWeight)){
+			this.classList.remove("is-invalid");
+			this.classList.add("is-valid");
+			checkObj.weightValid=true;
+		}else{
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			checkObj.weightValid=false;
+		}
+	});
   </script>
 
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
 </html>

@@ -20,7 +20,7 @@ p{
     text-align: center;
 }
 
-span{
+.close{
     margin: 15px;
 }
 
@@ -33,5 +33,4 @@ span{
 
 a{
   text-decoration: none; /* 밑줄 제거 */
-  color: inherit; 
 }

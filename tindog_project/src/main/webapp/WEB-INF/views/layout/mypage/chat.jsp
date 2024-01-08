@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <style>
@@ -57,6 +57,7 @@ body:before {
     content: "";
     clear: both;
 }
+
 
 .hidden {
     display: none;
@@ -323,10 +324,11 @@ button.accent {
 
 <div id="username-page">
     <div class="username-page-container">
+
+        <h1 class="title">버튼을 누르면 채팅이 시작됩니다.</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                <input type="hidden" id="name" placeholder="이름"
-                       autocomplete="off" class="form-control" />
+                 <input type="hidden" id="name" placeholder="이름" autocomplete="off" class="form-control"/> 
             </div>
             <div class="form-group">
                 <button type="submit" class="accent username-submit">채팅 시작</button>
@@ -334,6 +336,7 @@ button.accent {
         </form>
     </div>
 </div>
+ 
 
 <div id="chat-page" class="hidden">
     <div class="chat-container">

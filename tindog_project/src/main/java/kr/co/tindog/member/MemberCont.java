@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kr.co.tindog.oauth.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,39 +17,60 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.oauth2.client.userinfo.*;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 
 @RestController
 public class MemberCont {
 
 	@Autowired
 	MemberDAO memberDao;
-	
-	
+	PrincipalOauth2UserService PO;
+	User user;
 
-	
-	
-	@RequestMapping("/register")
+	@RequestMapping("register")
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/member/register");
+		mav.setViewName("layout/register");
 		return mav;
 	}
 	
+	@RequestMapping("register/dog")
+	public ModelAndView dogregister() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/dogregister");
+		return mav;
+	}
+	
+	@RequestMapping("register/nickCheck")
+	public ModelAndView nickCheck() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/nickCheckForm");
+		return mav;
+	}
+	
+	@RequestMapping("register/emailCheck")
+	public ModelAndView emailCheck() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/emailCheckForm");
+		return mav;
+	}
 	
 	@RequestMapping("/userInfo")
 	public ModelAndView userInfo(HttpSession session) {
 		 String email = (String) session.getAttribute("s_email");
 		 String nickname = (String) session.getAttribute("s_nickname");
-
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
 		mav.addObject("list", memberDao.userList(email));
 		System.out.println(memberDao.userList(email));
+		
+
 		return mav;	
 	}
 	
@@ -65,7 +87,7 @@ public class MemberCont {
 	}
 	
 	
-	@PostMapping("/userInsert")
+	@PostMapping("/register/userInsert")
 	public String insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
 			@ModelAttribute PicDTO picDto,
@@ -205,6 +227,17 @@ public class MemberCont {
 		
 	}//insert end
 	
+	@RequestMapping("/follow")
+	public ModelAndView follow(HttpSession session) {
+		String email = (String)session.getAttribute("s_email");
+		// System.out.println(email);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("layout/mypage/follow");
+		mav.addObject("list", memberDao.followList(email));
+		return mav;
+	}
+	
+
 	
 
 }//MemberController end

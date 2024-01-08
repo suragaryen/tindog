@@ -25,7 +25,9 @@
 		
 		function product_cart(){
 			
+
 				document.productfrm.action="/layout/wishlist";
+
 				document.productfrm.submit();
 			
 		}//product_cart() end
@@ -65,7 +67,7 @@
 		}
 		
 	</script>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <div class="container text-center">
@@ -107,8 +109,7 @@
 		  <input type="button" value="상품삭제"    onclick="product_delete()" class="btn btn-danger"> 
 		  <input type="button" value="찜 목록" onclick="product_cart()"   class="btn btn-light">
 		  <input type="button" value="찜 하기" onclick="product_wishlist()"   class="btn btn-info">
-		  <input type="button" value="채팅하기"  onclick="product_chatStart('${product.NICKNAME}', ${product.UPRODUCT_NO})" class="btn btn-dark">
-		 
+		  <input type="button" value="채팅하기"  onclick="product_chatStart('${product.NICKNAME}', ${product.UPRODUCT_NO})" class="btn btn-dark"> 
 		 
 		    </form>
 		  </div>

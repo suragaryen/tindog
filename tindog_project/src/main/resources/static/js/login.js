@@ -1,9 +1,8 @@
-
 function emailCheck() {
 	const email = document.querySelector('.email-login-body');
 	
 	if(!(email.contains('@') && email.contains('.'))) {
-		alert('이메일 형식이 맞지 않습니다.');
+		swal("이메일을 확인해주세요", "", "error");
 	}else {
 		const login_btn = document.getElementById('btn-login-body');
 		
@@ -15,7 +14,7 @@ function sendIt() {
     const email = document.querySelector('.email-login-body').value;
 
     if (email.indexOf('@') == -1 || email.indexOf('.') == -1) {
-        alert('이메일 형식이 맞지 않습니다.');
+        swal("이메일을 확인해주세요", "", "error");
     } else {
         const password_txt = document.querySelector('.password-login-body');
         password_txt.style.display = 'block';

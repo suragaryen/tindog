@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <div id="login">
@@ -13,21 +13,22 @@
    		 <hr>
   	</div>
   
-	<form id="myForm" name="myForm">
+	<form id="myForm" name="myForm" method="post" action="/loginResult">
   	<div id="login-body">
     	<h3>틴독에 오신 것을 환영합니다.</h3>
-    	<input type="text" id="email-login-body" placeholder="이메일">
-    	<br>
-    	<input type="button" id="btn-login-body" value="계속" onclick="sendIt()">
+    	<input type="text" name="email" id="email" class="email-login-body"  placeholder="이메일">
+    	<input type="password" id="password" name="password"  class="password-login-body" placeholder="비밀번호">    	
+    	<input type="button" class="btn-regi" id="checkBtn-login-body" value="계속" onclick="sendIt()">
+    	<input type="submit" class="btn-regi" id="loginBtn-login-body" value="로그인" onclick="location.href='loginResult'">
   	</div>
 	</form>
 	
 	<label><input type="checkbox" value="SAVE" name="c_id">ID저장</label>
-			    <br>
+			    <div id="regFindBtn">
 			    <a href="/register">회원가입</a>
 			    &nbsp;&nbsp;&nbsp;
 			    <a href="#">아이디/비밀번호찾기</a> 
-
+				</div>
   <div id="login-else">
     <hr id="bar">
     <span id="txt">또는</span>
@@ -48,7 +49,7 @@
   <!-- 네이버 로그인 버튼 노출 영역 -->
     <div id="login-naver">
     <a href="/oauth2/authorization/naver">
-		<img src="/img/naver.jpeg" width="40px" height="40px"  alt="네이버 로그인 버튼" />
+		<img src="/img/naver.png" width="40px" height="40px"  alt="네이버 로그인 버튼" />
 	</a>
     </div>
     <div id="login-naver-txt">

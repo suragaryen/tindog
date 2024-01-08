@@ -60,7 +60,6 @@ public class ChatRoomCont {
 			chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
 			chatRoomDto.setNickname_to(followNickname);
 			chatRoomDto.setTot_nickname(followNickname + (String)session.getAttribute("s_nickname"));
-			// System.out.println(chatRoomDto);
 			
 			int check = chatRoomDao.chatRoomCheck(chatRoomDto);
 			if(check==0) {
@@ -76,6 +75,7 @@ public class ChatRoomCont {
 		    return -1; // 예외가 발생한 경우 -1을 반환하거나 적절한 에러 코드를 반환하세요.
 		}
 	}
+
 	
 	@PostMapping("/chatList/delete/{droomno}")
 	@ResponseBody
@@ -99,4 +99,5 @@ public class ChatRoomCont {
 		
 		return cnt;
 	}
+
 }

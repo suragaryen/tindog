@@ -1,3 +1,194 @@
+		const checkObj={
+			"nameValid":false
+			,"nickValid":false			
+			,"emailValid":false
+			,"pwValid":false
+			,"pwCheckValid":false
+			,"detailaddr":false
+			,"userphotofile":false
+			,"dnameValid":false
+			,"dageValid":false
+			,"weightValid":false
+		}
+		
+		document.querySelector("#name").addEventListener("input", function(){
+			let inputName=this.value;
+			if(inputName.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[가-힣]{2,4}$/
+			
+			if(regEx.test(inputName)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.nameValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.nameValid=false;
+			}
+		});
+		
+		document.querySelector("#nickname").addEventListener("input", function(){
+			let inputNick=this.value;
+			if(inputNick.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[A-Za-z가-힣0-9]{2,10}$/
+			
+			if(regEx.test(inputNick)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.nickValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.nickValid=false;
+			}
+		});
+		
+		document.querySelector("#password").addEventListener("input", function(){
+			let inputPw=this.value;			
+			if(inputPw.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[A-Za-z0-9\!\@\#\-\_]{6,20}$/
+			
+			if(regEx.test(inputPw)){				
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.pwValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.pwValid=false;
+			}			
+		});
+		
+		document.querySelector("#repasswd").addEventListener("input", function(){
+			let inputPwCheck=this.value;
+			if(inputPwCheck.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");				
+			}
+						
+				if(inputPwCheck==password.value){
+					this.classList.remove("is-invalid");
+					this.classList.add("is-valid");
+					checkObj.pwCheckValid=true;
+				}else{
+					this.classList.remove("is-valid");
+					this.classList.add("is-invalid");
+					checkObj.pwCheckValid=false;
+				}
+			
+		});
+		
+		document.querySelector("#email").addEventListener("input", function(){
+			let inputEmail=this.value;
+			if(inputEmail.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/
+			
+			if(regEx.test(inputEmail)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.emailValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.emailValid=false;
+			}
+		});	
+		
+		document.querySelector("#detailaddr").addEventListener("input", function(){
+			let inputDetailaddr=this.value;
+			detailaddr=inputDetailaddr.length>0;
+			if(detailaddr){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");				
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+			}
+		})
+
+		document.querySelector("#dname").addEventListener("input", function(){
+			let inputDname=this.value;
+			if(inputDname.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[A-Za-z가-힣0-9]{1,10}$/
+			
+			if(regEx.test(inputDname)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.dnameValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.dnameValid=false;
+			}
+		});
+		
+		document.querySelector("#age").addEventListener("input", function(){
+			let inputAge=this.value;
+			if(inputAge.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[0-9]$/
+			
+			if(regEx.test(inputAge)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.dageValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.dageValid=false;
+			}
+		});
+		
+		document.querySelector("#weight").addEventListener("input", function(){
+			let inputWeight=this.value;
+			if(inputWeight.trim().length==0){
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				return;
+			}
+			
+			const regEx=/^[0-9]/
+			
+			if(regEx.test(inputWeight)){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+				checkObj.weightValid=true;
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+				checkObj.weightValid=false;
+			}
+		});
+	
 		//유저사진 미리보기 
 		const representativeImageInput = document.getElementById('userphotofile');
 		const representativeImageContainer = document.getElementById('userPic_container');
@@ -57,6 +248,8 @@
 		 // 현재 날짜로 값을 설정하는 코드
 		document.getElementById('birth').value = getCurrentDate();
 
+
+	
 	
 	/*
 	let tableCounter = 1; // 테이블 고유 ID를 위한 카운터

@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<body>
+<body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
@@ -57,7 +57,7 @@
 				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="productchatRoomDelete(${item.PROOMNO})"></td>
 				    <td style="text-align: center;"><input type="button" value="신고하기"></td>
 				    <td style="text-align: center;"><input type="button" value="차단하기" onclick=""></td>				    	
-						    	
+
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
 				</c:forEach>
@@ -65,7 +65,6 @@
 		</form>
 	</div>
 </div>
-	
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script>
 		function chatRoomDelete(droomno) {
