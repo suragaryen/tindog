@@ -22,9 +22,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.tindog.product.ProductDAO;
 
-
 @Controller
-
 public class ProductCont {
        
 	
@@ -99,7 +97,7 @@ public class ProductCont {
 
 		
 		
-		return "redirect:/list"; 
+		return "redirect:/product/list"; 
 	}//insert() end
 	
 	
@@ -110,7 +108,7 @@ public class ProductCont {
 		mav.addObject("list", productDao.search(SUBJECT));
 		mav.addObject("SUBJECT", SUBJECT);
 		return mav;
-	}
+	}//search() end
 	
 	@GetMapping("/detail/{UPRODUCT_NO}")
 	public ModelAndView detail(@PathVariable int UPRODUCT_NO) {
@@ -118,7 +116,95 @@ public class ProductCont {
 		mav.setViewName("layout/product/detail");
 		mav.addObject("product", productDao.detail(UPRODUCT_NO));
 		return mav;
-	}
+	}//detail() end
+	
+	@PostMapping("/delete")
+	public String delete(HttpServletRequest req) {
+		int UPRODUCT_NO = Integer.parseInt(req.getParameter("UPRODUCT_NO")); 
+		
+		//삭제하고자 하는 파일명 가져오기
+		   String MAINPHOTO=productDao.MAINPHOTO(UPRODUCT_NO);
+		   String PHOTO=productDao.PHOTO(UPRODUCT_NO);
+		   
+		   //첨부된 파일 삭제하기
+		   if(MAINPHOTO != null && !MAINPHOTO.equals("-")) {
+			ServletContext application = req.getSession().getServletContext();
+			String path = application.getRealPath("/storage");
+			File file1 = new File(path + "\\" + MAINPHOTO);
+			if(file1.exists()) {
+				file1.delete();
+				
+			}//if end
+		  }//if end 
+		 
+		   if(PHOTO != null && !PHOTO.equals("-")) {
+				ServletContext application = req.getSession().getServletContext();
+				String path = application.getRealPath("/storage");
+				File file2 = new File(path + "\\" + PHOTO);
+				if(file2.exists()) {
+					file2.delete();
+					
+				}//if end
+			  }//if end 
+	
+		   
+		productDao.delete(UPRODUCT_NO);   
+			  
+		return "redirect:/product/list"; 
+			 
+	}//delete() end
+	
+	
+	 @PostMapping("/update")
+	   public String update(@RequestParam Map<String, Object> map,
+	             @RequestParam MultipartFile img1, 
+	                           MultipartFile img2,
+	                           
+	             HttpServletRequest req) {
+		   
+		   String MAINPHOTO = "-";
+		   String PHOTO = "-";
+			
+			if(img1 != null && !img1.isEmpty()) { //파일이 존재한다면
+				MAINPHOTO=img1.getOriginalFilename();
+				try {
+					ServletContext application = req.getSession().getServletContext();
+					String path = application.getRealPath("/storage"); //실제경로
+					img1.transferTo(new File(path + "\\" + MAINPHOTO));  //파일저장
+				}catch(Exception e) {
+					System.out.println(e);
+				}//try end
+			}else{ //첨부된 파일이 없다면
+			    int UPRODUCT_NO=Integer.parseInt(map.get("UPRODUCT_NO").toString());
+				Map<String, Object> oldProduct=productDao.detail(UPRODUCT_NO);
+				MAINPHOTO=oldProduct.get("MAINPHOTO").toString();
+				
+			}//if end 
+			
+			if(img2 != null && !img2.isEmpty()) { //파일이 존재한다면
+				PHOTO=img2.getOriginalFilename();
+				try {
+					ServletContext application = req.getSession().getServletContext();
+					String path = application.getRealPath("/storage"); //실제경로
+					img2.transferTo(new File(path + "\\" + PHOTO));  //파일저장
+				}catch(Exception e) {
+					System.out.println(e);
+				}//try end
+			}else{ //첨부된 파일이 없다면
+			    int UPRODUCT_NO=Integer.parseInt(map.get("UPRODUCT_NO").toString());
+				Map<String, Object> oldProduct=productDao.detail(UPRODUCT_NO);
+				PHOTO=oldProduct.get("PHOTO").toString();
+				
+			}//if end 
+			
+			map.put("MAINPHOTO", MAINPHOTO);
+			map.put("PHOTO", PHOTO); 
+			productDao.update(map); 
+			return "redirect:/product/list"; 
+		   
+		   
+	   }//update() end
+	
 	
 	
 	
