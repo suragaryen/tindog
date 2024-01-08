@@ -16,9 +16,9 @@
 
 
 if (confirm("팔로우 완료 되었습니다. 친구 목록으로 이동하시겠습니까?")) {
-	window.location.href = '/userInfo';
+	window.location.href = '/follow';
 } else {
-	window.location.href = '/worldcup';
+	window.location.href = 'worldcup';
 }
 
 
