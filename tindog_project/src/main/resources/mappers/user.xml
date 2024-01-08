@@ -26,7 +26,7 @@
  	</select>
  	
 	 <select id="userList" parameterType="String" resultType="kr.co.tindog.member.UserDTO">
-			SELECT email, name, nickname, birth, sex, post, addr, detailaddr, userphoto
+			SELECT email, name, nickname, birth, sex, post, addr, detailaddr, userphoto, gumqty
 			FROM member 
 			WHERE email=#{email}
  	</select>

@@ -195,14 +195,10 @@
                 }else if (winner.length ===0 && currentRound === 2) {
                     // 16강 라운드가 끝났으면
                     winner.push(clickedImageSrc);
-                    //console.log(winner);
-                    //alert('우승자!!');
+
                     round8Img.src = "/img/Winner.png"
                     
-                   //document.querySelector("#Left-img").src = winner[0];
-                   //document.querySelector("#right-img").src = winner[0];
-                    
-                   //console.log(winner[0].substring(5));
+
                    
                    var winnerImgName = winner[0].substring(5);
                    

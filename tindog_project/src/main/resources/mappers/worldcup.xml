@@ -16,7 +16,7 @@
  	
 
  	<select id="worldcupOptionList" parameterType="kr.co.tindog.worldcup.DogDTO" resultType="java.util.Map">
- 		SELECT mainphoto
+ 		SELECT mainphoto, email
  		FROM dogs
  		WHERE gamereg = 'o' AND email != #{email} AND age=#{age} AND purpose=#{purpose} AND size=#{size} AND sex=#{sex} AND neutral=#{neutral}
  		ORDER BY rand() limit 16

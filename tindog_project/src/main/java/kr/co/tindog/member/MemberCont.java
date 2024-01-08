@@ -65,8 +65,6 @@ public class MemberCont {
 		 String email = (String) session.getAttribute("s_email");
 		 String nickname = (String) session.getAttribute("s_nickname");
 		
-
-		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
 		mav.addObject("list", memberDao.userList(email));
@@ -239,6 +237,7 @@ public class MemberCont {
 		return mav;
 	}
 	
+
 	
 
 }//MemberController end

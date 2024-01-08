@@ -9,7 +9,7 @@
         <div class="mypage_account">
             <a href="/userInfo"><p>내 정보</p></a>
             <a href="/dogInfo"><p>강아지 정보</p></a>
-            <span>계정관리</span><br>
+            <a href="/dogGumPay"><span>개껌페이</span></a><br>
             <a href="/follow"><span>팔로우관리</span></a><br>
             <a href="/chatList"><span>채팅관리</span></a><br>
             <span>차단사용자관리</span><br>
