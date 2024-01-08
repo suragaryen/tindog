@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<body>
+<body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
@@ -26,9 +26,10 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 					<td style="text-align: left" colspan="2">
-				    	${item.DNAME}
+				    	${item.EMAIL}
 				    </td>
-				    <td style="text-align: center;"><input type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
+				    <input type="hidden" name="followNickname" id="followNickname" value="${item.NICKNAME}">
+				    <td style="text-align: center;"><input type="button" value="팔로우취소"></td>
 				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="startChat()"></td>
 				</tr>
 				</c:forEach>
@@ -47,7 +48,7 @@
 			// let insertData = $("#followfrm").serialize();
 			// alert(insertData);
 			// insertChatRoom(followNickname);
-			alert(followNickname);
+			
 			$.ajax({
 				url     : '/chatList/insert' // 요청 명령어
 			  , type    : 'post'
@@ -56,11 +57,19 @@
 				  // alert(result);
 				  console.log(result);
 				  if(result==1) {
-					  alert("채팅방이 개설되었습니다");
+					  Swal.fire({
+							title:"채팅방 개설 성공",
+							text:"상대방 : "+followNickname,
+							confirmButtonText:"확인"
+					});					  
 				  } else if(result==-1) {
-					  alert("채팅방이 개설되지 않았습니다");
+					 
 				  } else if(result==0) {
-					  alert("이미 개설된 채팅방이 있습니다");
+					   Swal.fire({
+							title:"채팅방 개설 실패",
+							text:"이미 개설된 채팅방이 있습니다",
+							confirmButtonText:"확인"
+					});					  
 				  }
 			  }
 			  , error : function(error) {
@@ -70,25 +79,7 @@
 			  } 
 			});
 		}
-	</script>
-	<script>
-	function followCancel(email) {
-		alert(email);
-		$.ajax({
-			url     : '/follow/delete/' + email // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
-		  , type    : 'post'
-		  , data    : {'email':email}
-		  , success : function(result) {
-					  	  if(result==1) {
-					  		  alert("팔로우 취소되었습니다");
-					  		  document.followfrm.action="/follow";
-							  document.followfrm.submit();
-					  }else {
-						  alert("팔로우 취소를 실패했습니다");
-					  }
-			}
-		});
-	}
+		
 	</script>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>

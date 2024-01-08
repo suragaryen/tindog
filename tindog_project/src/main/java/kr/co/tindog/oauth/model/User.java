@@ -32,8 +32,8 @@ public class User {
 	private String providerID;	//토큰 sub값
 	
 	@Builder
-	public User(String username, String password, String email, String role, String provider, String providerID,
-			Timestamp createDate) {
+	public User(String username, String password, String email, String role, String provider, String providerID
+			) {
 		this.username = username;
 		this.password = password;
 		this.email = email;

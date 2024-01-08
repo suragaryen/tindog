@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
+
 <%
     if (session != null && session.getAttribute("s_email") != null) {
         // 세션이 올라와있으면 header-login.jsp include
@@ -11,16 +12,15 @@
 %>    
     <script>
         // 세션 값이 없을 때 JavaScript로 alert 창 띄우기
-        swal({
+            Swal.fire({
         	title:"로그인 후 이용해주세요",
-        	icon:"warning",
-        	confirmButtonText:"확인",
-        	closeOnClickOutside:false,
-        	closeOnEsc:false,        	        	
+        	text:"",
+        	icon:"warning",        	
+        	confirmButtonText: "확인"  	        	
         })
         .then(function() {
         	window.location.href = "/login"; // 다른 페이지로 이동
-		});                
+		});                 
     </script>
         
 <% 
