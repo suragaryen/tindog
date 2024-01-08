@@ -48,6 +48,7 @@
 	    <script src="/js/login.js"></script>
 	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
+	   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	    
 	    <!-- Template CSS -->
 	    <link href="/css/footer.css" rel="stylesheet">
