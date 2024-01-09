@@ -5,8 +5,20 @@
 <mapper namespace="dbti">
 
 	<insert id="dbtiInsert" parameterType="kr.co.tindog.dbti.DbtiDTO">
-		INSERT INTO dogs(email, oneanswer, twoanswer, threeanswer, fouranswer, fiveanswer, sixanswer, sevenanswer, eightanswer, nineanswer, tenanswer, elevenanswer, twelveanswer)
-		VALUES(#{email}, #{oneanswer}, #{twoanswer}, #{threeanswer}, #{fouranswer}, #{fiveanswer}, #{sixanswer}, #{sevenanswer}, #{eightanswer}, #{nineanswer}, #{tenanswer}, #{elevenanswer}, #{twelveanswer})
+		INSERT INTO dbti(email, dbti)
+		VALUES(#{email}, #{dbti})
 	</insert>
+	
+	<select id="dbtiList" parameterType="String" resultType="kr.co.tindog.dbti.DbtiDTO">
+		SELECT email, dbti
+		FROM dbti 
+		WHERE email=#{email}
+ 	</select>
+ 	
+ 	<update id="dbtiUpdate" parameterType="kr.co.tindog.dbti.DbtiDTO">
+ 		UPDATE dbti
+ 		SET dbti=#{dbti}
+ 		WHERE email=#{email}
+ 	</update>
 
 </mapper>

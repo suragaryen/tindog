@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="text-align: center">	
-    <form method="post" action="" onclick="nickformcheck()">
+    <form method="post" action="/register/nickDupCheck" onclick="nickformcheck()">
     <div class="textForm">              
               <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" autocomplete="off" required>              
               <div class="valid-feedback">
@@ -18,9 +18,9 @@
                 2글자 이상 10글자 이하로 작성해주세요. <br>특수문자, 공백은 불가능합니다
               </div>
     </div>   
-    <input type="button" class="btn-regi" value="중복확인">
+    <button type="submit" class="btn-regi">중복확인</button>
     </form>
-    </div>
+ </div>
     
     <script>
     function nickformcheck() {

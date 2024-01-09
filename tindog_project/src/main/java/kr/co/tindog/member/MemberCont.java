@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import kr.co.tindog.oauth.model.*;
+import kr.co.tindog.worldcup.WorldcupDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -54,6 +56,57 @@ public class MemberCont {
 		return mav;
 	}
 	
+	@RequestMapping("register/nickDupCheck")
+	@ResponseBody
+	public Map<String, Object> nickDupCheck(@RequestParam String nickname) {
+		 Map<String, Object> response = new HashMap<>();
+		System.out.println(nickname);
+		//mav.setViewName("layout/nickCheckForm");
+		
+		String dupCheck = memberDao.nickDupCheck(nickname);
+		System.out.println(dupCheck);
+		//String msg = "";
+		
+		if(dupCheck == null || dupCheck.isEmpty()) {
+	
+			response.put("result", 1);
+		}else {
+	
+			response.put("result", 0);
+
+		}
+		
+		 response.put("nickname", nickname); // Include nickname in the response
+		return response;
+		
+	}//nickDupCheck end 
+	
+	
+	@RequestMapping("register/emailDupCheck")
+	@ResponseBody
+	public Map<String, Object> emailDupCheck(@RequestParam String email) {
+		 Map<String, Object> response = new HashMap<>();
+		System.out.println(email);
+		//mav.setViewName("layout/nickCheckForm");
+		
+		String dupCheck = memberDao.emailDupCheck(email);
+		System.out.println(dupCheck);
+		//String msg = "";
+		
+		if(dupCheck == null || dupCheck.isEmpty()) {
+	
+			response.put("result", 1);
+		}else {
+	
+			response.put("result", 0);
+
+		}
+		
+		 response.put("email", email); // Include nickname in the response
+		return response;
+		
+	}//nickDupCheck end 
+	
 	@RequestMapping("register/emailCheck")
 	public ModelAndView emailCheck() {
 		ModelAndView mav=new ModelAndView();
@@ -64,8 +117,7 @@ public class MemberCont {
 	@RequestMapping("/userInfo")
 	public ModelAndView userInfo(HttpSession session) {
 		 String email = (String) session.getAttribute("s_email");
-		 String nickname = (String) session.getAttribute("s_nickname");
-		
+		 //String nickname = (String) session.getAttribute("s_nickname");
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/userInfo");
 		mav.addObject("list", memberDao.userList(email));
@@ -89,13 +141,15 @@ public class MemberCont {
 	
 	
 	@PostMapping("/register/userInsert")
-	public String insert(@ModelAttribute DogDTO dogDto,
+	public ModelAndView insert(@ModelAttribute DogDTO dogDto,
 			@ModelAttribute UserDTO userDto,
 			@ModelAttribute PicDTO picDto,
             @RequestParam MultipartFile mainphotofile,
             @RequestParam MultipartFile userphotofile,
             MultipartHttpServletRequest mtfRequest,//사진 한꺼번에 여러개 받기 
             HttpServletRequest req) {
+		
+		ModelAndView mav=new ModelAndView();
 		
     	String mainphotofilename = "-";
     	long mainphotofilesize = 0;
@@ -220,11 +274,9 @@ public class MemberCont {
         	        System.out.println("Field Name: " + entry.getKey() + ", File Path: " + entry.getValue());
         	        // 파일 경로 출력 또는 다른 작업 수행
         	    }
-
         	    memberDao.dogPicsInsert(picDto);
-        	
-		
-		 return "redirect:/home";
+        	    mav.setViewName("layout/home");
+		 return mav;
 		
 	}//insert end
 	

@@ -5,8 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<body>
-	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
+<body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
 <div class="cont">
@@ -75,11 +74,21 @@
 				  // alert(result);
 				  console.log(result);
 				  if(result==1) {
-					  alert("채팅방이 개설되었습니다");
+					  Swal.fire({
+							title:"채팅방 개설 성공",
+							text:"상대방 : "+followNickname,
+							icon:"success",
+							confirmButtonText:"확인"
+					});					  
 				  } else if(result==-1) {
-					  alert("채팅방이 개설되지 않았습니다");
+					 
 				  } else if(result==0) {
-					  alert("이미 개설된 채팅방이 있습니다");
+					   Swal.fire({
+							title:"채팅방 개설 실패",
+							text:"이미 개설된 채팅방이 있습니다",
+							icon:"error",
+							confirmButtonText:"확인"
+					});					  
 				  }
 			  }
 			  , error : function(error) {
