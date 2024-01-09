@@ -6,7 +6,9 @@
 <!DOCTYPE html>
 <html>
 <body class="wrapper">
+	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
+
 <div class="cont">
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;">채팅목록</div>

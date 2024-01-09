@@ -22,7 +22,7 @@ table, tbody, tr, td{
 			<div style="border-bottom: solid 2px darkgrey;">개껌페이</div>
 		</div>
 		
-	<div id="pay-table">
+	<div>
 		<table class="table table-borderless">
 		  <tbody>
 		    <tr>

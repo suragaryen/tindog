@@ -95,7 +95,7 @@ public class WorldcupController {
 		    System.out.println("중복체크" + dupCheck);
 		    
 		    if(dupCheck == null || dupCheck.isEmpty()) {
-		    	System.out.println("중복아님 / 팔로우 추가 실패");
+		    	System.out.println("중복아님 / 팔로우 추가 성공");
 		    	worldcupDAO.FollowInsert(emails);
 		    	mav.setViewName("layout/worldcup/worldcup_followSuccess");
 		    	return mav;
@@ -125,6 +125,20 @@ public class WorldcupController {
 			
 			mav.addObject("OptionList", OptionList);
 		
+			
+			return mav;
+		}
+		
+		@RequestMapping("/idelResult")
+		public ModelAndView idelResult(HttpSession session) {
+			ModelAndView mav = new ModelAndView();
+			
+			String email=(String) session.getAttribute("s_email");
+			
+			mav.addObject("list", worldcupDAO.worldcupWinner(email));
+			mav.setViewName("/layout/mypage/idelResult");
+			
+			System.out.println(worldcupDAO.worldcupWinner(email));
 			
 			return mav;
 		}

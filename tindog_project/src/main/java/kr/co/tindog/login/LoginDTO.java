@@ -6,7 +6,6 @@ public class LoginDTO {
 	private String name;
 	private String nickname;
 	private String password;
-	private int gumqty;
 //	private String birth;
 //	private String sex;
 //	private String phone;
@@ -16,7 +15,7 @@ public class LoginDTO {
 //	private String detailaddr;
 //	private String signdate;
 	private String memgrade;
-	public String getEmail() {
+public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
@@ -40,26 +39,18 @@ public class LoginDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getGumqty() {
-		return gumqty;
-	}
-	public void setGumqty(int gumqty) {
-		this.gumqty = gumqty;
-	}
 	public String getMemgrade() {
 		return memgrade;
 	}
 	public void setMemgrade(String memgrade) {
 		this.memgrade = memgrade;
 	}
-	
+	//	private String datearea;
+//	private String location;	
 	@Override
 	public String toString() {
 		return "LoginDTO [email=" + email + ", name=" + name + ", nickname=" + nickname + ", password=" + password
-				+ ", gumqty=" + gumqty + ", memgrade=" + memgrade + "]";
+				+ ", memgrade=" + memgrade + "]";
 	}
- 
-	
-	
 	
 }

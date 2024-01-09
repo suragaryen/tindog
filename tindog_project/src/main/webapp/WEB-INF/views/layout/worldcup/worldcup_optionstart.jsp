@@ -143,8 +143,6 @@
                     
                 }else if(round4.length === 4 && currentRoundIndex === 4){
                 	
-                    alert('8강이 끝났습니다!');
-                    alert('4강 Start!!!');
                    console.log(round4);
                     round8Img.src = "/img/img-round4.png"
                     
@@ -173,9 +171,7 @@
                     }
                     
                 }else if(round2.length === 2 && currentRoundIndex === 2){
-                	
-                    alert('4강이 끝났습니다!');
-                    alert('결승 Start!!!');
+                	                  
                    console.log(round4);
                     round8Img.src = "/img/img-round_final.png"
                     

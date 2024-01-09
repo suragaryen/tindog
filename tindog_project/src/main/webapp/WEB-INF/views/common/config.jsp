@@ -43,11 +43,9 @@
 	    <script src="/js/main.js"></script>
 	    <script src="/js/dogInfoModal.js"></script>
 	    <script src="/js/modal.js"></script>
-	    <script src="/js/resultModal.js"></script>
+	    <script src="/js/resultModal.js"></script>	    
 	    <script src="/js/register.js"></script>
 	    <script src="/js/login.js"></script>
-	    <script src="/js/pay.js"></script>
-	     <script src="/js/payModal.js"></script>
 	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
 	   <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -58,18 +56,18 @@
 	    <link href="/css/footer.css" rel="stylesheet">
 	    <link href="/css/mypage.css" rel="stylesheet">
 	    <link href="/css/modal.css" rel="stylesheet">
+	    <link href="/css/resultModal.css" rel="stylesheet">
+	    <link href="/css/dbtiModal.css" rel="stylesheet">
 	    <link href="/css/register.css" rel="stylesheet">
 	    <link href="/css/login.css" rel="stylesheet">
 	    <link href="/css/worldcupselect.css" rel="stylesheet">
 	     <!-- <link href="/css/chat.css" rel="stylesheet"> -->
 	    	 
-	    
 	    <link href="/css/worldcup.css" rel="stylesheet">
 	     <link href="/css/userInfo.css" rel="stylesheet">
 	     <link href="/css/dogInfo.css" rel="stylesheet">
+	     <link href="/css/dogInfoModal.css" rel="stylesheet">
 	     <link href="/css/worldcup_start.css" rel="stylesheet">	
-	     <link href="/css/payModal.css" rel="stylesheet">
-	     		
 	     
 	    
 	    <!--Google font -->

@@ -60,6 +60,7 @@
 					  Swal.fire({
 							title:"채팅방 개설 성공",
 							text:"상대방 : "+followNickname,
+							icon:"success",
 							confirmButtonText:"확인"
 					});					  
 				  } else if(result==-1) {
@@ -68,6 +69,7 @@
 					   Swal.fire({
 							title:"채팅방 개설 실패",
 							text:"이미 개설된 채팅방이 있습니다",
+							icon:"error",
 							confirmButtonText:"확인"
 					});					  
 				  }
@@ -84,4 +86,3 @@
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
 </html>
-
