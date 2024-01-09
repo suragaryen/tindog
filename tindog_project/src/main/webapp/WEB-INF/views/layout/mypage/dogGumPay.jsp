@@ -104,7 +104,7 @@ IMP.request_pay({
 }, function(rsp) {
     if ( rsp.success ) {
     	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-    	alert("결제성공");
+    	Swal.fire("결제 성공", "", "success");
     	$.ajax({
     		
     		url: "/confirmPay/" + rsp.imp_uid, //cross-domain error가 발생하지 않도록 주의해주세요
@@ -117,7 +117,7 @@ IMP.request_pay({
                     //결제실패(웹서버측 실패)
                     console.log(data);
                 }else{
-                    //alert('실패')
+                	Swal.fire("결제 실패", "", "error");
                 }
                },
                //javascript error
@@ -135,17 +135,27 @@ IMP.request_pay({
     			msg += '\결제 금액 : ' + rsp.paid_amount;
     			msg += '카드 승인번호 : ' + rsp.apply_num;
     			
-    			alert(msg);
+    			Swal.fire({
+    	        	title:"결제 완료", 
+    	        	text:"결제 금액 : "+rsp.paid_amount,
+    	        	icon:"success",
+    	        	confirmButtonText:"확인"	
+    	        });    			
     		} else {
     			//[3] 아직 제대로 결제가 되지 않았습니다.
     			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
     		}
     	});
     } else {
-        var msg = '결제에 실패하였습니다.';
+        var msg = '결제에 실패하였습니다. ';
         msg += '에러내용 : ' + rsp.error_msg;
         
-        alert(msg);
+        Swal.fire({
+        	title:"결제 실패", 
+        	text:"에러 내용 : "+rsp.error_msg,
+        	icon:"error",
+        	confirmButtonText:"확인"	
+        });
     }
 });
 

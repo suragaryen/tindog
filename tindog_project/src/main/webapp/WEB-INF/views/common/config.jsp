@@ -50,9 +50,11 @@
 	     <script src="/js/payModal.js"></script>
 	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
-	   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	   <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+	   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	    
 	    <!-- Template CSS -->
+	    <link href="/css/home.css" rel="stylesheet">
 	    <link href="/css/footer.css" rel="stylesheet">
 	    <link href="/css/mypage.css" rel="stylesheet">
 	    <link href="/css/modal.css" rel="stylesheet">
