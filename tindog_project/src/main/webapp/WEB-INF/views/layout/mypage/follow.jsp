@@ -6,9 +6,7 @@
 <!DOCTYPE html>
 <html>
 <body class="wrapper">
-	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
-
 <div class="cont">
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;">팔로우</div>
@@ -58,7 +56,7 @@
 				  console.log(result);
 				  if(result==1) {
 					  alert("채팅방이 개설되었습니다");
-				  } else if(result==-1) {
+				  } else if(result==1) {
 					  alert("채팅방이 개설되지 않았습니다");
 				  } else if(result==0) {
 					  alert("이미 개설된 채팅방이 있습니다");

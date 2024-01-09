@@ -1,54 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style>
-table, tbody, tr, td{
-	border: 2px solid #fff; 
-	color : black;
-
-}
-
-
-</style>
-<!DOCTYPE html>
-<html>
-<body>
-<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
-<div class="cont">
-		<div class="dogInfoText">
-			<div style="border-bottom: solid 2px darkgrey;">개껌페이</div>
-		</div>
-		
-	<div id="pay-table">
-		<table class="table table-borderless">
-		  <tbody>
-		    <tr>
-		      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 1개</th>
-		      <td>1000원</td>
-		      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('1', '1','${email}')">결제</button></td>
-		    </tr>
-		    <tr>
-		      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 11개</th>
-		      <td>10000원</td>
-		      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('11', '1','${email}')">결제</button></td>
-		    </tr>
-		    <tr>
-		      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 35개</th>
-		      <td>30000원</td>
-		      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('35', '1','${email}')">결제</button></td>
-		    </tr>
-		  </tbody>
-		</table>
-	</div>
-		
-</div>
-<!-- iamport.payment.js -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script>
 
 
 function generateOrderNumber() {
@@ -78,7 +27,7 @@ const orderNumber = generateOrderNumber();
 
 
 
-<!--아임포트-->
+//아임포트
 var IMP = window.IMP;
 IMP.init('imp04014474') // 예: 'imp00000000a'
 
@@ -108,16 +57,17 @@ IMP.request_pay({
     	$.ajax({
     		
     		url: "/confirmPay/" + rsp.imp_uid, //cross-domain error가 발생하지 않도록 주의해주세요
-    		type: 'POST',
+    	    type: 'post',
     		//dataType: 'json',
     		data: params, 
     		success: data => {
     			console.log(data);
-                if(data.result === "SUCCESS"){
+                if(data == 1){
                     //결제실패(웹서버측 실패)
                     console.log(data);
+                    alert('성공');
                 }else{
-                    //alert('실패')
+                    alert('실패');
                 }
                },
                //javascript error
@@ -128,7 +78,7 @@ IMP.request_pay({
     }
     	}).done(function(data) {
     		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-    		if ( everythings_fine ) {
+    		if ( data == 1) {
     			var msg = '결제가 완료되었습니다.';
     			msg += '\n고유ID : ' + rsp.imp_uid;
     			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
@@ -151,11 +101,3 @@ IMP.request_pay({
 
 }//function end
 
-
-</script>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-</body>
-</html>
-    
-    
