@@ -1,0 +1,36 @@
+.mypage{
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+    width: 300px;
+    min-height: 100%;
+    line-height: 2.1;
+    background: rgb(39, 50, 56);
+    color: white;
+    position:relative ;
+}
+
+p{
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nickname{
+    text-align: center;
+}
+
+.close{
+    margin: 15px;
+}
+
+.cont{
+	display: flex;
+	position: absolute;
+	left: 300px;
+	top: 75px;
+}
+
+a{
+  text-decoration: none; /* 밑줄 제거 */
+}
