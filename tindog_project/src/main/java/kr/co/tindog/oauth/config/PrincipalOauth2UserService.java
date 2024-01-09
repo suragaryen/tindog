@@ -114,4 +114,3 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 	}
 	
 }
-

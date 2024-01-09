@@ -30,7 +30,7 @@ import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 public class MemberCont {
 
 	@Autowired
-	MemberDAO memberDao;
+	MemberDAO memberDao;	
 	PrincipalOauth2UserService PO;
 	User user;
 
@@ -38,6 +38,7 @@ public class MemberCont {
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/register");
+		mav.addObject("list", memberDao.dogType());
 		return mav;
 	}
 	

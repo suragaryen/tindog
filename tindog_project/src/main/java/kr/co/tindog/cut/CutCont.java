@@ -24,6 +24,7 @@ public class CutCont {
 		
 		mav.setViewName("layout/mypage/cut");
 		mav.addObject("list", cutDao.cutList(s_email));
+		mav.addObject("list2", cutDao.cutPList(s_email));
 		//mav.addObject("list2", productChatRoomDao.chatList(nickname));
 		return mav;
 	}

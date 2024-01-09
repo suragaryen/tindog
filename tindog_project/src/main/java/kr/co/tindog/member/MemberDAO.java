@@ -13,7 +13,9 @@ public class MemberDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-
+	public List<Map<String, Object>> dogType() {
+		return sqlSession.selectList("user.dogType");
+	}
 	
 	public int dogInsert(DogDTO dto) {
 		return sqlSession.insert("user.insertDog", dto);

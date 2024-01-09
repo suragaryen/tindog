@@ -20,4 +20,8 @@ public class ChatDAO {
 	public int chatInsert(ChatDTO chatDto) {
 		return sqlSession.insert("chat.chatLogInsert", chatDto);
 	}
+	
+	public String findDogName(String s_email) {
+		return sqlSession.selectOne("chat.findDogName2", s_email);
+	}
 }

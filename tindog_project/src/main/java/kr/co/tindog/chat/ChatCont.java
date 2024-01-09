@@ -38,7 +38,10 @@ public class ChatCont {
     @GetMapping("/chat/{droomno}")
 	public ModelAndView chat(HttpSession session, @PathVariable int droomno) {
 		ModelAndView mav = new ModelAndView();
+		String dname = chatDao.findDogName((String)session.getAttribute("s_email"));
+		session.setAttribute("s_dname", dname);
 		session.setAttribute("s_droomno", droomno);
+		
 		mav.setViewName("layout/mypage/chat");
 		mav.addObject("list", chatDao.chatLogs(droomno));
 		System.out.println(chatDao.chatLogs(droomno));
