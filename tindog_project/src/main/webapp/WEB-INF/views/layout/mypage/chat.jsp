@@ -7,8 +7,6 @@
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <body class="wrapper">
-<jsp:include page="/WEB-INF/views/common/sessionHeaderAlert.jsp"></jsp:include>
-
 <style>
 
 * {
