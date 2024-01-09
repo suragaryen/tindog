@@ -6,6 +6,7 @@ public class LoginDTO {
 	private String name;
 	private String nickname;
 	private String password;
+	private int gumqty;
 //	private String birth;
 //	private String sex;
 //	private String phone;

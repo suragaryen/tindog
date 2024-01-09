@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <style>
@@ -190,7 +193,11 @@
 	<div class="input-group mb-3">
 	  <label class="input-group-text" for="inputGroupSelect01">강아지 종</label>
 	  <select class="form-select" id="dogcd" name="dogcd">
-	    	<option value="1">포메라이언</option>
+	  			<option value="0">선택</option>
+	  		<c:forEach var="item" items="${list}">
+	  			<option value="${item.DOGCD}">${item.DOGTYPE}</option>
+	  		</c:forEach>
+	    	<!-- <option value="1">포메라이언</option>
 			<option value="2">사모예드</option>
 			<option value="3">골든리트리버</option>
 			<option value="4">토이푸들</option>
@@ -199,7 +206,7 @@
 			<option value="7">비숑 프리제</option>
 			<option value="8">시바견</option>
 			<option value="9">진돗개</option>
-			<option value="10">폼피츠</option>
+			<option value="10">폼피츠</option> -->
 	  </select>
 	</div>	
 	</div>

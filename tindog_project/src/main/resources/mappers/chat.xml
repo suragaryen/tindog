@@ -18,6 +18,18 @@
  		    OR TOT_NICKNAME = CONCAT(#{nickname_from}, #{nickname_to})
  	</select> 
  	
+ 	<select id="checkGum" resultType="int">
+ 		SELECT GUMQTY
+ 		  FROM MEMBER
+ 		 WHERE NICKNAME = #{s_nickname}
+ 	</select>
+ 	
+ 	<update id="useGum" parameterType="String">
+ 		UPDATE MEMBER 
+ 		   SET GUMQTY = (GUMQTY - 1)
+ 		 WHERE NICKNAME = #{s_nickname}
+ 	</update>
+ 	
  	<insert id="chatRoomInsert" parameterType="kr.co.tindog.chat.ChatRoomDTO">
  		INSERT INTO CHATROOM_DATING(NICKNAME_TO, NICKNAME_FROM, TOT_NICKNAME)
  		VALUES(#{nickname_to}, #{nickname_from}, #{tot_nickname})
@@ -44,6 +56,13 @@
          ORDER BY DROOMNO
   	</select>
   	
+  	<select id="findDogName2" resultType="String">
+  		SELECT DNAME
+		  FROM DOGS
+		 WHERE EMAIL = #{email}
+		   AND DOGORDER = 1
+  	</select>
+  	
 	<select id="roomList" resultType="java.util.Map">
 		SELECT DROOMNO, NICKNAME_TO, NICKNAME_FROM
 		  FROM CHATROOM_DATING
@@ -51,9 +70,17 @@
 	</select>
 	
 	<select id="chatLogs" resultType="java.util.Map">
-		SELECT MESSAGE, SENDER
-		  FROM CHATLOGS_DATING
-		 WHERE DROOMNO = #{droomno}
+		SELECT DNAME, MESSAGE, SENDER
+		  FROM DOGS D1
+		       JOIN (
+					SELECT EMAIL, MESSAGE, SENDER
+					  FROM MEMBER M1
+					       JOIN (
+								SELECT MESSAGE, SENDER
+								  FROM CHATLOGS_DATING
+								 WHERE DROOMNO = #{droomno}
+					            ) C1 ON C1.SENDER = M1.NICKNAME
+		            ) M2 ON M2.EMAIL = D1.EMAIL
 	</select>
  	
  	<insert id="chatLogInsert" parameterType="kr.co.tindog.chat.ChatDTO">

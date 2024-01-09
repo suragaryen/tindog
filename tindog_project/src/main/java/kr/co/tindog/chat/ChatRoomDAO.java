@@ -23,6 +23,14 @@ public class ChatRoomDAO {
 		return sqlSession.selectOne("chat.chatRoomCheck", dto);
 	}
 	
+	public int checkGum(String s_nickname) {
+		return sqlSession.selectOne("chat.checkGum", s_nickname);
+	}
+	
+	public int useGum(String s_nickname) {
+		return sqlSession.update("chat.useGum", s_nickname);
+	}
+	
 	public int chatRoomInsert(ChatRoomDTO dto) {
 		return sqlSession.insert("chat.chatRoomInsert", dto);
 	}

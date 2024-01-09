@@ -51,31 +51,46 @@ public class ChatRoomCont {
 		return mav;
 	}
 	
+	@PostMapping("/chatList/checkGum")
+	@ResponseBody
+	public int checkGum(@RequestParam String s_nickname, HttpSession session) {
+		int cnt = chatRoomDao.checkGum(s_nickname);
+		
+		return cnt;
+	}
+	
 	@PostMapping("/chatList/insert")
 	@ResponseBody
-	public int chatRoomInsert(@RequestParam String followNickname, HttpSession session) {
+	public int chatRoomInsert(@RequestParam String nickname, HttpSession session) {
+		String followNickname = nickname;
+		String s_nickname = (String)session.getAttribute("s_nickname");
+		int useGum = chatRoomDao.useGum(s_nickname);
 		
-		try {
-			ChatRoomDTO chatRoomDto = new ChatRoomDTO();
-			chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
-			chatRoomDto.setNickname_to(followNickname);
-			chatRoomDto.setTot_nickname(followNickname + (String)session.getAttribute("s_nickname"));
-			
-			int check = chatRoomDao.chatRoomCheck(chatRoomDto);
-			if(check==0) {
-				int cnt = chatRoomDao.chatRoomInsert(chatRoomDto);
+		if(useGum == 1) {
+			try {
+				ChatRoomDTO chatRoomDto = new ChatRoomDTO();
+				chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
+				chatRoomDto.setNickname_to(followNickname);
+				chatRoomDto.setTot_nickname(followNickname + (String)session.getAttribute("s_nickname"));
 				
-				return cnt;
-			}else {
-				return 0;
-			}
+				int check = chatRoomDao.chatRoomCheck(chatRoomDto);
+				if(check==0) {
+					int cnt = chatRoomDao.chatRoomInsert(chatRoomDto);
 					
-		} catch (Exception e) {
-		    e.printStackTrace();
-		    return -1; // 예외가 발생한 경우 -1을 반환하거나 적절한 에러 코드를 반환하세요.
+					return cnt;
+				}else {
+					return 0;
+				}
+						
+			} catch (Exception e) {
+			    e.printStackTrace();
+			    return -1; // 예외가 발생한 경우 -1을 반환하거나 적절한 에러 코드를 반환하세요.
+			}
+		} else {
+			return 0;
 		}
+		
 	}
-
 	
 	@PostMapping("/chatList/delete/{droomno}")
 	@ResponseBody

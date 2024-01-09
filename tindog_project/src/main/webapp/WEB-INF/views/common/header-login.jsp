@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script>
+	
+</script>
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
 
@@ -15,7 +18,7 @@
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
                         <a href="/list" class="dropdown-item">구매하기</a>
-                        <a href="appointment.html" class="dropdown-item">찜목록</a>
+                        <a href="/wishlist" class="dropdown-item">찜목록</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

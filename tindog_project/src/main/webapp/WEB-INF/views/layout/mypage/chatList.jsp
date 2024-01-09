@@ -28,7 +28,7 @@
 				    <td>${item.DNAME}</td>
 				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
 				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기"></td>
+				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
 				    <td style="text-align: center;"><input type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
@@ -55,8 +55,26 @@
 				    </td>
 				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='productchat/${item.PROOMNO}'"></td>
 				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="productchatRoomDelete(${item.PROOMNO})"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기"></td>
-				    <td style="text-align: center;"><input type="button" value="차단하기" onclick=""></td>				    	
+				    <td style="text-align: center;">
+				    	<c:choose>
+							<c:when test="${item.NICKNAME_TO == s_nickname}">
+								<input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME_FROM}'">
+				    		</c:when>
+				    		<c:when test="${item.NICKNAME_FROM == s_nickname}">
+				    			<input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME_TO}'">
+				    		</c:when>
+						</c:choose>
+				    </td>
+				    <td style="text-align: center;">
+				    	<c:choose>
+							<c:when test="${item.NICKNAME_TO == s_nickname}">
+								<input type="button" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_FROM}')">
+				    		</c:when>
+				    		<c:when test="${item.NICKNAME_FROM == s_nickname}">
+				    			<input type="button" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_TO}')">
+				    		</c:when>
+						</c:choose>
+					</td>				    	
 
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
@@ -110,6 +128,22 @@
 						  	  if(result==1) {
 						  		  alert("차단되었습니다");
 						  		  chatRoomDelete(droomno);
+						  }else {
+							  alert("차단을 실패했습니다");
+						  }
+				}
+			});
+		}
+		
+		function cutP(proomno, nickname) {
+			$.ajax({
+				url     : '/chatList/cut/' + nickname // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
+			  , type    : 'post'
+			  , data    : {'nickname':nickname}
+			  , success : function(result) {
+						  	  if(result==1) {
+						  		  alert("차단되었습니다");
+						  		productchatRoomDelete(proomno);
 						  }else {
 							  alert("차단을 실패했습니다");
 						  }

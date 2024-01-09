@@ -53,6 +53,11 @@
 	<delete id="followDelete" parameterType="String">
 		DELETE FROM FOLLOW WHERE FOLLOWEMAIL = #{email}
 	</delete>
+	
+	<select id="dogType" resultType="java.util.Map">
+		SELECT DOGCD, DOGTYPE
+		  FROM DOGTYPE
+	</select>
 </mapper>
  
  
