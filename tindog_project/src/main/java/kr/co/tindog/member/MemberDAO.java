@@ -38,6 +38,14 @@ public class MemberDAO {
 	public List<Map<String, Object>> followList(String email) {
 		return sqlSession.selectList("user.followList", email);
 	}
+	
+	public String nickDupCheck(String nickname) {
+			return sqlSession.selectOne("user.nickDupCheck", nickname);
+	}
+	
+	public String emailDupCheck(String email) {
+		return sqlSession.selectOne("user.emailDupCheck", email);
+}
 
 
 

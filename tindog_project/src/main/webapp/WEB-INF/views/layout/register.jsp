@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link href="/css/regiModal.css" rel="stylesheet">
 <style>
 #email:hover{
 	cursor: pointer;
@@ -20,6 +21,7 @@
 
 <!-- was-validated  needs-validation -->
 
+	<div id="regi-form">
         <form class="needs-validation" name="register-form" id="register-form" method="post" action="/register/userInsert" enctype="multipart/form-data" novalidate>			
 			<h2 class="joinForm">TINDOG ID 생성</h2>
 			<h5>하나의 TINDOG ID로 모든 TINDOG 서비스를 이용할 수 있습니다.</h5>
@@ -109,7 +111,7 @@
 	
 		<div class="textForm">
 		  <label for="formFile" class="form-label">프로필 사진</label>
-		  	<div id="image_container userPic_container">
+		  	<div id="image_container userPic_container" style="margin-bottom:10px;">
 				 <img src="img/defaultImg.jpg" alt="기본 이미지" id="uDefault_image" class="img-thumbnail"  style="width: 20%" />
 			</div>
 		  <input class="form-control" type="file" id="userphotofile" name="userphotofile" accept="image/*">
@@ -207,7 +209,7 @@
 	
 		<div class="textForm">
 		  <label for="formFile" class="form-label">강아지 대표사진</label>
-		<div id="image_container mainPic_container">
+		<div id="image_container mainPic_container" style="margin-bottom: 10px;">
 		 <img src="/img/defaultImg.jpg" alt="기본 이미지" id="mDefault_image"  style="width: 20%" />
 		</div>
 		  <input class="form-control" type="file" id="mainphotofile" name="mainphotofile" accept="image/*">
@@ -255,9 +257,47 @@
           <button class="btn-regi" type="submit">계속</button>
         </div>
         </form>
+        </div>
+        
+        
+ <!-- 모달창 -->
+ <!-- 닉네임 모달 -->
+ <div id="nick-check-modal">	
+    <div id="nick-check-modal-body" class="textForm">              
+              <input type="text" class="form-control" name="nickname2" id="nickname2" placeholder="닉네임" autocomplete="off" style="margin-bottom: 20px;"  required>              
+              <div class="valid-feedback">
+              </div>
+              <div class="invalid-feedback">
+                2글자 이상 10글자 이하로 작성해주세요. <br>특수문자, 공백은 불가능합니다
+              </div>
+              <button class="btn-regi" id="nick-check-btn">중복확인</button>
+    	<span id="nick-check-close"> X </span>
+    </div>
+ </div>
+ <!-- 이메일 모달 -->
+   <div id="email-check-modal">	
+    <div id="email-check-modal-body" class="textForm">            
+          <input type="text" class="form-control" name="email2" id="email2" placeholder="name@example.com" autocomplete="off" style="margin-bottom: 20px;" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+           	<button class="btn-regi" id="email-check-btn">중복확인</button>
+			<span id="email-check-close"> X </span>
+       </div>
+
+    </div>
+    <!-- 모달창 끝 --> 
+ 
+ 
+ 
+ 
     
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+  
+  
       // 우편번호 찾기 찾기 화면을 넣을 element
       var element_wrap = document.getElementById('wrap');
 
@@ -342,14 +382,7 @@
           }
       });
       
-	function nickCheck() {
-		var popWidth=400;
-		var popHeight=200;
-		var popX=Math.round(window.screenX+(window.outerWidth/2)-(popWidth/2));
-		var popY=Math.round(window.screenY+(window.outerHeight/2)-(popHeight/2));
-		
-		window.open("register/nickCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
-	}
+
 	
 	function remailCheck() {
 		var popWidth=400;

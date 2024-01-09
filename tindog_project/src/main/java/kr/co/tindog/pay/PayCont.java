@@ -45,18 +45,18 @@ public class PayCont {
                 "0r366VoATh7DnJrUuBWZcsZcqMUx7V0rGN6flVAmM1wGsmNLRhFmWfkQd4OgA13F9JluUkWR6VbDUu7R");
     }
 	
-	@RequestMapping("/dogGumPay")
+	@RequestMapping("/mypageIndex")
 	public ModelAndView dogGumPay(HttpSession session) {
 		String email = (String)session.getAttribute("s_email");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/mypage/dogGumPay");
+		mav.setViewName("layout/common/mypageIndex");
 		mav.addObject("email",email);
 		return mav;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/confirmPay/{imp_uid}", method=RequestMethod.POST)
-	public ModelAndView paymentByImpUid(@PathVariable(value= "imp_uid") String imp_uid, HttpSession session) throws IamportResponseException, IOException{	
+	public int paymentByImpUid(@PathVariable(value= "imp_uid") String imp_uid, HttpSession session) throws IamportResponseException, IOException{	
 		ModelAndView mav = new ModelAndView();
 		String email = (String)session.getAttribute("s_email");
 			payDTO payDTO = new payDTO();
@@ -76,15 +76,15 @@ public class PayCont {
 						payDTO.setPrice(payment.getAmount().toString());
 						System.out.println(payDTO.toString());
 						payDAO.payInsert(payDTO);
-						mav.setViewName("layout/mypage/paySuccess");
+						//mav.setViewName("layout/mypage/paySuccess");
 						
-						return mav;
+						return 1;
 						
 				}else {
 						
 						System.out.println("failed");
 						mav.setViewName("layout/mypage/payFail");
-						return mav;
+						return 0;
 
 				} // switch
 				

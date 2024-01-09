@@ -5,7 +5,9 @@
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <style>
+
 th{
+
 text-align: right;
 width: 25%;
 
