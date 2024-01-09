@@ -1,6 +1,3 @@
-    //월드컵 모달
-    
-    
     var body = document.querySelector('body');
     var btnOpenPopup = document.querySelector('.btn-open-popup');
     var modal = document.getElementById('worldcupmodal');

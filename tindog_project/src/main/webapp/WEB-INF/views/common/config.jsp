@@ -43,6 +43,21 @@
 	    <script src="/js/main.js"></script>
 	    <script src="/js/dogInfoModal.js"></script>
 	    <script src="/js/modal.js"></script>
+	    <script src="/js/resultModal.js"></script>	    
+	    <script src="/js/register.js"></script>
+	    <script src="/js/login.js"></script>
+	    <!--  <script src="/js/worldcup_start.js"></script> -->
+
+	   <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+	   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	    
+	    <!-- Template CSS -->
+	    <link href="/css/home.css" rel="stylesheet">
+	    <link href="/css/footer.css" rel="stylesheet">
+	    <link href="/css/mypage.css" rel="stylesheet">
+	    <link href="/css/modal.css" rel="stylesheet">
+	    <link href="/css/resultModal.css" rel="stylesheet">
+	    <link href="/css/dbtiModal.css" rel="stylesheet">
 	    <script src="/js/resultModal.js"></script>
 	    <script src="/js/register.js"></script>
 	    <script src="/js/login.js"></script>

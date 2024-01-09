@@ -63,13 +63,13 @@ class Dbti {
 		const answerAButton = this.container.querySelector('button[data-answer="a"]');
         const answerBButton = this.container.querySelector('button[data-answer="b"]');
         const startButton = this.container.querySelector('button[data-action="start"]');
-        const restartButton = this.container.querySelector('button[data-action="restart"]');
+        const restartButton = this.container.querySelector('button[data-action="restart"]');		
 
         answerAButton.addEventListener('click', () => this.submitAnswer(answerAButton.innerText));
         answerBButton.addEventListener('click', () => this.submitAnswer(answerBButton.innerText));
         startButton.addEventListener('click', this.start.bind(this));
-        restartButton.addEventListener('click', this.restart.bind(this));
-
+        restartButton.addEventListener('click', this.restart.bind(this));		
+		
 		this.render();
 
 	} // 질문을 배열로 저장
@@ -86,7 +86,7 @@ class Dbti {
 		this.results = [];
 		this.render();
 	}
-
+	
 	getQuestion() {
 		return Object.entries(this.questions)
         .flatMap(([type, questions]) => questions.map(question => ({ ...question, type })));
@@ -182,8 +182,13 @@ class Dbti {
             const calcResult = this.calcResult();
 
             resultTextElement.innerHTML = `<span class="exp">멍BTI 결과는 </span><span class="point_text">${calcResult}</span><span class="exp">입니다.</span>`;
-            
+           
+           localStorage.setItem("멍BTI 결과", calcResult);
+           const data=localStorage.getItem("멍BTI 결과"); 
+           
+           document.getElementById('data').value=data;
         }
-        
+                
     }
+        
 }

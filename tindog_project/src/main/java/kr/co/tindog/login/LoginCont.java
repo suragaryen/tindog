@@ -23,6 +23,13 @@ public class LoginCont {
 	@Autowired
 	LoginDAO loginDAO;
 	
+	@RequestMapping("/tt")
+	public ModelAndView test() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/test");
+		return mav;
+	}
+
 	//http://localhost:2000/login 
 	//로그인 페이지 
 	@GetMapping("login")

@@ -382,7 +382,6 @@
           }
       });
       
-
 	
 	function remailCheck() {
 		var popWidth=400;

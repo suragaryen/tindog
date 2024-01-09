@@ -6,6 +6,11 @@
     font-family: 'Pretendard';
 }
 
+.result_container{
+	position: relative;
+	top:300px;
+} 
+
 .content_container > h2 {
     font-weight: 500;
     font-size: 14px;
@@ -82,6 +87,10 @@
 
 .answer{
 	margin: 20px;
+}
+
+.restart{
+	margin-top: 20px;
 }
 
 .home{
