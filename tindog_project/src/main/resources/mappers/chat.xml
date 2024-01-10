@@ -97,7 +97,12 @@
  	</select>
  	
  	<insert id="cut" parameterType="kr.co.tindog.cut.CutDTO">
- 		INSERT INTO CUT(EMAIL, CUTEMAIL)
- 		         VALUES(#{email}, #{cutEmail})
+ 		INSERT INTO CUT(EMAIL, CUTEMAIL, CUTCASE)
+ 		         VALUES(#{email}, #{cutEmail}, #{cutCase})
+ 	</insert>
+ 	
+ 	<insert id="cutP" parameterType="kr.co.tindog.cut.CutDTO">
+ 		INSERT INTO CUT(EMAIL, CUTEMAIL, CUTCASE)
+ 		         VALUES(#{email}, #{cutEmail}, #{cutCase})
  	</insert>
  </mapper>

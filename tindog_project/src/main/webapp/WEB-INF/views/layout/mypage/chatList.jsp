@@ -136,7 +136,7 @@
 		
 		function cutP(proomno, nickname) {
 			$.ajax({
-				url     : '/chatList/cut/' + nickname // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
+				url     : '/chatList/cutP/' + nickname // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
 			  , type    : 'post'
 			  , data    : {'nickname':nickname}
 			  , success : function(result) {

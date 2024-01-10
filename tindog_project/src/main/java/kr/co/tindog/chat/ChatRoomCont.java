@@ -109,10 +109,26 @@ public class ChatRoomCont {
 		CutDTO cutDto = new CutDTO();
 		cutDto.setEmail(email);
 		cutDto.setCutEmail(cutEmail);
+		cutDto.setCutCase(1);
 		
 		int cnt = chatRoomDao.cut(cutDto);
 		
 		return cnt;
 	}
-
+	
+	@PostMapping("/chatList/cutP/{nickname}")
+	@ResponseBody
+	public int cutP(@PathVariable String nickname, HttpSession session) {
+		String email = (String)session.getAttribute("s_email");
+		String cutEmail = chatRoomDao.findEmail(nickname);
+		
+		CutDTO cutDto = new CutDTO();
+		cutDto.setEmail(email);
+		cutDto.setCutEmail(cutEmail);
+		cutDto.setCutCase(2);
+		
+		int cnt = chatRoomDao.cutP(cutDto);
+		
+		return cnt;
+	}
 }

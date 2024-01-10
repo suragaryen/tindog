@@ -54,4 +54,8 @@ public class ChatRoomDAO {
 	public int cut(CutDTO cutDto) {
 		return sqlSession.insert("chat.cut", cutDto);
 	}
+	
+	public int cutP(CutDTO cutDto) {
+		return sqlSession.insert("chat.cutP", cutDto);
+	}
 }
