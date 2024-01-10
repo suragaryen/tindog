@@ -24,6 +24,8 @@ import org.springframework.security.oauth2.client.userinfo.*;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.co.tindog.dbti.DbtiDAO;
+import kr.co.tindog.dbti.DbtiDTO;
 import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 
 @RestController
@@ -33,6 +35,7 @@ public class MemberCont {
 	MemberDAO memberDao;	
 	PrincipalOauth2UserService PO;
 	User user;
+	DbtiDAO dbtiDao;
 
 	@RequestMapping("register")
 	public ModelAndView register() {

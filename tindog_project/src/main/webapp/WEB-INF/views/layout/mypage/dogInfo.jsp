@@ -51,7 +51,7 @@
 						</div>
 				</div>
 
-        <h5 class="card-title">${item.dname} (${item.age})</h5>
+        <h5 class="card-title">${item.dname} (${item.age}) / ${item.dbti}</h5>
        <table id="dog-info-table">
 			<tr>
 				<th><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/></th>
