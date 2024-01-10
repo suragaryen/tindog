@@ -1,27 +1,28 @@
 // 모달 이미지 클릭 시 이벤트 처리
 
-
-var modalImg = document.getElementById('dog1');
+var body=document.querySelector('body');
+var modalImg = document.querySelector('.card-img-top');
 var modal = document.getElementById('dogInfoModal');
-var modalImgContent = document.getElementById('modal-content');
 var closeBtn = document.getElementsByClassName('modal-close')[0];
 
-modalImg.onclick = function() {
-  modal.style.display = 'block';
-
-};
+modalImg.addEventListener('click', () => {
+        modal.style.display='block';       
+        body.style.overflow='hidden';    
+});   
 
 // 모달 닫기 버튼 클릭 시 이벤트 처리
-closeBtn.onclick = function() {
-  modal.style.display = 'none';
-};
+closeBtn.addEventListener('click',() => {
+		  modal.style.display='none';
+		  body.style.overflow='auto'
+});
 
 // 모달 외부 영역 클릭 시 모달 닫기
-window.onclick = function(event) {
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
-};
+window.addEventListener('click',(e) => {
+		  if(e.target===modal){
+			  modal.style.display='none';
+			  body.style.overflow='auto'          	  
+		  }
+});  
  
 	  
 	  

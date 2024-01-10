@@ -15,11 +15,15 @@
 %>    
     <script>
         // 세션 값이 없을 때 JavaScript로 alert 창 띄우기
-        alert("로그인 후 이용해주세요");
-        // 3초 후에 다른 페이지로 이동
-        setTimeout(function(){
-            window.location.href = "/login"; // 다른 페이지로 이동
-        }); 
+            Swal.fire({
+        	title:"로그인 후 이용해주세요",
+        	text:"",
+        	icon:"warning",        	
+        	confirmButtonText: "확인"  	        	
+        })
+        .then(function() {
+        	window.location.href = "/login"; // 다른 페이지로 이동
+		});                 
     </script>
         
     

@@ -59,4 +59,6 @@
     top: 300px;
 }
 
-*/
+li, ul{
+	list-style: none;
+}

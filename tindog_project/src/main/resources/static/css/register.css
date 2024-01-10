@@ -17,7 +17,7 @@ body {
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
-  top:40%;
+  top:30%;
   left:50%;
   transform: translate(-50%,-50%);
   border-radius: 15px;
@@ -28,11 +28,21 @@ h2 {
   margin: 30px;
 }
 
-.textForm {
-  margin: 30px;
-  padding: 10px 10px;
+.title{
+	display: flex;
 }
 
+.textForm {
+  margin: 10px;
+  padding: 20px 10px;
+}
+
+.selectForm{
+	display: flex;
+	margin: 10px;
+  	padding: 10px 10px;
+  	text-align: left;
+}
 
 .formcontrol {
   width: 100%;
@@ -44,11 +54,11 @@ h2 {
   background: none;
 }
 
-.button{
+.button {
 	margin-top: 20px;
 }
 
-.btn {
+.btn-regi {
   position:relative;
   left:40%;
   transform: translateX(-50%);
@@ -66,7 +76,7 @@ h2 {
   display:inline;
 }
 
-.btn:hover {
+.btn-regi:hover {
   background-position: right;
 }
 
@@ -124,3 +134,33 @@ box-shadow: 0 0 0 0.25rem rgba(4,99,250,0.25);
       height: 1px;
       background-color: gray;
     }
+
+.form-control:read-only {
+    background-color: white;
+    opacity: 1;
+}
+
+.blank{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+    
+.nobox{
+	display: flex;
+	width: 600px;
+	margin-left: 50px;
+}
+
+.little{
+	text-align: left !important;
+	font-size: 12px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+#regi-form{
+	
+	position: relative;
+    top: 200px;
+	
+}

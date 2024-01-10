@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import kr.co.tindog.oauth.model.*;
+import kr.co.tindog.worldcup.WorldcupDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,16 +30,15 @@ import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 public class MemberCont {
 
 	@Autowired
-	MemberDAO memberDao;
-	UserDTO userDTO;
-	
-	
-	
-	
+	MemberDAO memberDao;	
+	PrincipalOauth2UserService PO;
+	User user;
+
 	@RequestMapping("register")
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/register");
+		mav.addObject("list", memberDao.dogType());
 		return mav;
 	}
 	
@@ -224,7 +224,6 @@ public class MemberCont {
 		 return mav;
 		
 	}//insert end
-	
 	
 
 }//MemberController end

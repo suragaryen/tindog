@@ -19,8 +19,15 @@ public class UserDTO {
 	private String memgrade;
 	private String userphoto;
 	private Object id;
+	private int gumqty;	
 	
 	
+	public int getGumqty() {
+		return gumqty;
+	}
+	public void setGumqty(int gumqty) {
+		this.gumqty = gumqty;
+	}
 	public Object getId() {
 		return id;
 	}

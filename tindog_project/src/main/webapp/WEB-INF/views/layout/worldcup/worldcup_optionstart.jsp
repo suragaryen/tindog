@@ -104,8 +104,80 @@
                     document.querySelector("#right-img").src = pic['pic' + (currentRoundIndex * 2 + 2)]; // 다음 이미지 설정
                     round8.push(clickedImageSrc);
                     console.log(currentRoundIndex);
-                    currentRoundIndex++;
-                }else if (round8.length === 8 && currentRound === 16) {
+                    console.log(round8);   
+                    }    
+                    
+                }else if(round8.length === 8 && currentRoundIndex === 8) {
+                    document.querySelector("#Left-img").src = round8[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round8[1]; // round8 배열 두 번째 이미지
+                	
+                    console.log('16강이 끝났습니다!');
+                    console.log('8강 Start!!!');
+                    console.log(round4);
+                    console.log("현재라운드 : "+ currentRound)
+                    
+                    round8Img.src = "/img/img-round8.png";                 	
+                    currentRound = 8; // 라운드를 반으로 줄임
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
+				
+                }else if(round4.length < 4 && currentRound === 8) { //8강 
+					 
+                    // 다음 이미지 설정
+                    
+                    //alert("8강진행중" + currentRoundIndex);
+                    round4.push(clickedImageSrc);
+                    
+                    if(currentRoundIndex < 4){
+                    	
+                    	 document.querySelector("#Left-img").src = round8[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
+                         document.querySelector("#right-img").src = round8[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
+                         currentRoundIndex++;
+                         console.log(currentRoundIndex);
+                         console.log(round4); 
+                    }
+                    
+                }else if(round4.length === 4 && currentRoundIndex === 4){
+                	
+                   console.log(round4);
+                    round8Img.src = "/img/img-round4.png"
+                    
+
+                    document.querySelector("#Left-img").src = round4[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round4[1]; // round8 배열 두 번째 이미지
+                	
+                    currentRound = 4; // 라운드를 반으로 줄임
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
+                    console.log(round2)
+                    
+                }else if(round2.length < 2 && currentRound === 4) { //4강 
+					 
+                    // 다음 이미지 설정
+                    
+                    //alert("4강진행중" + currentRoundIndex);
+                    round2.push(clickedImageSrc);
+                    
+                    if(currentRoundIndex < 2){
+                    	
+                    	 document.querySelector("#Left-img").src = round4[(currentRoundIndex * 2 )]; // round8 배열 첫 번째 이미지
+                         document.querySelector("#right-img").src = round4[(currentRoundIndex * 2 + 1)]; // 다음 이미지 설정
+                         currentRoundIndex++;
+                         console.log(currentRoundIndex);
+                         console.log(round4); 
+                    }
+                    
+                }else if(round2.length === 2 && currentRoundIndex === 2){
+                	                  
+                   console.log(round4);
+                    round8Img.src = "/img/img-round_final.png"
+                    
+
+                    document.querySelector("#Left-img").src = round2[0]; // round8 배열 첫 번째 이미지
+                    document.querySelector("#right-img").src = round2[1]; // round8 배열 두 번째 이미지
+                    currentRound = 2; // 라운드를 반으로 줄임
+                    currentRoundIndex = 1; // 다음 라운드를 위해 인덱스 초기화
+                    console.log(round2)
+                    
+                }else if (winner.length ===0 && currentRound === 2) {
                     // 16강 라운드가 끝났으면
                     alert('16강이 끝났습니다!');
                     

@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-;
 @Repository
 public class ProductDAO {
 
@@ -20,7 +19,6 @@ public class ProductDAO {
 	public void insert(Map<String, Object> map) {
 		sqlSession.insert("product.insert", map);
 	}//insert() end
-	
 	
 	public List<Map<String, Object>> list(){
 		return sqlSession.selectList("product.list");
@@ -56,7 +54,6 @@ public class ProductDAO {
 			sqlSession.update("product.update", map); 
 			
 		}//update() end
-
     
 	
 }//class end

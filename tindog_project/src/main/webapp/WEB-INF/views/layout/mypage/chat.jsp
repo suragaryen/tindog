@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<body class="wrapper">
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
 <style>
 
@@ -347,8 +347,8 @@ button.accent {
         <ul id="messageArea">
 			<c:forEach var="item" items="${list}">
 				<li class="chat-message">
-					<i style="background-color: rgb(50, 199, 135);">${item.sender}</i>
-					<span>${item.SENDER}</span>
+					<i style="background-color: rgb(50, 199, 135);">${item.DNAME}</i>
+					<span>${item.DNAME}</span>
 					<p>${item.MESSAGE}</p>
 				</li>
 			</c:forEach>
@@ -373,6 +373,7 @@ button.accent {
         src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
 	var nickname_from = '<%=(String)session.getAttribute("s_nickname")%>';
+	var dname = '<%=(String)session.getAttribute("s_dname")%>';
 	
 	$("#chatInsertBtn").click(function() {
 		// alert();
@@ -409,7 +410,7 @@ button.accent {
   		}); 
 	}
 </script>
-<script src="/js/chat.js"></script>
+<script src="/js/chatDating.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

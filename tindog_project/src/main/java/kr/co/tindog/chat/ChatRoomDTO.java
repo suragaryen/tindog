@@ -10,5 +10,5 @@ public class ChatRoomDTO {
 	private int droomno ;
 	private String nickname_to;
 	private String nickname_from;	
-	
+	private String tot_nickname;
 }

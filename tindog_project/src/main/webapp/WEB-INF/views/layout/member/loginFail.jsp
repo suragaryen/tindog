@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body>
+<body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <div id="login">
@@ -17,7 +17,7 @@
   	<div id="login-body">
     	<h3>틴독에 오신 것을 환영합니다.</h3>
     	<input type="text" name="email" id="email" class="email-login-body"  placeholder="이메일" style="margin-bottom:0px;" onclick="hideMessage()">
-    	<span style="color:red; font-size:13px;" id="message">**로그인 정보를 다시 확인 해 주세요</span>
+    	<span style="color:red; font-size:13px;" id="message">로그인 정보를 다시 확인 해 주세요</span>
     	<input type="password" id="password" name="password"  class="password-login-body" placeholder="비밀번호">
     	<br>
     	<input type="button" id="checkBtn-login-body" value="계속" onclick="sendIt()">
