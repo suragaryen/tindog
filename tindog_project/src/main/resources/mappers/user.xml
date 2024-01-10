@@ -58,6 +58,18 @@
 		SELECT DOGCD, DOGTYPE
 		  FROM DOGTYPE
 	</select>
+	
+	<select id="nickDupCheck" parameterType="String" resultType="String">
+ 		select nickname
+		from member
+		where nickname = #{nickname}
+ 	</select>
+ 	
+ 	 	<select id="emailDupCheck" parameterType="String" resultType="String">
+ 		select email
+		from member
+		where email = #{email}
+ 	</select>
 </mapper>
  
  

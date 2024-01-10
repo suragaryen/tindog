@@ -72,7 +72,7 @@
 <!-- 주간 인기 댕댕이 끝  -->
 
 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-		<button id="btn" class="btn-open-popup" style="display:inline-block; background-color: white;"><img src="img/btn_이상형강아지등록.png"></button>
+		<button id="btn" class="btn-open-popup" style="display:inline-block; background-color: white; border:none;"><img src="img/btn_이상형강아지등록.png"></button>
 		<a href="worldcup/start" style="display:inline-block;"><img src="img/btn_이상형월드컵시작.png"></a>
 	</div>
 

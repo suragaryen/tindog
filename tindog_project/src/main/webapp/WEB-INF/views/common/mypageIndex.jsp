@@ -1,30 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <body class="wrapper">
+<style>
+#nickname-gum{
+	display: flex;
+    justify-content: center;
+    position: relative;
+    right: 50px;
+
+}
+.mypage-gumqty {
+    display: flex;
+    align-items: center;
+}
+
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul li {
+	font-size: 20px;
+	font-family: sans-serif;
+	background-color: white;
+	border: 1px solid black;
+	letter-spacing: 0.1em;
+	width: 9em;
+	height: 1.5em;
+	line-height: 1.5em;
+	position: relative;
+	overflow: hidden;
+	margin: 0.5em;
+	cursor: pointer;
+	font-style: italic;
+}
+
+nav ul li span {
+	color: white;
+	mix-blend-mode: difference;
+}
+
+nav ul li::before {
+	content: '';
+	position: absolute;
+	width: 9em;
+	height: inherit;
+	background-color: black;
+	border-radius: 50%;
+	top: 0;
+	left: -10em;
+	transition: 1s ease-out;
+}
+
+nav ul li:hover::before {
+	transform: scale(7);
+}
+
+.avatar{
+		background:#fff;
+		text-align:center;
+		
+
+		
+		p{
+			font-weight: 300;
+    		font-size: x-large;
+		}
+		.user-img{
+		width:40px;
+		height:40px;
+		align-self: center;
+		position: relative;
+    	bottom: 6px;
+		}
+		
+		.gum-img{
+			width:20px;
+			height:20px;
+			align-self: center;
+		}
+	
+	}
+
+</style>
+
+<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
+<%String nickname = (String) session.getAttribute("s_nickname");
+int gumqty = (int) session.getAttribute("s_gumqty");
+ 
+
+%>
 <div class="mypage">
-        <div class="mypage_header">
-            	<img class= src="/img/profile.jpg"><br>            
-            <p class="nickname">회원 닉네임</p>
-        </div>
+  <header class="avatar">
+            <div id="nickname-gum">
+            <img class="user-img" width="64" height="64" src="https://img.icons8.com/cotton/64/user-male-circle.png" alt="user-male-circle"/>     
+            <p class="nickname"><%= nickname %></p>
+            <span class="mypage-gumqty">(<img class="gum-img" width="26" height="26" src="https://img.icons8.com/metro/26/000000/dog-bone.png" alt="dog-bone"/> <%= gumqty %>)</span>
+            </div>
+  </header>
+		<nav>
+		  <ul>
+		    <li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
+		    <li><a href="/follow"><span>팔로우</span></a></li>
+		    <li><a href="/chatList"><span>채팅</span></a></li>
+		    <li><a href="/cut"><span>차단목록</span></a></li>
+		    <li><a href="#"><span>상점관리</span></a></li>
+		    <li><a href="#"><span id="btn" class="open-popup">이상형 월드컵 결과</span></a><br></li>
+		    <li><a href="#"><span id="btn" class="">멍BTI 결과</span></a></li>
+		    <li><a href="#"><span>공지사항</span></a></li>
+		    <li><a href="#"><span>회원탈퇴</span></a></li>
+		    
+		  </ul>
+		</nav>
+	<!-- 		
         <div class="mypage_account">
-            <a href="/userInfo"><p>내 정보</p></a>
-            <a href="/dogInfo"><p>강아지 정보</p></a>
+            <a href="/userInfo">MY INFO</a><br>
+            <a href="/dogInfo">DOGGY INFO</a><br>
+            <a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a><br>
             <a href="/dogGumPay"><span>개껌페이</span></a><br>
             <a href="/follow"><span>팔로우관리</span></a><br>
             <a href="/chatList"><span>채팅관리</span></a><br>
-            <a href="/cut"><span>차단사용자관리</span></a><br>
+            <span>차단사용자관리</span><br>
         </div>
         <div class="mypage_deal">
-            <p>나의 거래</p>
-            <span>관심목록</span><br>
-            <span>판매내역</span><br>
-            <span>구매내역</span><br>
-            <span>받은후기</span><br>
+            <a href="#">상점관리</a>
+
+
         </div>
         <div class="mypage_result">
             <p>나의 친구찾기</p>                        
-            <button id="btn" class="open-popup">이상형 월드컵 결과</button><br>
-            <button id="btn" class="">멍BTI 결과</button><br>
+            <a href="#"><span id="btn" class="open-popup">이상형 월드컵 결과</span></a><br>
+            <a href="#"><span id="btn" class="">멍BTI 결과</span></a><br>
         </div>
         <div class="mypage_etc">
             <p>기타</p>
@@ -32,7 +141,7 @@
             <span>회원탈퇴</span><br>
         </div>
         
-        
+           -->
     </div>
     
   
