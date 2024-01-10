@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- hoogi.xml -->
+
+<mapper namespace="hoogi">
+   
+    <select id="comment" parameterType="String" resultType="kr.co.tindog.hoogi.HoogiDTO">
+	   
+	   SELECT A.UPRODUCT_NO, A.SUBJECT, A.NICKNAME, A.UPRODUCT_CD, A.PRICE, A.INFO, A.AREA, A.LOCATION, A.MAINPHOTO, A.PHOTO
+       FROM USED_PRODUCT AS A JOIN REVIEW AS B
+       ON A.UPRODUCT_NO = B.UPRODUCT_NO
+	   
+	</select>
+
+    
+</mapper>
+    

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+;
 @Repository
 public class ProductDAO {
 
@@ -21,31 +21,32 @@ public class ProductDAO {
 		sqlSession.insert("product.insert", map);
 	}//insert() end
 	
+	
 	public List<Map<String, Object>> list(){
 		return sqlSession.selectList("product.list");
 	}//list() end
 	
-	public List<Map<String, Object>> search(String SUBJECT){
-		return sqlSession.selectList("product.search", "%" + SUBJECT + "%");
+	public List<Map<String, Object>> search(String subject){
+		return sqlSession.selectList("product.search", "%" + subject + "%");
 	}
 	
-	public Map<String, Object> detail(int UPRODUCT_NO){
-        return sqlSession.selectOne("product.detail", UPRODUCT_NO);
+	public Map<String, Object> detail(int uproduct_no){
+        return sqlSession.selectOne("product.detail", uproduct_no);
     }//detail() end
 	
-	public String MAINPHOTO(int UPRODUCT_NO) {
+	public String mainphoto(int uproduct_no) {
     	
-    	return sqlSession.selectOne("product.MAINPHOTO", UPRODUCT_NO);
+    	return sqlSession.selectOne("product.mainphoto", uproduct_no);
     }//MAINPHOTO() end
 	
-   public String PHOTO(int UPRODUCT_NO) {
+   public String photo(int uproduct_no) {
     	
-    	return sqlSession.selectOne("product.PHOTO", UPRODUCT_NO);
+    	return sqlSession.selectOne("product.photo", uproduct_no);
     }//PHOTO() end
 	
 	
-	 public void delete(int UPRODUCT_NO) {
-	    	sqlSession.delete("product.delete", UPRODUCT_NO);
+	 public void delete(int uproduct_no) {
+	    	sqlSession.delete("product.delete", uproduct_no);
 	    	
 	    }//delete() end
 	 
@@ -55,6 +56,7 @@ public class ProductDAO {
 			sqlSession.update("product.update", map); 
 			
 		}//update() end
+
     
 	
 }//class end

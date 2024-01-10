@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer.UserInfoEndpointConfig;
@@ -20,8 +19,6 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.firewall.DefaultHttpFirewall;
-import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,16 +31,6 @@ import lombok.extern.log4j.Log4j2;
 @EnableWebSecurity
 @Log4j2
 public class SecurityConfig{
-	
-	public void configure(WebSecurity web) throws Exception{
-		web.httpFirewall(defaultHttpFirewall());
-	}
-	 
-	@Bean
-	public HttpFirewall defaultHttpFirewall() {
-	    return new DefaultHttpFirewall();
-	}
-
 	
 	//해당 메서드의 리턴되는 오브젝트를 IoC로 등록해준다.
 	@Bean

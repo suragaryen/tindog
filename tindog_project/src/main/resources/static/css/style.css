@@ -77,11 +77,6 @@
     font-weight: normal;
 }
 
-.wrapper{
-	height: auto;
-	min-height: 100%;
-	padding-bottom: 200px;
-}
 
 /*** Navbar ***/
 .navbar .dropdown-toggle::after {

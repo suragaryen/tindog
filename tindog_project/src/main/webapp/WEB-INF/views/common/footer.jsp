@@ -1,37 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<div class="footer_body">
-	<div class="footer-else">
-	    <hr class="bar">    
-	</div>
-	<div class="footer_content">
-	<span class="footer_span">Company Registration No : 418-25-92713 | Ecommerce License : 2024-서울강남-002359</span>
-	<br>
-	<span class="footer_span">Address : Gangnam-ro 44-1, Songpa-gu, 04782 Seoul</span> 
-	<br>
-	<span class="footer_span">Email : contact@surim.org | Tel : (82) 488 2905</span>
-	<br>	
-	</div>
-	<div class="footer-else">
-	    <hr class="bar">
-	</div>
-	<div class="footer_copyright">
-	<div class="copy-box">
-	<span class="footer_span">Copyright © 2024 TINDOG. All Rights Reserved.</span>
-	</div>
-	<div class="mark-box">
-		<a href="https://dcxi.ksa.or.kr/" target="_blank" title="Korean Stasndars Association 2023 디지털고객경험지수 : 새창으로 열기" class="btn-mark btn-dcxi" data-omni="local logo_dcxi" data-di-id="di-id-5f9a1bb4-1b722467">
-			<img class="mark-img" src="https://images.samsung.com/kdp/_pub/icon-footer-dcxi.jpg" alt="Korean Stasndars Association 2023 디지털고객경험지수">			
-		</a>
-	</div>
-	<div class="mark-box">
-		<a href="https://www.kca.go.kr/ccm/certSystemOutlineView.do" target="_blank" title="ccm 소비자중심 공정거래위원회 : 새창으로 열기" class="btn-mark btn-ccm" data-omni="local logo_ccm" data-di-id="di-id-eee53f76-985cc0ac">
-			<img class="mark-img" loading="lazy" src="https://images.samsung.com/kdp/_pub/icon-footer-ccm.png" alt="ccm 소비자 중심 공정거래 위원회">		
-		</a>
-	</div>
-	</div>
-	<div class="footer-else">
-	    <hr class="bar">
-	</div>
-</div>
+<div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">3조</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>서울특별시 강남</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>119</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>jennet967@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">TINDOG</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">ACE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

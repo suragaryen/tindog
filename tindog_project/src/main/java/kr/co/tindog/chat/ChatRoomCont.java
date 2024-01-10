@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,29 +36,4 @@ public class ChatRoomCont {
 		return mav;
 	}
 	
-	@PostMapping("/chatList/insert")
-	@ResponseBody
-	public int chatRoomInsert(@RequestParam String followNickname, HttpSession session) {
-		
-		try {
-			ChatRoomDTO chatRoomDto = new ChatRoomDTO();
-			chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
-			chatRoomDto.setNickname_to(followNickname);
-			chatRoomDto.setTot_nickname(followNickname + (String)session.getAttribute("s_nickname"));
-			System.out.println(chatRoomDto);
-			
-			int check = chatRoomDao.chatRoomCheck(chatRoomDto);
-			if(check==0) {
-				int cnt = chatRoomDao.chatRoomInsert(chatRoomDto);
-				
-				return cnt;
-			}else {
-				return 0;
-			}
-					
-		} catch (Exception e) {
-		    e.printStackTrace();
-		    return -1; // 예외가 발생한 경우 -1을 반환하거나 적절한 에러 코드를 반환하세요.
-		}
-	}
 }

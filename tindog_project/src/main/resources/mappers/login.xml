@@ -5,9 +5,16 @@
  
 <mapper namespace="login">
 	<select id="login" resultType="kr.co.tindog.login.LoginDTO" parameterType="kr.co.tindog.login.LoginDTO">
-		SELECT EMAIL, NICKNAME, MEMGRADE, GUMQTY
+		SELECT EMAIL, NICKNAME, MEMGRADE
 		  FROM MEMBER
 		 WHERE EMAIL = #{email}
 		   AND PASSWORD = #{password}
 	</select>
+	<!-- 
+	<select id="list" resultType="kr.co.tindog.member.LoginDTO">
+		SELECT FOLLOWEMAIL
+		  FROM FOLLOW
+		 WHERE EMAIL = 'soo@daum.net'
+	</select>	
+	 -->
 </mapper>

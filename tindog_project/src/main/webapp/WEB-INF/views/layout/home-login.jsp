@@ -9,7 +9,7 @@
 	width : 300px;
 }
 </style>
-<body class="wrapper">
+<body>
 <jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

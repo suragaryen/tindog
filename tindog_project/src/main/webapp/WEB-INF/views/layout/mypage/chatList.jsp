@@ -5,10 +5,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<body class="wrapper">
+<body>
 	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
-
+<c:forEach var="item" items="${list}">	
 <div class="cont">
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;">채팅목록</div>
@@ -23,7 +23,6 @@
 				<tr>
 				    <th colspan="4">닉네임</th>
 				</tr>
-				<c:forEach var="item" items="${list}">	
 				<tr>
 					<td style="text-align: left" colspan="2">
 						<c:choose>
@@ -44,11 +43,10 @@
 				    </td>
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
-				</c:forEach>
 			</table>
 			</div>
 		</div>
-		
+		</c:forEach>
 			</form>
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script src="/js/chat.js"></script>		

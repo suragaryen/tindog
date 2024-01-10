@@ -23,13 +23,6 @@ public class LoginCont {
 	@Autowired
 	LoginDAO loginDAO;
 	
-	@RequestMapping("/tt")
-	public ModelAndView test() {
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/test");
-		return mav;
-	}
-
 	//http://localhost:2000/login 
 	//로그인 페이지 
 	@GetMapping("login")
@@ -45,7 +38,6 @@ public class LoginCont {
 		session.removeAttribute("s_email");
 		session.removeAttribute("s_nickname");
 		session.removeAttribute("s_grade");
-		session.removeAttribute("s_gumqty");
 		mav.setViewName("layout/home");
 		
 		return mav;
@@ -68,9 +60,7 @@ public class LoginCont {
 		        session.setAttribute("s_email", result.getEmail());
 		        session.setAttribute("s_nickname", result.getNickname());
 		        session.setAttribute("s_grade", result.getMemgrade());
-		        session.setAttribute("s_gumqty", result.getGumqty());
 		        System.out.println("로그인 성공");
-		        System.out.println(result);
 		        mav.setViewName("layout/home");
 		    } else {
 		        // 로그인 실패 시

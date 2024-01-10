@@ -1,5 +1,11 @@
 package kr.co.tindog.oauth.model;
 
+
+import java.sql.Timestamp;
+
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,8 +32,8 @@ public class User {
 	private String providerID;	//토큰 sub값
 	
 	@Builder
-	public User(String username, String password, String email, String role, String provider, String providerID
-			) {
+	public User(String username, String password, String email, String role, String provider, String providerID,
+			Timestamp createDate) {
 		this.username = username;
 		this.password = password;
 		this.email = email;

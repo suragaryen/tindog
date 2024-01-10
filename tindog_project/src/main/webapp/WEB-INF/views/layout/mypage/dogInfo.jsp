@@ -3,10 +3,19 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+table, tbody, tr, td{
+	border: 2px solid #fff; 
+	color : black;
+
+}
+
+
+</style>
 <!DOCTYPE html>
 <html>
-
-<body class="wrapper">
+<body>
+<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <div class="cont">
 		<div class="dogInfoText">
@@ -15,11 +24,49 @@
 		
 		<div style="color: black;" class="dogInfo">
 <c:forEach var="item" items="${list}">	
-<div id="winnerInfo" class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 50px;" >
-	<div class="card" style="width: 20rem; height: 500px;">
-
-
-      <div id="carouselBox">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="storage/${item.mainphoto}" id="dog1" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${item.dname} (${item.age})</h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
+  </div>
+  <!-- 
+  <div class="col">
+    <div class="card">
+      <img src="img/dog2.jpeg" id="dog2" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">둥둥이 (2) </h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="img/dog1.jpeg" id="dog3" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">둥둥이 (2) </h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
+  </div>
+   -->
+</div>
+			
+		</div>
+	</div>
+	
+	<!--모달시작-->
+	<div id="dogInfoModal" class="dog1Modal">
+		<div id="modal-content">
+			<span class="modal-close">&times;</span>
+			<div id="dog_detail">
+				
+				<!--캐로셀 이미지 시작-->
+				<div id="carouselBox">
 					<div id="carouselExampleIndicators" class="carousel slide carousel-slide">
 						<div class="carousel-indicators">
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -50,44 +97,79 @@
 							  </button>
 						</div>
 				</div>
-
-        <h5 class="card-title">${item.dname} (${item.age})</h5>
-       <table id="dog-info-table">
-			<tr>
-				<th><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/></th>
-				<td style="text-align: left;">${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</td>
-			</tr>
-			<tr>
-				<th><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/></th>
-				<td style="text-align: left;"> <c:choose>
-			                <c:when test="${item.size eq 1}">
-			                    소형견
-			                </c:when>
-			                <c:when test="${item.size eq 2}">
-			                    중형견
-			                </c:when>
-			                <c:when test="${item.size eq 3}">
-			                    대형견
-			                </c:when>
-			                <c:otherwise>
-			                    기타 크기
-			                </c:otherwise>
-			            </c:choose>
-			            / ${item.weight} kg</td>
-			</tr>
-			<tr>
-				<th><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/></th>
-				<td style="text-align: left;"><div>${item.dog_detail}</div></td>
-			</tr>
-		</table>
-	
-
+				<!-- 캐로셀 이미지 끝 -->
+				
+				<!--<div id="dogDetailImg">
+					<img src="img/dog2.jpeg" alt="기본 이미지" id="dog1DetailImg"/>-->
+					<div id="dog1detail">
+						<div class="form-check form-switch" id="worldcup-switch">
+							<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+							<label class="form-check-label" for="flexSwitchCheckDefault"> 월드컵 후보</label>
+						</div>
+					<span class="name-age">${item.dname} (${item.age})</span>
+						<div id="dog1detail-content">
+						
+						<table style="width:120px">
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/></th>
+								<td>${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</td>
+							</tr>
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/></th>
+								<td> <c:choose>
+							                <c:when test="${item.size eq 1}">
+							                    소형견
+							                </c:when>
+							                <c:when test="${item.size eq 2}">
+							                    중형견
+							                </c:when>
+							                <c:when test="${item.size eq 3}">
+							                    대형견
+							                </c:when>
+							                <c:otherwise>
+							                    기타 크기
+							                </c:otherwise>
+							            </c:choose>
+							            / ${item.weight} kg</td>
+							</tr>
+							<tr>
+								<th><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/></th>
+								<td>${item.dog_detail}</td>
+							</tr>
+						</table>
+						<!--
+							<ul>
+								
+								
+								<li><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/>${item.sex eq 'f' ? '여' : '남'} / 중성화${item.neutral}</li>
+									<li>
+							          <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dog.png" alt="dog"/>
+							            <c:choose>
+							                <c:when test="${item.size eq 1}">
+							                    소형견
+							                </c:when>
+							                <c:when test="${item.size eq 2}">
+							                    중형견
+							                </c:when>
+							                <c:when test="${item.size eq 3}">
+							                    대형견
+							                </c:when>
+							                <c:otherwise>
+							                    기타 크기
+							                </c:otherwise>
+							            </c:choose>
+							            / ${item.weight} kg
+							        </li>
+								<li><img width="24" height="24" src="https://img.icons8.com/material/24/sheet-of-paper.png" alt="sheet-of-paper"/>${item.dog_detail}</li>
+							</ul>
+							 -->
+						</div>
+					</div>
+			</div>
+		</div>
 	</div>
-</div>
-</div>
-</div>
-	
 	</c:forEach>	
+	<!-- 모달 끝 -->
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>

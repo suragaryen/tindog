@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body class="wrapper">
+<body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 

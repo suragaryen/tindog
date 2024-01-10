@@ -1,6 +1,5 @@
 package kr.co.tindog.worldcup;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,28 +20,10 @@ public class WorldcupDAO {
 		
 	}//worldcupImgLIst end
 	
-
 	public List<Map<String, Object>> worldcupOptionList(DogDTO dto){
 		
 		return sqlSession.selectList("worldcup.worldcupOptionList", dto);
 		
 	}
-  
-	public List<Map<String, Object>> worldcupWinner(String email) {
-		
-		return sqlSession.selectList("worldcup.worldcupWinner", email);
-		
-	}
-	
-	public int FollowInsert(Map<String, String> emails) {
 
-		return sqlSession.insert("worldcup.followInsert",emails);
-	}
-
-
-	public List<Object> dupCheck(Map<String, String> emails) {
-		return sqlSession.selectList("worldcup.dupCheck", emails);
-	}
-	
-	
-}//class end
+}

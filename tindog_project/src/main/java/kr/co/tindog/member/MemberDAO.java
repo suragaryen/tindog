@@ -1,7 +1,6 @@
 package kr.co.tindog.member;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +33,6 @@ public class MemberDAO {
 	public List<UserDTO> userList(String email){
 		return sqlSession.selectList("user.userList", email);
 	}//userList end
-	
-	public List<Map<String, Object>> followList(String email) {
-		return sqlSession.selectList("user.followList", email);
-	}
-	
-	public String nickDupCheck(String nickname) {
-			return sqlSession.selectOne("user.nickDupCheck", nickname);
-	}
-	
-	public String emailDupCheck(String email) {
-		return sqlSession.selectOne("user.emailDupCheck", email);
-}
-
 
 
 }//class end
