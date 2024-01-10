@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -29,7 +30,7 @@ import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 public class MemberCont {
 
 	@Autowired
-	MemberDAO memberDao;
+	MemberDAO memberDao;	
 	PrincipalOauth2UserService PO;
 	User user;
 
@@ -37,6 +38,7 @@ public class MemberCont {
 	public ModelAndView register() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/register");
+		mav.addObject("list", memberDao.dogType());
 		return mav;
 	}
 	
@@ -277,18 +279,6 @@ public class MemberCont {
 		 return mav;
 		
 	}//insert end
-	
-	@RequestMapping("/follow")
-	public ModelAndView follow(HttpSession session) {
-		String email = (String)session.getAttribute("s_email");
-		// System.out.println(email);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/mypage/follow");
-		mav.addObject("list", memberDao.followList(email));
-		return mav;
-	}
-	
-
 	
 
 }//MemberController end

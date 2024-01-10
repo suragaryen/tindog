@@ -106,9 +106,9 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 		    <li><a href="/follow"><span>팔로우</span></a></li>
 		    <li><a href="/chatList"><span>채팅</span></a></li>
+		    <li><a href="/cut"><span>차단목록</span></a></li>
 		    <li><a href="#"><span>상점관리</span></a></li>
-		    <li><a href="#"><span id="btn" class="open-popup">이상형 월드컵 결과</span></a><br></li>
-		    <li><a href="#"><span id="btn" class="">멍BTI 결과</span></a></li>
+		    <li><a href="/idelResult"><span id="btn">이상형 월드컵 결과</span></a><br></li>		    
 		    <li><a href="#"><span>공지사항</span></a></li>
 		    <li><a href="#"><span>회원탈퇴</span></a></li>
 		    
