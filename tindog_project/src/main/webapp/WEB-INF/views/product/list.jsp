@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body class="wrapper">
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<body>
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
 
 <br>
@@ -20,7 +20,7 @@
     <div class="col-sm-12">
     	<!-- 검색 -->
     	<form method="get" action="search">
-    		제목으로 검색 : <input type="text" name="SUBJECT" value="${SUBJECT}">
+    		제목으로 검색 : <input type="text" name="subject" value="${SUBJECT}">
     		       <input type="submit" value="검색" class="btn">
     		       <button type="button" onclick="location.href='write'" class="btn btn-success">+글쓰기</button>
     		       <button type="button" onclick="location.href='list'" class="btn btn-success">전체목록으로 돌아가기</button>

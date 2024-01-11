@@ -10,7 +10,7 @@
     <insert id="insert" parameterType="java.util.Map">
 		
 		INSERT INTO USED_PRODUCT(UPRODUCT_NO, SUBJECT, NICKNAME, PRICE, INFO, UPRODUCT_CD, AREA, MAINPHOTO, PHOTO)
-		VALUES(#{UPRODUCT_NO}, #{SUBJECT}, #{NICKNAME}, #{PRICE}, #{INFO}, #{UPRODUCT_CD}, #{AREA}, #{MAINPHOTO}, #{PHOTO})
+		VALUES(#{uproduct_no}, #{subject}, #{nickname}, #{price}, #{info}, #{uproduct_cd}, #{area}, #{mainphoto}, #{photo})
 	
 	</insert>
 	
@@ -34,7 +34,34 @@
 	<select id="detail" resultType="java.util.Map" parameterType="int">
 		SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
 		FROM USED_PRODUCT
-		WHERE UPRODUCT_NO = #{UPRODUCT_NO}
+		WHERE UPRODUCT_NO = #{uproduct_no}
     </select>
+    
+    <select id="mainphoto" resultType="String" parameterType="int">
+		SELECT MAINPHOTO
+		FROM USED_PRODUCT
+		WHERE UPRODUCT_NO = #{uproduct_no}
+	</select>
+	
+	<select id="photo" resultType="String" parameterType="int">
+		SELECT PHOTO
+		FROM USED_PRODUCT
+		WHERE UPRODUCT_NO = #{uproduct_no}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM USED_PRODUCT
+        WHERE UPRODUCT_NO= #{uproduct_no}
+	</delete>
+	
+	<update id="update" parameterType="java.util.Map">
+	    UPDATE USED_PRODUCT
+	    SET SUBJECT = #{subject}
+	       ,PRICE = #{price}
+	       ,INFO = #{info}
+	       ,MAINPHOTO = #{mainphoto}
+	       ,PHOTO = #{photo}
+	    WHERE UPRODUCT_NO= #{uproduct_no}
+	</update>
 	
 </mapper>

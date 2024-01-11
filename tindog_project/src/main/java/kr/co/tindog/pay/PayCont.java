@@ -29,6 +29,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.tindog.chat.ChatRoomDAO;
 import kr.co.tindog.member.MemberDAO;
 import net.minidev.json.JSONObject;
 
@@ -37,6 +38,10 @@ public class PayCont {
 	
 	@Autowired
 	PayDAO payDAO;
+	
+	@Autowired
+	ChatRoomDAO chatRoomDao;
+	
 	
    private IamportClient api;
 
@@ -77,6 +82,12 @@ public class PayCont {
 						System.out.println(payDTO.toString());
 						payDAO.payInsert(payDTO);
 						//mav.setViewName("layout/mypage/paySuccess");
+										
+						String s_nickanem = (String)session.getAttribute("s_nickname");
+						int gumQty = chatRoomDao.checkGum(s_nickanem);
+						
+						session.removeAttribute("s_gumqty"); 
+						session.setAttribute("s_gumqty", gumQty);
 						
 						return 1;
 						

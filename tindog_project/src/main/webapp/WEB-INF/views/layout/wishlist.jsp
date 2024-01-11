@@ -12,16 +12,16 @@
 
 <script>
  
-	  function WishlistDelete(WISHLIST_NO){
+	  function WishlistDelete(wishlist_no){
 	  if(confirm("해당 상품을 삭제할까요?")){
-        location.href='/layout/delete?WISHLIST_NO=' + WISHLIST_NO;	
+        location.href='/layout/delete?wishlist_no=' + wishlist_no;
 	  }//if end
 	}//WishlistDelete() end
 				
  </script>
  
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
 <div class="container text-center">
     <!-- 본문 시작 -->
@@ -34,7 +34,7 @@
    
    <div class="row">
     <div class="col-sm-12">
-    <form name="cartfrm" id="cartfrm" method="post" enctype="multipart/form-data">
+    <form name="wishlistfrm" id="wishlistfrm" method="post" enctype="multipart/form-data">
         <table class="table table-hover">
         <thead class="table-success">
           <th>목록번호</th>
@@ -52,7 +52,7 @@
              <td>${row.SUBJECT}</td>
              <td>${row.PRICE}</td>
              <td>
-                 <input type="button" value="삭제" onclick="WishlistDelete(${row.WISHLIST_NO})">
+                 <input type="button" value="삭제" onclick="WishlistDelete('${row.WISHLIST_NO}')">
              </td>
            </tr>
          </c:forEach>

@@ -18,9 +18,9 @@
 	top:150px;
 	display:block;
 }
+
 </style>
 <body class="wrapper">
-<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 	<div class="cont">
 		<c:forEach var="item" items="${list}">

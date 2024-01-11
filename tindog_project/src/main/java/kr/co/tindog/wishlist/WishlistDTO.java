@@ -1,41 +1,42 @@
 package kr.co.tindog.wishlist;
 
 public class WishlistDTO {
-	private String WISHLIST_NO; 
-	private String EMAIL;
-	private int UPRODUCT_NO;
-	private String WISHDATE;
+	private String wishlist_no;
+	private String email;
+	private int uproduct_no;
+	private String wishdate;
 	
 	
-	public String getWISHLIST_NO() {
-		return WISHLIST_NO;
+	public String getWishlist_no() {
+		return wishlist_no;
 	}
-	public void setWISHLIST_NO(String wISHLIST_NO) {
-		WISHLIST_NO = wISHLIST_NO;
+	public void setWishlist_no(String wishlist_no) {
+		this.wishlist_no = wishlist_no;
 	}
-	public String getEMAIL() {
-		return EMAIL;
+	public String getEmail() {
+		return email;
 	}
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public int getUPRODUCT_NO() {
-		return UPRODUCT_NO;
+	public int getUproduct_no() {
+		return uproduct_no;
 	}
-	public void setUPRODUCT_NO(int uPRODUCT_NO) {
-		UPRODUCT_NO = uPRODUCT_NO;
+	public void setUproduct_no(int uproduct_no) {
+		this.uproduct_no = uproduct_no;
 	}
-	public String getWISHDATE() {
-		return WISHDATE;
+	public String getWishdate() {
+		return wishdate;
 	}
-	public void setWISHDATE(String wISHDATE) {
-		WISHDATE = wISHDATE;
+	public void setWishdate(String wishdate) {
+		this.wishdate = wishdate;
 	}
 	@Override
 	public String toString() {
-		return "WishlistDTO [WISHLIST_NO=" + WISHLIST_NO + ", EMAIL=" + EMAIL + ", UPRODUCT_NO=" + UPRODUCT_NO
-				+ ", WISHDATE=" + WISHDATE + "]";
+		return "WishlistDTO [wishlist_no=" + wishlist_no + ", email=" + email + ", uproduct_no=" + uproduct_no
+				+ ", wishdate=" + wishdate + "]";
 	}
+	
 	
 	
 

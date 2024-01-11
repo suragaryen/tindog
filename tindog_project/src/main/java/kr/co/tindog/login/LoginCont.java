@@ -68,6 +68,7 @@ public class LoginCont {
 		        session.setAttribute("s_email", result.getEmail());
 		        session.setAttribute("s_nickname", result.getNickname());
 		        session.setAttribute("s_grade", result.getMemgrade());
+		        System.out.println((String)session.getAttribute("s_grade"));
 		        session.setAttribute("s_gumqty", result.getGumqty());
 		        System.out.println("로그인 성공");
 		        System.out.println(result);

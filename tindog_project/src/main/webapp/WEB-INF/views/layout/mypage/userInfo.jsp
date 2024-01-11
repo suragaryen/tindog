@@ -48,7 +48,6 @@
 		  <div class="col-md-4">
 		    <label for="inputState" class="form-label">Adress2</label>
  			<input type="text" value="${item.detailaddr}" class="form-control" id="inputZip" readonly>
-		    </select>
 		  </div>
 		  <div class="col-md-2">
 		    <label for="inputZip" class="form-label">ZipCode</label>

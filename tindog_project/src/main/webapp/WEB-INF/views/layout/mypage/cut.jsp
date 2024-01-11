@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
+	
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
 <div class="cont">
@@ -27,38 +27,29 @@
 				<tr>
 				    <td>${item.DNAME}</td>
 				    <td style="text-align: center;"><input type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기"></td>				    	
+				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
 				</c:forEach>
 			</table>
 		</form>
-		<%-- <form name="productchatRoomfrm" id="productchatRoomfrm" method="post" enctype="multipart/form-data">
+		<form name="productchatRoomfrm" id="productchatRoomfrm" method="post" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
 				    <th colspan="6">차단 유저 목록</th>
 				</tr>
 				<c:forEach var="item" items="${list2}">	
 				<tr>
-					<td style="text-align: left" colspan="2">
-						<c:choose>
-							<c:when test="${item.NICKNAME_TO == s_nickname}">
-				    			${item.NICKNAME_FROM}
-				    		</c:when>
-				    		<c:when test="${item.NICKNAME_FROM == s_nickname}">
-				    			${item.NICKNAME_TO}
-				    		</c:when>
-						</c:choose>
-				    </td>
-				    <td style="text-align: center;"><input type="button" value="차단해제"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기"></td>				    	
+					<td>${item.NICKNAME}</td>
+				    <td style="text-align: center;"><input type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
+				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME}'"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
 				</c:forEach>
 			</table>
-		</form> --%>
+		</form>
 	</div>
 </div>
 	
