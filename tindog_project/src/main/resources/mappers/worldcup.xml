@@ -28,6 +28,14 @@
  	   where email = #{email}
  	</select>
  	
+ 	<select id="idelResult" parameterType="String" resultType="java.util.Map">
+ 		SELECT *
+ 		FROM DOGS
+ 		WHERE email=(	SELECT followemail
+ 						FROM follow
+ 						WHERE email=#{email} AND followno=(SELECT max(followno) FROM follow))
+ 	</select>
+ 	
  	<insert id="followInsert" parameterType="java.util.Map">
  	  INSERT INTO FOLLOW(EMAIL, FOLLOWEMAIL)	
 	   VALUES (#{s_email}, #{f_email})
