@@ -17,6 +17,7 @@
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
                         <a href="/list" class="dropdown-item">구매하기</a>
+                        <a href="/wishlist" class="dropdown-item">찜목록</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

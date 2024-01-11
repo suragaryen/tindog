@@ -135,10 +135,10 @@ public class WorldcupController {
 			
 			String email=(String) session.getAttribute("s_email");
 			
-			mav.addObject("list", worldcupDAO.worldcupWinner(email));
+			mav.addObject("list", worldcupDAO.idelResult(email));
 			mav.setViewName("/layout/mypage/idelResult");
 			
-			System.out.println(worldcupDAO.worldcupWinner(email));
+			System.out.println(worldcupDAO.idelResult(email));
 			
 			return mav;
 		}

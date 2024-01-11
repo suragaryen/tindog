@@ -47,7 +47,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog1.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog1.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>꾸꾸</h5>
@@ -58,7 +58,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog2.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog2.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>꽁이</h5>
@@ -69,7 +69,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog3.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog3.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>릴리</h5>
@@ -80,7 +80,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog4.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog4.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>새침이</h5>
