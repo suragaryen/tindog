@@ -2,10 +2,8 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="user">
- 
 
+<mapper namespace="user">
  	
  	<insert id="insertDog" parameterType="kr.co.tindog.member.DogDTO">
  		INSERT INTO dogs(dogorder, dname, email, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose)
@@ -19,7 +17,7 @@
  	
  
  	 <select id="dogList" parameterType="String" resultType="kr.co.tindog.member.DogDTO">
-			SELECT dogorder, dname, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose, pic1, pic2, pic3
+			SELECT dogorder, dname, sex, dogcd, age, neutral, size, mainphoto, weight, dog_detail, gamereg, purpose, pic1, pic2, pic3, dbti
 			FROM dogs A INNER JOIN dogpics B
 			ON A.email = B.email
 			WHERE A.email = #{email}
@@ -38,19 +36,30 @@
  		VALUES(#{email}, #{pic1}, #{pic2}, #{pic3})
  	</insert>
  	
- 		<select id="followList" parameterType="String" resultType="java.util.Map">
-		SELECT EMAIL, NICKNAME
-		  FROM MEMBER
-		 WHERE EMAIL IN (
-						SELECT FOLLOWEMAIL
-						FROM FOLLOW
-						WHERE EMAIL = #{email}
-		               )
+	<select id="followList" parameterType="String" resultType="java.util.Map">
+		SELECT D1.EMAIL, DNAME, NICKNAME
+		  FROM (
+				SELECT EMAIL, DNAME
+				  FROM DOGS
+				 WHERE EMAIL IN (
+								SELECT FOLLOWEMAIL
+								FROM FOLLOW
+								WHERE EMAIL = #{email}
+				               )
+				   AND DOGORDER = 1
+		       ) D1 JOIN MEMBER M1 ON M1.EMAIL = D1.EMAIL
 	</select>
-
- 
- 
- 	<select id="nickDupCheck" parameterType="String" resultType="String">
+	
+	<delete id="followDelete" parameterType="String">
+		DELETE FROM FOLLOW WHERE FOLLOWEMAIL = #{email}
+	</delete>
+	
+	<select id="dogType" resultType="java.util.Map">
+		SELECT DOGCD, DOGTYPE
+		  FROM DOGTYPE
+	</select>
+	
+	<select id="nickDupCheck" parameterType="String" resultType="String">
  		select nickname
 		from member
 		where nickname = #{nickname}
@@ -61,7 +70,7 @@
 		from member
 		where email = #{email}
  	</select>
- </mapper>
+</mapper>
  
  
  

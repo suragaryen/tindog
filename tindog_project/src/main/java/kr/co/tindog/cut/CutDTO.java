@@ -9,4 +9,5 @@ public class CutDTO {
 	
 	private String email;
 	private String cutEmail;
+	private int cutCase;
 }

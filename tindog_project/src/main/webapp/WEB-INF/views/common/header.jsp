@@ -16,8 +16,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">중고마켓</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
-                        <a href="/list" class="dropdown-item">구매하기</a>
-                        <a href="appointment.html" class="dropdown-item">찜목록</a>
+                        <a href="/list" class="dropdown-item">구매하기</a>                        
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -26,7 +25,10 @@
                         <a href="/worldcup" class="dropdown-item">이상형월드컵</a>
                         <a href="/dbti" class="dropdown-item">댕BTI 검사</a>
                     </div>
-                </div>                
+                </div>
+                <div class="nav-item dropdown">
+                	<a href="/notice" class="nav-link">공지사항</a>
+                </div>            
             </div>
             <div style="padding-right: 50px;">
             <a href="/login">Login | </a>

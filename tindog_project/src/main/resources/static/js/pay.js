@@ -85,7 +85,12 @@ IMP.request_pay({
     			msg += '\결제 금액 : ' + rsp.paid_amount;
     			msg += '카드 승인번호 : ' + rsp.apply_num;
     			
-    			alert(msg);
+    			Swal.fire({
+    	        	title:"결제 완료", 
+    	        	text:"결제 금액 : "+rsp.paid_amount,
+    	        	icon:"success",
+    	        	confirmButtonText:"확인"	
+    	        });    			
     		} else {
     			//[3] 아직 제대로 결제가 되지 않았습니다.
     			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
@@ -95,7 +100,12 @@ IMP.request_pay({
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
         
-        alert(msg);
+        Swal.fire({
+        	title:"결제 실패", 
+        	text:"에러 내용 : "+rsp.error_msg,
+        	icon:"error",
+        	confirmButtonText:"확인"	
+        });
     }
 });
 

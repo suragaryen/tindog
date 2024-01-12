@@ -2,21 +2,21 @@ package kr.co.tindog.wishlist;
 
 public class WishlistDTO2 {
 
-	private String WISHLIST_NO; 
+	private String WISHLIST_NO;
 	private String EMAIL;
 	private int UPRODUCT_NO;
 	private String WISHDATE;
 	private String SUBJECT;
 	private String NICKNAME;
 	private String UPRODUCT_CD;
-	private int PRICE ;
+	private int PRICE;
 	private String INFO;
 	private String STATUS;
 	private String REGDATE;
 	private String AREA;
 	private String LOCATION;
 	private String MAINPHOTO;
-	private String PHOTO;
+    private String PHOTO;
 	public String getWISHLIST_NO() {
 		return WISHLIST_NO;
 	}
@@ -115,5 +115,6 @@ public class WishlistDTO2 {
 				+ ", AREA=" + AREA + ", LOCATION=" + LOCATION + ", MAINPHOTO=" + MAINPHOTO + ", PHOTO=" + PHOTO + "]";
 	}
 	
-	
+    
+    
 }
