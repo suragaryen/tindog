@@ -6,11 +6,23 @@
  <mapper namespace="cut">
  	
  	<select id="cutList" resultType="java.util.Map">
- 		SELECT DNAME, EMAIL
- 		  FROM DOGS
- 		 WHERE EMAIL IN (
- 		 				 SELECT CUTEMAIL FROM CUT WHERE EMAIL = #{s_email}
- 		 				)
+ 	    SELECT DNAME, D1.EMAIL, NICKNAME
+ 	      FROM MEMBER M1
+ 	           JOIN (
+			 	    SELECT DNAME, EMAIL
+			 		  FROM DOGS
+			 		 WHERE EMAIL IN (
+			 		 				 SELECT CUTEMAIL FROM CUT WHERE EMAIL = #{s_email} AND CUTCASE = 1
+			 		 				)
+ 		 			) D1 ON D1.EMAIL = M1.EMAIL
+ 	</select>
+ 	
+ 	<select id="cutPList" resultType="java.util.Map">
+ 	    SELECT NICKNAME, EMAIL
+ 	      FROM MEMBER
+ 	     WHERE EMAIL IN ( 
+						 SELECT CUTEMAIL FROM CUT WHERE EMAIL = #{s_email} AND CUTCASE = 2
+		                )
  	</select>
  	
  	<delete id="cutCancel" parameterType="kr.co.tindog.cut.CutDTO">

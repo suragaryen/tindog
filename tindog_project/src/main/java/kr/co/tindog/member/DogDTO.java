@@ -23,6 +23,7 @@ public class DogDTO {
 	private String pic1;
 	private String pic2;
 	private String pic3;
+	private String dbti;
 	
 	
 	
@@ -33,6 +34,12 @@ public class DogDTO {
 	
 	
 	
+	public String getDbti() {
+		return dbti;
+	}
+	public void setDbti(String dbti) {
+		this.dbti = dbti;
+	}
 	public String getPic1() {
 		return pic1;
 	}
@@ -142,15 +149,16 @@ public class DogDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	@Override
 	public String toString() {
 		return "DogDTO [dogno=" + dogno + ", dogorder=" + dogorder + ", email=" + email + ", dname=" + dname + ", sex="
 				+ sex + ", dogcd=" + dogcd + ", age=" + age + ", neutral=" + neutral + ", size=" + size
 				+ ", mainphotofile=" + mainphotofile + ", weight=" + weight + ", dog_detail=" + dog_detail
 				+ ", gamereg=" + gamereg + ", purpose=" + purpose + ", mainphoto=" + mainphoto + ", pic1=" + pic1
-				+ ", pic2=" + pic2 + ", pic3=" + pic3 + "]";
+				+ ", pic2=" + pic2 + ", pic3=" + pic3 + ", dbti=" + dbti + "]";
 	}
+	
+	
 
 	
 }

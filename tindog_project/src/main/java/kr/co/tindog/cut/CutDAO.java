@@ -13,8 +13,12 @@ public class CutDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public List<Map<String, Object>> cutList(String s_nickname) {
-		return sqlSession.selectList("cut.cutList", s_nickname);
+	public List<Map<String, Object>> cutList(String s_email) {
+		return sqlSession.selectList("cut.cutList", s_email);
+	}
+	
+	public List<Map<String, Object>> cutPList(String s_email) {
+		return sqlSession.selectList("cut.cutPList", s_email);
 	}
 	
 	public int cutCancel(CutDTO cutDto) {

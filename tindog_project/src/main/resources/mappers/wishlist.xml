@@ -8,8 +8,8 @@
 <mapper namespace="wishlist">
     
 	<insert id="insert" parameterType="kr.co.tindog.wishlist.WishlistDTO">
-		INSERT INTO WISHLIST(EMAIL, UPRODUCT_NO)
-		VALUES (#{EMAIL}, #{UPRODUCT_NO})
+		INSERT INTO WISHLIST(WISHLIST_NO, EMAIL, UPRODUCT_NO)
+		VALUES (CONCAT(TO_CHAR(CURRENT_DATE, 'YYYYMMDD'), '_', NEXTVAL(WISHLIST_SEQ)), #{email}, #{uproduct_no})
 	</insert>
 
 
@@ -18,14 +18,14 @@
 		SELECT USED_PRODUCT.NICKNAME, USED_PRODUCT.SUBJECT, USED_PRODUCT.PRICE, WISHLIST.WISHLIST_NO
         FROM USED_PRODUCT JOIN WISHLIST
         ON USED_PRODUCT.UPRODUCT_NO = WISHLIST.UPRODUCT_NO
-        WHERE EMAIL=#{EMAIL}
+        WHERE EMAIL=#{email}
         ORDER BY WISHLIST_NO
 	</select>
 
     
     <delete id="delete" parameterType="java.util.HashMap">
 		DELETE FROM WISHLIST
-		WHERE WISHLIST_NO=#{no} AND EMAIL=#{s_EMAIL}
+		WHERE WISHLIST_NO=#{no} AND EMAIL=#{s_email}
 	</delete>
    
 	

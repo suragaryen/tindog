@@ -6,35 +6,22 @@
 <!DOCTYPE html>
 <html>
 <style>
-.winner{
-	position:relative;
-	top:50px;
-	left:350px;
-	display:block;
-}
-
 #winnerInfo{
-	position:relative;
-	top:150px;
-	display:block;
+	position: relative;
+	top: 50px;	
 }
 </style>
 <body class="wrapper">
-<jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 	<div class="cont">
+	<div class="userInfoText">
+		<div style="border-bottom: solid 1px darkgrey;">이상형 월드컵 결과</div>
+	</div>
 		<c:forEach var="item" items="${list}">
-			<div id="img-round16-container" class="winner">
-				<img id="img-round16" src="/img/Winner.png">
-			</div>
-
-			<div id="winnerInfo" class="text-center mx-auto mb-5 wow fadeInUp"
-				data-wow-delay="0.1s" style="margin-top: 50px;">
-				<div class="card" style="width: 25rem;">
-
-
+			<div id="winnerInfo">
+				<div style="width:400px; height:200px">
 					<img src="/img/${item.MAINPHOTO}" class="img-fluid rounded-start"
-						alt="...">
+						alt="..." style="width:400px; height:300px">
 
 					<h5 class="card-title">${item.DNAME}(${item.AGE})</h5>
 					<table style="width: 400px">
@@ -69,12 +56,11 @@
 							<td><div>${item.DOG_DETAIL}</div></td>
 						</tr>
 					</table>
-
-
 				</div>
 			</div>
-		</c:forEach>
+		</c:forEach>	
 	</div>
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>

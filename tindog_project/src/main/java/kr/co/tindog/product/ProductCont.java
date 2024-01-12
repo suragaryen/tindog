@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.product.ProductDAO;
-
+import kr.co.tindog.wishlist.WishlistDTO;
 
 @Controller
-
 public class ProductCont {
        
 	
@@ -33,12 +34,12 @@ public class ProductCont {
 	}//class end
 	
 	@Autowired
-	private ProductDAO productDao;	
+	ProductDAO productDao;	
 	
 	@RequestMapping("/list")
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/product/list");
+		mav.setViewName("product/list");
 	    mav.addObject("list", productDao.list());
 		return mav;
 	}//list() end
@@ -46,7 +47,7 @@ public class ProductCont {
 	
 	@GetMapping("/write")
 	public String write() {
-		return "layout/product/write";
+		return "product/write";
 	}//write() end
 	
 	
@@ -55,94 +56,113 @@ public class ProductCont {
 	public String insert(@RequestParam Map<String, Object> map,
 			             @RequestParam MultipartFile img1,
 			                           MultipartFile img2,
-			             HttpServletRequest req) {
+			             HttpServletRequest req,
+			             HttpSession session) {
 		
-		//System.out.println(map);
-		//System.out.println(map.get("SUBJECT"));
-		//System.out.println(map.get("PRICE"));
-		//System.out.println(map.get("INFO"));
-		
-		//주의사항 : 파일업로드할 때 리네임 되지 않음
-	    //업로드된 파일은 /storage 폴더에 저장
-
-		String MAINPHOTO = "-";
-		String PHOTO = "-";
+		String mainphoto = "-";
+		String photo = "-";
 		
 		if(img1 != null && !img1.isEmpty()) { 
-			MAINPHOTO=img1.getOriginalFilename(); 
+			mainphoto=img1.getOriginalFilename(); 
 			
 			try {
 				ServletContext application = req.getSession().getServletContext();
 				String path = application.getRealPath("/storage");
-				img1.transferTo(new File(path + "\\" + MAINPHOTO));
+				img1.transferTo(new File(path + "\\" + mainphoto));
 			}catch(Exception e) {
 				System.out.println(e);
 			}//try end
 		}//if end
 		
 		if(img2 != null && !img2.isEmpty()) {
-			PHOTO=img2.getOriginalFilename();
+			photo=img2.getOriginalFilename();
 			
 			try {
 				ServletContext application = req.getSession().getServletContext();
 				String path = application.getRealPath("/storage");
-				img2.transferTo(new File(path + "\\" +PHOTO));
+				img2.transferTo(new File(path + "\\" +photo));
 			}catch(Exception e) {
 				System.out.println(e);
 			}//try end
 		}//if end
 		
-		map.put("MAINPHOTO", MAINPHOTO);
-		map.put("PHOTO", PHOTO);
+		
+		String s_nickname = (String) session.getAttribute("s_nickname");
+		
+		map.put("s_nickname", s_nickname);
+		map.put("mainphoto", mainphoto);
+		map.put("photo", photo);
 		
 		productDao.insert(map); 
 
 		
 		
-		return "redirect:/list"; 
+		return "redirect:/product/list"; 
 	}//insert() end
 	
 	
 	@GetMapping("/search")
-	public ModelAndView search(@RequestParam(defaultValue = "") String SUBJECT){
+	public ModelAndView search(@RequestParam(defaultValue = "") String subject){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/product/list");
-		mav.addObject("list", productDao.search(SUBJECT));
-		mav.addObject("SUBJECT", SUBJECT);
+		mav.setViewName("product/list");
+		mav.addObject("list", productDao.search(subject));
+		mav.addObject("subject", subject);
 		return mav;
 	}//search() end
 	
-	@GetMapping("/detail/{UPRODUCT_NO}")
-	public ModelAndView detail(@PathVariable int UPRODUCT_NO) {
+	@GetMapping("/detail/{uproduct_no}")
+	public ModelAndView detail(@PathVariable int uproduct_no,
+			                             HttpSession session) {
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/product/detail");
-		mav.addObject("product", productDao.detail(UPRODUCT_NO));
+		mav.setViewName("product/detail");
+		
+		 String loggedInUser = (String) session.getAttribute("s_nickname");
+
+		    // 글 상세 정보 조회
+		    Map<String, Object> detail = productDao.detail(uproduct_no);
+
+		    // 글을 작성한 사용자 정보 가져오기
+		    String author = (String) detail.get("NICKNAME");
+
+		    // 세션에 저장된 사용자와 글을 작성한 사용자가 같은지 비교
+		    boolean isAuthor = loggedInUser != null && loggedInUser.equals(author);
+
+		    
+		    
+		    // 수정, 삭제 권한 여부를 View에 전달
+		    mav.addObject("isAuthor", isAuthor);
+		    mav.addObject("product", detail);
+		    mav.addObject("product", productDao.detail(uproduct_no));
 		return mav;
+		
+		 
+		
 	}//detail() end
 	
 	@PostMapping("/delete")
 	public String delete(HttpServletRequest req) {
-		int UPRODUCT_NO = Integer.parseInt(req.getParameter("UPRODUCT_NO")); 
+		int uproduct_no = Integer.parseInt(req.getParameter("uproduct_no")); 
 		
 		//삭제하고자 하는 파일명 가져오기
-		   String MAINPHOTO=productDao.MAINPHOTO(UPRODUCT_NO);
-		   String PHOTO=productDao.PHOTO(UPRODUCT_NO);
+		   String mainphoto=productDao.mainphoto(uproduct_no);
+		   String photo=productDao.photo(uproduct_no);
 		   
 		   //첨부된 파일 삭제하기
-		   if(MAINPHOTO != null && !MAINPHOTO.equals("-")) {
+		   if(mainphoto != null && !mainphoto.equals("-")) {
 			ServletContext application = req.getSession().getServletContext();
 			String path = application.getRealPath("/storage");
-			File file1 = new File(path + "\\" + MAINPHOTO);
+			File file1 = new File(path + "\\" + mainphoto);
 			if(file1.exists()) {
 				file1.delete();
 				
 			}//if end
 		  }//if end 
 		 
-		   if(PHOTO != null && !PHOTO.equals("-")) {
+		   if(photo != null && !photo.equals("-")) {
 				ServletContext application = req.getSession().getServletContext();
 				String path = application.getRealPath("/storage");
-				File file2 = new File(path + "\\" + PHOTO);
+				File file2 = new File(path + "\\" + photo);
 				if(file2.exists()) {
 					file2.delete();
 					
@@ -150,9 +170,10 @@ public class ProductCont {
 			  }//if end 
 	
 		   
-		productDao.delete(UPRODUCT_NO);   
+		productDao.delete(uproduct_no);   
 			  
-		return "redirect:/list"; 
+		return "redirect:/product/list"; 
+
 			 
 	}//delete() end
 	
@@ -164,45 +185,47 @@ public class ProductCont {
 	                           
 	             HttpServletRequest req) {
 		   
-		   String MAINPHOTO = "-";
-		   String PHOTO = "-";
+		   String mainphoto = "-";
+		   String photo = "-";
 			
 			if(img1 != null && !img1.isEmpty()) { //파일이 존재한다면
-				MAINPHOTO=img1.getOriginalFilename();
+				mainphoto=img1.getOriginalFilename();
 				try {
 					ServletContext application = req.getSession().getServletContext();
 					String path = application.getRealPath("/storage"); //실제경로
-					img1.transferTo(new File(path + "\\" + MAINPHOTO));  //파일저장
+					img1.transferTo(new File(path + "\\" + mainphoto));  //파일저장
 				}catch(Exception e) {
 					System.out.println(e);
 				}//try end
 			}else{ //첨부된 파일이 없다면
-			    int UPRODUCT_NO=Integer.parseInt(map.get("UPRODUCT_NO").toString());
-				Map<String, Object> oldProduct=productDao.detail(UPRODUCT_NO);
-				MAINPHOTO=oldProduct.get("MAINPHOTO").toString();
+			    int uproduct_no=Integer.parseInt(map.get("uproduct_no").toString());
+				Map<String, Object> oldProduct=productDao.detail(uproduct_no);
+				mainphoto=oldProduct.get("MAINPHOTO").toString();
 				
 			}//if end 
 			
 			if(img2 != null && !img2.isEmpty()) { //파일이 존재한다면
-				PHOTO=img2.getOriginalFilename();
+				photo=img2.getOriginalFilename();
 				try {
 					ServletContext application = req.getSession().getServletContext();
 					String path = application.getRealPath("/storage"); //실제경로
-					img2.transferTo(new File(path + "\\" + PHOTO));  //파일저장
+					img2.transferTo(new File(path + "\\" + photo));  //파일저장
 				}catch(Exception e) {
 					System.out.println(e);
 				}//try end
 			}else{ //첨부된 파일이 없다면
-			    int UPRODUCT_NO=Integer.parseInt(map.get("UPRODUCT_NO").toString());
-				Map<String, Object> oldProduct=productDao.detail(UPRODUCT_NO);
-				PHOTO=oldProduct.get("PHOTO").toString();
+			    int uproduct_no=Integer.parseInt(map.get("uproduct_no").toString());
+				Map<String, Object> oldProduct=productDao.detail(uproduct_no);
+				photo=oldProduct.get("PHOTO").toString();
 				
 			}//if end 
 			
-			map.put("MAINPHOTO", MAINPHOTO);
-			map.put("PHOTO", PHOTO); 
+			map.put("mainphoto", mainphoto);
+			map.put("photo", photo); 
 			productDao.update(map); 
-			return "redirect:/list"; 
+
+			return "redirect:/product/list"; 
+
 		   
 		   
 	   }//update() end

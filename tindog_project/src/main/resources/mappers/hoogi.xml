@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- hoogi.xml -->
+
+<mapper namespace="hoogi">
+   
+    <select id="list" parameterType="String"
+		resultType="java.util.Map">
+	   
+	  
+	   SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+       FROM USED_PRODUCT 
+       WHERE NICKNAME=#{nickname}
+       ORDER BY UPRODUCT_NO
+	   
+	</select>
+
+    
+</mapper>
+    

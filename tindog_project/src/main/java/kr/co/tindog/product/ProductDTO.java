@@ -2,98 +2,102 @@ package kr.co.tindog.product;
 
 public class ProductDTO {
 
-	private int UPRODUCT_NO;
-	private String SUBJECT;
-	private String NICKNAME;
-	private String UPRODUCT_CD;
-	private int PRICE ;
-	private String INFO;
-	private String STATUS;
-	private String REGDATE;
-	private String AREA;
-	private String LOCATION;
-	private String MAINPHOTO;
-	private String PHOTO;
-	public int getUPRODUCT_NO() {
-		return UPRODUCT_NO;
+	private int uproduct_no; 
+	private String subject;
+	private String nickname;
+	private String uproduct_cd;
+	private int price;
+	private String info;
+	private String status;
+	private String regdate;
+	private String area;
+	private String location;
+	private String mainphoto;
+	private String photo;
+	
+	
+	public int getUproduct_no() {
+		return uproduct_no;
 	}
-	public void setUPRODUCT_NO(int uPRODUCT_NO) {
-		UPRODUCT_NO = uPRODUCT_NO;
+	public void setUproduct_no(int uproduct_no) {
+		this.uproduct_no = uproduct_no;
 	}
-	public String getSUBJECT() {
-		return SUBJECT;
+	public String getSubject() {
+		return subject;
 	}
-	public void setSUBJECT(String sUBJECT) {
-		SUBJECT = sUBJECT;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
-	public String getNICKNAME() {
-		return NICKNAME;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setNICKNAME(String nICKNAME) {
-		NICKNAME = nICKNAME;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public String getUPRODUCT_CD() {
-		return UPRODUCT_CD;
+	public String getUproduct_cd() {
+		return uproduct_cd;
 	}
-	public void setUPRODUCT_CD(String uPRODUCT_CD) {
-		UPRODUCT_CD = uPRODUCT_CD;
+	public void setUproduct_cd(String uproduct_cd) {
+		this.uproduct_cd = uproduct_cd;
 	}
-	public int getPRICE() {
-		return PRICE;
+	public int getPrice() {
+		return price;
 	}
-	public void setPRICE(int pRICE) {
-		PRICE = pRICE;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getINFO() {
-		return INFO;
+	public String getInfo() {
+		return info;
 	}
-	public void setINFO(String iNFO) {
-		INFO = iNFO;
+	public void setInfo(String info) {
+		this.info = info;
 	}
-	public String getSTATUS() {
-		return STATUS;
+	public String getStatus() {
+		return status;
 	}
-	public void setSTATUS(String sTATUS) {
-		STATUS = sTATUS;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public String getREGDATE() {
-		return REGDATE;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setREGDATE(String rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
-	public String getAREA() {
-		return AREA;
+	public String getArea() {
+		return area;
 	}
-	public void setAREA(String aREA) {
-		AREA = aREA;
+	public void setArea(String area) {
+		this.area = area;
 	}
-	public String getLOCATION() {
-		return LOCATION;
+	public String getLocation() {
+		return location;
 	}
-	public void setLOCATION(String lOCATION) {
-		LOCATION = lOCATION;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	public String getMAINPHOTO() {
-		return MAINPHOTO;
+	public String getMainphoto() {
+		return mainphoto;
 	}
-	public void setMAINPHOTO(String mAINPHOTO) {
-		MAINPHOTO = mAINPHOTO;
+	public void setMainphoto(String mainphoto) {
+		this.mainphoto = mainphoto;
 	}
-	public String getPHOTO() {
-		return PHOTO;
+	public String getPhoto() {
+		return photo;
 	}
-	public void setPHOTO(String pHOTO) {
-		PHOTO = pHOTO;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	@Override
 	public String toString() {
-		return "ProductDTO [UPRODUCT_NO=" + UPRODUCT_NO + ", SUBJECT=" + SUBJECT + ", NICKNAME=" + NICKNAME
-				+ ", UPRODUCT_CD=" + UPRODUCT_CD + ", PRICE=" + PRICE + ", INFO=" + INFO + ", STATUS=" + STATUS
-				+ ", REGDATE=" + REGDATE + ", AREA=" + AREA + ", LOCATION=" + LOCATION + ", MAINPHOTO=" + MAINPHOTO
-				+ ", PHOTO=" + PHOTO + "]";
+		return "ProductDTO [uproduct_no=" + uproduct_no + ", subject=" + subject + ", nickname=" + nickname
+				+ ", uproduct_cd=" + uproduct_cd + ", price=" + price + ", info=" + info + ", status=" + status
+				+ ", regdate=" + regdate + ", area=" + area + ", location=" + location + ", mainphoto=" + mainphoto
+				+ ", photo=" + photo + "]";
 	}
 	
 	
 	
 }
+	
+	
