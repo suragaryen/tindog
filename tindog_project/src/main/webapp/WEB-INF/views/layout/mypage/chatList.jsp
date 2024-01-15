@@ -13,9 +13,7 @@
 		<div style="border-bottom: solid 1px darkgrey;">채팅관리</div>
 	</div>
 	<div style="color: black;" class="userInfo">
-		<div id="image_container mainPic_container">
-				 <%-- <img src="storage/${item.userphoto}" alt="기본 이미지" id="userDefaultImg"  style="width: 50%" /> --%>
-		</div>
+		
 			
 		<form name=chatRoomfrm id="chatRoomfrm" method="post" enctype="multipart/form-data">
 			<table class="table">

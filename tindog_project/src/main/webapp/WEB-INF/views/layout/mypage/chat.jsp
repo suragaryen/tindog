@@ -379,8 +379,12 @@ button.accent {
 		// alert();
 		let message = $("#message").val();
 		message = message.trim();
-		if(message.length==0){
-			alert("댓글 내용을 입력해주세요");
+		if(message.length==0){			
+			Swal.fire({
+	        	title:"",
+	        	text:"내용을 입력해주세요",	        	        	
+	        	confirmButtonText: "확인"  	        	
+	        })
 			$("#message").focus();
 		}else {
 			// <form id="commentInsertForm"></form>의 컨트롤 요소를 전부 가져옴
@@ -397,14 +401,24 @@ button.accent {
   		  , type    : 'post'
   		  , data    : insertData        // 전달값
   	      , error   : function(error){
-  	    	  alert("저장 실패!");
+  	    	 Swal.fire({
+  	        	title:"저장 실패",
+  	        	text:"",
+  	        	icon:"error",        	
+  	        	confirmButtonText: "확인"  	        	
+  	        })  	    	  
   	      }
   	      , success : function(result){
   	    	  // alert(result);
   	    	  if(result==1) { // 댓글 등록 성공
   	    		  // chatLogsList(); // 댓글 등록 후 댓글 목록 함수 호출
   	    		  // $("#content").val(''); // 기존 댓글 내용을 빈 문자열로 대입(초기화)
-  	    		  alert("저장 완료!");
+  	    		Swal.fire({
+		        	title:"저장 완료",
+		        	text:"",
+		        	icon:"success",        	
+		        	confirmButtonText: "확인"  	        	
+        		})  	    		  
   	    	  }
   	      }
   		}); 
