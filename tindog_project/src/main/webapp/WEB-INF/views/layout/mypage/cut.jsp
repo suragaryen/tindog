@@ -11,7 +11,7 @@
 
 <div class="cont">
 	<div class="userInfoText">
-		<div style="border-bottom: solid 1px darkgrey;">차단 사용자 관리</div>
+		<div style="border-bottom: solid 1px darkgrey; width:170px;">차단 사용자 관리</div>
 	</div>
 	<div style="color: black;" class="userInfo">
 		<div id="image_container mainPic_container">
@@ -26,8 +26,8 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 				    <td>${item.DNAME}</td>
-				    <td style="text-align: center;"><input type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>				    	
+				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
+				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>

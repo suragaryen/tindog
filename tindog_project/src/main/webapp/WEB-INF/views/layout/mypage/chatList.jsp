@@ -25,10 +25,10 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 				    <td>${item.DNAME}</td>
-				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
-				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
-				    <td style="text-align: center;"><input type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
+				    <td style="text-align: center;"><input type="button" class="btn btn-outline-primary"  value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
+				    <td style="text-align: center;"><input type="button" class="btn btn-outline-primary"  value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
+				    <td style="text-align: center;"><input type="button" class="btn btn-outline-primary"  value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
+				    <td style="text-align: center;"><input type="button" class="btn btn-outline-primary"  value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- product.xml -->
+
+<mapper namespace="product">
+    
+    <insert id="insert" parameterType="java.util.Map">
+		
+		INSERT INTO USED_PRODUCT(UPRODUCT_NO, SUBJECT, NICKNAME, PRICE, INFO, UPRODUCT_CD, AREA, MAINPHOTO, PHOTO)
+		VALUES(#{UPRODUCT_NO}, #{SUBJECT}, #{NICKNAME}, #{PRICE}, #{INFO}, #{UPRODUCT_CD}, #{AREA}, #{MAINPHOTO}, #{PHOTO})
+	
+	</insert>
+	
+	<select id="list" resultType="java.util.Map">
+	   SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+	   FROM USED_PRODUCT
+	   ORDER BY SUBJECT
+	
+	</select>
+	
+	<select id="search" resultType="java.util.Map" parameterType="String">
+	
+	  SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+	  FROM USED_PRODUCT
+	  WHERE SUBJECT LIKE #{keyword}
+	  ORDER BY SUBJECT   
+		
+	</select>
+	
+	
+	<select id="detail" resultType="java.util.Map" parameterType="int">
+		SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+		FROM USED_PRODUCT
+		WHERE UPRODUCT_NO = #{UPRODUCT_NO}
+    </select>
+    
+    <select id="MAINPHOTO" resultType="String" parameterType="int">
+		SELECT MAINPHOTO
+		FROM USED_PRODUCT
+		WHERE UPRODUCT_NO = #{UPRODUCT_NO}
+	</select>
+	
+	<select id="PHOTO" resultType="String" parameterType="int">
+		SELECT PHOTO
+		FROM USED_PRODUCT
+		WHERE UPRODUCT_NO = #{UPRODUCT_NO}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM USED_PRODUCT
+        WHERE UPRODUCT_NO= #{UPRODUCT_NO}
+	</delete>
+	
+	<update id="update" parameterType="java.util.Map">
+	    UPDATE USED_PRODUCT
+	    SET SUBJECT = #{SUBJECT}
+	       ,PRICE = #{PRICE}
+	       ,INFO = #{INFO}
+	       ,MAINPHOTO = #{MAINPHOTO}
+	       ,PHOTO = #{PHOTO}
+	    WHERE UPRODUCT_NO= #{UPRODUCT_NO}
+	</update>
+	
+</mapper>

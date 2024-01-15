@@ -27,7 +27,7 @@
 <!-- was-validated  needs-validation -->
 
 	<div id="regi-form">
-        <form class="needs-validation" name="register-form" id="register-form" method="post" action="/register/userInsert" enctype="multipart/form-data" novalidate>			
+        <form class="needs-validation" name="register-form" id="register-form" method="post" action="/register/userInsert" enctype="multipart/form-data" novalidate onsubmit="return validateForm();">			
 			<h2 class="joinForm">TINDOG ID 생성</h2>
 			<h5>하나의 TINDOG ID로 모든 TINDOG 서비스를 이용할 수 있습니다.</h5>
           <div class="row">
@@ -306,153 +306,184 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
   
+	//이메일 모달 띄우기 
+		function remailCheck(){
+		
+			 var openEmailPopup = document.querySelector('#email');
+			 var emailModal = document.getElementById('email-check-modal');
+			 var emailCheckClose=document.getElementById('email-check-btn');
+
+				openEmailPopup.addEventListener('click', () => {
+					emailModal.style.display='block';       
+ 
+			    });   
+			    
+				emailCheckClose.addEventListener('click',() => {
+					emailModal.style.display='none';
+					  regiBody.style.overflow='auto'
+				  });
+				  
+				  window.addEventListener('click',(e) => {
+					  if(e.target===modal){
+						  emailModal.style.display='none';
+						  regiBody.style.overflow='auto'          	  
+					  }
+				  });  
+			
+			
+		/* 모달 띄우기 끝 */
+		
+		  document.querySelector("#email2").addEventListener("input", function(){
+		let inputEmail=this.value;
+		if(inputEmail.trim().length==0){
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			return;
+		}
+		
+		const regEx=/^[A-Za-z\d\-\_]{4,}@[가-힣\w\-\_]+(\.\w+){1,3}$/
+		
+		if(regEx.test(inputEmail)){
+			this.classList.remove("is-invalid");
+			this.classList.add("is-valid");
+			checkObj.emailValid=true;			
+		}else{
+			this.classList.remove("is-valid");
+			this.classList.add("is-invalid");
+			checkObj.emailValid=false;			
+		}
+	});	 
+		
+		}
+		
+		
+		/* 중복 확인 AJAX */
+		$("#email-check-btn").click(function(){
+			//alert("clicked");
+			//$.post("요청명령어", 전달값, callback함수);
+		$.post("register/emailDupCheck"						    //요청명령	
+				,"email=" + $("#email2").val().trim() //전달값(변수=값&변수=값)
+				,emailResponseProc						    //콜백함수
+				);
+		});//click end
+		
+	 	function emailResponseProc(result){ //result:서버가 응답해준 
+			//alert(result);
+		
+	   	 	var rEmail = result.email;
+	   	    var result = result.result;
+			
+			if(result==1){
+				swal({
+		        	title:"사용 가능한 이메일 입니다.",
+		        	icon:"success",
+		        	confirmButtonText:"확인",
+		        	closeOnClickOutside:false,
+		        	closeOnEsc:false,        	        	
+		        })
+		     $("#email-check-modal").css("display", "none");
+	        // 입력창에 받은 닉네임을 설정합니다.
+	        $("#email").val(rEmail);
+			}else{
+				
+				alert("이미 사용중인 이메일 입니다");
+			}
+			
+		}//responseProc()end
+		
+		
+		
+		
+		
+		
+		/* 닉네임 모달 띄우기 */
+		function nickCheck() {
+			
+			 var openNickPopup = document.querySelector('#nickname');
+			 var nickModal = document.getElementById('nick-check-modal');
+			 var nickCheckClose=document.getElementById('nick-check-close');
+
+				openNickPopup.addEventListener('click', () => {
+					nickModal.style.display='block';       
   
-      // 우편번호 찾기 찾기 화면을 넣을 element
-      var element_wrap = document.getElementById('wrap');
-
-      function foldDaumPostcode() {
-          // iframe을 넣은 element를 안보이게 한다.
-          element_wrap.style.display = 'none';
-      }
-
-      function DaumPostcode() {
-          // 현재 scroll 위치를 저장해놓는다.
-          var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
-          new daum.Postcode({
-              oncomplete: function(data) {
-                  // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                  // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                  // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                  var addr = ''; // 주소 변수
-                  var extraAddr = ''; // 참고항목 변수
-
-                  //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                  if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                      addr = data.roadAddress;
-                  } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                      addr = data.jibunAddress;
-                  }
-
-                  // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                  if(data.userSelectedType === 'R'){
-                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                      if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                          extraAddr += data.bname;
-                      }
-                      // 건물명이 있고, 공동주택일 경우 추가한다.
-                      if(data.buildingName !== '' && data.apartment === 'Y'){
-                          extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                      }
-                      // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                      if(extraAddr !== ''){
-                          extraAddr = ' (' + extraAddr + ')';
-                      }
-                      // 조합된 참고항목을 해당 필드에 넣는다.
-                      document.getElementById("detailaddr").value = extraAddr;
-                  
-                  } else {
-                      document.getElementById("detailaddr").value = '';
-                  }
-
-                  // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                  document.getElementById('post').value = data.zonecode;
-                  document.getElementById("addr").value = addr;
-                  // 커서를 상세주소 필드로 이동한다.
-                  document.getElementById("detailaddr").focus();
-
-                  // iframe을 넣은 element를 안보이게 한다.
-                  // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-                  element_wrap.style.display = 'none';
-
-                  // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
-                  document.body.scrollTop = currentScroll;
-              },
-              // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
-              onresize : function(size) {
-                  element_wrap.style.height = size.height+'px';
-              },
-              width : '100%',
-              height : '100%'
-          }).embed(element_wrap);
-
-          // iframe을 넣은 element를 보이게 한다.
-          element_wrap.style.display = 'block';
-      }
-      
-      //강아지 기타사진 3개까지만 받기 
-      const input = document.getElementById('dPics');
-
-      input.addEventListener('change', function() {
-          if (this.files.length > 3) {
-              alert('최대 3개의 파일만 선택할 수 있습니다.');
-              this.value = ''; // 선택한 파일 초기화
-          }
-      });    
+			    });   
+			    
+				nickCheckClose.addEventListener('click',() => {
+					nickModal.style.display='none';
+					  regiBody.style.overflow='auto'
+				  });
+				  
+				  window.addEventListener('click',(e) => {
+					  if(e.target===modal){
+						  nickModal.style.display='none';
+						  regiBody.style.overflow='auto'          	  
+					  }
+				  });  
+			
+			//window.open("register/nickCheck", "idwin", "width=400, height=200, left="+popX+", top="+popY);
+		/* 모달 띄우기 끝 */
+		
+		    document.querySelector("#nickname2").addEventListener("input", function(){
+				let inputNick=this.value;
+				if(inputNick.trim().length==0){
+					this.classList.remove("is-valid");
+					this.classList.add("is-invalid");
+					return;
+				}
+				
+				const regEx=/^[A-Za-z가-힣0-9]{2,10}$/
+				
+				if(regEx.test(inputNick)){
+					this.classList.remove("is-invalid");
+					this.classList.add("is-valid");
+					checkObj.nickValid=true;
+				}else{
+					this.classList.remove("is-valid");
+					this.classList.add("is-invalid");
+					checkObj.nickValid=false;
+				}
+			});    
+		
+		}
+		
+		
+		/* 중복 확인 AJAX */
+ 		$("#nick-check-btn").click(function(){
+ 			//alert("clicked");
+ 			//$.post("요청명령어", 전달값, callback함수);
+ 		$.post("register/nickDupCheck"						    //요청명령	
+ 				,"nickname=" + $("#nickname2").val().trim() //전달값(변수=값&변수=값)
+ 				,responseProc						    //콜백함수
+ 				);
+ 		});//click end
+ 		
+ 	 	function responseProc(result){ //result:서버가 응답해준 
+ 			//alert(result);
+ 		
+	   	 	var rNickname = result.nickname;
+	   	    var result = result.result;
+			
+ 			if(result==1){
+ 				swal({
+ 		        	title:"사용 가능한 닉네임 입니다.",
+ 		        	icon:"success",
+ 		        	confirmButtonText:"확인",
+ 		        	closeOnClickOutside:false,
+ 		        	closeOnEsc:false,        	        	
+ 		        })
+ 		     $("#nick-check-modal").css("display", "none");
+ 	        // 입력창에 받은 닉네임을 설정합니다.
+ 	        $("#nickname").val(rNickname);
+ 			}else{
+ 				
+ 				alert("이미 사용중인 닉네임 입니다");
+ 			}
+ 			
+ 		}//responseProc()end	
 	
-	document.querySelector("#dname").addEventListener("input", function(){
-		let inputDname=this.value;
-		if(inputDname.trim().length==0){
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			return;
-		}
-		
-		const regEx=/^[A-Za-z가-힣0-9]{1,10}$/
-		
-		if(regEx.test(inputDname)){
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-			checkObj.dnameValid=true;
-		}else{
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			checkObj.dnameValid=false;
-		}
-	});
 	
-	document.querySelector("#age").addEventListener("input", function(){
-		let inputAge=this.value;
-		if(inputAge.trim().length==0){
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			return;
-		}
-		
-		const regEx=/^[0-9]/
-		
-		if(regEx.test(inputAge)){
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-			checkObj.dageValid=true;
-		}else{
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			checkObj.dageValid=false;
-		}
-	});
-	
-	document.querySelector("#weight").addEventListener("input", function(){
-		let inputWeight=this.value;
-		if(inputWeight.trim().length==0){
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			return;
-		}
-		
-		const regEx=/^[0-9]/
-		
-		if(regEx.test(inputWeight)){
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-			checkObj.weightValid=true;
-		}else{
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			checkObj.weightValid=false;
-		}
-	});
+  
+     
   </script>
 
 
