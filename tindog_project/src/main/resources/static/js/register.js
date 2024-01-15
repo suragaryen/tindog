@@ -328,7 +328,7 @@
 				return;
 			}
 			
-			const regEx=/^[0-9]$/
+			const regEx=/^[0-9]/
 			
 			if(regEx.test(inputAge)){
 				this.classList.remove("is-invalid");

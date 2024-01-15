@@ -32,6 +32,7 @@ public class ReportCont {
 		reportDto.setReporter(reporter);
 		reportDto.setReported(reported);
 		reportDto.setReason(reason);
+		reportDto.setReportcase(1);
 		
 		int cnt = reportDao.reportInsert(reportDto);
 		
@@ -53,7 +54,9 @@ public class ReportCont {
 		reportDto.setReporter(reporter);
 		reportDto.setReported(reported);
 		reportDto.setReason(reason);
-		
+
+		reportDto.setReportcase(2);
+
 		int cnt = reportDao.reportInsert2(reportDto);
 		
 		return cnt;

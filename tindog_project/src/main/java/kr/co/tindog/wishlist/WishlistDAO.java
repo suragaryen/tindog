@@ -24,13 +24,14 @@ public class WishlistDAO {
 		 return sqlSession.insert("wishlist.insert", dto);
 	 }//insert end
 	 
-	 public List<WishlistDTO> wishlistList(String EMAIL){
-		 return sqlSession.selectList("wishlist.list", EMAIL);
+	 public List<WishlistDTO> wishlistList(String email){
+		 return sqlSession.selectList("wishlist.list", email);
 	 }//list end
 	 
 	 
 	 public int WishlistDelete(HashMap<String, Object> map){
 			
-			return sqlSession.delete("wishlist.delete", map);  
+			return sqlSession.delete("wishlist.delete", map);   
 		}
+	
 }

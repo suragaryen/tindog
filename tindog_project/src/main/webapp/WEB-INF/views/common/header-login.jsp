@@ -15,7 +15,7 @@
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
                         <a href="/list" class="dropdown-item">구매하기</a>
-                        <a href="/wishlist" class="dropdown-item">찜목록</a>
+                        <a href="/layout/wishlist" class="dropdown-item">찜목록</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -24,7 +24,24 @@
                         <a href="/worldcup" class="dropdown-item">이상형월드컵</a>
                         <a href="/dbti" class="dropdown-item">댕BTI 검사</a>
                     </div>
-                </div>                
+                </div>
+                <div class="nav-item dropdown">
+                	<a href="/notice" class="nav-link">공지사항</a>
+                </div>    
+<%
+	if(((String)session.getAttribute("s_grade")).equals("M")) {
+%>                                
+				<div class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">관리자권한</a>
+					<div class="dropdown-menu rounded-0 rounded-bottom m-0">
+						<a href="/management" class="dropdown-item">회원목록</a>
+                		<a href="/reportList" class="dropdown-item">신고목록</a>
+                		<a href="/dogtype" class="dropdown-item">견종추가</a>
+                	</div>
+                </div>
+<%
+	}
+%>                                     
             </div>
             <div style="padding-right: 50px;">
             <a href="/userInfo">My page |</a>

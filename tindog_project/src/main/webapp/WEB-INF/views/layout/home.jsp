@@ -69,7 +69,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog3.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog3.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>릴리</h5>
@@ -80,7 +80,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">
-                            <img class="img-fluid" src="img/dog4.jpeg" alt="">
+                            <img class="img-fluid" src="/img/dog4.jpeg" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>새침이</h5>

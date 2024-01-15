@@ -28,12 +28,11 @@ public class WishlistCont {
 	@PostMapping("/insert")
 	public String wishlistInsert(@ModelAttribute WishlistDTO wishlistDto, HttpSession session) {
 		
-		// wishlistDto.setEMAIL("moon@naver.com");
-		wishlistDto.setEMAIL((String)session.getAttribute("s_email"));
+		wishlistDto.setEmail((String)session.getAttribute("s_email"));
 		
 		wishlistDao.wishlistInsert(wishlistDto);
 		
-		return "redirect:/layout/product/wishlist"; //찜목록 페이지
+		return "redirect:/layout/wishlist"; //찜목록 페이지
 			
 	}//wishlistInsert() end	
 	
@@ -41,26 +40,31 @@ public class WishlistCont {
 	@RequestMapping("/wishlist")
 	public ModelAndView list(HttpSession session) {
 		
-		// String s_EMAIL="moon@naver.com";
-		String s_EMAIL = (String)session.getAttribute("s_email");
+		//로그인 했다면
+		//String s_id=session.getAttribute("s_id")
+		String s_email=(String)session.getAttribute("s_email");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("layout/product/wishlist");
-		mav.addObject("list", wishlistDao.wishlistList(s_EMAIL));
+		mav.setViewName("layout/wishlist");
+		mav.addObject("list", wishlistDao.wishlistList(s_email));
 		return mav;
 	}//wishlist() end
 
 	
 	@GetMapping("/delete")
-	public String delete(String WISHLIST_NO, HttpSession session) {
+	public String delete(String wishlist_no, HttpSession session) {
 	
 		
+		WishlistDTO wishlistDto = new WishlistDTO();
+		wishlistDto.setWishlist_no(wishlist_no);
+		wishlistDto.setEmail((String)session.getAttribute("s_email"));
+		
+		
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("no", WISHLIST_NO);
-		// map.put("s_EMAIL", "moon@naver.com");
-		map.put("s_EMAIL", (String)session.getAttribute("s_email"));
+		map.put("no", wishlist_no);
+		map.put("s_email", session.getAttribute("s_email"));
 		wishlistDao.WishlistDelete(map);
-		return "redirect:/layout/product/wishlist";
+		return "redirect:/layout/wishlist";
 	}//delete() end
 	
 	

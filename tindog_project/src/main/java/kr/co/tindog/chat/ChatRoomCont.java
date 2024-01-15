@@ -65,6 +65,9 @@ public class ChatRoomCont {
 		String followNickname = nickname;
 		String s_nickname = (String)session.getAttribute("s_nickname");
 		int useGum = chatRoomDao.useGum(s_nickname);
+		int gumQty = chatRoomDao.checkGum(s_nickname);
+		session.removeAttribute("s_gumqty");
+		session.setAttribute("s_gumqty", gumQty);
 		
 		if(useGum == 1) {
 			try {
@@ -132,3 +135,4 @@ public class ChatRoomCont {
 		return cnt;
 	}
 }
+

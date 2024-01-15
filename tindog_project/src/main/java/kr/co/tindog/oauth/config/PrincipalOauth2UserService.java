@@ -1,4 +1,5 @@
 
+
 package kr.co.tindog.oauth.config;
 
 import java.util.HashMap;
@@ -49,8 +50,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		
 
 		// 주어진 데이터 채우기 (위와 동일하게 예시로 생성)
-
-
 		
 		System.out.println("getAttributes:"+oAuth2User.getAttributes());//이 정보로 강제 회원가입 시킬거임	
 		String email2 = ""; //userDTO에 저장하기 위한 email 

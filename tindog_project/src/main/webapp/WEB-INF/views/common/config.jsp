@@ -67,7 +67,9 @@
 	    <script src="/js/register.js"></script>
 	    <script src="/js/login.js"></script>
 	    <script src="/js/pay.js"></script>
-	     <script src="/js/payModal.js"></script>
+
+	    <script src="/js/payModal.js"></script>
+		<link href="/css/notice.css" rel="stylesheet">
 
 	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
@@ -82,7 +84,7 @@
 	    <link href="/css/worldcupselect.css" rel="stylesheet">
 	     <!-- <link href="/css/chat.css" rel="stylesheet"> -->
 	    	 
-	    
+	    <link href="/css/findidpw.css" rel="stylesheet">
 	    <link href="/css/worldcup.css" rel="stylesheet">
 	     <link href="/css/userInfo.css" rel="stylesheet">
 	     <link href="/css/dogInfo.css" rel="stylesheet">

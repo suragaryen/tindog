@@ -313,6 +313,7 @@
 			 var emailModal = document.getElementById('email-check-modal');
 			 var emailCheckClose=document.getElementById('email-check-btn');
 
+
 				openEmailPopup.addEventListener('click', () => {
 					emailModal.style.display='block';       
  

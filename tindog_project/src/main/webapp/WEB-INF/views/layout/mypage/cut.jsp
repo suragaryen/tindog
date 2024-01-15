@@ -27,8 +27,7 @@
 				<tr>
 				    <td>${item.DNAME}</td>
 				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>				    	
-						    	
+				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>				    	    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
 				</c:forEach>
@@ -56,18 +55,28 @@
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script>
 		function cutCancel(email) {
-			// alert(email);
 			$.ajax({
 				url     : '/cut/cancel/' + email // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
 			  , type    : 'post'
 			  , data    : {'email':email}
-			  , success : function(result) {
+			  , success : function(result) {				  
 						  	  if(result==1) {
-						  		  alert("차단 해제되었습니다");
+						  		Swal.fire({
+						        	title:"차단 해제 완료",
+						        	text:"차단이 해제되었습니다",
+						        	icon:"success",
+						        	confirmButtonText:"확인"	
+						        }).then(function(){
 						  		  document.cutDogListfrm.action="/cut";
 								  document.cutDogListfrm.submit();
+								});
 						  }else {
-							  alert("차단 해제를 실패했습니다");
+							  Swal.fire({
+						        	title:"차단 해제 실패",
+						        	text:"관리자에게 문의해주세요",
+						        	icon:"error",
+						        	confirmButtonText:"확인"
+							  });
 						  }
 				}
 			});

@@ -30,7 +30,21 @@
  	</select>
  	
  	<insert id="insert2" parameterType="kr.co.tindog.report.ReportDTO">
- 		INSERT INTO REPORT(REPORTER, REPORTED, REASON)
- 		            VALUES(#{reporter}, #{reported}, #{reason})
+ 		INSERT INTO REPORT(REPORTER, REPORTED, REASON, REPORTCASE)
+ 		            VALUES(#{reporter}, #{reported}, #{reason}, #{reportcase})
  	</insert>
+ 	
+ 	<select id="list" resultType="java.util.Map">
+ 		SELECT REPORTED, REPORTER, REASON, REPORTDATE
+ 		  FROM REPORT
+ 		 WHERE REPORTCASE = 1
+ 		 ORDER BY REPORTDATE
+ 	</select>
+ 	
+ 	<select id="list2" resultType="java.util.Map">
+ 		SELECT REPORTED, REPORTER, REASON, REPORTDATE
+ 		  FROM REPORT
+ 		 WHERE REPORTCASE = 2
+ 		 ORDER BY REPORTDATE
+ 	</select>
  </mapper>

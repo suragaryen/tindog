@@ -60,7 +60,8 @@
 			  , success : function(result) {
 				  			  if(result == 1) {
 				  				  alert("신고가 접수되었습니다");
-								  $("reportReason").val('');  
+				  				  document.reprotfrm.action="/chatList";
+								  document.reprotfrm.submit();
 				  			  } else {
 				  				  alert("신고 접수에 실패했습니다");
 				  			  }
