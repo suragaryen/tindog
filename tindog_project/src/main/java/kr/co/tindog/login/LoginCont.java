@@ -26,7 +26,7 @@ public class LoginCont {
 	@RequestMapping("/tt")
 	public ModelAndView test() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/test");
+		mav.setViewName("layout/test2");
 		return mav;
 	}
 

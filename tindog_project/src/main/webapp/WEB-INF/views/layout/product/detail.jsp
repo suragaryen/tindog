@@ -25,46 +25,10 @@
 		
 		function product_cart(){
 			
-
-				document.productfrm.action="/layout/wishlist";
-
+				document.productfrm.action="/wishlist/insert";
 				document.productfrm.submit();
 			
 		}//product_cart() end
-		
-		function product_wishlist(){
-			
-			document.productfrm.action="/layout/insert";
-			document.productfrm.submit();
-		
-		}//product_wishlist() end
-	
-		function product_chatStart(nickname, uproduct_no) {
-			$.ajax({
-	  			url     : '/product_chatList/insert' // 요청 명령어
-	  		  , type    : 'post'
-	  		  , data    : {'nickname':nickname, 'uproduct_no':uproduct_no}        // 전달값
-	  	      , error   : function(error){
-	  	    	  alert("채팅방 생성 실패!");
-	  	      }
-	  	      , success : function(result){
-	  	    	  // alert(result);
-	  	    	  if(result==1) { // 댓글 등록 성공
-	  	    		if(confirm("채팅방이 생성되었습니다\n 채팅 목록으로 이동하시겠습니까?")){
-	  					document.productfrm.action="/chatList";
-	  					document.productfrm.submit();
-	  				}
-	  	    	  } else if(result==-1) {
-					  alert("채팅방이 개설되지 않았습니다");
-				  } else if(result==0) {
-					  if(confirm("이미 개설된 채팅방이 있습니다\n 채팅 목록으로 이동하시겠습니까?")){
-		  					document.productfrm.action="/chatList";
-		  					document.productfrm.submit();
-		  				}
-				  }
-	  	      }
-	  		}); 
-		}
 		
 	</script>
 <body class="wrapper">
@@ -107,9 +71,8 @@
 		  <textarea rows="5" cols="60" name="INFO" class="form-control">${product.INFO}</textarea>
 		  <input type="button" value="상품수정"    onclick="product_update()" class="btn btn-warning"> 
 		  <input type="button" value="상품삭제"    onclick="product_delete()" class="btn btn-danger"> 
-		  <input type="button" value="찜 목록" onclick="product_cart()"   class="btn btn-light">
-		  <input type="button" value="찜 하기" onclick="product_wishlist()"   class="btn btn-info">
-		  <input type="button" value="채팅하기"  onclick="product_chatStart('${product.NICKNAME}', ${product.UPRODUCT_NO})" class="btn btn-dark"> 
+		  <input type="button" value="찜 목록" onclick="product_cart()"   class="btn btn-info">
+		 
 		 
 		    </form>
 		  </div>

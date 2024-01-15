@@ -38,7 +38,7 @@
 %>
 		<tr>
 		   <th class="info" style="text-align:center">제목</th>
-		   <td><input type="text" name="subject" id="subject" class="form-control" value="${notice.subject}" maxlength="20" readonly="readonly"></td>
+		   <td>${notice.subject}</td>
 		</tr>
 <%
     }//end 
@@ -55,7 +55,7 @@
 %>
 		<tr>
 		   <th class="info" style="text-align:center">작성자</th>
-		   <td><input type="text" name="writer" id="writer" class="form-control"  value="${notice.writer}" maxlength="100" readonly="readonly"></td>
+		   <td>${notice.writer}</td>
 		</tr>
 <%
     }//end 
