@@ -37,15 +37,18 @@
 .userInfo{
  width: 800px;
  margin-top: 50px;
- margin-left: 50px;
+ margin-left: 150px;
 }
 
 #userDefaultImg {
 	border-radius: 100px;
 	margin-bottom: 20px;
 	margin-left: 60px;
-	max-width: 150px; /* 원하는 너비로 설정 */
-  max-height: 150px; /* 원하는 높이로 설정 */
+	max-width: 120px;
+    max-height: 120px;
+    border: solid 1px darkgrey;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .userInfoText {	
@@ -54,3 +57,10 @@
     width: 100px;
     height: 100px;
     }
+    
+label{
+	
+	font-weight: 100;
+	margin-bottom: 0px;
+    margin-top: 5px;
+}

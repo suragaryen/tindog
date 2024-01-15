@@ -38,7 +38,6 @@
 		from follow
 		where email = #{s_email} and followemail = #{f_email}
  	
-
  	</select>
  	
  </mapper>

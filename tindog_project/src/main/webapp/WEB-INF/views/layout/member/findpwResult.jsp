@@ -38,13 +38,15 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div class="container">
 		<div class="found-success">
-			<h4 style="display:inline-block;">회원님의 아이디는</h4>
+			<h4 style="display:inline-block;">임시 비밀번호 발급이 완료 되었습니다. </h4>
+			<!-- 
 			${email}
 			<h4 style="display:inline-block;">입니다</h4>
 			<br>
 			<h4 style="display:inline-block;">회원님의 임시비밀번호는</h4>
 			${password}
 			<h4 style="display:inline-block;">입니다</h4>
+			 -->
 		</div>
 		<div class="found-login">
 			<input type="button" id="go" value="로그인" onClick="location.href='/login'"/>			
