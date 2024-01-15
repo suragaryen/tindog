@@ -1,3 +1,4 @@
+
 package kr.co.tindog.chat;
 
 import java.util.List;
@@ -25,3 +26,4 @@ public class ChatDAO {
 		return sqlSession.selectOne("chat.findDogName2", s_email);
 	}
 }
+

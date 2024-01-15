@@ -23,7 +23,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.product.ProductDAO;
-import kr.co.tindog.wishlist.WishlistDTO;
+
 
 @Controller
 public class ProductCont {
@@ -229,8 +229,5 @@ public class ProductCont {
 		   
 		   
 	   }//update() end
-	
-	
-	
-	
+
 }

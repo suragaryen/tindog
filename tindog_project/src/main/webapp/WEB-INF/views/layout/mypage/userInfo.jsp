@@ -4,56 +4,51 @@
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+
 <html>
 <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <c:forEach var="item" items="${list}">	
 <div class="cont">
-		
-		
-		
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;"> 유저정보</div>
 		</div>
-		<div style="color: black;" class="userInfo text-center">
+		<div style="color: black;" class="userInfo">
 			<div id="image_container mainPic_container">
 				 <img src="img/${item.userphoto}" alt="기본 이미지" class="img-thumbnail" id="userDefaultImg"  style="width: 50%" />
 			</div>
-			<div class="text-center">
-			<form class="row g-3">
+			<div class="user-textInfo">
+		
 		  <div class="col-md-4">
-		    <label for="inputEmail4" class="form-label">Name</label>
+		    <label for="inputEmail4" class="form-label">이름</label>
 		    <input type="text" value="${item.name}(${item.sex eq 'f' ? '여' : '남'})" class="form-control" id="inputEmail4" readonly>
 		  </div>
-		   <div class="col-md-2">
-		    <label for="inputEmail4" class="form-label">개껌갯수</label>
-		    <input type="text" value="${item.gumqty}" class="form-control" id="inputEmail4" readonly>
-		  </div>
-		  <div class="col-md-6">
-		    <label for="inputPassword4" class="form-label">Birth Day</label>
+		  <div class="col-md-4">
+		    <label for="inputPassword4" class="form-label">생년월일</label>
 		    <input type="text" value="${item.birth}" class="form-control" id="inputPassword4" readonly>
 		  </div>
-		  <div class="col-md-6">
-		    <label for="inputEmail4" class="form-label">Email</label>
+		  <div class="col-md-4">
+		    <label for="inputEmail4" class="form-label">이메일</label>
 		    <input type="email" value="${item.email}" class="form-control" id="inputEmail4" readonly>
 		  </div>
-		  <div class="col-md-6">
-		    <label for="inputPassword4" class="form-label">Nickname</label>
+		  <div class="col-md-4">
+		    <label for="inputPassword4" class="form-label">닉네임</label>
 		    <input type="text" value="${item.nickname}" class="form-control" id="inputPassword4" readonly>
 		  </div>
-		  <div class="col-md-6">
-		    <label for="inputCity" class="form-label">Adress1</label>
+		  <div class="col-md-4">
+		    <label for="inputCity" class="form-label">주소</label>
 		    <input type="text" value="${item.addr}" class="form-control" id="inputCity" readonly>
 		  </div>
-		  <div class="col-md-4">
-		    <label for="inputState" class="form-label">Adress2</label>
+		  <div class="row">
+		  <div class="col-md-2">
+		    <label for="inputState" class="form-label">나머지 주소</label>
  			<input type="text" value="${item.detailaddr}" class="form-control" id="inputZip" readonly>
 		  </div>
 		  <div class="col-md-2">
-		    <label for="inputZip" class="form-label">ZipCode</label>
+		    <label for="inputZip" class="form-label">우편번호</label>
 		    <input type="text" value="${item.post}" class="form-control" id="inputZip" readonly>
 		  </div>
-		</form>
+			</div>
 		</div>
 			
 			

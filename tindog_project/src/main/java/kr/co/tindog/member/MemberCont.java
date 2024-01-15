@@ -278,8 +278,8 @@ public class MemberCont {
         	        // 파일 경로 출력 또는 다른 작업 수행
         	    }
         	    memberDao.dogPicsInsert(picDto);
-        	    mav.setViewName("layout/home");
-		 return mav;
+        	    mav.setViewName("layout/member/login");
+        	    return mav; 
 		
 	}//insert end
 	

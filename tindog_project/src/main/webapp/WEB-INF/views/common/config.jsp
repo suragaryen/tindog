@@ -67,8 +67,10 @@
 	    <script src="/js/register.js"></script>
 	    <script src="/js/login.js"></script>
 	    <script src="/js/pay.js"></script>
+
 	    <script src="/js/payModal.js"></script>
 		<link href="/css/notice.css" rel="stylesheet">
+
 	    <!--  <script src="/js/worldcup_start.js"></script> -->
 
 	   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
