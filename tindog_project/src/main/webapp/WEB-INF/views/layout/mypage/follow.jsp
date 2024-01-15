@@ -27,20 +27,19 @@
 					<td style="text-align: left" colspan="2">
 				    	${item.DNAME}
 				    </td>
-				    <td style="text-align: center;"><input class="btn btn-outline-primary" type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input class="btn btn-outline-primary"  type="button" value="채팅하기" onclick="checkGum('${item.NICKNAME}')"></td>
+				    <td style="text-align: center;"><input type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
+				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="checkGum('${item.NICKNAME}')"></td>
 				</tr>
 				</c:forEach>
 			</table>
-			</form>
 			</div>
 		</div>
 		
+			</form>
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script>
-
 	
 	var confirmTx = function (message, callback, fallback) {
 		  Swal.fire({
@@ -132,7 +131,6 @@
 		  , data    : {'email':email}
 		  , success : function(result) {
 					  	  if(result==1) {
-
 					  		 Swal.fire({
 									title:"팔로우 취소 성공",
 									text:"팔로우 취소 되었습니다.",

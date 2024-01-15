@@ -23,7 +23,6 @@
     	<input type="submit" class="btn-regi" id="loginBtn-login-body" value="로그인" onclick="location.href='loginResult'">
   	</div>
 	</form>
-	
 	<label><input type="checkbox" value="SAVE" name="c_id" id="c_id">ID저장</label>
 			    <div id="regFindBtn">
 			    <a href="/register">회원가입</a>
@@ -58,6 +57,7 @@
     </div> 
   </div>
 </div>
+
 <script>
 $(function(){
 	fn_login();

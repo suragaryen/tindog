@@ -123,6 +123,7 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 		    
 		  </ul>
 		</nav>
+		
 	<!-- 		
         <div class="mypage_account">
             <a href="/userInfo">MY INFO</a><br>

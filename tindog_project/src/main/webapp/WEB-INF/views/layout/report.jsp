@@ -63,7 +63,6 @@
 						  }
 			  , success : function(result) {
 				  			  if(result == 1) {
-
 				  				Swal.fire({
 						        	title:"신고 접수 성공",
 						        	text:"",
@@ -80,7 +79,6 @@
 						        	icon:"error",
 						        	confirmButtonText:"확인"
 							  });
-
 				  			  }
 						  }
 			});
