@@ -8,15 +8,7 @@ public class DogDTO {
 	private int size;
 	private String sex;
 	private String neutral;
-	private String dbti;
 	
-	
-	public String getDbti() {
-		return dbti;
-	}
-	public void setDbti(String dbti) {
-		this.dbti = dbti;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -57,9 +49,7 @@ public class DogDTO {
 	@Override
 	public String toString() {
 		return "DogDTO [email=" + email + ", age=" + age + ", purpose=" + purpose + ", size=" + size + ", sex=" + sex
-				+ ", neutral=" + neutral + ", dbti=" + dbti + "]";
+				+ ", neutral=" + neutral + "]";
 	}
-	
-	
 	
 }

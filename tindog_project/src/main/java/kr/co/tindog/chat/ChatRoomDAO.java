@@ -1,4 +1,3 @@
-
 package kr.co.tindog.chat;
 
 import java.util.List;
@@ -60,4 +59,3 @@ public class ChatRoomDAO {
 		return sqlSession.insert("chat.cutP", cutDto);
 	}
 }
-

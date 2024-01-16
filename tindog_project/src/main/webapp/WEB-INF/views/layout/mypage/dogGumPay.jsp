@@ -3,6 +3,15 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+table, tbody, tr, td{
+	border: 2px solid #fff; 
+	color : black;
+
+}
+
+
+</style>
 <!DOCTYPE html>
 <html>
 <body>

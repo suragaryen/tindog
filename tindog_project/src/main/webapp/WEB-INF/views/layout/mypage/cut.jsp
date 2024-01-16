@@ -30,7 +30,7 @@
 
 <div class="cont">
 	<div class="userInfoText">
-		<div style="border-bottom: solid 1px darkgrey; width:170px;">차단 사용자 관리</div>
+		<div style="border-bottom: solid 1px darkgrey;">차단 사용자 관리</div>
 	</div>
 	<div style="color: black;" class="userInfo">
 		<div id="image_container mainPic_container">

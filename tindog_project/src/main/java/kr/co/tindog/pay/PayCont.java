@@ -45,7 +45,6 @@ public class PayCont {
 	
    private IamportClient api;
 
-   
     private PayCont() {
         this.api = new IamportClient("1272712856040007",
                 "0r366VoATh7DnJrUuBWZcsZcqMUx7V0rGN6flVAmM1wGsmNLRhFmWfkQd4OgA13F9JluUkWR6VbDUu7R");

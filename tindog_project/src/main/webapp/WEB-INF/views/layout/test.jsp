@@ -34,7 +34,8 @@
 		var lng=latlng.getLng();
 		alert('위도 : '+lat+' 경도 : '+lng);
 	});
-	</script>
+	</script>	
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
