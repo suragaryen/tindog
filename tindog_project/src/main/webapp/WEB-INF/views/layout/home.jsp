@@ -118,7 +118,7 @@
 					scene.add(light);
 
       				const loader = new GLTFLoader();
-      				loader.load("shiba/scene.gltf", function (gltf) {
+      				loader.load("/shiba/scene.gltf", function (gltf) {
         				scene.add(gltf.scene);
 
         				function animate() {
