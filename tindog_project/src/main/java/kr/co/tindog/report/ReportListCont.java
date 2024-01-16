@@ -26,5 +26,39 @@ public class ReportListCont {
 		return mav;
 	}
 	
+	@PostMapping("/reportList/susCheck/{reported}")
+	public String susCheck(@PathVariable String reported) {
+		String memgrade = reportListDao.susCheck(reported);
+		
+		return memgrade;
+	}
+	
+	@PostMapping("/reportList/suspended/{reported}")
+	public int suspended(@PathVariable String reported) {
+		int cnt = reportListDao.suspended(reported);
+		
+		return cnt;
+	}
+	
+	@PostMapping("/reportList/susTot/{reported}")
+	public int susTot(@PathVariable String reported) {
+		int cnt = reportListDao.susTot(reported);
+		
+		return cnt;
+	}
+	
+	@PostMapping("/reportList/suspended2/{reported}")
+	public int suspended2(@PathVariable String reported) {
+		int cnt = reportListDao.suspended2(reported);
+		
+		return cnt;
+	}
+	
+	@PostMapping("/reportList/kick/{reported}")
+	public int kick(@PathVariable String reported) {
+		int cnt = reportListDao.kick(reported);
+		
+		return cnt;
+	}
 	
 }

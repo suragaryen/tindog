@@ -5,25 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<style>
-.btn-new{
-	box-shadow: 1px 1px 3px 1px #dadce0;
-	background: white;
-	border: 1px solid #C7DCFB;
-	border-radius: 5px;
-	color: #8D8E92;
-	font-weight: 500;
-	width: 50%;
-	height: 40px;
-	margin-right: 10px;
-}
-
-.btn-new:hover{
-	cursor: pointer;
-	background: #7fc7fe;
-	color: white;
-}
-</style>
 <body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
@@ -44,10 +25,10 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 				    <td>${item.DNAME}</td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
+				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
+				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
+				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
+				    <td style="text-align: center;"><input type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
@@ -110,22 +91,11 @@
 			  , data    : {'droomno':droomno}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		 Swal.fire({
-							        	title:"채팅방 삭제 완료",
-							        	text:"채팅방이 삭제되었습니다",
-							        	icon:"success",
-							        	confirmButtonText:"확인"	
-							        }).then(function(){	
+						  		  alert("채팅방이 삭제되었습니다");
 						  		  document.chatRoomfrm.action="/chatList";
 								  document.chatRoomfrm.submit();
-							      });
 						  }else {
-							  Swal.fire({
-						        	title:"채팅방 삭제 실패",
-						        	text:"관리자에게 문의하세요",
-						        	icon:"error",
-						        	confirmButtonText:"확인"	
-						        });							 
+							  alert("채팅방 삭제를 실패했습니다");
 						  }
 				}
 			});
@@ -138,22 +108,11 @@
 			  , data    : {'proomno':proomno}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		Swal.fire({
-						        	title:"채팅방 삭제 완료",
-						        	text:"채팅방이 삭제되었습니다",
-						        	icon:"success",
-						        	confirmButtonText:"확인"	
-						        }).then(function(){	
+						  		  alert("채팅방이 삭제되었습니다");
 						  		  document.productchatRoomfrm.action="/chatList";
 								  document.productchatRoomfrm.submit();
-						  	});
 						  }else {
-							  Swal.fire({
-						        	title:"채팅방 삭제 실패",
-						        	text:"관리자에게 문의하세요",
-						        	icon:"error",
-						        	confirmButtonText:"확인"	
-						        });		
+							  alert("채팅방 삭제를 실패했습니다");
 						  }
 				}
 			});
@@ -166,21 +125,10 @@
 			  , data    : {'nickname':nickname}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		Swal.fire({
-						        	title:"차단 완료",
-						        	text:"채팅방도 자동 삭제됩니다",
-						        	icon:"success",
-						        	confirmButtonText:"확인"	
-						        }).then(function(){
+						  		  alert("차단되었습니다");
 						  		  chatRoomDelete(droomno);
-						        });
 						  }else {
-							  Swal.fire({
-						        	title:"차단 실패",
-						        	text:"관리자에게 문의하세요",
-						        	icon:"error",
-						        	confirmButtonText:"확인"	
-						        });		
+							  alert("차단을 실패했습니다");
 						  }
 				}
 			});
@@ -193,30 +141,17 @@
 			  , data    : {'nickname':nickname}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		Swal.fire({
-						        	title:"차단 완료",
-						        	text:"채팅방도 자동으로 삭제됩니다",
-						        	icon:"success",
-						        	confirmButtonText:"확인"	
-						        }).then(function(){
+						  		  alert("차단되었습니다");
 						  		productchatRoomDelete(proomno);
-						        });
 						  }else {
-							  Swal.fire({
-						        	title:"차단 실패",
-						        	text:"관리자에게 문의하세요",
-						        	icon:"error",
-						        	confirmButtonText:"확인"	
-						        });		
+							  alert("차단을 실패했습니다");
 						  }
 				}
 			});
 		}
 	</script>
 	<script src="/js/chat.js"></script>		
-	<div style="margin-bottom:0; margin-top: 400px;">
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 
 </body>

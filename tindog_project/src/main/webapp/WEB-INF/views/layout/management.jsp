@@ -10,26 +10,26 @@
 	
 <div class="cont">
 	<div class="userInfoText">
-		<div style="border-bottom: solid 1px darkgrey;"> 유저관리</div>
+		<div style="border-bottom: solid 1px darkgrey;">회원등급 관리</div>
 	</div>
 	<div style="color: black;" class="userInfo text-center">
 		<div class="text-center">
-			<form name="managementfrm" id="managementfrm" method="post">
+			<form name="managementfrm" id="managementfrm">
 				<table class="table">
 					<tr>
 						<th style="text-align: center;">이메일</th>
 						<th style="text-align: center;">이름</th>
 						<th style="text-align: center;">닉네임</th>
 						<th style="text-align: center;">회원등급</th>
-						<th style="text-align: center;">개껌갯수</th>
+						<th style="text-align: center;"></th>
 					</tr>
-					<c:forEach var="item" items="${list}">
+					<c:forEach var="item" items="${list}" varStatus="status">
 					<tr>
-						<td><input type="text" value="${item.EMAIL}" class="form-control" id="inputEmail4" readonly></td>
-		    			<td><input type="text" value="${item.NAME}" class="form-control" id="inputEmail4" readonly></td>	
-		    			<td><input type="text" value="${item.NICKNAME}" class="form-control" id="inputPassword4" readonly></td>	
-		    			<td><input type="text" value="${item.MEMGRADE}" class="form-control" id="inputEmail4" readonly></td>	
-		    			<td><input type="text" value="${item.GUMQTY}" class="form-control" id="inputPassword4" readonly></td>
+						<td><input type="text" value="${item.EMAIL}" class="form-control" id="email" readonly></td>
+		    			<td><input type="text" value="${item.NAME}" class="form-control" id="name" readonly></td>	
+		    			<td><input type="text" value="${item.NICKNAME}" class="form-control" id="nickname" readonly></td>
+		    			<td>현재 등급 : ${item.MEMGRADE}<input type="text" class="form-control" id="memgrade${status.index}"></td>		
+		    			<td><input type="button" value="수정" class="form-control" onclick="userInfoChange('${item.EMAIL}',${status.index})"></td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -66,10 +66,31 @@
 		</div>
 	</div>
 </div>
-<div style="margin-bottom:0; margin-top: 300px;">
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
+<script>
+
+	function userInfoChange(email, i) {
+		let memgrade = $('#memgrade'+ i).val();
+	    $.ajax({
+  			url     : '/management/update'// 요청 명령어
+  		  , type    : 'post'
+  		  , data    : {'email'   : email,
+  			  		   'memgrade': memgrade}
+  	      , error   : function(error){
+  	    	  alert("회원정보 수정 실패");
+  	      }
+  	      , success : function(result){
+  	    	  if(result==1) { 
+  	    		  alert("회원정보 수정 성공");
+  	    		  document.managementfrm.action="/management";
+  				  document.managementfrm.submit();
+  	    	  }
+  	      } 
+  		});  
+	}
+</script>
 </body>
 </html>
     

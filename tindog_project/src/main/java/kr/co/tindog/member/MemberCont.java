@@ -138,7 +138,7 @@ public class MemberCont {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("layout/mypage/dogInfo");
 		mav.addObject("list", memberDao.dogList(email));
-	System.out.println(memberDao.dogList(email));
+	//System.out.println(memberDao.dogList(email));
 		return mav;
 	}
 	

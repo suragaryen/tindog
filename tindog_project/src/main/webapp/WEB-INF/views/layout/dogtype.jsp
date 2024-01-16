@@ -10,7 +10,7 @@
 <div class="cont">
 		
 		<div class="userInfoText">
-			<div style="border-bottom: solid 1px darkgrey; width: 250px;">견종추가하기(관리자용)</div>
+			<div style="border-bottom: solid 1px darkgrey;">견종추가하기(관리자용)</div>
 		</div>
 		<div style="color: black;" class="userInfo text-center">
 			<form class="row g-3" name="reprotfrm" id="reportfrm">
@@ -32,9 +32,7 @@
 			</div>
 		</div>
 
-<div style="margin-bottom:0; margin-top: 300px;">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <script>
 	function insert() {

@@ -8,26 +8,26 @@
 <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <c:forEach var="item" items="${list}">	
-<div class="cont">		
+<div class="cont">
+		
+		
+		
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;"> 유저정보</div>
 		</div>
 		<div style="color: black;" class="userInfo text-center">
 			<div id="image_container mainPic_container">
-				 <c:choose>
-            <c:when test="${item.userphoto eq 'PHOTO'}">
-                <img src="img/defaultImg.jpg" alt="기본 이미지" id="userDefaultImg" style="width: 50%" />
-            </c:when>
-            <c:otherwise>
-                <img src="img/${item.userphoto}" id="userDefaultImg" alt="기본 이미지" style="width: 50%" />
-            </c:otherwise>
-       			 </c:choose>
+				 <img src="img/${item.userphoto}" alt="기본 이미지" class="img-thumbnail" id="userDefaultImg"  style="width: 50%" />
 			</div>
 			<div class="text-center">
 			<form class="row g-3">
 		  <div class="col-md-4">
 		    <label for="inputEmail4" class="form-label">Name</label>
 		    <input type="text" value="${item.name}(${item.sex eq 'f' ? '여' : '남'})" class="form-control" id="inputEmail4" readonly>
+		  </div>
+		   <div class="col-md-2">
+		    <label for="inputEmail4" class="form-label">개껌갯수</label>
+		    <input type="text" value="${item.gumqty}" class="form-control" id="inputEmail4" readonly>
 		  </div>
 		  <div class="col-md-6">
 		    <label for="inputPassword4" class="form-label">Birth Day</label>
@@ -94,9 +94,8 @@
 			</div>
 		</div>
 		</c:forEach>
-<div style="margin-bottom:0; margin-top: 400px;">
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
 </html>
