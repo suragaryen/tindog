@@ -21,7 +21,7 @@
 <body>
 <div class="container">
 
-   <p style="text-align:center; margin:20px;">[공지사항 상세]</p>
+   
    <p style="text-align:center"><button type="button" class="btn btn-secondary" onclick="location.href='/notice'">공지사항 목록</button></p>
 
 		<form name="noticefrm" id="noticefrm" method="post" action="insert" enctype="multipart/form-data">

@@ -11,7 +11,7 @@
 
 <div class="container">
     
-     <p style="text-align:center">[공지사항 목록]</p>    
+     
 
 	<div class="container">
 	<table class="table">

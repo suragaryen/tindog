@@ -7,7 +7,9 @@
 <html>
 
 <body class="wrapper">
+
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
+<div style="margin-top: 300px;">
 <div class="cont">
 		<div class="dogInfoText">
 			<div style="border-bottom: solid 2px darkgrey;">강아지 정보</div>
@@ -83,6 +85,7 @@
 	
 
 	</div>
+</div>
 </div>
 </div>
 </div>
