@@ -27,7 +27,7 @@ public class ProductChatCont {
 	public ModelAndView chat(HttpSession session, @PathVariable int proomno) {
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("s_proomno", proomno);
-		mav.setViewName("layout/product/productchat");
+		mav.setViewName("product/productchat");
 		mav.addObject("list", chatDao.chatLogs(proomno));
 		System.out.println(chatDao.chatLogs(proomno));
 		return mav;

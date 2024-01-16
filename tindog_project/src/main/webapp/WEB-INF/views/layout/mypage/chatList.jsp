@@ -71,25 +71,25 @@
 				    		</c:when>
 						</c:choose>
 				    </td>
-				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='productchat/${item.PROOMNO}'"></td>
-				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="productchatRoomDelete(${item.PROOMNO})"></td>
+				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅하기" onclick="location.href='productchat/${item.PROOMNO}'"></td>
+				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅방 나가기" onclick="productchatRoomDelete(${item.PROOMNO})"></td>
 				    <td style="text-align: center;">
 				    	<c:choose>
 							<c:when test="${item.NICKNAME_TO == s_nickname}">
-								<input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME_FROM}'">
+								<input type="button" class="btn-new" value="신고하기" onclick="location.href='report2/${item.NICKNAME_FROM}'">
 				    		</c:when>
 				    		<c:when test="${item.NICKNAME_FROM == s_nickname}">
-				    			<input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME_TO}'">
+				    			<input type="button" class="btn-new" value="신고하기" onclick="location.href='report2/${item.NICKNAME_TO}'">
 				    		</c:when>
 						</c:choose>
 				    </td>
 				    <td style="text-align: center;">
 				    	<c:choose>
 							<c:when test="${item.NICKNAME_TO == s_nickname}">
-								<input type="button" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_FROM}')">
+								<input type="button" class="btn-new" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_FROM}')">
 				    		</c:when>
 				    		<c:when test="${item.NICKNAME_FROM == s_nickname}">
-				    			<input type="button" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_TO}')">
+				    			<input type="button" class="btn-new" value="차단하기" onclick="cutP(${item.PROOMNO}, '${item.NICKNAME_TO}')">
 				    		</c:when>
 						</c:choose>
 					</td>				    	

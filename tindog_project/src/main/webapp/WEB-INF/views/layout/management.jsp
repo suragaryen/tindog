@@ -95,8 +95,8 @@
 		        	icon:"success",
 		        	confirmButtonText:"확인"
 			  }).then(function(){
-				  document.dateReportfrm.action="/management";
-				  document.dateReportfrm.submit();
+				  document.dateReportfrm.action="/management";				  
+				  document.dateReportfrm.submit();				  
 			  });  	    		  
   	    	  }
   	      } 
