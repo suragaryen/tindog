@@ -22,8 +22,8 @@ public class ProductDAO {
 	}//insert() end
 	
 	
-	public List<Map<String, Object>> list(String email){
-		return sqlSession.selectList("product.list", email);
+	public List<Map<String, Object>> list(){
+		return sqlSession.selectList("product.list");
 	}//list() end
 	
 	public List<Map<String, Object>> search(String subject){

@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<body class="wrapper">
-<jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
+<body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 <style>
 
@@ -57,7 +57,6 @@ body:before {
     content: "";
     clear: both;
 }
-
 
 .hidden {
     display: none;
@@ -324,11 +323,10 @@ button.accent {
 
 <div id="username-page">
     <div class="username-page-container">
-
-        <h1 class="title">버튼을 누르면 채팅이 시작됩니다.</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                 <input type="hidden" id="name" placeholder="이름" autocomplete="off" class="form-control"/> 
+                <input type="hidden" id="name" placeholder="이름"
+                       autocomplete="off" class="form-control" />
             </div>
             <div class="form-group">
                 <button type="submit" class="accent username-submit">채팅 시작</button>
@@ -336,19 +334,18 @@ button.accent {
         </form>
     </div>
 </div>
- 
 
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>데이트 채팅방</h2>
+            <h2>중고마켓 채팅방</h2>
         </div>
         <div class="connecting">채팅 연결중...</div>
         <ul id="messageArea">
 			<c:forEach var="item" items="${list}">
 				<li class="chat-message">
-					<i style="background-color: rgb(50, 199, 135);">${item.DNAME}</i>
-					<span>${item.DNAME}</span>
+					<i style="background-color: rgb(50, 199, 135);">${item.sender}</i>
+					<span>${item.SENDER}</span>
 					<p>${item.MESSAGE}</p>
 				</li>
 			</c:forEach>
@@ -356,7 +353,7 @@ button.accent {
         <form id="messageForm" name="messageForm" nameForm="messageForm" >
             <div class="form-group">
                 <div class="input-group clearfix">
-                	<input type="hidden" name="droomno" id="droomno" value="<%=(int)session.getAttribute("s_droomno")%>">
+                	<input type="hidden" name="proomno" id="proomno" value="<%=(int)session.getAttribute("s_proomno")%>">
                     <input type="text" id="message" name="message" placeholder="메시지를 입력하세요..."
                            autocomplete="off" class="form-control" />
 					<input type="hidden" name="sender" id="sender" value="<%=(String)session.getAttribute("s_nickname")%>">                           
@@ -373,17 +370,13 @@ button.accent {
         src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
 	var nickname_from = '<%=(String)session.getAttribute("s_nickname")%>';
-	var dname = '<%=(String)session.getAttribute("s_dname")%>';
 	
 	$("#chatInsertBtn").click(function() {
 		// alert();
 		let message = $("#message").val();
 		message = message.trim();
 		if(message.length==0){
-			  Swal.fire({
-		        	text:"댓글 내용을 입력해주세요",	        	
-		        	confirmButtonText:"확인"	
-		        });			
+			alert("댓글 내용을 입력해주세요");
 			$("#message").focus();
 		}else {
 			// <form id="commentInsertForm"></form>의 컨트롤 요소를 전부 가져옴
@@ -396,30 +389,24 @@ button.accent {
 	function chatLogInsert(insertData) { // 댓글 등록 함수
   		// alert("댓글 등록 함수 호출 : " + insertData);
   		$.ajax({
-  			url     : '/chat/chatLogInsert' // 요청 명령어
+  			url     : '/productchat/chatLogInsert' // 요청 명령어
   		  , type    : 'post'
   		  , data    : insertData        // 전달값
   	      , error   : function(error){
-  	    	 Swal.fire({
-		        	text:"저장 실패!",	        	
-		        	confirmButtonText:"확인"	
-		        });
+  	    	  alert("저장 실패!");
   	      }
   	      , success : function(result){
   	    	  // alert(result);
   	    	  if(result==1) { // 댓글 등록 성공
   	    		  // chatLogsList(); // 댓글 등록 후 댓글 목록 함수 호출
   	    		  // $("#content").val(''); // 기존 댓글 내용을 빈 문자열로 대입(초기화)
-  	    		   Swal.fire({
-		        	text:"저장 완료!",	        	
-		        	confirmButtonText:"확인"	
-		        });		
+  	    		  alert("저장 완료!");
   	    	  }
   	      }
   		}); 
 	}
 </script>
-<script src="/js/chatDating.js"></script>
+<script src="/js/chat.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
