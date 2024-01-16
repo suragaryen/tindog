@@ -16,7 +16,7 @@
   
 	<form id="myForm" name="myForm" method="post" action="/loginResult">
   	<div id="login-body">
-    	<h3>틴독에 오신 것을 환영합니다.</h3>
+    	<h3 style="text-align: center;">틴독에 오신 것을 환영합니다.</h3>
     	<input type="text" name="email" id="email" class="email-login-body"  placeholder="이메일">
     	<input type="password" id="password" name="password"  class="password-login-body" placeholder="비밀번호">    	
     	<input type="button" class="btn-regi" id="checkBtn-login-body" value="계속" onclick="sendIt()">
@@ -92,6 +92,8 @@ function fn_displayRememberId() {
 	
 }
 </script>
+<div style="margin-top: 500px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

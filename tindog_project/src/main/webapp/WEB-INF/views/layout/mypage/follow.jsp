@@ -55,7 +55,9 @@
 		
 			</form>
 		
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	<div style="margin-top: 400px">
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script>
 	
