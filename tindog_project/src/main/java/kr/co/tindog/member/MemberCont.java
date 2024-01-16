@@ -163,14 +163,13 @@ public class MemberCont {
     	    try {
     	        ServletContext application = req.getSession().getServletContext();
     	        String path = application.getRealPath("/storage"); // 실제 물리적인 경로
-    	        
+
     	        // 파일 경로와 파일명을 올바르게 합쳐서 파일 객체 생성
     	        File file = new File(path, mainphotofilename);
 
     	        // 파일 저장
     	        mainphotofile.transferTo(file);
-    	        System.out.println(path);
-    	        System.out.println("회원가입 사진 저장 성공");
+    	        //System.out.println(path);
     	    } catch (Exception e) {
     	        System.out.println(e);
     	    }

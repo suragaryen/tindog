@@ -409,8 +409,6 @@ button.accent {
 	}
 </script>
 <script src="/js/chatDating.js"></script>
-<div style="margin-top: 500px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
 </body>
 </html>

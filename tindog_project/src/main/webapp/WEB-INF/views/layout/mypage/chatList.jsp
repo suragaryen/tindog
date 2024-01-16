@@ -5,25 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<style>
-.btn-new{
-	box-shadow: 1px 1px 3px 1px #dadce0;
-	background: white;
-	border: 1px solid #C7DCFB;
-	border-radius: 5px;
-	color: #8D8E92;
-	font-weight: 500;
-	width: 50%;
-	height: 40px;
-	margin-right: 10px;
-}
-
-.btn-new:hover{
-	cursor: pointer;
-	background: #7fc7fe;
-	color: white;
-}
-</style>
 <body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 
@@ -44,10 +25,10 @@
 				<c:forEach var="item" items="${list}">	
 				<tr>
 				    <td>${item.DNAME}</td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
-				    <td style="text-align: center;"><input class="btn-new" type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
+				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat/${item.DROOMNO}'"></td>
+				    <td style="text-align: center;"><input type="button" value="채팅방 나가기" onclick="chatRoomDelete(${item.DROOMNO})"></td>
+				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report/${item.NICKNAME}'"></td>
+				    <td style="text-align: center;"><input type="button" value="차단하기" onclick="cut(${item.DROOMNO}, '${item.NICKNAME}')"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>
@@ -170,9 +151,7 @@
 		}
 	</script>
 	<script src="/js/chat.js"></script>		
-	<div style="margin-top: 400px">
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 
 </body>
