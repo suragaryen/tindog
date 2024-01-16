@@ -17,6 +17,24 @@
 	<select id="list" resultType="java.util.Map">
 	   SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
 	   FROM USED_PRODUCT
+	   WHERE NICKNAME NOT IN (
+	   						  SELECT NICKNAME
+							    FROM MEMBER
+							   WHERE EMAIL IN (
+							    			   SELECT CUTEMAIL
+											     FROM CUT
+											    WHERE EMAIL = #{email}
+							                   )
+	   						 )
+	   	 AND NICKNAME NOT IN (
+	   						  SELECT NICKNAME
+							    FROM MEMBER
+							   WHERE EMAIL IN (
+							    			   SELECT EMAIL
+											     FROM CUT
+											    WHERE CUTEMAIL = #{email}
+							                   )
+	   						 )
 	   ORDER BY SUBJECT
 	
 	</select>
@@ -25,7 +43,25 @@
 	
 	  SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
 	  FROM USED_PRODUCT
-	  WHERE SUBJECT LIKE #{keyword}
+	  WHERE SUBJECT LIKE CONCAT('%', #{subject}, '%')
+	    AND NICKNAME NOT IN (
+	   						  SELECT NICKNAME
+							    FROM MEMBER
+							   WHERE EMAIL IN (
+							    			   SELECT CUTEMAIL
+											     FROM CUT
+											    WHERE EMAIL = #{email}
+							                   )
+	   						 )
+	   	 AND NICKNAME NOT IN (
+	   						  SELECT NICKNAME
+							    FROM MEMBER
+							   WHERE EMAIL IN (
+							    			   SELECT EMAIL
+											     FROM CUT
+											    WHERE CUTEMAIL = #{email}
+							                   )
+	   						 )
 	  ORDER BY SUBJECT   
 		
 	</select>

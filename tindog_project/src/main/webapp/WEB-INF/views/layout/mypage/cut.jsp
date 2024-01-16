@@ -60,8 +60,8 @@
 				<c:forEach var="item" items="${list2}">	
 				<tr>
 					<td>${item.NICKNAME}</td>
-				    <td style="text-align: center;"><input type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME}'"></td>				    	
+				    <td style="text-align: center;"><input class="btn-new" type="button" value="차단해제" onclick="cutCancel('${item.EMAIL}')"></td>
+				    <td style="text-align: center;"><input class="btn-new" type="button" value="신고하기" onclick="location.href='report2/${item.NICKNAME}'"></td>				    	
 						    	
 				    <!-- <td style="text-align: center;"><input type="button" value="채팅하기" onclick="location.href='chat'"></td> -->
 				</tr>

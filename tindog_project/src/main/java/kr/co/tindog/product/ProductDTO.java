@@ -14,7 +14,14 @@ public class ProductDTO {
 	private String location;
 	private String mainphoto;
 	private String photo;
+	private String email;
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	public int getUproduct_no() {
 		return uproduct_no;

@@ -10,7 +10,7 @@
 <div class="cont">
 		
 		<div class="userInfoText">
-			<div style="border-bottom: solid 1px darkgrey; width: 250px;">견종추가하기(관리자용)</div>
+			<div style="border-bottom: solid 1px darkgrey; width: 270px;">견종추가하기(관리자용)</div>
 		</div>
 		<div style="color: black;" class="userInfo text-center">
 			<form class="row g-3" name="reprotfrm" id="reportfrm">
@@ -40,22 +40,38 @@
 		let dogtype = $("#dogtype").val();
 		
 		if(dogtype.length == 0) {
-			alert("견종을 입력해주세요");
+				  Swal.fire({
+			        	title:"견종을 입력해주세요",			        	
+			        	icon:"error",
+			        	confirmButtonText:"확인"
+				  });					  
 		} else {
 			$.ajax({
 				url     : '/dogtype/insert'
 			  , type    : 'post'
 			  , data    : {'dogtype':dogtype}
 			  , error   : function(error) {
-							  alert("견종이 등록되지 않았습니다");
+							  Swal.fire({
+						        	title:"견종이 등록되지 않았습니다",			        	
+						        	icon:"error",
+						        	confirmButtonText:"확인"
+							  });							  
 							  alert(JSON.stringify(error));
 							  console.log(JSON.stringify(error));
 						  }
 			  , success : function(result) {
 				  			  if(result == 1) {
-				  				  alert("새로운 견종이 등록 되었습니다");
+					  				Swal.fire({
+							        	title:"새로운 견종이 등록되었습니다.",			        	
+							        	icon:"success",
+							        	confirmButtonText:"확인"
+								  	});				  				  
 				  			  } else if(result == -1){
-				  				  alert("이미 등록된 견종입니다");
+					  				Swal.fire({
+							        	title:"이미 등록된 견종입니다",			        	
+							        	icon:"error",
+							        	confirmButtonText:"확인"
+								  	});				  				  
 				  			  } else {
 				  				  alert("견종 등록에 실패했습니다")
 				  			  }

@@ -37,10 +37,11 @@ public class ProductCont {
 	ProductDAO productDao;	
 	
 	@RequestMapping("/list")
-	public ModelAndView list() {
+	public ModelAndView list(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String email = (String)session.getAttribute("s_email");
 		mav.setViewName("product/list");
-	    mav.addObject("list", productDao.list());
+	    mav.addObject("list", productDao.list(email));
 		return mav;
 	}//list() end
 	
@@ -102,10 +103,14 @@ public class ProductCont {
 	
 	
 	@GetMapping("/search")
-	public ModelAndView search(@RequestParam(defaultValue = "") String subject){
+	public ModelAndView search(@RequestParam(defaultValue = "") String subject, HttpSession session){
 		ModelAndView mav = new ModelAndView();
+		String email = (String)session.getAttribute("s_email");
+		ProductDTO dto = new ProductDTO();
+		dto.setEmail(email);
+		dto.setSubject(subject);
 		mav.setViewName("product/list");
-		mav.addObject("list", productDao.search(subject));
+		mav.addObject("list", productDao.search(dto));
 		mav.addObject("subject", subject);
 		return mav;
 	}//search() end

@@ -1,33 +1,19 @@
 package kr.co.tindog.management;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kr.co.tindog.oauth.model.*;
-import kr.co.tindog.worldcup.WorldcupDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.security.oauth2.client.userinfo.*;
 
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kr.co.tindog.dbti.DbtiDAO;
-import kr.co.tindog.dbti.DbtiDTO;
-import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
+import kr.co.tindog.member.UserDTO;
 
 @RestController
 public class ManagementCont {
@@ -53,8 +39,7 @@ public class ManagementCont {
 		if(pageNum == null) {pageNum = "1";}
 		int currentpage = Integer.parseInt(pageNum);		
 		
-		int startrow    = (currentpage - 1)*Perpage +1;	
-		int endrow		= currentpage * Perpage;			
+		int startrow    = (currentpage - 1)*Perpage +1;				
 		int start =startrow-1;//
   		
   		// 페이지 수
@@ -84,5 +69,16 @@ public class ManagementCont {
 		mav.addObject("list", list);
         
 		return mav;
+	}
+	
+	@PostMapping("/management/update")
+	public int update(@RequestParam String email, @RequestParam String memgrade) {
+		UserDTO userDto = new UserDTO();		 
+		userDto.setEmail(email);
+		userDto.setMemgrade(memgrade.toUpperCase());
+		
+		int cnt = managementDao.update(userDto);
+		
+		return cnt;
 	}
 }

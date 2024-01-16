@@ -22,12 +22,12 @@ public class ProductDAO {
 	}//insert() end
 	
 	
-	public List<Map<String, Object>> list(){
-		return sqlSession.selectList("product.list");
+	public List<Map<String, Object>> list(String email){
+		return sqlSession.selectList("product.list", email);
 	}//list() end
 	
-	public List<Map<String, Object>> search(String subject){
-		return sqlSession.selectList("product.search", "%" + subject + "%");
+	public List<Map<String, Object>> search(ProductDTO dto){
+		return sqlSession.selectList("product.search", dto);
 	}
 	
 	public Map<String, Object> detail(int uproduct_no){

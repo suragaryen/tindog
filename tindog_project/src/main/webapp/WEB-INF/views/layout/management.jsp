@@ -21,15 +21,15 @@
 						<th style="text-align: center;">이름</th>
 						<th style="text-align: center;">닉네임</th>
 						<th style="text-align: center;">회원등급</th>
-						<th style="text-align: center;">개껌갯수</th>
+						<th style="text-align: center;"></th>
 					</tr>
-					<c:forEach var="item" items="${list}">
+					<c:forEach var="item" items="${list}" varStatus="status">
 					<tr>
-						<td><input type="text" value="${item.EMAIL}" class="form-control" id="inputEmail4" readonly></td>
-		    			<td><input type="text" value="${item.NAME}" class="form-control" id="inputEmail4" readonly></td>	
-		    			<td><input type="text" value="${item.NICKNAME}" class="form-control" id="inputPassword4" readonly></td>	
-		    			<td><input type="text" value="${item.MEMGRADE}" class="form-control" id="inputEmail4" readonly></td>	
-		    			<td><input type="text" value="${item.GUMQTY}" class="form-control" id="inputPassword4" readonly></td>
+						<td><input type="text" value="${item.EMAIL}" class="form-control" id="email" readonly></td>
+		    			<td><input type="text" value="${item.NAME}" class="form-control" id="name" readonly></td>	
+		    			<td><input type="text" value="${item.NICKNAME}" class="form-control" id="nickname" readonly></td>
+		    			<td><input type="text" value="현재 등급 : ${item.MEMGRADE}" class="form-control" id="memgrade${status.index}"></td>		
+		    			<td><input type="button" value="수정" class="form-control" onclick="userInfoChange('${item.EMAIL}',${status.index})"></td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -69,6 +69,40 @@
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
+<script>
+
+	function userInfoChange(email, i) {
+		let memgrade = $('#memgrade'+ i).val();
+	    $.ajax({
+  			url     : '/management/update'// 요청 명령어
+  		  , type    : 'post'
+  		  , data    : {'email'   : email,
+  			  		   'memgrade': memgrade}
+  	      , error   : function(error){
+  	    	  
+  	    	Swal.fire({
+	        	title:"회원정보 수정 실패",
+	        	text:"관리자에게 문의해주세요.",
+	        	icon:"error",
+	        	confirmButtonText:"확인"
+		  });
+  	      }
+  	      , success : function(result){
+  	    	  if(result==1) { 
+  	    		Swal.fire({
+		        	title:"회원정보 수정 성공",
+		        	text:"",
+		        	icon:"success",
+		        	confirmButtonText:"확인"
+			  }).then(function(){
+				  document.dateReportfrm.action="/management";
+				  document.dateReportfrm.submit();
+			  });  	    		  
+  	    	  }
+  	      } 
+  		});  
+	}
+</script>
 </body>
 </html>
     
