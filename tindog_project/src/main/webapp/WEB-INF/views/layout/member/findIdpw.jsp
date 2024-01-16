@@ -14,7 +14,6 @@
 		</div>
 		<div class = "find-name">			
 			<input type="text" class="form-control" name="member_name" class="" placeholder="이름">
-			<br>
 		</div>
 			<br>
 	</section>
