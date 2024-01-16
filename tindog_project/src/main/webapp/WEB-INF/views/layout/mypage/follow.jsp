@@ -7,7 +7,25 @@
 <html>
 <body class="wrapper">
 	<jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
+<style>
+.btn-new{
+	box-shadow: 1px 1px 3px 1px #dadce0;
+	background: white;
+	border: 1px solid #C7DCFB;
+	border-radius: 5px;
+	color: #8D8E92;
+	font-weight: 500;
+	width: 50%;
+	height: 40px;
+	margin-right: 10px;
+}
 
+.btn-new:hover{
+	cursor: pointer;
+	background: #7fc7fe;
+	color: white;
+}
+</style>
 <div class="cont">
 		<div class="userInfoText">
 			<div style="border-bottom: solid 1px darkgrey;">팔로우</div>
@@ -27,8 +45,8 @@
 					<td style="text-align: left" colspan="2">
 				    	${item.DNAME}
 				    </td>
-				    <td style="text-align: center;"><input type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
-				    <td style="text-align: center;"><input type="button" value="채팅하기" onclick="checkGum('${item.NICKNAME}')"></td>
+				    <td style="text-align: center;"><input class="btn-new" type="button" value="팔로우취소" onclick="followCancel('${item.EMAIL}')"></td>
+				    <td style="text-align: center;"><input class="btn-new"  type="button" value="채팅하기" onclick="checkGum('${item.NICKNAME}')"></td>
 				</tr>
 				</c:forEach>
 			</table>
