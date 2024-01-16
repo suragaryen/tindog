@@ -75,6 +75,8 @@
 </div>
 
 
+<div style="margin-bottom:0; margin-top: 700px;">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

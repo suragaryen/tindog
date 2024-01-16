@@ -138,6 +138,8 @@ $('#content').summernote({
 </script> 
 
 
+<div style="margin-bottom:0; margin-top: 400px;">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
