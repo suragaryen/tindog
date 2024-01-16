@@ -52,7 +52,7 @@ margin-top: 20px;
 
       <img src="/img/${item.MAINPHOTO}" class="img-fluid rounded-start" alt="...">
 
-        <h5 class="card-title">${item.DNAME} (${item.AGE}) ${item.DBTI}</h5>
+        <h5 class="card-title">${item.DNAME} (${item.AGE})</h5>
        <table style="width:400px">
 			<tr>
 				<th><img width="24" height="24" src="https://img.icons8.com/material/24/female.png" alt="female"/></th>
