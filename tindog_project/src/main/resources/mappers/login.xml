@@ -10,22 +10,4 @@
 		 WHERE EMAIL = #{email}
 		   AND PASSWORD = #{password}
 	</select>
-	
-	<select id="findid" resultType="java.util.Map" parameterType="kr.co.tindog.login.LoginDTO">
-		SELECT email
-		FROM member
-		WHERE name=#{name}
-	</select>
-	
-	<select id="findpw" resultType="kr.co.tindog.login.FindDTO" parameterType="kr.co.tindog.login.FindDTO">
-		SELECT email, password
-		FROM member
-		WHERE name=#{name} and email=#{email}
-	</select>
-	
-	<update id="pwUpdate" parameterType="kr.co.tindog.login.FindDTO">
-		UPDATE member
-		SET password=#{password}
-		WHERE email=#{email}
-	</update>
 </mapper>

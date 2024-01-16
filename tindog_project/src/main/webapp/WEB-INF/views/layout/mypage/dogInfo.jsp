@@ -7,13 +7,13 @@
 <html>
 
 <body class="wrapper">
-
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 <div class="cont">
 		<div class="dogInfoText">
 			<div style="border-bottom: solid 2px darkgrey;">강아지 정보</div>
 		</div>
 		
+		<div style="color: black;" class="dogInfo">
 <c:forEach var="item" items="${list}">	
 <div id="winnerInfo" class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 50px;" >
 	<div class="card" style="width: 20rem; height: 500px;">
@@ -85,11 +85,11 @@
 	</div>
 </div>
 </div>
+</div>
+	
+	</c:forEach>	
 
-</c:forEach>
-<div style="margin-bottom:0; margin-top: 400px;">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>	
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
 </html>

@@ -17,7 +17,17 @@
   	<div id="login-body">
     	<h3>틴독에 오신 것을 환영합니다.</h3>
     	<input type="text" name="email" id="email" class="email-login-body"  placeholder="이메일" style="margin-bottom:0px;" onclick="hideMessage()">
-    	<span style="color:red; font-size:13px;" id="message">로그인 정보를 다시 확인 해 주세요</span>
+<%
+	if(session.getAttribute("s_grade") == null) {
+%>
+		<span style="color:red; font-size:13px;" id="message">로그인 정보를 다시 확인 해 주세요</span>
+<%
+	}else if(((String)session.getAttribute("s_grade")).equals("F")) {
+%>
+    	<span style="color:red; font-size:13px;" id="message">탈퇴 혹은 강제탈퇴된 회원입니다</span>
+<%
+	}
+%>
     	<input type="password" id="password" name="password"  class="password-login-body" placeholder="비밀번호">
     	<br>
     	<input type="button" id="checkBtn-login-body" value="계속" onclick="sendIt()">
