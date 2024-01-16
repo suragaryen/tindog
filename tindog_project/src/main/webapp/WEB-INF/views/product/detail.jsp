@@ -47,22 +47,35 @@
 	  		  , type    : 'post'
 	  		  , data    : {'nickname':nickname, 'uproduct_no':uproduct_no}        // 전달값
 	  	      , error   : function(error){
-	  	    	  alert("채팅방 생성 실패!");
+	  	    	Swal.fire({
+					title:"채팅방 개설 실패",
+					text:"관리자에게 문의해주세요",
+					icon:"error",
+					confirmButtonText:"확인"
+			});	
 	  	      }
 	  	      , success : function(result){
 	  	    	  // alert(result);
 	  	    	  if(result==1) { // 댓글 등록 성공
-	  	    		if(confirm("채팅방이 생성되었습니다\n 채팅 목록으로 이동하시겠습니까?")){
-	  					document.productfrm.action="/chatList";
-	  					document.productfrm.submit();
-	  				}
+	  	    		Swal.fire({
+						title:"채팅방 개설 성공",							
+						text:"채팅목록으로 이동합니다",
+						icon:"success",
+						confirmButtonText:"확인"
+					}).then(function(){					  
+				  		window.location.href = '/chatList';
+						});
 	  	    	  } else if(result==-1) {
 					  alert("채팅방이 개설되지 않았습니다");
 				  } else if(result==0) {
-					  if(confirm("이미 개설된 채팅방이 있습니다\n 채팅 목록으로 이동하시겠습니까?")){
-		  					document.productfrm.action="/chatList";
-		  					document.productfrm.submit();
-		  				}
+					  Swal.fire({
+							title:"이미 개설된 채팅방이 있습니다",							
+							text:"채팅목록으로 이동합니다",
+							icon:"success",
+							confirmButtonText:"확인"
+					}).then(function(){					  
+					  window.location.href = '/chatList';
+					});					  
 				  }
 	  	      }
 	  		}); 
