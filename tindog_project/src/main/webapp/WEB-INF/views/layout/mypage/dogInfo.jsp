@@ -16,7 +16,7 @@
 		<div style="color: black;" class="dogInfo">
 <c:forEach var="item" items="${list}">	
 <div id="winnerInfo" class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 50px;" >
-	<div class="card" style="width: 20rem; height: 500px;">
+	<div class="card" style="width: 20rem; height: 500px; margin-left:150px;">
 
 
       <div id="carouselBox">

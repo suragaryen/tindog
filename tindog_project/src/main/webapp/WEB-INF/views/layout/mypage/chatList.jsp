@@ -91,11 +91,22 @@
 			  , data    : {'droomno':droomno}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		  alert("채팅방이 삭제되었습니다");
+						  		 Swal.fire({
+							        	title:"채팅방 삭제 완료",
+							        	text:"채팅방이 삭제되었습니다",
+							        	icon:"success",
+							        	confirmButtonText:"확인"	
+							        }).then(function(){	
 						  		  document.chatRoomfrm.action="/chatList";
 								  document.chatRoomfrm.submit();
+							      });
 						  }else {
-							  alert("채팅방 삭제를 실패했습니다");
+							  Swal.fire({
+						        	title:"채팅방 삭제 실패",
+						        	text:"관리자에게 문의하세요",
+						        	icon:"error",
+						        	confirmButtonText:"확인"	
+						        });							 
 						  }
 				}
 			});
@@ -108,11 +119,22 @@
 			  , data    : {'proomno':proomno}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		  alert("채팅방이 삭제되었습니다");
+						  		Swal.fire({
+						        	title:"채팅방 삭제 완료",
+						        	text:"채팅방이 삭제되었습니다",
+						        	icon:"success",
+						        	confirmButtonText:"확인"	
+						        }).then(function(){	
 						  		  document.productchatRoomfrm.action="/chatList";
 								  document.productchatRoomfrm.submit();
+						  	});
 						  }else {
-							  alert("채팅방 삭제를 실패했습니다");
+							  Swal.fire({
+						        	title:"채팅방 삭제 실패",
+						        	text:"관리자에게 문의하세요",
+						        	icon:"error",
+						        	confirmButtonText:"확인"	
+						        });		
 						  }
 				}
 			});
@@ -125,10 +147,21 @@
 			  , data    : {'nickname':nickname}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		  alert("차단되었습니다");
+						  		Swal.fire({
+						        	title:"차단 완료",
+						        	text:"채팅방도 자동 삭제됩니다",
+						        	icon:"success",
+						        	confirmButtonText:"확인"	
+						        }).then(function(){
 						  		  chatRoomDelete(droomno);
+						        });
 						  }else {
-							  alert("차단을 실패했습니다");
+							  Swal.fire({
+						        	title:"차단 실패",
+						        	text:"관리자에게 문의하세요",
+						        	icon:"error",
+						        	confirmButtonText:"확인"	
+						        });		
 						  }
 				}
 			});
@@ -141,10 +174,21 @@
 			  , data    : {'nickname':nickname}
 			  , success : function(result) {
 						  	  if(result==1) {
-						  		  alert("차단되었습니다");
+						  		Swal.fire({
+						        	title:"차단 완료",
+						        	text:"채팅방도 자동으로 삭제됩니다",
+						        	icon:"success",
+						        	confirmButtonText:"확인"	
+						        }).then(function(){
 						  		productchatRoomDelete(proomno);
+						        });
 						  }else {
-							  alert("차단을 실패했습니다");
+							  Swal.fire({
+						        	title:"차단 실패",
+						        	text:"관리자에게 문의하세요",
+						        	icon:"error",
+						        	confirmButtonText:"확인"	
+						        });		
 						  }
 				}
 			});

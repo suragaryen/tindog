@@ -6,6 +6,18 @@
  <mapper namespace="management">
  	
  	<select id="list" parameterType="java.util.HashMap" resultType="java.util.Map">
+ 		<!-- <![CDATA[
+ 			SELECT EMAIL, NAME, NICKNAME, MEMGRADE, GUMQTY
+ 	      	  FROM (
+		 	   	    SELECT EMAIL, NAME, NICKNAME, MEMGRADE, GUMQTY
+		 	   	         , @ROWNUM := @ROWNUM + 1 AS RNUM 
+		 	     	  FROM MEMBER
+		 	     	 WHERE EMAIL != #{email}
+		 	     	   AND (@ROWNUM:=0)=0
+ 	           	   )
+ 	    	 WHERE RNUM >= #{startrow} 
+ 	       	   AND RNUM <= #{endrow}
+ 		]]> -->
  		SELECT EMAIL, NAME, NICKNAME, MEMGRADE, GUMQTY
  		  FROM MEMBER
  		 WHERE EMAIL != #{email}
@@ -18,8 +30,4 @@
  	     WHERE EMAIL != #{email}
  	</select>
  	
- 	<update id="update" parameterType="kr.co.tindog.member.UserDTO">
- 		UPDATE MEMBER SET MEMGRADE = #{memgrade}
- 		 WHERE EMAIL = #{email}
- 	</update>
  </mapper>
