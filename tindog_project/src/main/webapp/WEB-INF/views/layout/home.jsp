@@ -40,10 +40,102 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">NEW</p>
-                <h1>신입 댕댕이🐶</h1>
-            </div>
-            <div class="row g-4">
+          
+			<style>
+				#shiva3d {		             
+		             width: 100%;
+		             height:400px;
+		             display: inline-block;         		                
+	             }
+			</style>
+				<div id="shiva3d" style="margin-bottom: 30px;">
+				<script type="importmap">
+      			{
+        			"imports": {
+       			    "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+          			"GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"
+					}
+      			}
+    			</script>
+    			<script type="module">
+      				import { 
+	        			OrbitControls
+      				} from "https://cdn.jsdelivr.net/npm/three@0.124/examples/jsm/controls/OrbitControls.js";
+	  				import { GLTFLoader } from "GLTFLoader";
+      				import * as THREE from "three";
+		
+					var shiva3d=document.getElementById("shiva3d");
+					var CANVAS_WIDTH=500;
+					var CANVAS_HEIGHT=400;      
+
+					const scene = new THREE.Scene();
+
+					const sizes = {
+    					width: CANVAS_WIDTH,
+    					height: CANVAS_HEIGHT
+  					};
+
+					const camera = new THREE.PerspectiveCamera(
+    					60,
+    					sizes.width / sizes.height,
+    					0.1,
+    					100
+					);
+  					camera.position.z = 3;
+  					scene.add(camera);
+
+					const renderer = new THREE.WebGLRenderer({
+    					antialias: true,
+  					});
+					renderer.setSize(sizes.width, sizes.height);
+  					renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+					renderer.setClearColor(new THREE.Color("white"));
+  					shiva3d.appendChild(renderer.domElement);
+
+					window.addEventListener("resize", () => {
+    
+  	  					sizes.width = CANVAS_WIDTH;
+    					sizes.height = CANVAS_HEIGHT;
+  
+    					camera.aspect = sizes.width / sizes.height;
+    					camera.updateProjectionMatrix();
+  
+  	  					renderer.setSize(sizes.width, sizes.height);
+    					renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  					});
+
+					let controls = new OrbitControls(camera, renderer.domElement);
+					controls.enableDamping = true;
+					controls.rotateSpeed = 0.8;
+					controls.enableZoom = false;		
+					controls.enableDamping = true;
+
+					const color = 0xFFFFFF;
+					const intensity = 3;
+					const light = new THREE.AmbientLight(color, intensity);
+					scene.add(light);
+
+      				const loader = new GLTFLoader();
+      				loader.load("/shiba/scene.gltf", function (gltf) {
+        				scene.add(gltf.scene);
+
+        				function animate() {
+          					requestAnimationFrame(animate);
+          					gltf.scene.rotation.y += 0.01;
+          					renderer.render(scene, camera);
+							controls.update();
+        				}
+
+        			animate();
+      			});
+    			</script>
+    			</div> 
+    		</div> 
+    			<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Top 4</p>
+                <h1 style="margin-top: 30px;">인기 댕댕이🐶</h1>
+            	</div>
+    			 <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden" id="rank-img">

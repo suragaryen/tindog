@@ -48,6 +48,7 @@
 		  cursor:pointer;
 		  transition: 0.4s;
 		  display:inline;
+		  margin-bottom: 20px;
     }
     
         #login-body #loginBtn-login-body{
@@ -100,15 +101,17 @@
     #login-naver{
       grid-area: naver;
      position: relative;
-    left: 60px;
+    left: 90px;
     }
 
     #login-kakao-txt{
-      margin-left: 40px;
+      margin-left: 55px;
+      margin-top: 10px;
     }
 
     #login-naver-txt{
-      margin-left: 40px;
+      margin-left: 80px;
+      margin-top: 10px;
     }
 
     #login-loginbtn{

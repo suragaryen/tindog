@@ -23,6 +23,9 @@
 <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
 	<div class="cont">
+	<div class="userInfoText">
+		<div style="border-bottom: solid 1px darkgrey; width:200px;">이상형 월드컵 결과</div>
+	</div>
 		<c:forEach var="item" items="${list}">
 			<div id="img-round16-container" class="winner">
 				<img id="img-round16" src="/img/Winner.png">
