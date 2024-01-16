@@ -39,13 +39,17 @@
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<script>
+<script>	
 	function reportCheck() {
 		let reason = $("#reportReason").val();
 		let reported = $("#reported").val();
 		
 		if(reason.length == 0) {
-			alert("사유를 입력해주세요");
+			Swal.fire({
+	        	title:"",
+	        	text:"사유를 입력하세요",	        	
+	        	confirmButtonText:"확인"
+		  });
 		} else {
 			$.ajax({
 				url     : '/report/insert'
@@ -59,11 +63,22 @@
 						  }
 			  , success : function(result) {
 				  			  if(result == 1) {
-				  				  alert("신고가 접수되었습니다");
+				  				Swal.fire({
+						        	title:"신고 접수 성공",
+						        	text:"",
+						        	icon:"success",
+						        	confirmButtonText:"확인"
+							  }).then(function(){
 				  				  document.reprotfrm.action="/chatList";
 								  document.reprotfrm.submit();
+							  });
 				  			  } else {
-				  				  alert("신고 접수에 실패했습니다");
+				  				Swal.fire({
+						        	title:"신고 접수 실패",
+						        	text:"관리자에게 문의해주세요.",
+						        	icon:"error",
+						        	confirmButtonText:"확인"
+							  });
 				  			  }
 						  }
 			});

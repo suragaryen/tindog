@@ -60,6 +60,24 @@
 </div>
 	<script>var s_nickname = '<%=(String)session.getAttribute("s_nickname")%>'</script>
 	<script>
+	
+	var confirmTx = function (message, callback, fallback) {
+		  Swal.fire({
+			title:"개껌이 1개 소모됩니다",
+		    text: "진행할까요?",		    
+		    confirmButtonText:"확인",
+		    cancelButtonText:"취소",
+		    showCancelButton: true,
+		    allowOutsideClick: false,
+		  }).then(function (result) {
+		    if (result.isConfirmed) {
+		      if (callback) { callback(); }
+		    } else if (result.isDismissed) {
+		      if (fallback) { fallback(); }
+		    }
+		  });
+		};
+	
 		function checkGum(nickname) {
 			$.ajax({
 				url     : '/chatList/checkGum' // 요청 명령어
@@ -69,11 +87,18 @@
 				  // alert(result);
 				  console.log(result);
 				  if(result>=1) {
-					  if(confirm("개껌이 1개 소모됩니다\n진행할까요?")) {
+					  confirmTx('', function() {
 						  startChat(nickname);
-						}
+						}, function() {
+							window.location.href = '/follow';
+						});
 				  } else {
-					  alert("개껌을 충전해야합니다")
+					  Swal.fire({
+				        	title:"개껌 부족",
+				        	text:"개껌을 충전해주세요",
+				        	icon:"error",
+				        	confirmButtonText:"확인"
+					  });
 				  }
 			  }
 			  , error : function(error) {
@@ -84,21 +109,21 @@
 			});
 		}
 	
-		function startChat(nickname) {
+		function startChat(nickname) {			
 			$.ajax({
 				url     : '/chatList/insert' // 요청 명령어
 			  , type    : 'post'
 			  , data    : {'nickname': nickname}
-			  , success : function(result) {
-				  // alert(result);
+			  , success : function(result) {				 
 				  console.log(result);
 				  if(result==1) {
 					  Swal.fire({
-							title:"채팅방 개설 성공",
-							text:"상대방 : "+followNickname,
+							title:"채팅방 개설 성공",							
 							icon:"success",
 							confirmButtonText:"확인"
-					});					  
+					}).then(function(){					  
+					  window.location.href = '/chatList';
+					});
 				  } else if(result==-1) {
 					 
 				  } else if(result==0) {
@@ -120,18 +145,28 @@
 	</script>
 	<script>
 	function followCancel(email) {
-		alert(email);
 		$.ajax({
 			url     : '/follow/delete/' + email // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
 		  , type    : 'post'
 		  , data    : {'email':email}
 		  , success : function(result) {
 					  	  if(result==1) {
-					  		  alert("팔로우 취소되었습니다");
+					  		 Swal.fire({
+									title:"팔로우 취소 성공",
+									text:"팔로우 취소 되었습니다.",
+									icon:"success",
+									confirmButtonText:"확인"
+							}).then(function(){
 					  		  document.followfrm.action="/follow";
 							  document.followfrm.submit();
+							});
 					  }else {
-						  alert("팔로우 취소를 실패했습니다");
+						  Swal.fire({
+								title:"팔로우 취소 실패",
+								text:"관리자에게 문의해주세요",
+								icon:"error",
+								confirmButtonText:"확인"
+						});
 					  }
 			}
 		});

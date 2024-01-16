@@ -89,20 +89,7 @@ margin-top: 20px;
 
 	<form style="text-align: center;" action="followInsert" method="post">
 		<input type="hidden" name="email" value="${item.EMAIL}"></input>
-<%
-	if(((String)session.getAttribute("s_grade")).equals("B") || ((String)session.getAttribute("s_grade")).equals("D")) {
-		
-	
-%>
-		<button type="button" style="width:300px; left: 150px;" class="btn-regi wow fadeInUp" onclick="location.href='/worldcup'">돌아가기 (활동 정지 상태이므로 팔로우할 수 없습니다)</button>
-<%
-	}else {
-%>
 		<button type="submit" style="width:300px; left: 150px;" class="btn-regi wow fadeInUp">팔로우 하기</button>
-<%
-	}
-%>
-		
 	</form>
 </c:forEach>       
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

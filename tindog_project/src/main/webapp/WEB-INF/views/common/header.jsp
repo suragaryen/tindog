@@ -16,7 +16,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">중고마켓</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
-                        <a href="/list" class="dropdown-item">구매하기</a>
+                        <a href="/list" class="dropdown-item">구매하기</a>                        
                     </div>
                 </div>
                 <div class="nav-item dropdown">

@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.tindog.member.UserDTO;
-
 @Repository
 public class ManagementDAO {
 	
@@ -22,10 +20,6 @@ public class ManagementDAO {
 	
 	public int totalRowCount(String email) {
 		return sqlSession.selectOne("management.totalRowCount", email);
-	}
-	
-	public int update(UserDTO userDto) {
-		return sqlSession.update("management.update", userDto);
 	}
 
 }//class end
