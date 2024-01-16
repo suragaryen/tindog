@@ -13,11 +13,8 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include><!-- header.jsp -->
-<style>
-.info{
-	text-align: center;
-}
-</style>
+
+
 <body>
 <div class="container">
 
@@ -25,53 +22,27 @@
 
 		<form name="noticefrm" id="noticefrm" method="post" action="insert" enctype="multipart/form-data">
 		<table class="table">
-<%  
-    if (session != null && session.getAttribute("s_email") != null && session.getAttribute("s_grade").equals("M")) {//관리자 등급이면
-%>
 		<tr>
 		   <th class="info" style="text-align:center">제목</th>
-		   <td><input type="text" name="subject" id="subject" class="form-control" value="${notice.subject}"></td>
+		   <td><input type="text" name="subject" id="subject" class="form-control" value="${notice.subject}" maxlength="20"></td>
 		</tr>
-<% 
-    }else{
-%>
-		<tr>
-		   <th class="info" style="text-align:center">제목</th>
-		   <td>${notice.subject}</td>
-		</tr>
-<%
-    }//end 
-%>
-<%  
-    if (session != null && session.getAttribute("s_email") != null && session.getAttribute("s_grade").equals("M")) {//관리자 등급이면
-%>
 		<tr>
 		   <th class="info" style="text-align:center">작성자</th>
 		   <td><input type="text" name="writer" id="writer" class="form-control"  value="${notice.writer}" maxlength="100"></td>
 		</tr>
-<% 
-    }else{
-%>
-		<tr>
-		   <th class="info" style="text-align:center">작성자</th>
-		   <td>${notice.writer}</td>
-		</tr>
-<%
-    }//end 
-%>
 <%  
     if (session != null && session.getAttribute("s_email") != null && session.getAttribute("s_grade").equals("M")) {//관리자 등급이면
 %>
         <tr>
-		   <th class="info">내용</th>
+		   <th class="info" style="text-align:center">내용</th>
 		   <td><textarea id="content" name="content" class="form-control">${notice.content}</textarea></td>
 		</tr>
 <% 
     }else{
 %>
 		<tr>
-		   <th class="info">내용</th>
-		   <td>${notice.content}</td>		  		    
+		   <th class="info" style="text-align:center">내용</th>
+		   <td><div id="content" name="content" class="form-control">${notice.content}</div></td> 
 		</tr>
 <%
     }//end 
@@ -84,8 +55,8 @@
     if (session != null && session.getAttribute("s_email") != null && session.getAttribute("s_grade").equals("M")) { //관리자 등급
 %>
         <input type="hidden" name="noticeno" value="${notice.noticeno}">
-        <input type="submit" value="수정" class="btn btn-primary" onclick="notice_update()">
-        <input type="button" value="삭제" class="btn btn-danger" onclick="notice_delete()">
+        <input type="submit" value="수정" onclick="notice_update()">
+        <input type="button" value="삭제" onclick="notice_delete()">
 <%
     }
 %> 	

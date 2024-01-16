@@ -6,10 +6,19 @@
 <!DOCTYPE html>
 <html>
 <style>
-#winnerInfo{
-	position: relative;
-	top: 50px;	
+.winner{
+	position:relative;
+	top:50px;
+	left:350px;
+	display:block;
 }
+
+#winnerInfo{
+	position:relative;
+	top:150px;
+	display:block;
+}
+
 </style>
 <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
@@ -21,7 +30,7 @@
 			<div id="winnerInfo" style="margin-left: 150px;">
 				<div style="width:400px; height:200px">
 					<img src="/img/${item.MAINPHOTO}" class="img-fluid rounded-start"
-						alt="..." style="width:400px; height:300px">
+						alt="...">
 
 					<h5 class="card-title">${item.DNAME}(${item.AGE})</h5>
 					<table style="width: 400px">
@@ -56,9 +65,11 @@
 							<td><div>${item.DOG_DETAIL}</div></td>
 						</tr>
 					</table>
+
+
 				</div>
 			</div>
-		</c:forEach>	
+		</c:forEach>
 	</div>
 	
 	<div style="margin-top: 400px">

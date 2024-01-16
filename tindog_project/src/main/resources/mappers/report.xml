@@ -41,10 +41,37 @@
  		 ORDER BY REPORTDATE
  	</select>
  	
+ 	<select id="susCheck" parameterType="String" resultType="String">
+ 		SELECT MEMGRADE
+ 		  FROM MEMBER
+ 		 WHERE EMAIL = #{email}
+ 	</select>
+ 	
  	<select id="list2" resultType="java.util.Map">
  		SELECT REPORTED, REPORTER, REASON, REPORTDATE
  		  FROM REPORT
  		 WHERE REPORTCASE = 2
  		 ORDER BY REPORTDATE
  	</select>
+ 	
+ 	<update id="suspended" parameterType="String">
+ 		UPDATE MEMBER SET MEMGRADE = 'B'
+ 		 WHERE EMAIL = #{email}
+ 	</update>
+ 	
+ 	<update id="susTot" parameterType="String">
+ 		UPDATE MEMBER SET MEMGRADE = 'D'
+ 		 WHERE EMAIL = #{email}
+ 	</update>
+ 	
+ 	<update id="suspended2" parameterType="String">
+ 		UPDATE MEMBER SET MEMGRADE = 'C'
+ 		 WHERE EMAIL = #{email}
+ 	</update>
+ 	
+ 	<update id="kick" parameterType="String">
+ 		UPDATE MEMBER SET MEMGRADE = 'F'
+ 		 WHERE EMAIL = #{email}
+ 	</update>
+ 	
  </mapper>

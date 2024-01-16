@@ -28,4 +28,5 @@ public class ReportDAO {
 	public int reportInsert2(ReportDTO reportDto) {
 		return sqlSession.insert("report.insert2", reportDto);
 	}
+	
 }

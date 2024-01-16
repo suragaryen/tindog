@@ -25,7 +25,9 @@ import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.product.ProductDAO;
 import kr.co.tindog.wishlist.WishlistDTO;
 
+
 @Controller
+
 public class ProductCont {
        
 	
@@ -37,10 +39,11 @@ public class ProductCont {
 	ProductDAO productDao;	
 	
 	@RequestMapping("/list")
-	public ModelAndView list() {
+	public ModelAndView list(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String email = (String)session.getAttribute("s_email");
 		mav.setViewName("product/list");
-	    mav.addObject("list", productDao.list());
+	    mav.addObject("list", productDao.list(email));
 		return mav;
 	}//list() end
 	
@@ -97,7 +100,7 @@ public class ProductCont {
 
 		
 		
-		return "redirect:/product/list"; 
+		return "redirect:/list"; 
 	}//insert() end
 	
 	
@@ -172,8 +175,7 @@ public class ProductCont {
 		   
 		productDao.delete(uproduct_no);   
 			  
-		return "redirect:/product/list"; 
-
+		return "redirect:/list"; 
 			 
 	}//delete() end
 	
@@ -223,9 +225,7 @@ public class ProductCont {
 			map.put("mainphoto", mainphoto);
 			map.put("photo", photo); 
 			productDao.update(map); 
-
-			return "redirect:/product/list"; 
-
+			return "redirect:/list"; 
 		   
 		   
 	   }//update() end

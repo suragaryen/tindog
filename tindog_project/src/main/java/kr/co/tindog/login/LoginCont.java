@@ -37,7 +37,7 @@ public class LoginCont {
 	@RequestMapping("/tt")
 	public ModelAndView test() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("layout/test2");
+		mav.setViewName("layout/test");
 		return mav;
 	}
 
@@ -211,17 +211,24 @@ public class LoginCont {
 		//System.out.println(loginDAO.login(loginDTO).getNickna
 		
 		 LoginDTO result = loginDAO.login(loginDTO);
-		
+		 	
 		    if(result != null && result.getEmail() != null) {
-		        // 로그인 성공 시
-		        session.setAttribute("s_email", result.getEmail());
-		        session.setAttribute("s_nickname", result.getNickname());
-		        session.setAttribute("s_grade", result.getMemgrade());
-		        System.out.println((String)session.getAttribute("s_grade"));
-		        session.setAttribute("s_gumqty", result.getGumqty());
-		        System.out.println("로그인 성공");
-		        System.out.println(result);
-		        mav.setViewName("layout/home");
+		    	if(result.getMemgrade().equals("F")) {
+		    		// 탈퇴했거나 강제탈퇴된 회원
+		    		session.setAttribute("s_grade", result.getMemgrade());
+		    		System.out.println("로그인 실패");
+			        mav.setViewName("layout/member/loginFail");
+		    	}else {
+		    		// 로그인 성공 시
+		    		session.setAttribute("s_email", result.getEmail());
+			        session.setAttribute("s_nickname", result.getNickname());
+			        session.setAttribute("s_grade", result.getMemgrade());
+			        System.out.println((String)session.getAttribute("s_grade"));
+			        session.setAttribute("s_gumqty", result.getGumqty());
+			        System.out.println("로그인 성공");
+			        System.out.println(result);
+			        mav.setViewName("layout/home");
+		    	}
 		    } else {
 		        // 로그인 실패 시
 		        System.out.println("로그인 실패");

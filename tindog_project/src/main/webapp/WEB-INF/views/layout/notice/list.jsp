@@ -14,7 +14,8 @@
 	<div class="container">
 	<table class="table">
 	<thead>
-		<tr align="center">		  
+		<tr align="center">
+		  
 		    <th class="info">글번호</th>
 			<th class="info">제목</th>
 			<th class="info">작성자</th>
@@ -24,21 +25,18 @@
 	</thead>
 	<tbody>
 	<c:forEach var="notice" items="${list}" varStatus="no">
-	<tr align="center">
+	<tr>
 	  <td>${notice.noticeno}</td>
 	  <td><a href="notice/${notice.noticeno}">${notice.subject}</a></td>
 	  <td>${notice.writer}</td>
 	  <td>${notice.noticedate} </td>
- </tr>
+	  </tr>
+	  
+
 	</c:forEach>
  	</table>
-<%  
-    if (session != null && session.getAttribute("s_email") != null && session.getAttribute("s_grade").equals("M")) {
-%>
-     <p style="text-align:right"><button type="button" class="btn btn-secondary" onclick="location.href='/notice/write'">공지사항 작성</button></p>   
-<%
-    }//end
-%>
+ 	
+ 	
  	<c:if test="${requestScope.count > 0}">
 		<c:set var="pagecnt" value="${requestScope.totalPage}"/>
 		<c:set var="Pagestart" value="${requestScope.Pagestart}"/>
@@ -68,9 +66,10 @@
 			</c:if>
 		</div>
 	</c:if>  
-		
+	
+	
     </div>
-</div>
+  </div>
 
 
 <div style="margin-top: 600px">

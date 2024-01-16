@@ -27,11 +27,11 @@
 		<table class="table">
 		<tr>
 		   <th class="info" style="text-align:center">제목</th>
-		   <td><input type="text" name="subject" id="subject" class="form-control"></td>
+		   <td><input type="text" name="subject" id="subject" class="form-control" maxlength="20"></td>
 		</tr>
 		<tr>
 		   <th class="info" style="text-align:center">작성자</th>
-		   <td><input type="text" value="관리자" name="writer" id="writer" class="form-control" maxlength="20"></td><!-- input type="email" -->
+		   <td><input type="text" name="writer" id="writer" class="form-control" maxlength="20"></td><!-- input type="email" -->
 		</tr>
 		
 		<tr>
