@@ -12,7 +12,6 @@ import kr.co.tindog.worldcup.WorldcupDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +27,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.dbti.DbtiDAO;
 import kr.co.tindog.dbti.DbtiDTO;
-import kr.co.tindog.member.UserDTO;
 import kr.co.tindog.oauth.config.PrincipalOauth2UserService;
 
 @RestController
@@ -55,7 +53,8 @@ public class ManagementCont {
 		if(pageNum == null) {pageNum = "1";}
 		int currentpage = Integer.parseInt(pageNum);		
 		
-		int startrow    = (currentpage - 1)*Perpage +1;				
+		int startrow    = (currentpage - 1)*Perpage +1;	
+		int endrow		= currentpage * Perpage;			
 		int start =startrow-1;//
   		
   		// 페이지 수
@@ -85,16 +84,5 @@ public class ManagementCont {
 		mav.addObject("list", list);
         
 		return mav;
-	}
-	
-	@PostMapping("/management/update")
-	public int update(@RequestParam String email, @RequestParam String memgrade) {
-		UserDTO userDto = new UserDTO();
-		userDto.setEmail(email);
-		userDto.setMemgrade(memgrade);
-		
-		int cnt = managementDao.update(userDto);
-		
-		return cnt;
 	}
 }

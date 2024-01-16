@@ -44,5 +44,8 @@ public class WorldcupDAO {
 		return sqlSession.selectList("worldcup.dupCheck", emails);
 	}
 	
+	public List<Map<String, Object>> idelResult(String email){
+		return sqlSession.selectList("worldcup.idelResult", email);
+	}
 	
 }//class end
