@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<body class="wrapper">
+    
 <style>
 #nickname-gum{
 	display: flex;
@@ -83,7 +83,29 @@ nav ul li:hover::before {
 	
 	}
 
+
+
+		.btn-new-pay{
+			box-shadow: 1px 1px 3px 1px #dadce0;
+			background: white;
+			border: 1px solid #C7DCFB;
+			border-radius: 5px;
+			color: #8D8E92;
+			font-weight: 500;
+			width: 80%;
+			height: 37px;
+			margin-right: 10px;
+		}
+
+		.btn-new-pay:hover{
+			cursor: pointer;
+			background: #7fc7fe;
+			color: white;
+		}
+
+
 </style>
+<body class="wrapper">
 
 <jsp:include page="/WEB-INF/views/common/header-login.jsp"></jsp:include>
 <%String nickname = (String) session.getAttribute("s_nickname");
@@ -209,17 +231,17 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 						    <tr>
 						      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 1개</th>
 						      <td>1000원</td>
-						      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('1', '1','${email}')">결제</button></td>
+						      <td><button type="button" class="btn-new-pay" onclick="requestPay('1', '1','${email}')">결제</button></td>
 						    </tr>
 						    <tr>
 						      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 11개</th>
 						      <td>10000원</td>
-						      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('11', '1','${email}')">결제</button></td>
+						      <td><button type="button" class="btn-new-pay" onclick="requestPay('11', '1','${email}')">결제</button></td>
 						    </tr>
 						    <tr>
 						      <th scope="row"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/dog-bone.png" alt="dog-bone"/> 35개</th>
 						      <td>30000원</td>
-						      <td><button type="button" class="btn btn-outline-primary" onclick="requestPay('35', '1','${email}')">결제</button></td>
+						      <td><button type="button" class="btn-new-pay" onclick="requestPay('35', '1','${email}')">결제</button></td>
 						    </tr>
 						  </tbody>
 						</table>

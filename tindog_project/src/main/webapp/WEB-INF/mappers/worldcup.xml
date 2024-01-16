@@ -7,18 +7,10 @@
  
  	<select id="worldcupImgList" parameterType="String" resultType="java.util.Map">
  	
- 		select mainphoto, email
+ 		select mainphoto,email
  		from dogs 
  		where gamereg = 'o' and email != #{email}
- 		  and email not in (SELECT CUTEMAIL
-					 		  FROM CUT
-					 		 WHERE EMAIL = #{email})
-		  and email not in (SELECT EMAIL
- 		  					  FROM CUT
- 		 					 WHERE CUTEMAIL = #{email})	 	
  		order by rand() limit 16
- 		
- 		
  		
  	</select>
  	
@@ -26,7 +18,7 @@
  	<select id="worldcupOptionList" parameterType="kr.co.tindog.worldcup.DogDTO" resultType="java.util.Map">
  		SELECT mainphoto, email
  		FROM dogs
- 		WHERE gamereg = 'o' AND email != #{email} AND age between 0 and #{age} AND purpose=#{purpose} AND size=#{size} AND sex=#{sex} AND neutral=#{neutral}
+ 		WHERE gamereg = 'o' AND email != #{email} AND age=#{age} AND purpose=#{purpose} AND size=#{size} AND sex=#{sex} AND neutral=#{neutral}
  		ORDER BY rand() limit 16
  	</select>
 
@@ -46,7 +38,6 @@
 		from follow
 		where email = #{s_email} and followemail = #{f_email}
  	
-
  	</select>
  	
  </mapper>

@@ -9,17 +9,7 @@
 <body>
   
 
-<div class="container">
-
-     <p style="text-align:center">[공지사항 목록]</p>
-     
-<%  
-    if (session != null && session.getAttribute("s_email") != null && ((String)session.getAttribute("s_grade")).equals("M")) {%>
-     <p style="text-align:center"><button type="button" class="btn btn-secondary" onclick="location.href='/notice/write'">공지사항 작성</button></p>  
-<%
-    }
-%>
-    
+<div class="container"> 
 
 	<div class="container">
 	<table class="table">
@@ -82,6 +72,8 @@
   </div>
 
 
+<div style="margin-top: 600px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

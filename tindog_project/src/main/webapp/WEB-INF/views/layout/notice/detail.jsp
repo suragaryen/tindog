@@ -18,7 +18,6 @@
 <body>
 <div class="container">
 
-   <p style="text-align:center">[공지사항 상세]</p>
    <p style="text-align:center"><button type="button" class="btn btn-secondary" onclick="location.href='/notice'">공지사항 목록</button></p>
 
 		<form name="noticefrm" id="noticefrm" method="post" action="insert" enctype="multipart/form-data">
@@ -108,7 +107,8 @@ $('#content').summernote({
 	
 </script> 
 
-
+<div style="margin-top: 400px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
