@@ -10,6 +10,7 @@
   
 
 <div class="container"> 
+       <h4><p style="text-align:center">[공지사항]</p></h4> <!-- 추가 -->
 
 	<div class="container">
 	<table class="table">
@@ -73,7 +74,7 @@
 </div>
 
 
-<div style="margin-top: 600px">
+<div style="margin-top: 100px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </div>
 </body>

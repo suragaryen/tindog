@@ -20,7 +20,7 @@
 <div class="container"> 
 
 
-   <p style="text-align:center">[공지사항 작성]</p>
+   <h4><p style="text-align:center">[공지사항 작성]</p></h4>
    <p style="text-align:center"><button type="button" class="btn btn-secondary" onclick="location.href='/notice'">공지사항 목록</button></p>
 
 		<form name="noticefrm" id="noticefrm" method="post" action="insert" enctype="multipart/form-data" onsubmit="return noticeCheck()">

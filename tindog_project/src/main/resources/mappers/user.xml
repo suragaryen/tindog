@@ -70,6 +70,22 @@
 		from member
 		where email = #{email}
  	</select>
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 회원탈퇴 -->
+	<select id="userdtoList" parameterType="String" resultType="String">  
+			SELECT password
+			FROM member 
+			WHERE email=#{email}
+ 	</select> 
+ 	
+ 
+ 	<delete id="delete" parameterType="String"> 
+		DELETE FROM member WHERE email = #{email}
+	</delete>
+ 	
 </mapper>
  
  
