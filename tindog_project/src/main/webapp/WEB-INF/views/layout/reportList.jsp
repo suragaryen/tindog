@@ -211,21 +211,46 @@
 			});
 		}
 		
-		function kick(reported) {
-			if(confirm(reported + "님을 강제탈퇴 시키겠습니까?")) {
+		var confirmAx = function (message, callback, fallback) {
+			  Swal.fire({
+				title:"강제 탈퇴가 진행되었습니다",
+			    text: "수정을 원하시면 회원등급 관리 탭을 이용하세요",
+			    icon:"success",
+			    confirmButtonText:"확인",			    
+			    showCancelButton: false,
+			    allowOutsideClick: false,
+			  }).then(function (result) {
+			    if (result.isConfirmed) {
+			      if (callback) { callback(); }
+			    } else if (result.isDismissed) {
+			      if (fallback) { fallback(); }
+			    }
+			  });
+			};
+		
+		function kick(reported) {			
 				$.ajax({
 					url     : '/reportList/kick/' + reported // RESTfull방식으로 웹서비스 요청 예) /comment/delete/5
 				  , type    : 'post'
 				  , data    : {'reported':reported}
 				  , success : function(result) {
 						if(result==1) {
-							alert(reported + "님이 강제탈퇴 되었습니다");
-							document.dateReportfrm.action="/management";
-							document.dateReportfrm.submit();
+							confirmAx('',function(){
+								window.location.href="/management";
+							}, function(){
+								
+							});														
+						}else{
+							Swal.fire({
+					        	title:"이미 처리된 회원입니다",
+					        	text:"",
+					        	icon:"error",
+					        	confirmButtonText:"확인"
+						  });
 						}
 				  }
 				});
-			}
+			
 		}
 	</script>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
