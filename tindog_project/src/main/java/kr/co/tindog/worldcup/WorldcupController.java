@@ -111,7 +111,8 @@ public class WorldcupController {
 	
 		@RequestMapping("worldcup/optionstart")
 		public ModelAndView worldcupoptionstart(HttpSession session, @ModelAttribute DogDTO dogDTO) throws Exception{
-			ModelAndView mav = new ModelAndView();							
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("layout/worldcup/worldcup_optionstart");					
 			
 			String email = (String) session.getAttribute("s_email");
 			dogDTO.setEmail(email);
@@ -122,22 +123,8 @@ public class WorldcupController {
 			System.out.println("map:" + OptionList.toString());
 			System.out.println(OptionList);
 			
-			if(OptionList.isEmpty() || OptionList==null) {				
-				mav.setViewName("redirect:/alert");				
-				return mav;
-			}
-			
 			mav.addObject("OptionList", OptionList);
-			mav.setViewName("layout/worldcup/worldcup_optionstart");	
-			
-			return mav;
-		}
 		
-		@RequestMapping("/alert")
-		public ModelAndView alert() {
-			ModelAndView mav=new ModelAndView();
-			
-			mav.setViewName("layout/worldcup/alert");
 			
 			return mav;
 		}
@@ -148,10 +135,10 @@ public class WorldcupController {
 			
 			String email=(String) session.getAttribute("s_email");
 			
-			mav.addObject("list", worldcupDAO.idelResult(email));
+			mav.addObject("list", worldcupDAO.worldcupWinner(email));
 			mav.setViewName("/layout/mypage/idelResult");
 			
-			System.out.println(worldcupDAO.idelResult(email));
+			System.out.println(worldcupDAO.worldcupWinner(email));
 			
 			return mav;
 		}

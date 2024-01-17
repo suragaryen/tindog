@@ -14,14 +14,7 @@ public class ProductDTO {
 	private String location;
 	private String mainphoto;
 	private String photo;
-	private String email;
-	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	private String userphoto;
 	
 	public int getUproduct_no() {
 		return uproduct_no;
@@ -94,14 +87,22 @@ public class ProductDTO {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}		
+	public String getUserphoto() {
+		return userphoto;
+	}
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
 	}
 	@Override
 	public String toString() {
 		return "ProductDTO [uproduct_no=" + uproduct_no + ", subject=" + subject + ", nickname=" + nickname
 				+ ", uproduct_cd=" + uproduct_cd + ", price=" + price + ", info=" + info + ", status=" + status
 				+ ", regdate=" + regdate + ", area=" + area + ", location=" + location + ", mainphoto=" + mainphoto
-				+ ", photo=" + photo + "]";
+				+ ", photo=" + photo + ", userphoto=" + userphoto + "]";
 	}
+	
+	
 	
 	
 	

@@ -29,6 +29,9 @@
          <table class="table table-hover">
 			<tbody style="text-align: left;">
 			<tr>
+			    <td> <input type="hidden" name="nickname" class="form-control" value="${s_nickname}" readonly> </td>
+			</tr>
+			<tr>
 			    <td>제목</td>
 			    <td> <input type="text" name="subject" class="form-control"> </td>
 			</tr>
@@ -44,16 +47,21 @@
 			</tr>
 			<tr>
 			    <td>상품분류</td>
-			    <td> <input type="text" name="uproduct_cd" placeholder="아래 상품 분류 코드로 입력해주세요" 
-			    class="form-control"> 패션:01, 위생:02, 장난감:03, 사료:04, 간식:05, 외출용품:06, 하우스/안전용품:07</td>
+			    <td> 
+			    <select name="uproduct_cd" class="form-control"> 
+			      <option value="01">패션</option>
+				  <option value="02">위생</option>
+				  <option value="03">장난감</option>
+				  <option value="04">사료</option>
+				  <option value="05">간식</option>
+				  <option value="06">외출용품</option>
+				  <option value="07">하우스/안전용품</option>
+			    </select>
+			    </td>
 			</tr>
 		    <tr>
 				<td>상품 메인 사진</td>
 				<td> <input type="file" name="img1" class="form-control"> </td>
-			</tr>
-			<tr>
-			    <td>닉네임</td>
-			    <td> <input type="text" name="nickname" class="form-control"> </td>
 			</tr>
 			<tr>
 			    <td>희망지역</td>

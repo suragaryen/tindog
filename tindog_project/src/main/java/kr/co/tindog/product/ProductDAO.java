@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.tindog.member.UserDTO;
+
 @Repository
 public class ProductDAO {
 
@@ -22,12 +24,12 @@ public class ProductDAO {
 	}//insert() end
 	
 	
-	public List<Map<String, Object>> list(String email){
-		return sqlSession.selectList("product.list", email);
+	public List<Map<String, Object>> list(){
+		return sqlSession.selectList("product.list");
 	}//list() end
 	
-	public List<Map<String, Object>> search(ProductDTO dto){
-		return sqlSession.selectList("product.search", dto);
+	public List<Map<String, Object>> search(String subject){
+		return sqlSession.selectList("product.search", "%" + subject + "%");
 	}
 	
 	public Map<String, Object> detail(int uproduct_no){
@@ -57,6 +59,10 @@ public class ProductDAO {
 			
 		}//update() end
 
-    
+		public String userphoto(String nickname) {
+		    return sqlSession.selectOne("product.userphoto", nickname);
+		}
+		
+		
 	
 }//class end

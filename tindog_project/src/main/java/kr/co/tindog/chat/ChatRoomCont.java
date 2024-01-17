@@ -64,9 +64,9 @@ public class ChatRoomCont {
 	public int chatRoomInsert(@RequestParam String nickname, HttpSession session) {
 		String followNickname = nickname;
 		String s_nickname = (String)session.getAttribute("s_nickname");
-		int gumQty = chatRoomDao.checkGum(s_nickname);
+		int useGum = chatRoomDao.useGum(s_nickname);
 		
-		if(gumQty > 0) {
+		if(useGum == 1) {
 			try {
 				ChatRoomDTO chatRoomDto = new ChatRoomDTO();
 				chatRoomDto.setNickname_from((String)session.getAttribute("s_nickname"));
@@ -76,9 +76,7 @@ public class ChatRoomCont {
 				int check = chatRoomDao.chatRoomCheck(chatRoomDto);
 				if(check==0) {
 					int cnt = chatRoomDao.chatRoomInsert(chatRoomDto);
-					chatRoomDao.useGum(s_nickname);
-					session.removeAttribute("s_gumqty");
-					session.setAttribute("s_gumqty", gumQty);
+					
 					return cnt;
 				}else {
 					return 0;

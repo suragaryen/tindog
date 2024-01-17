@@ -16,7 +16,7 @@
 		<div style="color: black;" class="dogInfo">
 <c:forEach var="item" items="${list}">	
 <div id="winnerInfo" class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 50px;" >
-	<div class="card" style="width: 20rem; height: 500px; margin-left:150px;">
+	<div class="card" style="width: 20rem; height: 500px;">
 
 
       <div id="carouselBox">
@@ -89,9 +89,7 @@
 	
 	</c:forEach>	
 
-<div style="margin-top: 400px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-</div>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 </body>
 </html>

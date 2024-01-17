@@ -2,6 +2,7 @@ package kr.co.tindog.product;
 
 import java.io.File;
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.ui.Model;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.tindog.product.ProductDAO;
 import kr.co.tindog.wishlist.WishlistDTO;
 
+
 @Controller
+
 public class ProductCont {
        
 	
@@ -37,19 +41,23 @@ public class ProductCont {
 	ProductDAO productDao;	
 	
 	@RequestMapping("/list")
-	public ModelAndView list(HttpSession session) {
+	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
-		String email = (String)session.getAttribute("s_email");
 		mav.setViewName("product/list");
-	    mav.addObject("list", productDao.list(email));
+	    mav.addObject("list", productDao.list());
 		return mav;
 	}//list() end
 	
 	
 	@GetMapping("/write")
-	public String write() {
+	public String write(Model model, HttpSession session) {
+		
+		String s_nickname = (String) session.getAttribute("s_nickname");
+        model.addAttribute("s_nickname", s_nickname);
+       
+        
 		return "product/write";
-	}//write() end
+	}//write() end 
 	
 	
 	
@@ -90,27 +98,25 @@ public class ProductCont {
 		
 		String s_nickname = (String) session.getAttribute("s_nickname");
 		
+		
 		map.put("s_nickname", s_nickname);
 		map.put("mainphoto", mainphoto);
 		map.put("photo", photo);
+		
 		
 		productDao.insert(map); 
 
 		
 		
-		return "redirect:/product/list"; 
+		return "redirect:/list"; 
 	}//insert() end
 	
 	
 	@GetMapping("/search")
-	public ModelAndView search(@RequestParam(defaultValue = "") String subject, HttpSession session){
+	public ModelAndView search(@RequestParam(defaultValue = "") String subject){
 		ModelAndView mav = new ModelAndView();
-		String email = (String)session.getAttribute("s_email");
-		ProductDTO dto = new ProductDTO();
-		dto.setEmail(email);
-		dto.setSubject(subject);
 		mav.setViewName("product/list");
-		mav.addObject("list", productDao.search(dto));
+		mav.addObject("list", productDao.search(subject));
 		mav.addObject("subject", subject);
 		return mav;
 	}//search() end
@@ -122,23 +128,39 @@ public class ProductCont {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("product/detail");
 		
-		 String loggedInUser = (String) session.getAttribute("s_nickname");
+		 String Seller = (String) session.getAttribute("s_nickname");
 
 		    // 글 상세 정보 조회
 		    Map<String, Object> detail = productDao.detail(uproduct_no);
 
 		    // 글을 작성한 사용자 정보 가져오기
 		    String author = (String) detail.get("NICKNAME");
-
-		    // 세션에 저장된 사용자와 글을 작성한 사용자가 같은지 비교
-		    boolean isAuthor = loggedInUser != null && loggedInUser.equals(author);
-
 		    
+		    // 작성자의 사진 가져오기
+		    String userphoto = productDao.userphoto(author);
+		   
+		    // 세션에 저장된 사용자와 글을 작성한 사용자가 같은지 비교
+		    boolean isAuthor = Seller != null && Seller.equals(author);	    
 		    
 		    // 수정, 삭제 권한 여부를 View에 전달
 		    mav.addObject("isAuthor", isAuthor);
 		    mav.addObject("product", detail);
+		    mav.addObject("userphoto", userphoto);
 		    mav.addObject("product", productDao.detail(uproduct_no));
+		    		  
+		    if (isAuthor) {
+		        // 판매자일 경우
+		        // 판매자에게 보여질 데이터를 설정
+		        mav.addObject("isSeller", true);
+		        mav.addObject("product", detail);
+		    } else {
+		        // 구매자일 경우
+		        // 구매자에게 보여질 데이터를 설정
+		        mav.addObject("isSeller", false);
+		        mav.addObject("product", detail);
+		    }
+		    
+		  
 		return mav;
 		
 		 
@@ -158,27 +180,20 @@ public class ProductCont {
 			ServletContext application = req.getSession().getServletContext();
 			String path = application.getRealPath("/storage");
 			File file1 = new File(path + "\\" + mainphoto);
-			if(file1.exists()) {
-				file1.delete();
-				
-			}//if end
+			
 		  }//if end 
 		 
 		   if(photo != null && !photo.equals("-")) {
 				ServletContext application = req.getSession().getServletContext();
 				String path = application.getRealPath("/storage");
 				File file2 = new File(path + "\\" + photo);
-				if(file2.exists()) {
-					file2.delete();
-					
-				}//if end
+				
 			  }//if end 
 	
 		   
 		productDao.delete(uproduct_no);   
 			  
-		return "redirect:/product/list"; 
-
+		return "redirect:/list"; 
 			 
 	}//delete() end
 	
@@ -192,6 +207,7 @@ public class ProductCont {
 		   
 		   String mainphoto = "-";
 		   String photo = "-";
+		   System.out.println(map.get("uproduct_no"));
 			
 			if(img1 != null && !img1.isEmpty()) { //파일이 존재한다면
 				mainphoto=img1.getOriginalFilename();
@@ -222,15 +238,15 @@ public class ProductCont {
 			    int uproduct_no=Integer.parseInt(map.get("uproduct_no").toString());
 				Map<String, Object> oldProduct=productDao.detail(uproduct_no);
 				photo=oldProduct.get("PHOTO").toString();
-				
+		
 			}//if end 
+			
+			
 			
 			map.put("mainphoto", mainphoto);
 			map.put("photo", photo); 
 			productDao.update(map); 
-
-			return "redirect:/product/list"; 
-
+			return "redirect:/list"; 
 		   
 		   
 	   }//update() end

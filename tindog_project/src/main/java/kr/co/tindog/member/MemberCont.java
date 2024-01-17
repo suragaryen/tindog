@@ -10,7 +10,6 @@ import kr.co.tindog.oauth.model.*;
 import kr.co.tindog.worldcup.WorldcupDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import ch.qos.logback.core.model.Model;
-
 import org.springframework.security.oauth2.client.userinfo.*;
 
 import jakarta.servlet.ServletContext;
@@ -167,14 +163,13 @@ public class MemberCont {
     	    try {
     	        ServletContext application = req.getSession().getServletContext();
     	        String path = application.getRealPath("/storage"); // 실제 물리적인 경로
-    	        
+
     	        // 파일 경로와 파일명을 올바르게 합쳐서 파일 객체 생성
     	        File file = new File(path, mainphotofilename);
 
     	        // 파일 저장
     	        mainphotofile.transferTo(file);
-    	        System.out.println(path);
-    	        System.out.println("회원가입 사진 저장 성공");
+    	        //System.out.println(path);
     	    } catch (Exception e) {
     	        System.out.println(e);
     	    }
@@ -288,42 +283,5 @@ public class MemberCont {
 		
 	}//insert end
 	
-	//회원탈퇴
-		@GetMapping("memdrop")
-		public ModelAndView memdrop(Model model,@RequestParam(name="email", required=false)String email) {
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("email", email);
-			mav.setViewName("layout/member/memdrop");
-			return mav;
-		}
-		
-		
-		@RequestMapping("memdropend")
-		public ModelAndView delete(
-				HttpSession session,@RequestParam(value="password") String password) {
-			
-			String email = (String) session.getAttribute("s_email");
-			ModelAndView mav=new ModelAndView();
-			//List<Map<String, Object>> userdto = memberDao.userdtoList(email); 
-			List<UserDTO> userdto = memberDao.userdtoList(email);
-			
-			//System.out.println(memberDao.userdtoList(email).get(0));
-			//System.out.println(password);
-			Object pw =  memberDao.userdtoList(email).get(0);
-			if(session.getAttribute("s_email")!= null && pw.equals(password)) { 
-			
-		    memberDao.delete(email); 
-		    System.out.println("탈퇴성공");
-		    mav.addObject("message", "1"); 
-			mav.setViewName("layout/home");
-			session.invalidate();//
-			
-			}else {
-				System.out.println("탈퇴실패");
-				mav.addObject("message", "2");
-				mav.setViewName("layout/member/memdrop");
-			}
-			return mav; 
-		}//delete() end
 
 }//MemberController end

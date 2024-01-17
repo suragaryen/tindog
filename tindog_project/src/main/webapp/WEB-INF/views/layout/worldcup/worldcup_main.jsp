@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <style>
@@ -10,19 +7,6 @@
 	height: 300px;
 	width : 300px;
 }
-
-
-        .slider{
-            accent-color:#11aaf1;
-           width:300px
-        }
- 	datalist{
-            display: grid;
-            grid-auto-flow: column;
-            width:313px;
-        }
-
-
 </style>
 <body class="wrapper">
 <jsp:include page="/WEB-INF/views/common/sessionHeaderAlert.jsp"></jsp:include>
@@ -35,7 +19,7 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <p class="d-inline-block border rounded-pill py-1 px-4">Top 4</p>
-                <h1 style="font-size:30px; margin-top: 30px;">주간 인기 댕댕이🐶</h1>
+                <h1 style="font-size:30px;">주간 인기 댕댕이🐶</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -108,25 +92,50 @@
 					나이	
 				</div>
 				<div class="spec_content">					
-					    <input id="age" class="slider" name="age" type="range" min="0" max="15" list="tickmarks"><br>
-		    <datalist id="tickmarks">
-		        <option value="0" style="position: relative; left: 7px;">0</option>
-		        <option value="1" style="position: relative; left: 9px;">1</option>
-		        <option value="2" style="position: relative; left: 10px;">2</option> 
-		        <option value="3" style="position: relative; left: 12px;">3</option>
-		        <option value="4" style="position: relative; left: 12px;">4</option>
-		        <option value="5" style="position: relative; left: 14px;">5</option>
-		        <option value="6" style="position: relative; left: 15px;">6</option>
-		        <option value="7" style="position: relative; left: 16px;">7</option>
-		        <option value="8" style="position: relative; left: 16px;">8</option>
-		        <option value="9" style="position: relative; left: 16px;">9</option>
-		        <option value="10" style="position: relative; left: 15px;">10</option>
-		        <option value="11" style="position: relative; left: 13px;">11</option>
-		        <option value="12" style="position: relative; left: 10px;">12</option>
-		        <option value="13" style="position: relative; left: 7px;">13</option>
-		        <option value="14" style="position: relative; left: 5px;">14</option>
-		        <option value="15" style="position: relative; left: 1px;">15</option>
-		    </datalist>
+					<label title="0살">
+						<input type="radio" autocomplete="off" id="age0" name="age" value=0>
+						0
+					</label>
+					<label title="1살">
+						<input type="radio" autocomplete="off" id="age1" name="age" value=1>
+						1						
+					</label>
+					<label title="2살">
+						<input type="radio" autocomplete="off" id="age2" name="age" value=2>
+						2		
+					</label>
+					<label title="3살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						3							
+					</label>
+					<label title="4살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						4			
+					</label>
+					<label title="5살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						5							
+					</label>
+					<label title="6살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						6							
+					</label>
+					<label title="7살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						7				
+					</label>
+					<label title="8살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						8						
+					</label>
+					<label title="9살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>
+						9							
+					</label>
+					<label title="10살">
+						<input type="radio" autocomplete="off" id="age3" name="age" value=3>							
+						10							
+					</label>
 				</div>	
 			</div>	
 			<div>

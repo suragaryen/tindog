@@ -15,60 +15,34 @@
 	</insert>
 	
 	<select id="list" resultType="java.util.Map">
-	   SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+	   SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, STATUS, AREA, LOCATION, MAINPHOTO, PHOTO,
+	   CASE
+               WHEN STATUS = 1 THEN '판매중'
+               WHEN STATUS = 2 THEN '판매완료'
+               ELSE '알 수 없음'
+           END AS STATUS_TEXT
 	   FROM USED_PRODUCT
-	   WHERE NICKNAME NOT IN (
-	   						  SELECT NICKNAME
-							    FROM MEMBER
-							   WHERE EMAIL IN (
-							    			   SELECT CUTEMAIL
-											     FROM CUT
-											    WHERE EMAIL = #{email}
-							                   )
-	   						 )
-	   	 AND NICKNAME NOT IN (
-	   						  SELECT NICKNAME
-							    FROM MEMBER
-							   WHERE EMAIL IN (
-							    			   SELECT EMAIL
-											     FROM CUT
-											    WHERE CUTEMAIL = #{email}
-							                   )
-	   						 )
 	   ORDER BY SUBJECT
 	
 	</select>
 	
 	<select id="search" resultType="java.util.Map" parameterType="String">
 	
-	  SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+	  SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, STATUS, AREA, LOCATION, MAINPHOTO, PHOTO
 	  FROM USED_PRODUCT
-	  WHERE SUBJECT LIKE CONCAT('%', #{subject}, '%')
-	    AND NICKNAME NOT IN (
-	   						  SELECT NICKNAME
-							    FROM MEMBER
-							   WHERE EMAIL IN (
-							    			   SELECT CUTEMAIL
-											     FROM CUT
-											    WHERE EMAIL = #{email}
-							                   )
-	   						 )
-	   	 AND NICKNAME NOT IN (
-	   						  SELECT NICKNAME
-							    FROM MEMBER
-							   WHERE EMAIL IN (
-							    			   SELECT EMAIL
-											     FROM CUT
-											    WHERE CUTEMAIL = #{email}
-							                   )
-	   						 )
+	  WHERE SUBJECT LIKE #{keyword}
 	  ORDER BY SUBJECT   
 		
 	</select>
 	
 	
 	<select id="detail" resultType="java.util.Map" parameterType="int">
-		SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, AREA, LOCATION, MAINPHOTO, PHOTO
+		SELECT UPRODUCT_NO, SUBJECT, NICKNAME, UPRODUCT_CD, PRICE, INFO, STATUS, AREA, LOCATION, MAINPHOTO, PHOTO,
+		CASE
+               WHEN STATUS = 1 THEN '판매중'
+               WHEN STATUS = 2 THEN '판매완료'
+               ELSE '알 수 없음'
+           END AS STATUS_TEXT
 		FROM USED_PRODUCT
 		WHERE UPRODUCT_NO = #{uproduct_no}
     </select>
@@ -95,9 +69,20 @@
 	    SET SUBJECT = #{subject}
 	       ,PRICE = #{price}
 	       ,INFO = #{info}
+	       ,STATUS = #{status}
 	       ,MAINPHOTO = #{mainphoto}
 	       ,PHOTO = #{photo}
 	    WHERE UPRODUCT_NO= #{uproduct_no}
 	</update>
+	
+	 <select id="userphoto" parameterType="String"
+		resultType="String">
+	   SELECT MEMBER.USERPHOTO
+	   FROM USED_PRODUCT JOIN MEMBER
+	   ON USED_PRODUCT.NICKNAME=MEMBER.NICKNAME
+	   WHERE USED_PRODUCT.NICKNAME=#{nickname}
+	   LIMIT 1
+	 
+	</select>
 	
 </mapper>

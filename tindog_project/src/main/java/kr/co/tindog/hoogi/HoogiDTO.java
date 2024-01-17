@@ -2,13 +2,14 @@ package kr.co.tindog.hoogi;
 
 public class HoogiDTO {
 
-	private int review_no;
-	private int uproduct_no;
-	private int price;
-	private String seller;
-	private String consumer;
-	private String context;
+	private int review_no; 
+	private int uproduct_no;   
+	private String seller; 
+	private String consumer;  
+	private String context;  
+	
 	private String subject;
+	private int price;
 	private String nickname;
 	private String uproduct_cd;
 	private String info;
@@ -18,6 +19,9 @@ public class HoogiDTO {
 	private String location;
 	private String mainphoto;
 	private String photo;
+	
+	public HoogiDTO() {}
+	
 	public int getReview_no() {
 		return review_no;
 	}

@@ -1,7 +1,6 @@
 package kr.co.tindog.login;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +16,5 @@ public class LoginDAO {
 	
 	public LoginDTO login(LoginDTO loginDto) {
 		return sqlSession.selectOne("login.login", loginDto);
-	}
-	
-	public List<Map<String, Object>> findid(String name) {
-		return sqlSession.selectList("login.findid",name);
-	}
-	
-	public FindDTO findpw(FindDTO findDto) {
-		return sqlSession.selectOne("login.findpw", findDto);
-	}
-	
-	public int pwUpdate(FindDTO findDto) {
-		return sqlSession.update("login.pwUpdate", findDto);
 	}
 }//class end

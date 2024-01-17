@@ -17,8 +17,8 @@
  	</select>
  	
  	<insert id="insert" parameterType="kr.co.tindog.report.ReportDTO">
- 		INSERT INTO REPORT(REPORTER, REPORTED, REASON, REPORTCASE)
- 		            VALUES(#{reporter}, #{reported}, #{reason}, #{reportcase})
+ 		INSERT INTO REPORT(REPORTER, REPORTED, REASON)
+ 		            VALUES(#{reporter}, #{reported}, #{reason})
  	</insert>
  	
  	<select id="report2" resultType="java.util.Map">
@@ -30,48 +30,7 @@
  	</select>
  	
  	<insert id="insert2" parameterType="kr.co.tindog.report.ReportDTO">
- 		INSERT INTO REPORT(REPORTER, REPORTED, REASON, REPORTCASE)
- 		            VALUES(#{reporter}, #{reported}, #{reason}, #{reportcase})
+ 		INSERT INTO REPORT(REPORTER, REPORTED, REASON)
+ 		            VALUES(#{reporter}, #{reported}, #{reason})
  	</insert>
- 	
- 	<select id="list" resultType="java.util.Map">
- 		SELECT REPORTED, REPORTER, REASON, REPORTDATE
- 		  FROM REPORT
- 		 WHERE REPORTCASE = 1
- 		 ORDER BY REPORTDATE
- 	</select>
- 	
- 	<select id="susCheck" parameterType="String" resultType="String">
- 		SELECT MEMGRADE
- 		  FROM MEMBER
- 		 WHERE EMAIL = #{email}
- 	</select>
- 	
- 	<select id="list2" resultType="java.util.Map">
- 		SELECT REPORTED, REPORTER, REASON, REPORTDATE
- 		  FROM REPORT
- 		 WHERE REPORTCASE = 2
- 		 ORDER BY REPORTDATE
- 	</select>
- 	
- 	<update id="suspended" parameterType="String">
- 		UPDATE MEMBER SET MEMGRADE = 'B'
- 		 WHERE EMAIL = #{email}
- 	</update>
- 	
- 	<update id="susTot" parameterType="String">
- 		UPDATE MEMBER SET MEMGRADE = 'D'
- 		 WHERE EMAIL = #{email}
- 	</update>
- 	
- 	<update id="suspended2" parameterType="String">
- 		UPDATE MEMBER SET MEMGRADE = 'C'
- 		 WHERE EMAIL = #{email}
- 	</update>
- 	
- 	<update id="kick" parameterType="String">
- 		UPDATE MEMBER SET MEMGRADE = 'F'
- 		 WHERE EMAIL = #{email}
- 	</update>
- 	
  </mapper>

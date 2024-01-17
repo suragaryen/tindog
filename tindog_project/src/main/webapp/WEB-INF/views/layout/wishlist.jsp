@@ -37,6 +37,7 @@
     <form name="wishlistfrm" id="wishlistfrm" method="post" enctype="multipart/form-data">
         <table class="table table-hover">
         <thead class="table-success">
+          <th>대표사진</th>
           <th>목록번호</th>
           <th>닉네임</th>
           <th>글제목</th>
@@ -47,6 +48,7 @@
          
          <c:forEach items="${list}" var="row">
            <tr>
+             <td><img src="/storage/${row.MAINPHOTO}" width="80" height="80"></td>
              <td>${row.WISHLIST_NO}</td>
              <td>${row.NICKNAME}</td>
              <td>${row.SUBJECT}</td>

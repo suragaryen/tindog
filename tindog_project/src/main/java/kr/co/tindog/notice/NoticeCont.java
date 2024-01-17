@@ -29,7 +29,6 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -44,7 +43,7 @@ public class NoticeCont {
 	
 		
 		@RequestMapping("notice") 
-		public ModelAndView list(HttpServletRequest req, HttpSession session) { 
+		public ModelAndView list(HttpServletRequest req) { 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("layout/notice/list");
 			
@@ -79,14 +78,7 @@ public class NoticeCont {
 			//map.put("endrow", endrow);
 			if(Rowcnt > 0) {
 				list = noticeDao.list(map); } 
-			
-			String memgrade = (String)session.getAttribute("s_grade");
-			
-			/*
-			 * boolean isMaster = memgrade != null && memgrade.equals("M");
-			 * 
-			 * mav.addObject("isMaster", isMaster);
-			 */
+		
 			mav.addObject("count", Rowcnt); //
 			mav.addObject("pageNum", currentpage); 
 			mav.addObject("totalPage", totalPage);

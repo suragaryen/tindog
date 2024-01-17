@@ -10,11 +10,6 @@
     position:relative ;
 }
 
-body{
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-
 p{
 	/*
     margin: 10px;
@@ -34,7 +29,7 @@ p{
 
 .cont{
 	display: flex;
-	position: absolute;	
+	position: absolute;
 	left: 300px;
 	top: 75px;
 }

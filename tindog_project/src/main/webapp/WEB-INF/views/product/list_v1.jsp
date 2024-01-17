@@ -9,17 +9,6 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
-<style>
-.col-sm-4{
-	
-	height:550px;
-	
-
-
-}
-
-
-</style>
 <body>
 <jsp:include page="/WEB-INF/views/common/sessionHeader.jsp"></jsp:include>
 
@@ -27,22 +16,14 @@
 <br>
 <br>
 <br>
-<div class="container">
   <div class="row">
     <div class="col-sm-12">
     	<!-- 검색 -->
     	<form method="get" action="search">
-
-    	<div class="input-group mb-3">
-   <!-- 
-  <button class="btn btn-outline-secondary" type="button" id="button-addon1" value="${SUBJECT}">Button</button>
-  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-   -->
-</div>
-    				<input type="text" name="subject" value="${SUBJECT}" placeholder="제목으로 검색">
-    		       <input type="submit" value="🔎" class="btn" style="margin-right: 10px;">
-    		       <button type="button" onclick="location.href='write'" class="btn btn-sm btn-dark">글쓰기</button>
-    		       <button type="button" onclick="location.href='list'" class="btn btn-sm btn-dark">전체목록으로 돌아가기</button>
+    		제목으로 검색 : <input type="text" name="subject" value="${SUBJECT}">
+    		       <input type="submit" value="검색" class="btn">
+    		       <button type="button" onclick="location.href='write'" class="btn btn-success">+글쓰기</button>
+    		       <button type="button" onclick="location.href='list'" class="btn btn-success">전체목록으로 돌아가기</button>
     	</form>	
     	<hr>
     
@@ -55,11 +36,11 @@
     	<!-- varStatus="상태용 변수" -->
 		<c:forEach items="${list}" var="row" varStatus="vs">
 		
-			<div class="col-sm-4">
+			<div class="col-sm-4 col-md-4">
 				<c:choose>
 					<c:when test="${row.MAINPHOTO != '-'}">
 						
-							<img src="/storage/${row.MAINPHOTO}" class="img-responsive margin" style="width:400px; height:400px" >
+							<img src="/storage/${row.MAINPHOTO}" class="img-responsive margin" style="width:100%; height:60%" >
 						
 					</c:when>
 					<c:otherwise>
@@ -80,12 +61,15 @@
 			</div>
             <!-- 한줄에 3칸씩 -->
             <c:if test="${vs.count mod 3==0}">
-    
+                </div><!-- row end -->
+                <div style="height: 50px;"></div>
+                <div class="row">
            </c:if>
              
 		</c:forEach>		   	 
- </div><!-- row end -->
- </div>
+  </div><!-- row end -->
+  
+
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

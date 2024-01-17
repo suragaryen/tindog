@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
+<%-- 아래 코드는 삭제해야 될듯 합니다(중복되어 있음) --%>   
+<%-- <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include> --%>
 <%
     if (session != null && session.getAttribute("s_email") != null) {
         // 세션이 올라와있으면 header-login.jsp include

@@ -70,20 +70,6 @@
 		from member
 		where email = #{email}
  	</select>
- 	
- 	<!-- 회원탈퇴 -->
-	<select id="userdtoList" parameterType="String" resultType="String">  
-			SELECT password
-			FROM member 
-			WHERE email=#{email}
- 	</select> 
- 	
- 
- 	<update id="delete" parameterType="String"> 
-		update member
-		set memgrade="F"
-		where email = #{email}
-	</update>
 </mapper>
  
  

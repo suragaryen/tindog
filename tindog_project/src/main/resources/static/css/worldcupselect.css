@@ -13,6 +13,7 @@
 }
 
 .spec_content{
+	display: flex;
 	font-size: 12px;
 	margin: auto;	
 }

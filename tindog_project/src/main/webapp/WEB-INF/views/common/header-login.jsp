@@ -11,14 +11,6 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-4 p-lg-0"> 
                 <div class="nav-item dropdown">
-  <%
-	if(((String)session.getAttribute("s_grade")).equals("C") || ((String)session.getAttribute("s_grade")).equals("D")) {
-%>                
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">중고마켓(활동정지)</a>
-				</div>
-<%
-	}else {
-%>
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">중고마켓</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/write" class="dropdown-item">판매하기</a>
@@ -26,33 +18,13 @@
                         <a href="/layout/wishlist" class="dropdown-item">찜목록</a>
                     </div>
                 </div>
-<%
-	}
-%>                
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">친구찾기</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="/worldcup" class="dropdown-item">이상형월드컵</a>
                         <a href="/dbti" class="dropdown-item">댕BTI 검사</a>
                     </div>
-                </div>
-                <div class="nav-item dropdown">
-                	<a href="/notice" class="nav-link">공지사항</a>
-                </div>    
-<%
-	if(((String)session.getAttribute("s_grade")).equals("M")) {
-%>                                
-				<div class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">관리자권한</a>
-					<div class="dropdown-menu rounded-0 rounded-bottom m-0">
-						<a href="/management" class="dropdown-item">회원등급 관리</a>
-                		<a href="/reportList" class="dropdown-item">신고목록</a>
-                		<a href="/dogtype" class="dropdown-item">견종추가</a>
-                	</div>
-                </div>
-<%
-	}
-%>                              
+                </div>                
             </div>
             <div style="padding-right: 50px;">
             <a href="/userInfo">My page |</a>
