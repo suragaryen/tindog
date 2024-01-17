@@ -10,6 +10,11 @@
     position:relative ;
 }
 
+body{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 p{
 	/*
     margin: 10px;

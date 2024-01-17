@@ -89,8 +89,7 @@
 	     <link href="/css/dogInfoModal.css" rel="stylesheet">
 	     <link href="/css/worldcup_start.css" rel="stylesheet">	
 	     <link href="/css/worldcup_start.css" rel="stylesheet">	
-	     <link href="/css/payModal.css" rel="stylesheet">
-	     
+	     <link href="/css/payModal.css" rel="stylesheet">	 
 	    
 	    <!--Google font -->
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
