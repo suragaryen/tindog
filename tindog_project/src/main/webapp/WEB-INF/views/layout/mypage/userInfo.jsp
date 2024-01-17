@@ -6,10 +6,13 @@
 <!DOCTYPE html>
 <html>
 <body class="wrapper">
+
+<div style="position: relative;">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
+</div>
+<div class="container">
 <c:forEach var="item" items="${list}">	
-<div class="cont">
-		
+		<div class="cont" style="position: absolute;">
 		
 		
 		<div class="userInfoText">
@@ -97,7 +100,7 @@
 			</div>
 		</div>
 		</c:forEach>
-
+</div>
 <div style="margin-top: 400px">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </div>

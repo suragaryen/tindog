@@ -10,30 +10,38 @@
 
 <script>
 if('${message}' == "2"){
-	alert('회원탈퇴에 실패하였습니다.');
+	Swal.fire({
+		title:"회원 탈퇴 실패",
+		text:"비밀번호를 확인해주세요",
+		icon:"error",
+		confirmButtonText:"확인"
+});
 }
 
 
 if('${message}' == "1"){
-	alert('회원탈퇴 되었습니다.');
+	Swal.fire({
+		title:"회원 탈퇴 성공",
+		text:"",
+		icon:"success",
+		confirmButtonText:"확인"
+});
 }
 
 function dropCheck(){ 
 	
 	let password=document.getElementById("password").value;
 	if(password.length==0){
-		alert("비밀번호를 입력하세요");
+		Swal.fire({
+			title:"",
+			text:"비밀번호를 입력해주세요",
+			icon:"error",
+			confirmButtonText:"확인"
+		}).then(function(){
 		document.getElementById("password").focus;
+		});
 		return false;
 	}//if end
-	
-	let message="탈퇴하시겠습니까?\n 진행된 내용은 복구되지 않습니다.";
-	if(confirm(message)){
-		return true;
-	}else{
-		return false;
-	}//if end
-	
 		
 }//dropCheck() end
 
@@ -48,14 +56,15 @@ function dropCheck(){
     <form name="dropfrm" id="dropfrm" method="post" action="memdropend" enctype="multipart/form-data" onsubmit="return dropCheck()">
     <input type="hidden" name="email" id="email" value="${s_email}"> 
     	
-    <div>*탈퇴를 위해 비밀번호를 재입력해주시기 바랍니다.</div>
+    <div></div>
 	<table class="table">
 	<tr>
 	<th class="info" style="text-align:center">회원탈퇴 유의사항</th>
-	 <td class="form-control"><li>*유의사항을 확인한 후 탈퇴를 진행하여 주시기 바랍니다.</li>
+	 <td class="form-control">
+	 <li>*유의사항을 확인한 후 탈퇴를 진행하여 주시기 바랍니다.</li>
 	 <li>*회원 탈퇴 시 회원 전용 웹 서비스 이용이 불가합니다.</li>
-		<li>*서비스 탈퇴 후에는 <TINDOG>에 작성한 게시글 수정 및 삭제가 불가합니다.</li>
-		
+	<li>*서비스 탈퇴 후에는 TINDOG에 작성한 게시글 수정 및 삭제가 불가합니다.</li>
+	<li>*탈퇴를 위해 비밀번호를 재입력해주시기 바랍니다.</li>		
     </td>
 	</tr>
 	<tr>

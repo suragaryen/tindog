@@ -48,21 +48,17 @@ public class MemberDAO {
 	public String emailDupCheck(String email) {
 		return sqlSession.selectOne("user.emailDupCheck", email);
 }
-	
-	
 
 	//회원탈퇴
-		public List<UserDTO> userdtoList(String email){
-			return sqlSession.selectList("user.userdtoList", email);
-		}//userdtoList() end
-		
-		
-		
-		public void delete(String email) { 
-			sqlSession.delete("user.delete", email); 
-		} // delete() end
-		
-
+			public List<UserDTO> userdtoList(String email){
+				return sqlSession.selectList("user.userdtoList", email);
+			}//userdtoList() end
+			
+			
+			
+			public void delete(String email) { 
+				sqlSession.delete("user.delete", email); 
+			} // delete() end
 
 
 }//class end

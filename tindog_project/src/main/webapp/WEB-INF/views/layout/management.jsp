@@ -6,8 +6,11 @@
 <!DOCTYPE html>
 <html>
 <body class="wrapper">
+
+<div style="position: relative;">
 <jsp:include page="/WEB-INF/views/common/mypageIndex.jsp"></jsp:include>
-	
+</div>
+<div class="container">
 <div class="cont">
 	<div class="userInfoText">
 		<div style="border-bottom: solid 1px darkgrey;"> 유저관리</div>
@@ -66,7 +69,6 @@
 		</div>
 	</div>
 </div>
-
 	<div style="margin-top:300px;">
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	</div>

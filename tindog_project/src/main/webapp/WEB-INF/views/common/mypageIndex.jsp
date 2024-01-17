@@ -143,7 +143,7 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 		    <li><a href="/cut"><span>차단목록</span></a></li>
 		    <li><a href="#"><span>상점관리</span></a></li>
 		    <li><a href="/notice"><span>공지사항</span></a></li>
-		    <li><a href="/memdrop"><span>회원탈퇴</span></a></li>
+		    <li><a href="/memdrop#"><span>회원탈퇴</span></a></li>
 			
 <%
 	}else if(((String)session.getAttribute("s_grade")).equals("C")) {
