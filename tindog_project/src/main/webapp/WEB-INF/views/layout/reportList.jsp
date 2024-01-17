@@ -228,7 +228,9 @@
 			}
 		}
 	</script>
+	<div style="margin-top:300px;">
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	</div>
 	<jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 
 </body>

@@ -24,7 +24,7 @@
 		    <label for="inputEmail4" class="form-label">견종</label>
 		    <input type="text" class="form-control" id="dogtype" name="dogtype">
 		  </div>
-		  <div class="col-md-10"></div>
+		  <div class="col-md-6"></div>
 		  <div class="col-md-2">
 		  	<input type="button" class="form-control" id="insertDogtype" value="등록하기" onclick="insert()">
 		  </div>

@@ -132,13 +132,13 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 <%
 	}
 %>
-		    <li><a href="/userInfo"><span>MY INFO</span></a></li>
-		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
-		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
+		    
 <%
 	if(((String)session.getAttribute("s_grade")).equals("B")) {
 %>
-			
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 			<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>
 		    <li><a href="#"><span>상점관리</span></a></li>
@@ -148,6 +148,9 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 <%
 	}else if(((String)session.getAttribute("s_grade")).equals("C")) {
 %>
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 	    	<li><a href="/follow"><span>팔로우</span></a></li>
 	    	<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>
@@ -157,11 +160,17 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 <%
 	}else if(((String)session.getAttribute("s_grade")).equals("D")) { 
 %>
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 		    <li><a href="/notice"><span>공지사항</span></a></li>
 		    <li><a href="/memdrop"><span>회원탈퇴</span></a></li>
 <%
-	}else {
+	}else if(((String)session.getAttribute("s_grade")).equals("A")){
 %>		  
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 			<li><a href="/follow"><span>팔로우</span></a></li>
 	    	<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>

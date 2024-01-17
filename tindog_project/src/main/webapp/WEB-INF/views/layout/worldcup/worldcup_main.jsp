@@ -13,10 +13,10 @@
             accent-color:#11aaf1;
            width:300px
         }
-        datalist{
+ 	datalist{
             display: grid;
             grid-auto-flow: column;
-            width:320px;
+            width:313px;
         }
 
 
@@ -107,22 +107,22 @@
 				<div class="spec_content">					
 					    <input id="age" class="slider" name="age" type="range" min="0" max="15" list="tickmarks"><br>
 		    <datalist id="tickmarks">
-		        <option value="0">0</option>
-		        <option value="1">1</option>
-		        <option value="2">2</option>
-		        <option value="3">3</option>
-		        <option value="4">4</option>
-		        <option value="5">5</option>
-		        <option value="6">6</option>
-		        <option value="7">7</option>
-		        <option value="8">8</option>
-		        <option value="9">9</option>
-		        <option value="10">10</option>
-		        <option value="11">11</option>
-		        <option value="12">12</option>
-		        <option value="13">13</option>
-		        <option value="14">14</option>
-		        <option value="15">15</option>
+		        <option value="0" style="position: relative; left: 7px;">0</option>
+		        <option value="1" style="position: relative; left: 9px;">1</option>
+		        <option value="2" style="position: relative; left: 10px;">2</option> 
+		        <option value="3" style="position: relative; left: 12px;">3</option>
+		        <option value="4" style="position: relative; left: 12px;">4</option>
+		        <option value="5" style="position: relative; left: 14px;">5</option>
+		        <option value="6" style="position: relative; left: 15px;">6</option>
+		        <option value="7" style="position: relative; left: 16px;">7</option>
+		        <option value="8" style="position: relative; left: 16px;">8</option>
+		        <option value="9" style="position: relative; left: 16px;">9</option>
+		        <option value="10" style="position: relative; left: 15px;">10</option>
+		        <option value="11" style="position: relative; left: 13px;">11</option>
+		        <option value="12" style="position: relative; left: 10px;">12</option>
+		        <option value="13" style="position: relative; left: 7px;">13</option>
+		        <option value="14" style="position: relative; left: 5px;">14</option>
+		        <option value="15" style="position: relative; left: 1px;">15</option>
 		    </datalist>
 				</div>	
 			</div>	
