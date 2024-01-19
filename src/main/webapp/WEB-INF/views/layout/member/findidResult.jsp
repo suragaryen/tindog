@@ -36,12 +36,12 @@
 }
 </style>
 <body class="wrapper">
-<c:forEach var="item" items="${list}">	
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div class="container">
 		<div class="found-success">
 			<h4 style="display:inline-block;">회원님의 아이디는</h4>
-			${item.email}
+				${email}
 			<h4 style="display:inline-block;">입니다</h4>
 		</div>
 		<div class="found-login">
@@ -49,7 +49,7 @@
 			<input type="button" id="go" value="비밀번호 찾기" onClick="location.href='/findIdpw'"/>
 		</div>
 	</div>
-</c:forEach> 
+ 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

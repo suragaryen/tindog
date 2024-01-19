@@ -170,14 +170,14 @@ button.accent {
     height: calc(100% - 60px);
     max-height: 600px;
     position: relative;
+    overflow: auto;
+    overflow-y: scroll;
 }
 
 #chat-page ul {
     list-style-type: none;
     background-color: #FFF;
     margin: 0;
-    overflow: auto;
-    overflow-y: scroll;
     padding: 0 20px 0px 20px;
     height: calc(100% - 150px);
 }
@@ -191,6 +191,8 @@ button.accent {
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid #f4f4f4;
+    /* box-sizing: border-box; */
+    
 }
 
 #chat-page ul li p {
@@ -339,7 +341,7 @@ button.accent {
  
 
 <div id="chat-page" class="hidden">
-    <div class="chat-container">
+    <div id="chat-container" class="chat-container">
         <div class="chat-header">
             <h2>데이트 채팅방</h2>
         </div>
@@ -400,20 +402,14 @@ button.accent {
   		  , type    : 'post'
   		  , data    : insertData        // 전달값
   	      , error   : function(error){
-  	    	 Swal.fire({
-		        	text:"저장 실패!",	        	
-		        	confirmButtonText:"확인"	
-		        });
+  	    	 
   	      }
   	      , success : function(result){
   	    	  // alert(result);
   	    	  if(result==1) { // 댓글 등록 성공
   	    		  // chatLogsList(); // 댓글 등록 후 댓글 목록 함수 호출
   	    		  // $("#content").val(''); // 기존 댓글 내용을 빈 문자열로 대입(초기화)
-  	    		   Swal.fire({
-		        	text:"저장 완료!",	        	
-		        	confirmButtonText:"확인"	
-		        });		
+  	    		   	
   	    	  }
   	      }
   		}); 

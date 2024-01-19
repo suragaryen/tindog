@@ -34,7 +34,6 @@ body:before {
     position: absolute;
     top: 0;
     left: 0;
-    background: maxresdefault.jpg;
     content: "";
     z-index: 0;
 }
@@ -157,12 +156,12 @@ button.accent {
     position: relative;
 }
 
-#chat-page ul {
+#chat-page #messageArea {
     list-style-type: none;
     background-color: #FFF;
     margin: 0;
     overflow: auto;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     padding: 0 20px 0px 20px;
     height: calc(100% - 150px);
 }

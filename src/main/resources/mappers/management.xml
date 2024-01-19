@@ -22,4 +22,9 @@
  		UPDATE MEMBER SET MEMGRADE = #{memgrade}
  		 WHERE EMAIL = #{email}
  	</update>
+ 	
+ 	<select id="search" parameterType="String" resultType="java.util.Map">
+ 		 SELECT EMAIL, NAME, NICKNAME, MEMGRADE, GUMQTY 
+ 		   FROM MEMBER WHERE EMAIL LIKE CONCAT('%', #{userSearch}, '%') 
+ 	</select>
  </mapper>

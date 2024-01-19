@@ -132,22 +132,24 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 <%
 	}
 %>
-		    <li><a href="/userInfo"><span>MY INFO</span></a></li>
-		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
-		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
+		    
 <%
 	if(((String)session.getAttribute("s_grade")).equals("B")) {
 %>
-			
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 			<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>
-		    <li><a href="#"><span>상점관리</span></a></li>
 		    <li><a href="/notice"><span>공지사항</span></a></li>
 		    <li><a href="/memdrop#"><span>회원탈퇴</span></a></li>
 			
 <%
 	}else if(((String)session.getAttribute("s_grade")).equals("C")) {
 %>
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 	    	<li><a href="/follow"><span>팔로우</span></a></li>
 	    	<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>
@@ -157,15 +159,20 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 <%
 	}else if(((String)session.getAttribute("s_grade")).equals("D")) { 
 %>
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 		    <li><a href="/notice"><span>공지사항</span></a></li>
 		    <li><a href="/memdrop"><span>회원탈퇴</span></a></li>
 <%
-	}else {
+	}else if(((String)session.getAttribute("s_grade")).equals("A")){
 %>		  
+			<li><a href="/userInfo"><span>MY INFO</span></a></li>
+		    <li><a href="/dogInfo"><span>DOGGY INFO</span></a></li>
+		    <li><a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a></li>
 			<li><a href="/follow"><span>팔로우</span></a></li>
 	    	<li><a href="/chatList"><span>채팅</span></a></li>
 		    <li><a href="/cut"><span>차단목록</span></a></li>
-		    <li><a href="#"><span>상점관리</span></a></li>
 		    <li><a href="/idelResult"><span id="btn">이상형 월드컵 결과</span></a><br></li>
 		    <li><a href="/notice"><span>공지사항</span></a></li>
 		    <li><a href="/memdrop"><span>회원탈퇴</span></a></li>
@@ -174,34 +181,6 @@ int gumqty = (int) session.getAttribute("s_gumqty");
 %>      
 		  </ul>
 		</nav>
-		
-	<!-- 		
-        <div class="mypage_account">
-            <a href="/userInfo">MY INFO</a><br>
-            <a href="/dogInfo">DOGGY INFO</a><br>
-            <a href="#"><span id="payBtn" class="open-pay-popup">개껌페이충전</span></a><br>
-            <a href="/dogGumPay"><span>개껌페이</span></a><br>
-            <a href="/follow"><span>팔로우관리</span></a><br>
-            <a href="/chatList"><span>채팅관리</span></a><br>
-            <span>차단사용자관리</span><br>
-        </div>
-        <div class="mypage_deal">
-            <a href="#">상점관리</a>
-
-
-        </div>
-        <div class="mypage_result">
-            <p>나의 친구찾기</p>                        
-            <a href="#"><span id="btn" class="open-popup">이상형 월드컵 결과</span></a><br>
-            <a href="#"><span id="btn" class="">멍BTI 결과</span></a><br>
-        </div>
-        <div class="mypage_etc">
-            <p>기타</p>
-            <span>공지사항</span><br>
-            <span>회원탈퇴</span><br>
-        </div>
-        
-           -->
     </div>
 	
 	<!--개껌페이 모달 시작 -->

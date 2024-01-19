@@ -9,9 +9,7 @@
 
  <!-- 1라운드 -->
 
-	<div id="img-round16-container">
-		 <img id="img-round16" src="/img/Winner.png">
-	</div>
+
 <script>
 
 
@@ -43,7 +41,6 @@ var confirmEx = function (message, callback, fallback) {
 
 
 
-      
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
 </body>
 </html>

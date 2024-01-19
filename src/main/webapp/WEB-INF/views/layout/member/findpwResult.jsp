@@ -39,6 +39,7 @@
 	<div class="container">
 		<div class="found-success">
 			<h4 style="display:inline-block;">임시 비밀번호 발급이 완료 되었습니다. </h4>
+			<h4 style="display:inline-block;">이메일을 확인해서 로그인해주세요. </h4>
 			<!-- 
 			${email}
 			<h4 style="display:inline-block;">입니다</h4>

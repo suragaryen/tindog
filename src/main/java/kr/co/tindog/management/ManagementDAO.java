@@ -28,5 +28,7 @@ public class ManagementDAO {
 		return sqlSession.update("management.update", userDto);
 	}
 
-	
+	public List<Map<String, Object>> search(String userSearch) {
+		return sqlSession.selectList("management.search", userSearch);
+	}
 }//class end

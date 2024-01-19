@@ -66,11 +66,17 @@
 		</div>
 	</c:if>  
 			</form>
+			<form name="searchfrm" id="searchfrm" method="get" action="management/search">
+				<input type="text" class="form-control" id="userSearch" name="userSearch" value="${USERSEARCH}">
+				<input type="submit" class="form-control" value="검색">
+			</form>
 		</div>
 	</div>
 </div>
 </div>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	<div style="margin-top:500px;">
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	</div>
 <jsp:include page="/WEB-INF/views/common/config.jsp"></jsp:include>
 <script>
 

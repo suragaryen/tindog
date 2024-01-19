@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,5 +81,15 @@ public class ManagementCont {
 		int cnt = managementDao.update(userDto);
 		
 		return cnt;
+	}
+	
+	@GetMapping("/management/search")
+	public ModelAndView search(@RequestParam String userSearch) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("layout/management");
+		mav.addObject("list", managementDao.search(userSearch));
+		mav.addObject("userSearch", userSearch);
+        
+		return mav;
 	}
 }

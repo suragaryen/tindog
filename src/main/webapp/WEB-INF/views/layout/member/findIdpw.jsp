@@ -14,6 +14,10 @@
 		</div>
 		<div class = "find-name">			
 			<input type="text" class="form-control" name="member_name" class="" placeholder="이름">
+			<br>			
+		</div>
+		<div class = "find-phone">			
+			<input type="text" class="form-control" name="member_phone" class="" placeholder="핸드폰 번호">			
 		</div>
 			<br>
 	</section>
@@ -53,6 +57,15 @@ function id_search() {
  	if (frm.member_name.value.length < 1) {
  		Swal.fire({
         	text:"이름을 제대로 작성했는지 확인해주세요",        	
+        	icon:"error",
+        	confirmButtonText:"확인"
+	  });
+	  return;
+	 }
+ 	
+ 	if (frm.member_phone.value.length < 1) {
+ 		Swal.fire({
+        	text:"핸드폰 번호를 제대로 작성했는지 확인해주세요",        	
         	icon:"error",
         	confirmButtonText:"확인"
 	  });

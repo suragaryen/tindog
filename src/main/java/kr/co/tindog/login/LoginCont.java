@@ -50,20 +50,24 @@ public class LoginCont {
 	
 	@RequestMapping("/findidResult")
 	@ResponseBody
-	public ModelAndView findidResult(@RequestParam String member_name) {
+	public ModelAndView findidResult(@ModelAttribute FindDTO findDto ,@RequestParam String member_name, @RequestParam String member_phone) {
 		ModelAndView mav=new ModelAndView();
 		
-		List name=loginDAO.findid(member_name);
+		findDto.setName(member_name);
+		findDto.setPhone(member_phone);
 		
-		System.out.println(name);
-		
-		if(name.isEmpty()||name==null){		
+		FindDTO findid=loginDAO.findid(findDto);
+				
+		System.out.println(findid.getEmail());
+		String email = findid.getEmail();
+		if(email!=null || email.isEmpty()) {
+			System.out.println(email);
+		mav.addObject("email", email);	
+		mav.setViewName("layout/member/findidResult");
+		} else {
 			mav.setViewName("layout/member/findidResultFail");
-			return mav;
-		}else{
-			mav.addObject("list", name);
-			mav.setViewName("layout/member/findidResult");				
 		}
+		
 		return mav;
 	}
 	

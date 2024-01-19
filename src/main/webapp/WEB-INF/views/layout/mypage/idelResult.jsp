@@ -23,7 +23,7 @@
 					<img src="/img/${item.MAINPHOTO}" class="img-fluid rounded-start"
 						alt="..." style="width:400px; height:300px">
 
-					<h5 class="card-title">${item.DNAME}(${item.AGE})</h5>
+					<h5 class="card-title" style="text-align: center;">${item.DNAME}(${item.AGE})</h5>
 					<table style="width: 400px">
 						<tr>
 							<th><img width="24" height="24"

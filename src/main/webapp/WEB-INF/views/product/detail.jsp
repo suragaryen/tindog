@@ -77,9 +77,19 @@
 						</div>
 					    <div class="carousel-inner">
 						    <div class="carousel-item active">
+						 <c:choose>
+			            <c:when test="${userphoto} == 'PHOTO'}">
+			                <img src="img/defaultImg.jpg" alt="기본 이미지" id="" width="500px"  height=400px; />
+			            </c:when>
+			            <c:otherwise>
+			                <img src="/storage/${product.MAINPHOTO}" id="" alt="기본 이미지" width="500px"  height=400px; />
+			            </c:otherwise>
+			       			 </c:choose>
+						    <!-- 
 						       	<c:if test="${product.MAINPHOTO != '-'}">
 			               			<img src="/storage/${product.MAINPHOTO}" width="500px"  height=400px;>
 			            		</c:if>
+			            	 -->
 			            		<br><br>
 						    </div>
 						    <div class="carousel-item">
@@ -103,7 +113,7 @@
 			
 		<div class="product-userinfo">
 			<div class="img-username">
-			  <img src="/img/${userphoto}"><!-- ${product.MEMBER.USERPHOTO} -->
+			  <img src="/img/defaultImg.jpg"><!-- ${product.MEMBER.USERPHOTO} -->
 			  	<a href="/hoogi/${product.NICKNAME}">${product.NICKNAME}</a>
 
 			  	 <div class="cart-chat">
@@ -190,8 +200,15 @@
 				</div>
 				  <div class="product-userinfo">
 							<div class="img-username">
-			  					<img src="/img/${userphoto}"><!-- ${product.MEMBER.USERPHOTO} -->
-			  					<a href="/hoogi/${product.NICKNAME}">${product.NICKNAME}</a>
+			  			<c:choose>
+			            <c:when test="${userphoto} == 'PHOTO'}">
+			                <img src="img/${userphoto}" alt="기본 이미지" id="" width="500px"  height=400px; />
+			            </c:when>
+			            <c:otherwise>
+			                <img src="/img/defaultImg.jpg" id="" alt="기본 이미지" width="500px"  height=400px; />
+			            </c:otherwise>
+			       		</c:choose>
+			  					<a href="/hoogi/${product.NICKNAME}" style="width: 50px;}">${product.NICKNAME}</a>
 							</div>
 			  				<div class="cart-chat">
 								<div class="heart-btn">
@@ -212,15 +229,36 @@
 	</div><!-- container end -->
 </c:if>
 <script>
+
 var btn = document.getElementById("like")
 
-		btn.addEventListener('click',function(){
-		          btn.classList.toggle('active');
-		          product_wishlist();
-		  	});
+window.onload = function () {
+
+var s_nickname = sessionStorage.getItem('s_nickname') || localStorage.getItem('s_nickname');
+
+var isLiked = localStorage.getItem('isLiked_' + s_nickname);
+
+if (isLiked === 'true') {
+
+btn.classList.add('active');
+
+}
+
+}
+
+btn.addEventListener('click',function(){
+
+btn.classList.toggle('active');
+
+var s_nickname = sessionStorage.getItem('s_nickname') || localStorage.getItem('s_nickname');
+
+localStorage.setItem('isLiked_' + s_nickname, btn.classList.contains('active'));
+
+product_wishlist();
+
+});
 
 </script>
-
 <script>
 function product_chatStart(nickname, uproduct_no) {
 	$.ajax({

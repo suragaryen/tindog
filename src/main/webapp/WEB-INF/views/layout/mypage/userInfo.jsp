@@ -25,7 +25,7 @@
                 <img src="img/defaultImg.jpg" alt="기본 이미지" id="userDefaultImg" style="width: 50%" />
             </c:when>
             <c:otherwise>
-                <img src="img/${item.userphoto}" id="userDefaultImg" alt="기본 이미지" style="width: 50%" />
+                <img src="/img/${item.userphoto}" id="userDefaultImg" alt="기본 이미지" style="width: 50%" />
             </c:otherwise>
        			 </c:choose>
 			</div>

@@ -19,8 +19,8 @@ public class LoginDAO {
 		return sqlSession.selectOne("login.login", loginDto);
 	}
 	
-	public List<Map<String, Object>> findid(String name) {
-		return sqlSession.selectList("login.findid",name);
+	public FindDTO findid(FindDTO findDto) {
+		return sqlSession.selectOne("login.findid",findDto);
 	}
 	
 	public FindDTO findpw(FindDTO findDto) {
