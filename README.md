@@ -21,7 +21,8 @@
 - `Java 17`
 - `JDK 17.0.8`
 - **IDE** : STS 4.20.1
-- **Framework** : Springboot(2.x)
+- **SERVER** : Apache Tomcat 10.1.15
+- **Framework** : Springboot(3.2.0)
 - **Database** : MariaDB 10.6.16
 - **ORM** : Mybatis
 
