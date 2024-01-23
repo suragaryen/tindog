@@ -118,7 +118,7 @@
 		    <version>1.1.1</version>
 		</dependency>
 		
-			<!--여러장의 사진을 한번에 받기-->
+			<!--여러장의 사진을 한번에 받기  -->
 	<dependency>
 		<groupId>commons-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>
